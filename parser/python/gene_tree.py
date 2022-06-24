@@ -15,9 +15,10 @@ class HomologyType(Enum):
     ortholog_many2many = 3
     between_species_paralog = 4
     within_species_paralog = 5
-    gene_split = 6
-    other = 7
-    not_homologous = 8
+    other_paralog = 6
+    gene_split = 7
+    other = 8
+    none = 9
 
 
 class GeneTree:
@@ -41,10 +42,17 @@ class GeneTree:
             return [x.get_common_ancestor(taxon_names) for x in self.trees]
         return []
 
-    def get_homology_type(self, taxon1: str, taxon2: str):
+    def get_homology_type(self, taxon1: str, taxon2: str,
+                          ignore_between_species_paralog: bool = True) -> HomologyType:
         """
-        Get the homology type between two taxa.
+        Get the homology type between two taxa. If ignore_between_species_paralog
+        is set to True, paralogs will only be reported if they are within the same
+        species.
         """
+        # TODO: potential improvement: skip common ancestor query
+        # if the two nodes are of different species if
+        # ignore_between_species_paralog is True and we can
+        # determine that the LCA is not a duplication node
         cas = self.get_common_ancestor([taxon1, taxon2])
         if cas is not None and len(cas) > 0:
             ca = cas[0]
@@ -61,15 +69,14 @@ class GeneTree:
                         return HomologyType.ortholog_many2many
                 elif ca.phyloxml_clade.events.duplications is not None:
                     # we have a pair of paralogs
-                    descendants = ca.get_descendants()
-                    speciation_descendants = [x for x in descendants
-                                              if x.phyloxml_clade.events is not None
-                                              and x.phyloxml_clade.events.speciations > 0]
-                    # TODO: this is not quite correct, we might have to check
-                    # the species of the leaves
-                    if len(speciation_descendants) == 1:
-                        return HomologyType.between_species_paralog
-                    elif len(speciation_descendants) == 0:
+                    if not ignore_between_species_paralog:
+                        species1 = self.trees[0].get_leaves_by_name(taxon1)[0].species
+                        species2 = self.trees[0].get_leaves_by_name(taxon2)[0].species
+                        if species1 == species2:
+                            return HomologyType.within_species_paralog
+                        else:
+                            return HomologyType.between_species_paralog
+                    else:
                         return HomologyType.within_species_paralog
                 return HomologyType.other
         else:
@@ -94,7 +101,7 @@ class GeneTree:
                     for l1, l2 in pairs:
                         lca = t.get_common_ancestor([l1.name, l2.name])
                         lca_type, confidence = self._get_lca_type_score((l1.name, l2.name))
-                        if lca is not None and lca_type != 'unknown':
+                        if lca is not None and lca_type != 'unknown' and lca_type != 'dubious':
                             if lca_type == 'duplication':
                                 if lca.phyloxml_clade.events is None:
                                     lca.phyloxml_clade.events = ete3.phyloxml.Events(duplications=1)
@@ -113,23 +120,29 @@ class GeneTree:
 
     def _get_lca_type_score(self, taxon_names: Tuple):
         if self.ref_table is not None:
-            id1 = taxon_names[0]
-            id2 = taxon_names[1]
-            n1 = self.ref_table[self.ref_table['stable_id'] == id1]
-            n2 = self.ref_table[self.ref_table['stable_id'] == id2]
+            id1 = self.ref_table[self.ref_table['stable_id'] == taxon_names[0]]['node_id'].values[0]
+            id2 = self.ref_table[self.ref_table['stable_id'] == taxon_names[1]]['node_id'].values[0]
+            n1 = self.ref_table[self.ref_table['node_id'] == id1]
+            n2 = self.ref_table[self.ref_table['node_id'] == id2]
             root_id = n1['root_id'].values[0]
             if len(n1) > 0 and len(n2) > 0:
-                while id1 != id2 and id1 != root_id and id2 != root_id:
+                n1_path = [id1]
+                while root_id != n1['node_id'].values[0]:
                     n1 = self.ref_table[self.ref_table['node_id'] == n1['parent_id'].values[0]]
+                    n1_path.append(n1['node_id'].values[0])
+                n2_path = [id2]
+                while root_id != n2['node_id'].values[0]:
                     n2 = self.ref_table[self.ref_table['node_id'] == n2['parent_id'].values[0]]
-                    id1 = n1['node_id'].values[0]
-                    id2 = n2['node_id'].values[0]
-                    # if node_id is equal to root_id, we are at the root
-                    if (id1 == n1['root_id'].values[0]):
-                        id1 = n1['root_id'].values[0]
-                    if (id2 == n2['root_id'].values[0]):
-                        id2 = n2['root_id'].values[0]
-                return n1['node_type'].values[0], n1['duplication_confidence_score'].values[0]
+                    n2_path.append(n2['node_id'].values[0])
+                
+                # find first intersection of the two paths
+                n1_path = n1_path[::-1]
+                n2_path = n2_path[::-1]
+                for i in range(min(len(n1_path), len(n2_path)) - 1, -1, -1):
+                    if n1_path[i] == n2_path[i]:
+                        event_type = self.ref_table[self.ref_table['node_id'] == n1_path[i]]['node_type'].values[0]
+                        confidence = self.ref_table[self.ref_table['node_id'] == n1_path[i]]['duplication_confidence_score'].values[0]
+                        return event_type, confidence
         else:
             raise GeneTreeException('Reference table is not loaded.')
 
@@ -139,6 +152,10 @@ class GeneTree:
         """
         if len(self.trees) > 0:
             for t in self.trees:
+                t.name = None
+                for n in t.get_descendants():
+                    if n.name == '':
+                        n.name = None
                 phylo_xml = Phyloxml()
                 phylo_xml.add_phylogeny(t)
                 with open(xml_file, 'w') as f:
