@@ -21,7 +21,7 @@
 #define INTHASH_H
 #include "fastIntBuffer.h"
 
-namespace com_ximpleware {
+namespace vtdxml {
 	class IntHash {
 		friend class UnionExpr;
 		friend class PathExpr;

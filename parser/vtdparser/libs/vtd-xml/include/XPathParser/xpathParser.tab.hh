@@ -50,7 +50,7 @@
 #include "pathExpr.h"
 #include "locationPathExpr.h"
 
-using namespace com_ximpleware;
+using namespace vtdxml;
 /* Line 35 of lalr1.cc  */
 #line 1 "[Bison:b4_percent_define_default]"
 
@@ -130,28 +130,28 @@ namespace yy {
 /* Line 35 of lalr1.cc  */
 #line 65 "xpathParser.yy"
 
-	com_ximpleware::UCSChar*   literal;
-	com_ximpleware::axisType at;
+	vtdxml::UCSChar*   literal;
+	vtdxml::axisType at;
 	int	 integer;
 	double	 number;
 	struct nametype {
-		com_ximpleware::UCSChar* prefix;
-		com_ximpleware::UCSChar* qname;
-		com_ximpleware::UCSChar* localname;
+		vtdxml::UCSChar* prefix;
+		vtdxml::UCSChar* qname;
+		vtdxml::UCSChar* localname;
 	} name;
 	struct {
-       		com_ximpleware::nodeTestType nt;
-       		com_ximpleware::UCSChar*   arg;
+       		vtdxml::nodeTestType nt;
+       		vtdxml::UCSChar*   arg;
 	} ntest;
-	com_ximpleware::FuncName fname;
-	com_ximpleware::Expr *expression;
- 	com_ximpleware::LocationPathExpr *lpe;
- 	com_ximpleware::UnionExpr *une;
-	com_ximpleware::PathExpr *pe;
-	com_ximpleware::Step *s;
-	com_ximpleware::AList *a;
-	com_ximpleware::NodeTest *nodetest;
-	com_ximpleware::Predicate* p;
+	vtdxml::FuncName fname;
+	vtdxml::Expr *expression;
+ 	vtdxml::LocationPathExpr *lpe;
+ 	vtdxml::UnionExpr *une;
+	vtdxml::PathExpr *pe;
+	vtdxml::Step *s;
+	vtdxml::AList *a;
+	vtdxml::NodeTest *nodetest;
+	vtdxml::Predicate* p;
 
 
 

@@ -21,7 +21,7 @@
 #define FUNC_EXPR_H
 #include "expr.h"
 
-namespace com_ximpleware{
+namespace vtdxml{
 	
 	typedef enum FuncName {FN_LAST,
 		FN_POSITION,

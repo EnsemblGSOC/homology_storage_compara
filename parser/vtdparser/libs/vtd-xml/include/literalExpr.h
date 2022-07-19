@@ -21,7 +21,7 @@
 #define LITERAL_EXPR_H
 #include "expr.h"
 
-namespace com_ximpleware{
+namespace vtdxml{
 	class LiteralExpr: public Expr{
 	private:
 		UCSChar *s;

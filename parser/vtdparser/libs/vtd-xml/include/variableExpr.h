@@ -21,7 +21,7 @@
 #define VARIABLE_EXPR_H
 #include "expr.h"
 
-namespace com_ximpleware{
+namespace vtdxml{
 	class VariableExpr:public Expr{
 	private:
 		UCSChar *exprName;

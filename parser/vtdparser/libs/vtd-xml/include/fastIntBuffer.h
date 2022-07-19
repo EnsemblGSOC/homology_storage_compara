@@ -24,7 +24,7 @@
 //#include "indexHandler.h"
 //#include "fastLongBuffer.h"
 
-namespace com_ximpleware {
+namespace vtdxml {
 
 	class FastIntBuffer {
 		friend class IndexHandler;
@@ -48,44 +48,56 @@ namespace com_ximpleware {
 	public:
 		// Create FastIntBuffer with initial page size of 1024 ints
 		FastIntBuffer();
+
 		// Create FastIntBuffer with initial page size of (1<<e) ints
 		FastIntBuffer(int exp);
+
 		virtual ~FastIntBuffer();
 
 		// Create FastIntBuffer with initial page size of (1<<e) ints
 		void append(int i);
+
 		// Append int array of length "len" to the end of fastIntBuffer
 		void append(int *i, int len);
+
 		// Get the capacity of FastIntBuffer
 		int getCapacity(){return capacity;}
+
 		// Get the page size of FastIntBuffer
 		int getPageSize(){return pageSize;}
+
 		// Get the int array corresponding to content of FastIntBuffer 
 		// with the starting offset and len
 		int *getIntArray(int offset, int len);
+
 		// Get the int at the index position of FastIntBuffer
 		//inline int intAt(int index);
-
 		inline int intAt(int index);
+
 		// Replace the value at the index position of FastIntBuffer 
 		// with newVal
 		void modifyEntry(int index,int newVal);
+
 		// convert the content of FastIntBuffer to int *
 		int* toIntArray();
+
 		// set the buffer size to zero, capacity untouched,
 		void clear() { size = 0;}
+
 		// getSize
 		int getSize(){return size;}
+
 		// reset the size of fastIntBuffer
 		bool resize(int newSz);
-		
 	};
+
 	inline void FastIntBuffer::modifyEntry(int index,int newVal){
 		if (index < 0 || index > size - 1) {
 			throw InvalidArgumentException("invalid index range in FastIntBuffer's modifyEntry()");
 		}
 		((int *) al->get(index>>exp))[index & r] = newVal;
 	}
+	
 	// Get the int at the index position of FastIntBuffer
 	inline int FastIntBuffer::intAt(int index){
 	if (index < 0 || index > size - 1) {

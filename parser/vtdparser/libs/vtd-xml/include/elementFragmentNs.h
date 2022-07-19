@@ -23,7 +23,7 @@
 #include "vtdNav.h"
 //#include "fastIntBuffer.h"
 
-namespace com_ximpleware {
+namespace vtdxml {
 	/**
 	 * @brief A namespace compensated element fragment.
 	 */

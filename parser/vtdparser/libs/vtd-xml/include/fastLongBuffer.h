@@ -21,7 +21,7 @@
 #define LONGBUFFER_H
 #include "arrayList.h"
 #include "indexHandler.h"
-namespace com_ximpleware {
+namespace vtdxml {
         class VTDNav;
         class VTDGen;
         class IndexHandler;
@@ -46,34 +46,48 @@ namespace com_ximpleware {
 
 		// initialize FastLongBuffer with default page size of 1024 longs 
 		FastLongBuffer();
+
 		// initialize FastLongBuffer with page size of (1<<e) longs
 		FastLongBuffer(int e);
 
 		// initialize FastLongBuffer with page size of (1<<e) longs and initial capciaty of c longs
 		FastLongBuffer(int e, int c);
+
 		virtual ~FastLongBuffer();
+
 		// append a long array to the end of FastLongBuffer
 		void append(Long* longArray, int len);
+
 		// append a long to the end of FastLongBuffer
 		void append(Long);
+
 		// get the capacity of FastLongBuffer
 		int getCapacity(){return capacity;}
+
 		// Return a selected chuck of long buffer as a long array.
 		Long* getLongArray(int offset, int len);
+
 		// get the page size of FastLongBuffer
 		int getPageSize(){return pageSize;}
+
 		// get the # of entries in FastLongBuffer
 		int getSize(){return size;}
+
 		// get the long at the index position from FastLongBuffer
 		Long longAt(int index);
+
 		// get the lower 32 bits from the index position from FastLongBuffer
 		int lower32At(int index);
+
 		// get the upper 32 bits from the index position from FastLongBuffer 
 		int upper32At(int index);
+
 		// replace the entry at the index position of FastLongBuffer with l
 		void modifyEntry(int index, Long l);
+
 		// convert FastLongBuffer into a Long array 
 		Long* toLongArray();
+		
 		// set the buffer size to zero, capacity untouched,
 		void clear() { size = 0;}
 

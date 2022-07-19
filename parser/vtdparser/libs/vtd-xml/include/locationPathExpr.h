@@ -23,7 +23,7 @@
 #include "intHash.h"
 #include "textIter.h"
 
-namespace com_ximpleware{
+namespace vtdxml{
 
 	class LocationPathExpr: public Expr{
 	friend class xpathParser;

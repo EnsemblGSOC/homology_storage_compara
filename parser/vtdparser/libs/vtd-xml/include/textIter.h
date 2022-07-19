@@ -22,7 +22,7 @@
 #include "customTypes.h"
 #include "vtdNav.h"
 
-namespace com_ximpleware{
+namespace vtdxml{
 
 	class TextIter{
 	private:

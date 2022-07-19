@@ -36,21 +36,23 @@ using namespace std;
 //#define max(a,b) (((a) > (b)) ? (a) : (b))
 //#endif
 
-namespace com_ximpleware {
+namespace vtdxml {
 	typedef wchar_t UCSChar;
 	typedef long long Long;
 	typedef char Byte;
 	typedef unsigned char UByte;
 
-	typedef enum {ROOT,
+	typedef enum {
+		ROOT,
 		PARENT,
 		FIRST_CHILD,
 		LAST_CHILD,
 		NEXT_SIBLING,
-		PREV_SIBLING} 
-	navDir;
+		PREV_SIBLING
+	} navDir;
 
-	typedef enum {FORMAT_ASCII,
+	typedef enum {
+		FORMAT_ASCII,
 		FORMAT_ISO_8859_1,
 		FORMAT_UTF8,
 		FORMAT_ISO_8859_2,

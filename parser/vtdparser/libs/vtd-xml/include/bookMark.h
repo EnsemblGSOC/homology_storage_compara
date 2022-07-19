@@ -23,7 +23,7 @@
 #include "customTypes.h"
 #include "vtdNav.h"
 
-namespace com_ximpleware{
+namespace vtdxml{
 	/**
 	 * Bookmark is a single instance of a node position.
 	 * You can save the cursor's position into a bookMark instance.
@@ -42,30 +42,42 @@ namespace com_ximpleware{
 		virtual ~BookMark();
 		void unbind();
 		void bind(VTDNav *vn);
+
+		/**
+		 * Get the Nav object associated with this bookmark
+		 * 
+		 * @return VTDNav* 
+		 */
 		VTDNav* getNav();
-		bool setCursorPosition( VTDNav *vn);
+		
+		bool setCursorPosition(VTDNav *vn);
 		bool setCursorPosition();
+
 		/**
 		* Record the cursor position
 		* This method is implemented to be lenient on loading in
 		* that it can load nodes from any VTDNav object
 		* if vn is null, return false
 		*/
-		bool recordCursorPosition( VTDNav *vn);
+		bool recordCursorPosition(VTDNav *vn);
+
 		/**
 		* Record cursor position of the VTDNav object as embedded in the
 		* bookmark
 		*/
 		bool recordCursorPosition();
+
 		/**
 		* Compare the bookmarks to ensure they represent the same
 		* node in the same VTDnav instance
 		*/
 		bool equal(BookMark *bm2);
+
 		/**
 		* Returns the hash code which is a unique integer for every node
 		*/
 		int hashCode();
+
 		/**
 		* Compare the bookmarks to ensure they represent the same
 		* node in the same VTDnav instance

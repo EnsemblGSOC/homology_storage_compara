@@ -22,7 +22,7 @@
 #ifndef XMLCHAR_H
 #define XMLCHAR_H
 //#include "customTypes.h"
-namespace com_ximpleware{
+namespace vtdxml{
   #define LENGTH(x,y) (sizeof(x)/sizeof(y))
 
 
@@ -180,17 +180,17 @@ namespace com_ximpleware{
   extern int Character_digit(int ch, int radix);
 }
 
-inline int com_ximpleware::Character_digit(int ch, int radix){
+inline int vtdxml::Character_digit(int ch, int radix){
 	int i;
 
-	if (com_ximpleware::isCharacterReady == 0)
+	if (vtdxml::isCharacterReady == 0)
 		init_Character();
 
-	i = com_ximpleware::Character[ch & 0xff];
+	i = vtdxml::Character[ch & 0xff];
 	if (i > radix - 1){
 		return -1;
 	}
-	return com_ximpleware::Character[ch&0xff];
+	return vtdxml::Character[ch&0xff];
 }
 
 
@@ -199,7 +199,7 @@ inline int com_ximpleware::Character_digit(int ch, int radix){
 *
 * @param c The character to check.
 */
-inline char com_ximpleware::XMLChar_isSupplemental(int c) {
+inline char vtdxml::XMLChar_isSupplemental(int c) {
 	return (c >= 0x10000 && c <= 0x10FFFF);
 }
 
@@ -210,7 +210,7 @@ inline char com_ximpleware::XMLChar_isSupplemental(int c) {
 * @param h The high surrogate.
 * @param l The low surrogate.
 */
-inline int com_ximpleware::XMLChar_isSupplementalChar(char h, char l) {
+inline int vtdxml::XMLChar_isSupplementalChar(char h, char l) {
 	return (h - 0xD800) * 0x400 + (l - 0xDC00) + 0x10000;
 }
 
@@ -219,7 +219,7 @@ inline int com_ximpleware::XMLChar_isSupplementalChar(char h, char l) {
 *
 * @param c The supplemental character to "split".
 */
-inline unsigned short com_ximpleware::XMLChar_highSurrogate(int c) {
+inline unsigned short vtdxml::XMLChar_highSurrogate(int c) {
 	return (unsigned short) (((c - 0x00010000) >> 10) + 0xD800);
 }
 
@@ -228,7 +228,7 @@ inline unsigned short com_ximpleware::XMLChar_highSurrogate(int c) {
 *
 * @param c The supplemental character to "split".
 */
-inline unsigned short com_ximpleware::XMLChar_lowSurrogate(int c) {
+inline unsigned short vtdxml::XMLChar_lowSurrogate(int c) {
 	return (unsigned short) (((c - 0x00010000) & 0x3FF) + 0xDC00);
 }
 
@@ -237,7 +237,7 @@ inline unsigned short com_ximpleware::XMLChar_lowSurrogate(int c) {
 *
 * @param c The character to check.
 */
-inline char com_ximpleware::XMLChar_isHighSurrogate(int c) {
+inline char vtdxml::XMLChar_isHighSurrogate(int c) {
 	return (0xD800 <= c && c <= 0xDBFF);
 }
 
@@ -246,7 +246,7 @@ inline char com_ximpleware::XMLChar_isHighSurrogate(int c) {
 *
 * @param c The character to check.
 */
-inline char com_ximpleware::XMLChar_isLowSurrogate(int c) {
+inline char vtdxml::XMLChar_isLowSurrogate(int c) {
 	return (0xDC00 <= c && c <= 0xDFFF);
 }
 
@@ -261,8 +261,8 @@ inline char com_ximpleware::XMLChar_isLowSurrogate(int c) {
 *
 * @param c The character to check.
 */
-inline char com_ximpleware::XMLChar_isValidChar(int c) {
-	return (c < 0x10000 && (com_ximpleware::CHARS[c] & com_ximpleware::MASK_VALID) != 0) ||
+inline char vtdxml::XMLChar_isValidChar(int c) {
+	return (c < 0x10000 && (vtdxml::CHARS[c] & vtdxml::MASK_VALID) != 0) ||
 		(0x10000 <= c && c <= 0x10FFFF);
 } // isValid(int):char
 
@@ -271,7 +271,7 @@ inline char com_ximpleware::XMLChar_isValidChar(int c) {
 *
 * @param c The character to check.
 */
-inline char com_ximpleware::XMLChar_isInvalidChar(int c) {
+inline char vtdxml::XMLChar_isInvalidChar(int c) {
 	return !XMLChar_isValidChar(c);
 } // isInvalid(int):char
 
@@ -280,8 +280,8 @@ inline char com_ximpleware::XMLChar_isInvalidChar(int c) {
 *
 * @param c The character to check.
 */
-inline char com_ximpleware::XMLChar_isContentChar(int c) {
-	return (c < 0x10000 && (com_ximpleware::CHARS[c] & com_ximpleware::MASK_CONTENT) != 0) ||
+inline char vtdxml::XMLChar_isContentChar(int c) {
+	return (c < 0x10000 && (vtdxml::CHARS[c] & vtdxml::MASK_CONTENT) != 0) ||
 		(0x10000 <= c && c <= 0x10FFFF);
 } // isContent(int):char
 
@@ -291,7 +291,7 @@ inline char com_ximpleware::XMLChar_isContentChar(int c) {
 *
 * @param c The character to check.
 */
-inline char com_ximpleware::XMLChar_isMarkupChar(int c) {
+inline char vtdxml::XMLChar_isMarkupChar(int c) {
 	return c == '<' || c == '&' || c == '%';
 } // isMarkup(int):char
 
@@ -301,8 +301,8 @@ inline char com_ximpleware::XMLChar_isMarkupChar(int c) {
 *
 * @param c The character to check.
 */
-inline char com_ximpleware::XMLChar_isSpaceChar(int c) {
-	return c <= 0x20 && (com_ximpleware::CHARS[c] & com_ximpleware::MASK_SPACE) != 0;
+inline char vtdxml::XMLChar_isSpaceChar(int c) {
+	return c <= 0x20 && (vtdxml::CHARS[c] & vtdxml::MASK_SPACE) != 0;
 } // isSpace(int):char
 
 /**
@@ -312,8 +312,8 @@ inline char com_ximpleware::XMLChar_isSpaceChar(int c) {
 *
 * @param c The character to check.
 */
-inline char com_ximpleware::XMLChar_isNameStartChar(int c) {
-	return c < 0x10000 && (com_ximpleware::CHARS[c] & com_ximpleware::MASK_NAME_START) != 0;
+inline char vtdxml::XMLChar_isNameStartChar(int c) {
+	return c < 0x10000 && (vtdxml::CHARS[c] & vtdxml::MASK_NAME_START) != 0;
 } // isNameStart(int):char
 
 /**
@@ -323,8 +323,8 @@ inline char com_ximpleware::XMLChar_isNameStartChar(int c) {
 *
 * @param c The character to check.
 */
-inline char com_ximpleware::XMLChar_isNameChar(int c) {
-	return c < 0x10000 && (com_ximpleware::CHARS[c] & com_ximpleware::MASK_NAME) != 0;
+inline char vtdxml::XMLChar_isNameChar(int c) {
+	return c < 0x10000 && (vtdxml::CHARS[c] & vtdxml::MASK_NAME) != 0;
 } // isName(int):char
 
 /**
@@ -334,8 +334,8 @@ inline char com_ximpleware::XMLChar_isNameChar(int c) {
 *
 * @param c The character to check.
 */
-inline char com_ximpleware::XMLChar_isNCNameStart(int c) {
-	return c < 0x10000 && (com_ximpleware::CHARS[c] & com_ximpleware::MASK_NCNAME_START) != 0;
+inline char vtdxml::XMLChar_isNCNameStart(int c) {
+	return c < 0x10000 && (vtdxml::CHARS[c] & vtdxml::MASK_NCNAME_START) != 0;
 } // isNCNameStart(int):char
 
 /**
@@ -345,8 +345,8 @@ inline char com_ximpleware::XMLChar_isNCNameStart(int c) {
 *
 * @param c The character to check.
 */
-inline char com_ximpleware::XMLChar_isNCName(int c) {
-	return c < 0x10000 && (com_ximpleware::CHARS[c] & com_ximpleware::MASK_NCNAME) != 0;
+inline char vtdxml::XMLChar_isNCName(int c) {
+	return c < 0x10000 && (vtdxml::CHARS[c] & vtdxml::MASK_NCNAME) != 0;
 } // isNCName(int):char
 
 /**
@@ -356,8 +356,8 @@ inline char com_ximpleware::XMLChar_isNCName(int c) {
 *
 * @param c The character to check.
 */
-inline char com_ximpleware::XMLChar_isPubid(int c) {
-	return c < 0x10000 && (com_ximpleware::CHARS[c] & com_ximpleware::MASK_PUBID) != 0;
+inline char vtdxml::XMLChar_isPubid(int c) {
+	return c < 0x10000 && (vtdxml::CHARS[c] & vtdxml::MASK_PUBID) != 0;
 } // isPubid(int):char
 
 #endif

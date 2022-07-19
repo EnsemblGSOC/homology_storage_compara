@@ -20,7 +20,7 @@
 #pragma once
 #ifndef UTF8CHAR_H
 #define UTF8CHAR_H
-namespace com_ximpleware {
+namespace vtdxml {
 	static char charLen[] =
 		{
 			1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,

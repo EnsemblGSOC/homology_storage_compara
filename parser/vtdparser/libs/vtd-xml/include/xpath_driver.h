@@ -3,12 +3,12 @@
      # include <string>
      #define YY_CHAR wchar_t
      //# include <map>
-     # include "xpathParser.tab.hh"
+     # include "XPathParser/xpathParser.tab.hh"
      # include "FlexLexer.h"
      # include "expr.h"
-     # include "location.hh"	
+     # include "XPathParser/location.hh"	
 
-     using namespace com_ximpleware;
+     using namespace vtdxml;
      // Tell Flex the lexer's prototype ...
      # define YY_DECL                                        \
        yy::xpathParser::token_type                      \
@@ -29,11 +29,11 @@
 	   int num_of_chars;
        //std::map<std::string, int> variables;
      
-       com_ximpleware::Expr *result;
+       vtdxml::Expr *result;
 	   int accept;
        yyFlexLexer *yfl;
-       com_ximpleware::NsList *nl;
-       com_ximpleware::ExprList *el;
+       vtdxml::NsList *nl;
+       vtdxml::ExprList *el;
 
        // Handling the scanner.
        void scan_begin ();

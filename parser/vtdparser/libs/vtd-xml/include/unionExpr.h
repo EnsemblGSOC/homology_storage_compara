@@ -23,7 +23,7 @@
 #include "intHash.h"
 //#include "xpathParser.tab.hh"
 
-namespace com_ximpleware{
+namespace vtdxml{
 	class UnionExpr: public Expr{
 	public:
 		UnionExpr(Expr *e);

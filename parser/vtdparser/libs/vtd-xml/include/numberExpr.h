@@ -21,7 +21,7 @@
 #define NUMBER_EXPR_H
 #include "expr.h"
 
-namespace com_ximpleware{
+namespace vtdxml{
 	class NumberExpr: public Expr{
 	private:
 		double dval;

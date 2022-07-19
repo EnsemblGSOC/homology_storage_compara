@@ -29,7 +29,7 @@
 #include "vtdNav_L5.h"
 
 #include "indexHandler.h"
-namespace com_ximpleware {
+namespace vtdxml {
 	//class VTDNav;
 	class FastLongBuffer;
 	class VTDGen {	
@@ -128,8 +128,8 @@ namespace com_ximpleware {
 		bool skipUTF8(int temp,int ch);
 		bool skip_16be(int ch);
 		bool skip_16le(int ch);
-		int getCharAfterSe();
-		int getCharAfterS();
+		int getCharAfterSpace_e();
+		int getCharAfterSpace();
 		bool skipChar(int ch);
 		void writeVTD(int offset, int length, tokenType token_type, int depth);
 		void finishUp();
@@ -210,11 +210,14 @@ namespace com_ximpleware {
 
 		bool parseFile(bool ns, const char* fileName);
 		bool parseFile(bool ns, const UCSChar* fileName);
+
 		// Set the XMLDoc container.
 		void setDoc(UByte *byteArray, int arrayLen);
+
 		// Set the XMLDoc container.Also set the offset and len of the document 
 		// assuming byteArray is null terminated and starts from offset zero
 		void setDoc(UByte *byteArray){setDoc(byteArray,strlen((char *)byteArray));}
+
 		// assuming charArray is null terminated and starts from offset zero
 		void setDoc(char *charArray){setDoc(charArray,strlen(charArray));}
 		void setDoc(char *charArray, int arrayLen){
@@ -224,9 +227,10 @@ namespace com_ximpleware {
 		void setDoc(const char *charArray, int arrayLen, int offset, int docLen){
 			setDoc((UByte *)charArray, arrayLen, offset, docLen);
 		}
-		// set the XML Doc container and turn on buffer reuse
 
+		// set the XML Doc container and turn on buffer reuse
 		void setDoc_BR(UByte *byteArray, int arrayLen);
+
 		//Set the XMLDoc container.Also set the offset and len of the document 
 		void setDoc_BR(char *charArray, int arrayLen){
 			setDoc_BR((UByte*) charArray, arrayLen);
@@ -236,33 +240,34 @@ namespace com_ximpleware {
 		void setDoc_BR(char *charArray, int arrayLen, int offset, int docLen){
 			setDoc_BR((UByte*) charArray, arrayLen, offset, docLen);
 		}
+
 		/* Load VTD+XML from a FILE pointer */
 		VTDNav* loadIndex(FILE *f); 
+
 		/* load VTD+XML from a byte array */
 		VTDNav* loadIndex(UByte* ba,int len);
+
 		/* load VTD+XML from a filename */
 		VTDNav* loadIndex(const char* fileName);
 
 		/* Write VTD+XML into a FILE pointer */
-
 		bool writeIndex(FILE *f); 
+
 		/* Write VTD+XML into a file of given name, this file will be created on hard disk */
-
 		bool writeIndex(const char *fileName);
+
 		/* Pre-calculate the integrated VTD+XML index size without generating the actual index */
-
 		Long getIndexSize();
+
 		/* Write the VTDs and LCs into an file*/
-
 		void writeSeparateIndex(char *vtdIndexFile);
+
 		/* Load the separate VTD index and XmL file.*/
-
 		VTDNav* loadSeparateIndex(char *XMLFile, char *VTDIndexFile);
-		/* configure the VTDGen to enable or disable (disabled by default) white space nodes */
 
+		/* configure the VTDGen to enable or disable (disabled by default) white space nodes */
 		void enableIgnoredWhiteSpace(bool b);
 		void selectLcDepth(int i);
-
 	};
 
 	inline void VTDGen::selectLcDepth(int i){
@@ -271,20 +276,9 @@ namespace com_ximpleware {
 		if (i==5)
 			shallowDepth = false;
 	}
-	/*inline void VTDGen::_writeVTD(int offset, int length, tokenType token_type, int depth){
-		VTDBuffer->append(((Long) ((token_type << 28)
-			| ((depth & 0xff) << 20) | length) << 32)
-			| offset);		
-	}*/
 
 	inline void VTDGen::enableIgnoredWhiteSpace( bool b){
 		ws = b;
 	}
-
-
-
-}	
-
-
-
+}
 #endif

@@ -23,7 +23,7 @@
 #include "vtdNav.h"
 #include "autoPilot.h"
 
-namespace com_ximpleware{
+namespace vtdxml{
 	class AutoPilot;
         class Expr;
         class FilterExpr;
@@ -251,11 +251,11 @@ namespace com_ximpleware{
 				a = evalNodeSet(vn);
 				if (a != -1) {
 					tokenType t = vn->getTokenType(a);
-					if (t == com_ximpleware::TOKEN_ATTR_NAME) {
+					if (t == vtdxml::TOKEN_ATTR_NAME) {
 						a++;
-					} else if (vn->getTokenType(a) == com_ximpleware::TOKEN_STARTING_TAG) {
+					} else if (vn->getTokenType(a) == vtdxml::TOKEN_STARTING_TAG) {
 						a = vn->getText();
-					}else if (t == com_ximpleware::TOKEN_PI_NAME) {
+					}else if (t == vtdxml::TOKEN_PI_NAME) {
 						a++;                
 					}
 				}

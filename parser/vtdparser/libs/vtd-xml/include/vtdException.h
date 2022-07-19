@@ -20,8 +20,9 @@
 #ifndef VTDEXCEPTION_H
 #define VTDEXCEPTION_H
 #include <exception>
+#include <new>
 #include <stdexcept>
-namespace com_ximpleware{
+namespace vtdxml{
 	class VTDException : public std::exception {
 	public:
 
@@ -122,11 +123,11 @@ namespace com_ximpleware{
 		ModifyException(const char* s):VTDException(s){}
 	};
 
-	class OutOfMemException: public std::bad_alloc{
+	class OutOfMemException : public std::bad_alloc{
 	public:
 		OutOfMemException(const char* s1):
 		  std::bad_alloc(),
-		  s(s1) 
+		  s(s1)
 		{
 		}
 	private:
@@ -134,7 +135,7 @@ namespace com_ximpleware{
 	};
 
 
-	class OtherException: public VTDException {
+	class OtherException : public VTDException {
 	public:
 		OtherException(const char* s):VTDException(s){}
 	};

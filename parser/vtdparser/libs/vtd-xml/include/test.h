@@ -1,6 +1,6 @@
 #ifndef TEST_H
 #define TEST_H
-using namespace com_ximpleware;
+using namespace vtdxml;
 namespace abc1 {
 	class t1{
 		friend class VTDNav;

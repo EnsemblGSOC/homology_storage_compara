@@ -39,7 +39,7 @@
 //#include <new>
 //#include <iostream>
 
-namespace com_ximpleware {
+namespace vtdxml {
 	class FastLongBuffer;
 	class ElementFragmentNs;
 	//class VTDNav;

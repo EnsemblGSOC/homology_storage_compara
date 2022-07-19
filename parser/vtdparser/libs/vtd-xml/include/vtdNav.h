@@ -36,10 +36,13 @@
 // Get declaration for f(int i, char c, float x)
 #include "decoder.h"
 #include <math.h>
+#include <string.h>
+#include <sstream>
+#include <iostream>
 //#include <new>
 //#include <iostream>
 
-namespace com_ximpleware {
+namespace vtdxml {
 	class FastLongBuffer;
 	class ElementFragmentNs;
 	class BookMark;
@@ -258,24 +261,31 @@ namespace com_ximpleware {
 		const static navDir PS=PREV_SIBLING;
 
 		bool matchNormalizedTokenString2(int index, const UCSChar *s);
+
 		virtual ~VTDNav();
+
 		//Return the attribute count of the element at the cursor position.
 		int getAttrCount();
+
 		//Get the token index of the attribute value given an attribute name.     
 		int getAttrVal(const UCSChar *attrName);
+
 		//Get the token index of the attribute value of given URL and local name.
 		//If ns is not enabled, the lookup will return -1, indicating a no-found.
 		//Also namespace nodes are invisible using this method.
 		int getAttrValNS(const UCSChar* URL, const UCSChar *localName);
+
 		//Get the depth (>=0) of the current element.
 		int getCurrentDepth();
 
 		// Get the index value of the current element.
 		int getCurrentIndex();
 		int getCurrentIndex2();
+
 		// Get the starting offset and length of an element
 		// encoded in a long, upper 32 bit is length; lower 32 bit is offset
 		Long getElementFragment();
+
 		/** 
          * Return the byte offset and length of up to i sibling fragments. If 
          * there is a i+1 sibling element, the cursor element would 
@@ -287,7 +297,6 @@ namespace com_ximpleware {
          * to bit 32) of those fragments 
          * @throws NavException 
          */ 
-
 		Long getContentFragment();
 		//ElementFragmentNs* getElementFragmentNs();
 		
@@ -297,11 +306,11 @@ namespace com_ximpleware {
 		
 		/**
 		* Get the encoding of the XML document.
-		* <pre>   0  ASCII       </pre>
-		* <pre>   1  ISO-8859-1  </pre>
-		* <pre>   2  UTF-8       </pre>
-		* <pre>   3  UTF-16BE    </pre>
-		* <pre>   4  UTF-16LE    </pre>
+		*    0  ASCII       
+		*    1  ISO-8859-1  
+		*    2  UTF-8       
+		*    3  UTF-16BE    
+		*    4  UTF-16LE    
 		*/
 		encoding_t getEncoding(){
 			return encoding;
@@ -311,9 +320,12 @@ namespace com_ximpleware {
 
 		// max depth is nestingLevel -1
 		int getNestingLevel();
+
 		UCSChar *getPrefixString(int i);
+
 		// Get root index value.
 		int getRootIndex();
+		
 		// This function returns of the token index of the type character data or CDATA.
 		// Notice that it is intended to support data orient XML (not mixed-content XML).
 		int getText();
@@ -335,9 +347,7 @@ namespace com_ximpleware {
 		UByte* getXML();
 
 		//Get the token type of the token at the given index value.
-		tokenType getTokenType(int index);/*{
-			return (tokenType) (((vtdBuffer->longAt(index) & MASK_TOKEN_TYPE) >> 60) & 0xf);
-		}*/
+		tokenType getTokenType(int index);
 
 		//Test whether current element has an attribute with the matching name.
 		bool hasAttr(const UCSChar *attrName);
@@ -356,18 +366,11 @@ namespace com_ximpleware {
 		//if ns is false, return false immediately
 		virtual bool iterateNS(int dp, const UCSChar *URL, const UCSChar *ln);
 
-		
-
-		// This function is called by selectElementNS_P in autoPilot
-		//virtual bool iterate_precedingNS(const UCSChar *URL, const UCSChar *ln, int* a);
-
 		// This function is called by selectElement_F in autoPilot
 		virtual bool iterate_following(const UCSChar *en, bool special);
 
-
 		// This function is called by selectElementNS_F in autoPilot
 		virtual bool iterate_followingNS( const UCSChar *URL, const UCSChar *ln);
-
 
 		//Test if the current element matches the given name.
 		bool matchElement( const UCSChar *en);
@@ -380,6 +383,7 @@ namespace com_ximpleware {
 		//Match the string against the token at the given index value. When a token
 		//is an attribute name or starting tag, qualified name is what gets matched against
 		bool matchRawTokenString(int index, const UCSChar *s);
+
 		//This method matches two VTD tokens of 2 VTDNavs
 		bool matchTokens(int i1, VTDNav *vn2, int i2);
 
@@ -403,24 +407,30 @@ namespace com_ximpleware {
 		//Info saved including LC and current state of the context 
 		virtual bool pop();
 		virtual bool pop2();
+
 		//Store the context info into the ContextBuffer.
 		//Info saved including LC and current state of the context 
 		virtual bool push();
 		virtual bool push2();
+
 		virtual void sampleState( FastIntBuffer *fib);
 
-		// A generic navigation method.
-		// Move the current to the element according to the direction constants
-		// If no such element, no position change and return false (0).
-		/* Legal direction constants are 	<br>
-		* <pre>		ROOT            0  </pre>
-		* <pre>		PARENT          1  </pre>
-		* <pre>		FIRST_CHILD     2  </pre>
-		* <pre>		LAST_CHILD      3  </pre>
-		* <pre>		NEXT_SIBLING    4  </pre>
-		* <pre>		PREV_SIBLING    5  </pre>
-		* <br>
-		*/
+		/**
+		 * @brief A generic navigation method.
+		 * Move the current to the element according to the direction constants.
+		 * 
+		 * If no such element, no position change and return false (0).
+		 * @param direction 
+		 * Legal direction constants are
+		 * 		ROOT = 0,
+		 * 		PARENT = 1,
+		 * 		FIRST_CHILD = 2, 
+		 * 		LAST_CHILD= 3, 
+		 * 		NEXT_SIBLING = 4, 
+		 * 		PREV_SIBLING = 5  
+		 * @return true 
+		 * @return false 
+		 */
 		virtual bool toElement( navDir direction);
 
 		/**
@@ -429,17 +439,38 @@ namespace com_ximpleware {
 		* constants and the element name
 		* If no such element, no position change and return false (0).
 		* "*" matches any element
-		* Legal direction constants are 	<br>
-		* <pre>		ROOT            0  </pre>
-		* <pre>		PARENT          1  </pre>
-		* <pre>		FIRST_CHILD     2  </pre>
-		* <pre>		LAST_CHILD      3  </pre>
-		* <pre>		NEXT_SIBLING    4  </pre>
-		* <pre>		PREV_SIBLING    5  </pre>
-		* <br>
+		* Legal direction constants are 	
+		* 		ROOT            0  
+		* 		PARENT          1  
+		* 		FIRST_CHILD     2  
+		* 		LAST_CHILD      3  
+		* 		NEXT_SIBLING    4  
+		* 		PREV_SIBLING    5  
+		* 
 		* for ROOT and PARENT, element name will be ignored.
 		*/
-		virtual bool toElement( navDir direction, UCSChar *en);
+
+		/**
+		 * @brief A generic navigation method.
+		 * Move the current to the element according to the direction constants
+		 * and the element name.
+		 * 
+		 * For ROOT and PARENT, element name will be ignored.
+		 * 
+		 * If no such element, no position change and return false (0).
+		 * @param direction 
+		 * Legal direction constants are
+		 * 		ROOT = 0,
+		 * 		PARENT = 1,
+		 * 		FIRST_CHILD = 2, 
+		 * 		LAST_CHILD= 3, 
+		 * 		NEXT_SIBLING = 4, 
+		 * 		PREV_SIBLING = 5  
+		 * @return true 
+		 * @return false 
+		 */
+		virtual bool toElement(navDir direction, UCSChar *en);
+
 		/*	
 		* A generic navigation function with namespace support.
 		* Move the current to the element according to the direction constants and the prefix and local names
@@ -447,14 +478,14 @@ namespace com_ximpleware {
 		* URL * matches any namespace, including undefined namespaces
 		* a null URL means hte namespace prefix is undefined for the element
 		* ln *  matches any localname
-		* Legal direction constants are<br>
-		* <pre>		ROOT            0  </pre>
-		* <pre>		PARENT          1  </pre>
-		* <pre>		FIRST_CHILD     2  </pre>
-		* <pre>		LAST_CHILD      3  </pre>
-		* <pre>		NEXT_SIBLING    4  </pre>
-		* <pre>		PREV_SIBLING    5  </pre>
-		* <br>
+		* Legal direction constants are
+		* 		ROOT            0  
+		* 		PARENT          1  
+		* 		FIRST_CHILD     2  
+		* 		LAST_CHILD      3  
+		* 		NEXT_SIBLING    4  
+		* 		PREV_SIBLING    5  
+		* 
 		* for ROOT and PARENT, element name will be ignored.
 		* If not ns enabled, return false immediately with no position change.
 		*/
@@ -495,7 +526,6 @@ namespace com_ximpleware {
 		* This function only gets called in XPath eval
 		* when a step calls for @* or child::text()
 		*/
-
 		void setAtTerminal(bool b){
 			atTerminal = b;
 		}
@@ -504,16 +534,12 @@ namespace com_ximpleware {
 		* Get the value of atTerminal
 		* This function only gets called in XPath eval
 		*/
-		//bool getAtTerminal();
-
 		bool getAtTerminal(){
 			return atTerminal;
 		}
+
 		//inline int swap_bytes(int i);
 		int lookupNS();
-
-		/* Write VTD+XML into a FILE pointer */
-		//bool writeIndex_VTDNav(VTDNav * FILE *f);
 
 		/* overwrite */
 		bool overWrite(int index, UByte* ba, int offset, int len);
@@ -537,8 +563,10 @@ namespace com_ximpleware {
 
 		/* Write the VTDs and LCs into an file*/
 		virtual bool writeSeparateIndex( char *vtdIndexFileName);
+
 		virtual bool writeSeparateIndex( FILE *f);
 		/* pre-calculate the VTD+XML index size without generating the actual index */
+
 		Long getIndexSize();
 
 		/* dump XML text into a given file name */
@@ -549,10 +577,13 @@ namespace com_ximpleware {
 
 		/*Get the string length as if the token is converted into a normalized UCS string */
 		int getNormalizedStringLength(int index);
+
 		/*Get the string length as if the token is converted into a UCS string (entity resolved) */
 		int getStringLength(int index);
+
 		/*Get the string length as if the token is converted into a UCS string (entity not resolved) */
 		int getRawStringLength(int index);
+
 		/* Get the offset value right after head (e.g. <a b='b' c='c'> ) */
 		Long getOffsetAfterHead();
 
@@ -564,12 +595,10 @@ namespace com_ximpleware {
 		/*Test the end of token content at index i matches the content 
 		of s, notice that this is to save the string allocation cost of
 		using String's built-in endsWidth */
-
 		bool endsWith(int index, UCSChar *s);
 
 		/*Test whether a given token contains s. notie that this function
 		directly operates on the byte content of the token to avoid string creation */
-
 		bool contains(int index, UCSChar *s);
 
 		/* Convert a token at the given index to a String and any lower case
@@ -681,6 +710,7 @@ namespace com_ximpleware {
 			(context[0] == 0) ? rootIndex : context[context[0]],
 			en);		
 	}
+
 	inline tokenType VTDNav::getTokenType(int index){	
 		return (tokenType) (((vtdBuffer->longAt(index) & VTDNav::MASK_TOKEN_TYPE) >> 60) & 0xf);
 	}
@@ -715,6 +745,7 @@ namespace com_ximpleware {
 	inline int VTDNav::getTokenCount(){
 		return vtdSize;
 	}
+
 	inline int VTDNav::getCurrentDepth(){
 		return context[0];
 	}
@@ -729,6 +760,7 @@ namespace com_ximpleware {
 		default: return context[context[0]];
 		}
 	}
+	
 	inline int VTDNav::getCurrentIndex2(){
 		switch(context[0]){
 		case -1: return 0;

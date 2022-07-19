@@ -21,7 +21,7 @@
 #define UNARY_EXPR_H
 #include "expr.h"
 
-namespace com_ximpleware{
+namespace vtdxml{
 	class UnaryExpr: public Expr{
 	private:
 		Expr *e;

@@ -21,7 +21,7 @@
 #define TRANSCODER_H
 #include "customTypes.h"
 
-namespace com_ximpleware {
+namespace vtdxml {
 
 	//#include "customTypes.h"
 	//typedef  char UByte;

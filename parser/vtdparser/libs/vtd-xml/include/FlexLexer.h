@@ -50,7 +50,7 @@
 
 #include <iostream>
 #include <sstream>
-#include "xpathParser.tab.hh"
+#include "XPathParser/xpathParser.tab.hh"
 #include "xpath_driver.h"
 #  ifndef FLEX_STD
 #    define FLEX_STD std::

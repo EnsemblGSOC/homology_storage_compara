@@ -21,7 +21,7 @@
 #define BINARY_Expr_H
 #include "expr.h"
 
-namespace com_ximpleware{
+namespace vtdxml{
 	class BinaryExpr: public Expr{
 	public:
 		static const int BUF_SZ_EXP = 7; 

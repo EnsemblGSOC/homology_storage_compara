@@ -22,7 +22,7 @@
 #include "expr.h"
 
 
-namespace com_ximpleware{
+namespace vtdxml{
 	class FilterExpr: public Expr{
 		friend struct Predicate;
 	public:

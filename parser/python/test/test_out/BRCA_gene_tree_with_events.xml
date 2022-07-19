@@ -993,7 +993,6 @@
                                                                             <phy:events>
                                                                                 <phy:type>speciation_or_duplication</phy:type>
                                                                                 <phy:duplications>1</phy:duplications>
-                                                                                <phy:confidence type="duplication">1.0</phy:confidence>
                                                                             </phy:events>
                                                                             <phy:clade branch_length_attr="0.024644">
                                                                                 <phy:name>ENSSSCG00000029039</phy:name>
@@ -3209,7 +3208,6 @@
                                                         <phy:events>
                                                             <phy:type>speciation_or_duplication</phy:type>
                                                             <phy:duplications>1</phy:duplications>
-                                                            <phy:confidence type="duplication">1.0</phy:confidence>
                                                         </phy:events>
                                                         <phy:clade branch_length_attr="0.003374">
                                                             <phy:name>ENSTMTG00000017700</phy:name>
@@ -4569,7 +4567,6 @@
                                                 <phy:events>
                                                     <phy:type>speciation_or_duplication</phy:type>
                                                     <phy:duplications>1</phy:duplications>
-                                                    <phy:confidence type="duplication">0.6667</phy:confidence>
                                                 </phy:events>
                                                 <phy:clade branch_length_attr="0.017678">
                                                     <phy:branch_length>0.000000e+00</phy:branch_length>

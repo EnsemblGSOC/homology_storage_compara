@@ -24,7 +24,7 @@
 #include "vtdNav.h"
 #include "expr.h"
 
-namespace com_ximpleware{
+namespace vtdxml{
 	/* iter_type defines the type of iteration, to be used in function iterateAP*/
 	typedef enum iter_type { 
 		UNDEFINED,

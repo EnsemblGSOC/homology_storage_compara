@@ -1,5 +1,5 @@
 import pytest
-from gene_tree import GeneTree, GeneTreeException, HomologyType
+from gene_tree import GeneTree, GeneTreeException, HomologyType, IntervalIndex
 import pandas as pd
 
 brca_homology_table = pd.read_csv('test/test_data/BRCA_homology.tsv', sep='\t')
@@ -21,8 +21,8 @@ def test_get_lca_type():
 
 def test_event_node_annotation():
     gt = GeneTree()
-    gt.load_phylo_xml('test/test_data/ENSCSAVG00000010931_gene_tree.xml')
-    gt.load_ref_table('test/test_data/ENSCSAVG00000010931_gene_tree_ref_table.tsv')
+    gt.load_phylo_xml('test/test_data/HLA_F_gene_tree.xml')
+    gt.load_ref_table('test/test_data/HLA_F_gene_tree_ref_table.tsv')
     gt.annotate_event_nodes()
     print('total dup:', len([x for x in gt.trees[0].get_descendants() 
                             if x.phyloxml_clade.events is not None and
@@ -31,7 +31,7 @@ def test_event_node_annotation():
                             if x.phyloxml_clade.events is not None and
                             x.phyloxml_clade.events.speciations == 1]))
     print(gt.trees[0])
-    assert len([x for x in gt.trees[0].get_descendants() 
+    assert len([x for x in gt.trees[0].get_descendants()
                 if x.phyloxml_clade.events is not None and
                 x.phyloxml_clade.events.duplications != 0]) > 0
 
@@ -42,12 +42,13 @@ def test_gene_tree_exception():
         gt.load_phylo_xml('test/test_data/ENSCSAVG00000010931_gene_tree.xml')
         gt.annotate_event_nodes()
 
+
 def test_export_phylo_xml():
     gt = GeneTree()
-    gt.load_phylo_xml('test/test_data/ENSCSAVG00000010931_gene_tree.xml')
-    gt.load_ref_table('test/test_data/ENSCSAVG00000010931_gene_tree_ref_table.tsv')
+    gt.load_phylo_xml('test/test_data/HOXA10_gene_tree.xml')
+    gt.load_ref_table('test/test_data/HOXA10_gene_tree_ref_table.tsv')
     gt.annotate_event_nodes()
-    gt.export_phylo_xml('test/test_out/ENSCSAVG00000010931_with_events.xml')
+    gt.export_phylo_xml('test/test_out/HOXA10_with_events.xml')
 
 
 def test_export_large_phylo_xml():
@@ -56,6 +57,14 @@ def test_export_large_phylo_xml():
     gt.load_ref_table('test/test_data/BRCA_gene_tree_ref_table.tsv')
     gt.annotate_event_nodes()
     gt.export_phylo_xml('test/test_out/BRCA_gene_tree_with_events.xml')
+
+
+def test_fast_export_large_phylo_xml():
+    gt = GeneTree()
+    gt.load_phylo_xml('test/test_data/HLA_F_gene_tree.xml')
+    gt.load_ref_table('test/test_data/HLA_F_gene_tree_ref_table.tsv')
+    gt.annotate_event_nodes_fast()
+    gt.export_phylo_xml('test/test_out/fasttest_HLA_F_gene_tree_with_events.xml')
 
 
 def test_homology_inference():
@@ -77,6 +86,54 @@ def test_complex_homology_inference():
     # gt.annotate_event_nodes()
     assert gt.get_homology_type('ENSSGRG00000017509', 'ENSSGRG00000036407') == \
         _get_actual_homology_type('ENSSGRG00000017509', 'ENSSGRG00000036407')
+
+
+def test_get_all_orthologs():
+    gt = GeneTree()
+    gt.load_phylo_xml("test/test_out/RNU6_92P_with_events.xml")
+    orthologs = gt.get_all_orthologs("ENSG00000272393")
+    assert len(orthologs) == 14
+
+
+def test_get_all_paralogs():
+    gt = GeneTree()
+    gt.load_phylo_xml("test/test_out/RNU6_92P_with_events.xml")
+    gt.trees[0].get_common_ancestor(gt.trees[0].get_leaves_by_name("ENSG00000272393")[0], gt.trees[0].get_leaves_by_name("ENSPEMG00000027410")[0])
+    paralogs = gt.get_all_paralogs("ENSG00000272393")
+    assert len(paralogs) == 354
+
+
+def test_node_labeling():
+    gt = GeneTree()
+    gt.load_phylo_xml("test/test_out/ENSCSAVG00000010931_with_events.xml")
+    idx = IntervalIndex(gt)
+    print(idx.internal_labels.values())
+
+
+def test_get_all_orthologs_indexed():
+    gt = GeneTree()
+    gt.load_phylo_xml("test/test_out/ENSACLG00000015576_with_events.xml")
+    gt.create_interval_index()
+    orthologs = gt.get_all_orthologs_indexed("ENSACLG00000015576")
+    print("label of query gene: {}".format(gt.interval_index.leaf_labels[gt.trees[0].get_leaves_by_name("ENSACLG00000015576")[0]]))
+    print(set(orthologs))
+    actual_orthologs = gt.get_all_orthologs("ENSACLG00000015576")
+    actual_ortholog_labels = [gt.interval_index.leaf_labels[x] for x in actual_orthologs]
+    print(actual_ortholog_labels)
+    assert len(set(orthologs)) == len(gt.get_all_orthologs("ENSACLG00000015576"))
+
+
+def test_get_all_paralogs_indexed():
+    gt = GeneTree()
+    gt.load_phylo_xml("test/test_out/RNU6_92P_with_events.xml")
+    gt.create_interval_index()
+    paralogs = gt.get_all_paralogs_indexed("ENSG00000272393")
+    print("label of query gene: {}".format(gt.interval_index.leaf_labels[gt.trees[0].get_leaves_by_name("ENSG00000272393")[0]]))
+    print(set(paralogs))
+    actual_paralogs = gt.get_all_paralogs("ENSG00000272393")
+    actual_paralog_labels = [gt.interval_index.leaf_labels[x] for x in actual_paralogs]
+    print(actual_paralog_labels)
+    assert len(set(paralogs)) == len(gt.get_all_paralogs("ENSG00000272393"))
 
 
 def _get_actual_homology_type(gene1, gene2):

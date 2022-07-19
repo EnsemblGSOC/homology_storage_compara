@@ -21,7 +21,7 @@
 #define CACHED_Expr_H
 #include "expr.h"
 
-namespace com_ximpleware{
+namespace vtdxml{
 	class CachedExpr: public Expr{
 	protected:
 		Expr *e;

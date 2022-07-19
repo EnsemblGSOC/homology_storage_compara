@@ -1,9 +1,12 @@
+from turtle import update
 import xml
 from ete3 import Tree, Phyloxml, PhyloxmlTree
 import ete3
 from typing import List, Dict, Tuple, Union, Any
 import pandas as pd
 from enum import Enum
+
+from interval_tree import IntervalTree, construct_interval_tree, exclude_intervals
 
 
 class HomologyType(Enum):
@@ -22,16 +25,20 @@ class HomologyType(Enum):
 
 
 class GeneTree:
-    trees: List[PhyloxmlTree] = []
-    ref_table: pd.DataFrame = None
+    trees: List[PhyloxmlTree]
+    ref_table: Union[pd.DataFrame, None]
+
+    def __init__(self):
+        self.trees = []
+        self.ref_table = None
 
     def load_phylo_xml(self, xml_file: str):
         """
         Load the gene tree from a PhyloXML file.
         """
-        trees = Phyloxml()
-        trees.build_from_file(xml_file)
-        for t in trees.get_phylogeny():
+        tree = Phyloxml()
+        tree.build_from_file(xml_file)
+        for t in tree.get_phylogeny():
             self.trees.append(t)
 
     def get_common_ancestor(self, taxon_names: list):
@@ -100,23 +107,41 @@ class GeneTree:
                     pairs = [{x, y} for x in leaves for y in leaves if x != y]
                     for l1, l2 in pairs:
                         lca = t.get_common_ancestor([l1.name, l2.name])
-                        lca_type, confidence = self._get_lca_type_score((l1.name, l2.name))
-                        if lca is not None and lca_type != 'unknown' and lca_type != 'dubious':
-                            if lca_type == 'duplication':
-                                if lca.phyloxml_clade.events is None:
-                                    lca.phyloxml_clade.events = ete3.phyloxml.Events(duplications=1)
-                                else:
-                                    lca.phyloxml_clade.events.duplications = 1
-                                # set the confidence score for duplication event
-                                lca.phyloxml_clade.events.set_confidence(
-                                    ete3.phyloxml.Confidence(type_='duplication', valueOf_=confidence))
-                            elif lca_type == 'speciation':
-                                if lca.phyloxml_clade.events is None:
-                                    lca.phyloxml_clade.events = ete3.phyloxml.Events(speciations=1)
-                                else:
-                                    lca.phyloxml_clade.events.speciations = 1
+                        if lca is not None:
+                            # annotate only if the node is not
+                            # already annotated
+                            if (lca.phyloxml_clade.events is None
+                                or (lca.phyloxml_clade.events.duplications is None
+                                    and lca.phyloxml_clade.events.speciations is None)):
+                                lca_type, confidence = self._get_lca_type_score((l1.name, l2.name))
+                                if lca_type != 'unknown' and lca_type != 'dubious':
+                                    if lca_type == 'duplication':
+                                        if lca.phyloxml_clade.events is None:
+                                            lca.phyloxml_clade.events = ete3.phyloxml.Events(duplications=1)
+                                        else:
+                                            lca.phyloxml_clade.events.duplications = 1
+                                        # set the confidence score for duplication event
+                                        lca.phyloxml_clade.events.set_confidence(
+                                            ete3.phyloxml.Confidence(type_='duplication', valueOf_=confidence))
+                                    elif lca_type == 'speciation':
+                                        if lca.phyloxml_clade.events is None:
+                                            lca.phyloxml_clade.events = ete3.phyloxml.Events(speciations=1)
+                                        else:
+                                            lca.phyloxml_clade.events.speciations = 1
             else:
                 raise GeneTreeException('Reference table is not loaded.')
+
+    def annotate_event_nodes_fast(self):
+        """
+        Fast annotation of event nodes. This method assumes all unannotated
+        nodes are speciation nodes. Only works with XML files downloaded
+        from Ensembl website.
+        """
+        if len(self.trees) > 0:
+            for t in self.trees:
+                for n in t.get_descendants():
+                    if n.phyloxml_clade.events is None and not n.is_leaf():
+                        n.phyloxml_clade.events = ete3.phyloxml.Events(speciations=1)
 
     def _get_lca_type_score(self, taxon_names: Tuple):
         if self.ref_table is not None:
@@ -134,7 +159,7 @@ class GeneTree:
                 while root_id != n2['node_id'].values[0]:
                     n2 = self.ref_table[self.ref_table['node_id'] == n2['parent_id'].values[0]]
                     n2_path.append(n2['node_id'].values[0])
-                
+
                 # find first intersection of the two paths
                 n1_path = n1_path[::-1]
                 n2_path = n2_path[::-1]
@@ -161,6 +186,186 @@ class GeneTree:
                 with open(xml_file, 'w') as f:
                     phylo_xml.export(f)
 
+    def get_all_orthologs(self, gene: str):
+        """
+        Get all orthologs of a given gene
+        """
+        if len(self.trees) > 0:
+            orthologs = []
+            genes = []
+            for t in self.trees:
+                leaves = t.get_leaves_by_name(gene)
+                if len(leaves) > 0:
+                    genes.extend(leaves)
+            for o in genes:
+                for t in self.trees:
+                    for lf in t.get_leaves():
+                        if lf.name != gene:
+                            ca = t.get_common_ancestor([lf, o])
+                            if ca is not None:
+                                if ca.phyloxml_clade.events is not None and \
+                                   ca.phyloxml_clade.events.speciations is not None and \
+                                   ca.phyloxml_clade.events.speciations > 0:
+                                    orthologs.append(lf)
+            return orthologs
+        else:
+            return []
+
+    def get_all_paralogs(self, gene: str):
+        """
+        Get all paralogs of a given gene
+        """
+        if len(self.trees) > 0:
+            paralogs = []
+            genes = []
+            for t in self.trees:
+                leaves = t.get_leaves_by_name(gene)
+                if len(leaves) > 0:
+                    genes.extend(leaves)
+            for o in genes:
+                for t in self.trees:
+                    for lf in t.get_leaves():
+                        if lf.name != gene:
+                            ca = t.get_common_ancestor([lf, o])
+                            if ca is not None:
+                                if ca.phyloxml_clade.events is not None and \
+                                   ca.phyloxml_clade.events.duplications is not None and \
+                                   ca.phyloxml_clade.events.duplications > 0:
+                                    paralogs.append(lf)
+            return paralogs
+        else:
+            return []
+
+    def height(self, i=0) -> int:
+        """
+        Get the height of the i-th gene tree
+        """
+        def _height_rec(t: PhyloxmlTree):
+            if t is None:
+                return 0
+            h = 0
+            for n in t.get_children():
+                h = max(h, _height_rec(n))
+            return h + 1
+        if i < len(self.trees):
+            return _height_rec(self.trees[i])
+        else:
+            raise IndexError()
+
+    def create_interval_index(self):
+        """
+        Create an interval index for the gene trees.
+        """
+        self.interval_index = IntervalIndex(self)
+
+    def get_all_orthologs_indexed(self, gene: str):
+        """
+        Get all orthologs of a given gene
+        """
+        if self.interval_index is not None:
+            return self.interval_index.get_all_orthologs(gene)
+        else:
+            return self.get_all_orthologs(gene)
+
+    def get_all_paralogs_indexed(self, gene: str):
+        """
+        Get all paralogs of a given gene
+        """
+        if self.interval_index is not None:
+            return self.interval_index.get_all_paralogs(gene)
+        else:
+            return self.get_all_paralogs(gene)
+
 
 class GeneTreeException(Exception):
     pass
+
+
+class IntervalIndex:
+    """
+    Interval index for GeneTree
+    """
+    def __init__(self, gt: GeneTree) -> None:
+        self.gene_tree = gt
+        self.internal_nodes = []
+        self.leaf_nodes = []
+        self.leaf_labels = {}
+        self.internal_labels = {} # node -> label
+        self._label_leaves()
+        self._label_internal_nodes()
+        self.internal_labels_rev = {v: k for k, v in self.internal_labels.items()} # label -> node
+        self.leaf_labels_rev = {v: k for k, v in self.leaf_labels.items()}
+        self.interval_tree = construct_interval_tree(self.internal_labels_rev.keys())
+        self.speciation_nodes_labels = [x for x in self.internal_labels_rev.keys()
+                                        if self.internal_labels_rev[x].phyloxml_clade.events and
+                                        self.internal_labels_rev[x].phyloxml_clade.events.speciations and
+                                        self.internal_labels_rev[x].phyloxml_clade.events.speciations > 0]
+        self.duplication_nodes_labels = [x for x in self.internal_labels_rev.keys()
+                                        if self.internal_labels_rev[x].phyloxml_clade.events and
+                                        self.internal_labels_rev[x].phyloxml_clade.events.duplications and
+                                        self.internal_labels_rev[x].phyloxml_clade.events.duplications > 0]
+
+    def _label_leaves(self):
+        self.leaf_nodes = self.gene_tree.trees[0].get_leaves()
+        self.leaf_labels = {self.leaf_nodes[x]: x for x in range(len(self.leaf_nodes))}
+
+    def _label_internal_nodes(self):
+        self.internal_nodes = [x for x in self.gene_tree.trees[0].get_descendants() if not x.is_leaf()]
+        self.internal_nodes.append(self.gene_tree.trees[0])
+        self.internal_labels = {self.internal_nodes[x]: (-1, -1) for x in range(len(self.internal_nodes))}
+        for i in range(len(self.leaf_nodes)):
+            ancestors = self.leaf_nodes[i].get_ancestors()
+            for a in ancestors:
+                left, right = self.internal_labels[a]
+                if left == -1:
+                    self.internal_labels[a] = (i, self.internal_labels[a][1])
+                if right == -1:
+                    self.internal_labels[a] = (self.internal_labels[a][0], 1)
+                if i < left:
+                    self.internal_labels[a] = (i, self.internal_labels[a][1])
+                if i > right:
+                    self.internal_labels[a] = (self.internal_labels[a][0], i)
+
+    def get_all_orthologs(self, gene: str):
+        label = self.leaf_labels[self.gene_tree.trees[0].get_leaves_by_name(gene)[0]]
+        # intervals = self.interval_tree.search(label)
+        leaf = self.gene_tree.trees[0].get_leaves_by_name(gene)[0]
+        intervals = [self.internal_labels[x] for x in leaf.get_ancestors()]
+        intervals = sorted(intervals, key=lambda x: abs(x[1] - x[0]))
+        visited = []
+        orthologs = []
+        for i in intervals:
+            # internal node corresponding to the label
+            internal_node = self.internal_labels_rev[i]
+            # only consider those internal nodes that are speciation nodes
+            if i in self.speciation_nodes_labels:
+                # exclude those already visited
+                for j in range(i[0], i[1]+1):
+                    is_excluded = False
+                    for x in visited:
+                        if j in range(x[0], x[1]+1):
+                            is_excluded = True
+                    if j != label and not is_excluded:
+                        orthologs.append(j)
+            visited.append(i)
+        return orthologs
+
+    def get_all_paralogs(self, gene: str):
+        label = self.leaf_labels[self.gene_tree.trees[0].get_leaves_by_name(gene)[0]]
+        intervals = self.interval_tree.search(label)
+        intervals = sorted(intervals, key=lambda x: abs(x[1] - x[0]))
+        visited = []
+        paralogs = []
+        for i in intervals:
+            # only consider those internal nodes that are duplication nodes
+            if i in self.duplication_nodes_labels:
+                # exclude those already visited
+                for j in range(i[0], i[1]+1):
+                    is_excluded = False
+                    for x in visited:
+                        if j in range(x[0], x[1]+1):
+                            is_excluded = True
+                    if j != label and not is_excluded:
+                        paralogs.append(j)
+            visited.append(i)
+        return paralogs

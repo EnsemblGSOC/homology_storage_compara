@@ -24,7 +24,7 @@
 //#include <new>
 //#include <iostream>
 
-namespace com_ximpleware {
+namespace vtdxml {
 	/*
 	 * An ArrayList similar to that in java.util.ArrayList.
 	*/

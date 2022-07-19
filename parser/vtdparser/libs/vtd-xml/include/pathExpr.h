@@ -23,7 +23,7 @@
 #include "intHash.h"
 #include "locationPathExpr.h"
 
-namespace com_ximpleware{
+namespace vtdxml{
 	class PathExpr: public Expr{
 	public:
 		PathExpr(Expr *f, LocationPathExpr *l);

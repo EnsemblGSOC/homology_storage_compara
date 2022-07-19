@@ -24,7 +24,7 @@
 //#include <iostream>
 #include "arrayList.h"
 
-namespace com_ximpleware {
+namespace vtdxml {
 	class ContextBuffer{
 		friend class Expr;
 		friend class FilterExpr;

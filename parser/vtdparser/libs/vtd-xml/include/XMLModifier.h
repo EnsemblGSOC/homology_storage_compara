@@ -24,11 +24,21 @@
 #include "intHash.h"
 #include "transcoder.h"
 
-namespace com_ximpleware {
+namespace vtdxml {
+	/**
+	 * @brief XMLModifier offers an easy-to-use interface for users to 
+	 * take advantage of the incremental update of VTD-XML.
+	 * The XML modifier assumes there is a master document on which the 
+	 * modification is applied: users can remove an element, update a token, 
+	 * replace an element name, or insert new content anywhere in the document
+	 * transcoding methods are built-in.
+	 * 
+	 * Note: The modification operations are recorded first then, output() is called 
+	 * to generate output document
+	 */
 	class XMLModifier {
 		
 	public:
-		
 		const static Long MASK_DELETE = 0x00000000000000000LL;
 		const static Long MASK_INSERT_SEGMENT_BYTE  =0x2000000000000000LL;
 		const static Long MASK_INSERT_BYTE =0x4000000000000000LL;
@@ -43,26 +53,136 @@ namespace com_ximpleware {
 		XMLModifier();
 		XMLModifier(VTDNav *vn);
 		~XMLModifier();
+
+		/**
+		 * @brief Attach master document to this XMLModifier so that all further operations
+		 * are performed on the master document.
+		 * 
+		 * @param md master document
+		 */
 		void bind(VTDNav *md);
+
+		/**
+		 * @brief Remove content from the master document. It first calls getCurrentIndex();
+		 * if the result is a starting tag, then the entire element referred to by the starting tag
+		 * is removed; if the result is an attribute name or ns node, then the corresponding attribute
+		 * or value pair is removed. If the token type is text, CDATA, or comment, then the entire node
+		 * including the starting and ending delimiting text is removed.
+		 * 
+		 */
 		void remove();
+
+		/**
+		 * @brief Remove the token content at index i
+		 * 
+		 * @param i 
+		 */
 		void removeToken(int i);
+
+		/**
+		 * @brief Remove the attribute value pair at index i
+		 * 
+		 * @param attrNameIndex 
+		 */
 		void removeAttribute(int attrNameIndex);
+
+		/**
+		 * @brief Remove a segment of byte content of size len
+		 * 
+		 * @param offset 
+		 * @param len 
+		 */
 		void removeContent(int offset, int len);
 
+		/**
+		 * @brief Update the token with the given Unicode string.
+		 * 
+		 * @param index 
+		 * @param newContent 
+		 */
 		void updateToken( int index, UCSChar *newContent);
+
+		/**
+		 * @brief Update the token with the given byte array at the given position with
+		 * offset.
+		 * 
+		 * @param index 
+		 * @param newContent 
+		 */
 		void updateToken(int index, UByte *byteContent, int contentOffset, int contentLen);
+
+		/**
+		 * @brief Update the token with the transcoded byte array at the given position with
+		 * offset.
+		 * 
+		 * @param index 
+		 * @param byteContent 
+		 * @param contentOffset 
+		 * @param contentLen 
+		 * @param src_encoding 
+		 */
 		void updateToken(int index, UByte *byteContent, int contentOffset, int contentLen, encoding_t src_encoding);
+
+		/**
+		 * @brief Update the token with the transcode representation of
+		 * a segment of a byte array contained in the VTDNav instanct vn
+		 * at the given position with offset.
+		 * 
+		 * @param index 
+		 * @param vn
+		 * @param contentOffset
+		 * @param contentLen
+		 */
 		void updateToken(int index, VTDNav *vn, int contentOffset, int contentLen);
 
+		/**
+		 * @brief Insert the Unicode string after the element.
+		 * 
+		 * @param s a UCSChar string
+		 */
 		void insertAfterElement(UCSChar *s);
-		void insertBeforeElement(UCSChar *s);
-		void insertAttribute(UCSChar *attr);
-		void insertAfterHead(UCSChar *attr);
 
+		/**
+		 * @brief Insert the Unicode string before the element.
+		 * 
+		 * @param s a UCSChar string
+		 */
+		void insertBeforeElement(UCSChar *s);
+
+		/**
+		 * @brief Insert the Unicode string as an attribute after the starting tag.
+		 * 
+		 * @param s a UCSChar string
+		 */
+		void insertAttribute(UCSChar *attr);
+
+		/**
+		 * @brief Insert the Unicode string after the head of the cursor.
+		 * 
+		 * @param attr 
+		 */
+		void insertAfterHead(UCSChar *s);
+
+		/**
+		 * @brief This method will first call getCurrentIndex() to get the cursor index value
+		 * then insert the byte array ba after the element
+		 * 
+		 * @param ba the byte array to be inserted
+		 * @param arrayLen length of the byte array
+		 */
 		void insertAfterElement(UByte* ba, int arrayLen);
+
+		/**
+		 * @brief This method will first call getCurrentIndex() to get the cursor index value
+		 * then insert the character array ba after the element
+		 * 
+		 * @param ba the char array to be inserted
+		 * @param arrayLen length of the char array
+		 */
 		void insertAfterElement(char* ba,int arrayLen){
 			insertAfterElement((UByte *)ba,arrayLen);
 		}
+
 		void insertBeforeElement(UByte* ba, int arrayLen);
 		void insertBeforeElement(char* ba,int arrayLen){
 			insertBeforeElement((UByte *)ba,arrayLen);

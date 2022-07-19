@@ -24,7 +24,7 @@
 #include <stdio.h>
 //#include "vtdGen.h"
 
-namespace com_ximpleware {
+namespace vtdxml {
 	class VTDGen;
     class FastLongBuffer;
 	class FastIntBuffer;
@@ -55,6 +55,7 @@ namespace com_ximpleware {
 			FastLongBuffer *l2Buffer, 
 			FastIntBuffer *l3Buffer, 
 			FILE *f);
+			
 		static bool _writeIndex_L5(Byte version, 
 			int encodingType, 
 			bool ns, 

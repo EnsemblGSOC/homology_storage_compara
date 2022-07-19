@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phyloxml xsi:schemaLocation="http://www.phyloxml.org http://www.phyloxml.org/1.10/phyloxml.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phyloxml.org">
+  <phylogeny rooted="true" type="gene tree">
+    <clade branch_length="0">
+      <taxonomy>
+        <id>1489872</id>
+        <scientific_name>Percomorphaceae</scientific_name>
+        <common_name>Teleost fishes</common_name>
+      </taxonomy>
+      <clade branch_length="0">
+        <confidence type="duplication_confidence_score">0.3333</confidence>
+        <taxonomy>
+          <id>318546</id>
+          <scientific_name>Pseudocrenilabrinae</scientific_name>
+        </taxonomy>
+        <events>
+          <type>speciation_or_duplication</type>
+          <duplications>1</duplications>
+        </events>
+        <clade branch_length="0">
+          <confidence type="bootstrap">1</confidence>
+          <taxonomy>
+            <id>318546</id>
+            <scientific_name>Pseudocrenilabrinae</scientific_name>
+          </taxonomy>
+          <clade branch_length="0.066285">
+            <name>ENSONIG00000039241</name>
+            <taxonomy>
+              <id>8128</id>
+              <scientific_name>Oreochromis niloticus</scientific_name>
+              <common_name>Nile tilapia</common_name>
+            </taxonomy>
+            <sequence>
+              <accession source="Ensembl">ENSONIP00000009864</accession>
+              <location>LG3:25600522-25805727</location>
+              <mol_seq is_aligned="1">------------------------------------------------------------------------------------------------------------------------------ATG---ATGGGGCACACTTTGCTCTGCATGACGGGGTTATTCTTGCTCTGTACGCTCCTCTGCAGTGGACATGCTCAAGATGCTGTGCTAACTATTGAACCCAGCTGGTCCAGT---TTTTTCATGGGAGAGTTTGTTACCTTCAAATGTGACATGAATGAAGGAAAAGACACTGACTGGGAATACAAACAGATCAGAGATGGTCGAGAATTAATCGGCTACAACACAATCCAAGAGTACACATTAGAAATTAAATATTCAAGTCACAGTGGTGAATATCAGTGCTCTGGTCGCAAGAAGGGATCATCTTATACAAAGATCAGTAATACTGTCTCTATAACTGTATTAGCAGATAAACCCAGG---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------GCCACACTGACAGCAGGAACAACAATCATACCAGTAGGGGGCAGTGTGACACTGACCTGCTCTGTGCAG------AGCTCTGATGGATGGAAATATGAGTGGTTCAGACGAACCCAAACAACCAATGAAGTTCAAATCAGAGAT---------CAACAAAACAGAGATATCAGAGTATCTCAAGGAGGAATCTACAGCTGCAGAGGAACAAGAGGAAACCCAGTTTACTACACTGATAAAAGT---------------GATGGTGTCACCATTGAGATAACC------------------------------------------------TGTGAG------TTCAGTCATTTAGTT---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</mol_seq>
+            </sequence>
+            <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">oreochromis_niloticus</property>
+          </clade>
+          <clade branch_length="0.247272">
+            <name>ENSNBRG00000003556</name>
+            <taxonomy>
+              <id>32507</id>
+              <scientific_name>Neolamprologus brichardi</scientific_name>
+              <common_name>Lyretail cichlid</common_name>
+            </taxonomy>
+            <sequence>
+              <accession source="Ensembl">ENSNBRP00000004485</accession>
+              <location>JH422425.1:1282848-1288516</location>
+              <mol_seq is_aligned="1">------------------------------------------------------------------------------------------------------------------------------------------------------------------ATGTTGTGTTTGTGTTGGATTCTA------------------GATGCTTTTCTAACTGTTCATCCCAGCTCGACC------TTGTTCATCAGAGAGACTGTTAGCTTCAAATGTGACATGAAAGAAGGAAAACACACTGACTGGGAATACAAAATTATCAAGGATGGTCGAGAAATTTTAAACTCCAACACAAACAAAGACCTCAGTATAAAAATTGCATCTACAGCTCAGAGTGGTAAATACACCTGCTCTGCTGACAACAAGAGATACCAGAAAACAAAGAACAGTAACACTGTCTCTGTAACTGTGAAG---GGTAAACCC---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------AGGGCCACACTGACTCCAGGATCAACTATCATACATGTAGGGGGCAGTGTGACACTGAACTGCTCTGTGAGG------AGCTCTGCTGGCTGGAAATATGAGTGGTTCAGACGTGACCAAAACACTGAAGATCAAATGAGAACAGATGAT------CAACAAAACAGAGTAATCAGAGTATCTCAAGGAGGAATCTACCACTGCAGAGGAAGAAGAGGAAACCCATTTTACTACGCTGATAAAAGCGAT---------------GATGTCACCATTAAGATAACC------------------------------------------------TGTGAG------TTCAGTCATTTAGTTTGTTTAAAT---------------------CTT---CTCTCTCATTTTTTATCAAACCTGAATTTCATCCTGTGTTTCTTATTA---AATCCACTGTTTTACTACATTTTATGTTCCAGCACAAATCAAACCATAAACCACACGATCAACCAGGATGAAGCTCGAGACAGCCAACATGCTTCTCCTCACCAAGGTCAGCGT------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</mol_seq>
+            </sequence>
+            <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">neolamprologus_brichardi</property>
+          </clade>
+        </clade>
+        <clade branch_length="0.015015">
+          <confidence type="duplication_confidence_score">0.3333</confidence>
+          <taxonomy>
+            <id>318546</id>
+            <scientific_name>Pseudocrenilabrinae</scientific_name>
+          </taxonomy>
+          <events>
+            <type>speciation_or_duplication</type>
+            <duplications>1</duplications>
+          </events>
+          <clade branch_length="0">
+            <taxonomy>
+              <id>318546</id>
+              <scientific_name>Pseudocrenilabrinae</scientific_name>
+            </taxonomy>
+            <clade branch_length="0.002923">
+              <confidence type="bootstrap">7</confidence>
+              <confidence type="duplication_confidence_score">1</confidence>
+              <taxonomy>
+                <id>8128</id>
+                <scientific_name>Oreochromis niloticus</scientific_name>
+                <common_name>Nile tilapia</common_name>
+              </taxonomy>
+              <events>
+                <type>speciation_or_duplication</type>
+                <duplications>1</duplications>
+              </events>
+              <clade branch_length="0.065927">
+                <confidence type="bootstrap">97</confidence>
+                <confidence type="duplication_confidence_score">1</confidence>
+                <taxonomy>
+                  <id>8128</id>
+                  <scientific_name>Oreochromis niloticus</scientific_name>
+                  <common_name>Nile tilapia</common_name>
+                </taxonomy>
+                <events>
+                  <type>speciation_or_duplication</type>
+                  <duplications>1</duplications>
+                </events>
+                <clade branch_length="0.0077">
+                  <name>ENSONIG00000031181</name>
+                  <taxonomy>
+                    <id>8128</id>
+                    <scientific_name>Oreochromis niloticus</scientific_name>
+                    <common_name>Nile tilapia</common_name>
+                  </taxonomy>
+                  <sequence>
+                    <accession source="Ensembl">ENSONIP00000054044</accession>
+                    <location>LG3:59149700-59151933</location>
+                    <mol_seq is_aligned="1">------------------------------------------------------------------------------------------------------------------------ATGAATGTGTTTAATTTGATCATGTCAGAAGTTTCTGTCTTTACTGTAGTGCTCTGTACGCTCCTCTGTACTGGACACGCTCAAGATGCTGTGCTAACTATTGAACCCAGCTGGTCCAGTTTATTTTTCATTGGAGAGTTTGTTACCTTCAAATGTGACATGAATGAAGGAAAAGACACTGACTGGAAATACAAAATCAACAAGGATGGTCAAGACTTTTTCTCCTACAGGATAAACAAAGACTACAAATTAAAAATGACATCTACAGGTGACAGTGGTGAATATCAGTGCTTTGGTCTCAGGATGAGCTCACGTGATACAAAGAAAAGTAATACTGTCTCTATATCTGTATTA---GATAAACCCAGA---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------GCCACACTGACAGCAGGAACAACAATCATACCAGTAGGGGGCAGTGTGACACTGACCTGCTCTGTGCAG------AGCTCTGATGGATGGAAATATGAGTGGTTC---ACAAACCAAAGAACCTCTGAATTTCCAAACAGAGAT---------CAACAAAACAGAGATATCAGAGTATCTCACGGAGGAATCTACAGCTGCAGAGGAACAAGAGGAAACCCAGATTACTACACTGATATCAGT---------------GATGATGTCATCATTGATATAACC------------------------------------------------TGTGAG------TTCAGTAATTTAGTT---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</mol_seq>
+                  </sequence>
+                  <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">oreochromis_niloticus</property>
+                </clade>
+                <clade branch_length="0.013699">
+                  <name>ENSONIG00000029580</name>
+                  <taxonomy>
+                    <id>8128</id>
+                    <scientific_name>Oreochromis niloticus</scientific_name>
+                    <common_name>Nile tilapia</common_name>
+                  </taxonomy>
+                  <sequence>
+                    <accession source="Ensembl">ENSONIP00000081560</accession>
+                    <location>LG3:59069041-59070380</location>
+                    <mol_seq is_aligned="1">------------------------------------------------------------------------------------------------------------------------ATGAATGTTTTTAATTTGATCATGTCAGAAGTTTCTGTCTTTACTGTAGTGCTCTGTACGCTCCTCTGTACTGGACACGCTCAAGATGCTGTGCTAACTATTGAACCCAGCTGGTCCAGTTTATTTTTCATCGGAGAGTATGTTACCTTCAAATGTGACATGAATGAAGGAAAAGACACTGACTGGGAATACAAAATCAACAAGGATGGTCAAGACTTTTTCTCCTACAGGATAAACAAAGACTACAAATTAAAAATGACATCTACAGGTGACAGTGGTGAATATCAGTGCTTTGGTCTCAGGATGAGCTCACGTGATACAAAGAAAAGTAATACTGTCTCTATATCTGTATTAGCAGATAAACCCAGA---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------GCCACACTGACAGCAGGAACAACAATCATACCAGTAGGGGGCAGTGTGACACTGACCTGCTCTGTGCAG------AACTCTGATGGATGGAAATATGAGTGGTTC---ACAAACCAAAGAACCTCTGAATTTCCAAACAGAGAT---------CAACAAAACAGAGATATCAGAGTATCTCACGGAGGAATCTACAGCTGCAGAGGAACAAGAGGAAACCCAGTTTACTACACTGATATAAGT---------------GATGATGTCATCATTAAGGAAACT------------------------------------------------CCTAAG------TTCAGTAATTTAGTT---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</mol_seq>
+                  </sequence>
+                  <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">oreochromis_niloticus</property>
+                </clade>
+              </clade>
+              <clade branch_length="0.041644">
+                <name>ENSONIG00000037472</name>
+                <taxonomy>
+                  <id>8128</id>
+                  <scientific_name>Oreochromis niloticus</scientific_name>
+                  <common_name>Nile tilapia</common_name>
+                </taxonomy>
+                <sequence>
+                  <accession source="Ensembl">ENSONIP00000061891</accession>
+                  <location>LG3:26268806-26393633</location>
+                  <mol_seq is_aligned="1">---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ATGAATGAAGGAGAAGACACTGACTGGGAATACAAAATCAAGAAGGATGGTCGAGAATTTATCCCCTACAACACACACAAAGACTACAAATTACCGATTACAACTACAGATTACAGTGGTGAATATCAGTGCTCTGGTCAGAGGAAGAGCTCACGTGACACAAAGAACAGTAATACTGTCTCTATAACTGTATTA---GATAAACCCAGG---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------GCCACACTGACAGCAGGAACAACAATCATACCAGTAGGGGACAGTGTGACACTGACCTGCTCTGTGCAG------AGCTCTGATGGATGGAAATATGAGTGGTTCAGACGAACCCAAAGAACCTCTGAAGTTCACATGAGAGAT---------CAACAAAACAGAGATATCAGAGTATCTCAAGGAGGAATCTACAGCTGCAGAGGAACAAGAGGAAACCCAGTTTACTACACTGATATAAGT---------------GATGATGTCACCATTGAGATAACC------------------------------------------------TGTGAG------TTCAGTAATTTATCTGTGAAGGTT---------------------CTC---AGTCATCCAGGTCATCGTAGTCGAAGGAGTTTGCAA---AGAAAAGTGTCTGGACTTCTT---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</mol_seq>
+                </sequence>
+                <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">oreochromis_niloticus</property>
+              </clade>
+            </clade>
+            <clade branch_length="0.171877">
+              <confidence type="bootstrap">100</confidence>
+              <taxonomy>
+                <id>319058</id>
+                <scientific_name>Haplochromini</scientific_name>
+              </taxonomy>
+              <clade branch_length="0.099406">
+                <name>ENSMZEG00005028477</name>
+                <taxonomy>
+                  <id>106582</id>
+                  <scientific_name>Maylandia zebra</scientific_name>
+                  <common_name>Zebra mbuna</common_name>
+                </taxonomy>
+                <sequence>
+                  <accession source="Ensembl">ENSMZEP00005038075</accession>
+                  <location>AGTA05000444.1:15300-21715</location>
+                  <mol_seq is_aligned="1">---------------------------------------------------------------------------------------------------------------------------------------------------------ATGTCGCTCAATGTCCTCTATCGAGATGTGATC------------------AGTGCTGTAAGAAAT------------------------TTCTTCCTGAGACAAGTGACAATCTAT------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------TCTACTTTTTCCTGTAAATTACTTGCAGATCAACCC------------------------------------------------------------------------------------------------AGG---------------------------------------------------------------------------------------------------------------------------------------------------------------------------GCCACACTGACAGCAGGAACAACCATCATACCAGTAGGGGGCAGTGTGACACTGACCTGCTCTGTGCAG------AGCTCTGATGGATGGAAATATGAGTGGTTCAGACGAACCCAAACAACCTCTGAAGGTAAAATCAGAGGT---------CAACAAAACAGAGATATCAGAGTATCTCAAGGAGGAATCTACCGCTGCAGAGGAACAAGAGGAAACCCAGTTTACTACACTGATAGAAGTGAT---------------GATGTCACCATTGAGATAACC------------------------------------------------TCCTGG------ATGAGTCCTTCTTTGCTGTGCTGC---------------------TCC---CCCAGCACACCACAGCATAGAAAAGTACTCCAGCAACCA---CTGACTGGTAAAACATCCTCAGGAGCTTCCTGCAGATGT------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</mol_seq>
+                </sequence>
+                <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">maylandia_zebra</property>
+              </clade>
+              <clade branch_length="0.20856">
+                <name>ENSACLG00000011635</name>
+                <taxonomy>
+                  <id>8154</id>
+                  <scientific_name>Astatotilapia calliptera</scientific_name>
+                  <common_name>Eastern happy</common_name>
+                </taxonomy>
+                <sequence>
+                  <accession source="Ensembl">ENSACLP00000017082</accession>
+                  <location>LS419793.1:336845-342462</location>
+                  <mol_seq is_aligned="1">------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------CTGCTA---------------------------------------------------------------------------------------------------------------AGGCACTGGGAGTCTCCTGTTAGTGAGCAA------------ACTGCAGTACAATCAAACAAAAACACCAAACTCAGCATA------------------------------------------------------------------AAAACAAATTCTATCAACATAAAATTAATC---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------AGAGTATCTCAAGGAGGAATCTACCGCTGCAGAGGAAGAAGAGGAAACCCAGTTTACTACACTGATAGAAGTGAT---------------GATGTCACCATTGAGATAACC------------------------------------------------TGTGAG------TTCAGTCATTTTTGCCAGGAGCTTAAGTTTGATTACATTTTTCCACTC---TTTTCCCCTGTCTGTGGCTACTCTTCATGCCTCCAT---GTTTGTGCATGTCAGCACCTCTTCTAT---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</mol_seq>
+                </sequence>
+                <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">astatotilapia_calliptera</property>
+              </clade>
+            </clade>
+          </clade>
+          <clade branch_length="0.013832">
+            <confidence type="duplication_confidence_score">0.6</confidence>
+            <taxonomy>
+              <id>318546</id>
+              <scientific_name>Pseudocrenilabrinae</scientific_name>
+            </taxonomy>
+            <events>
+              <type>speciation_or_duplication</type>
+              <duplications>1</duplications>
+            </events>
+            <clade branch_length="0">
+              <confidence type="duplication_confidence_score">0.3333</confidence>
+              <taxonomy>
+                <id>318546</id>
+                <scientific_name>Pseudocrenilabrinae</scientific_name>
+              </taxonomy>
+              <events>
+                <type>speciation_or_duplication</type>
+                <duplications>1</duplications>
+              </events>
+              <clade branch_length="0">
+                <confidence type="bootstrap">3</confidence>
+                <confidence type="duplication_confidence_score">1</confidence>
+                <taxonomy>
+                  <id>8128</id>
+                  <scientific_name>Oreochromis niloticus</scientific_name>
+                  <common_name>Nile tilapia</common_name>
+                </taxonomy>
+                <events>
+                  <type>speciation_or_duplication</type>
+                  <duplications>1</duplications>
+                </events>
+                <clade branch_length="0.081949">
+                  <name>ENSONIG00000030937</name>
+                  <taxonomy>
+                    <id>8128</id>
+                    <scientific_name>Oreochromis niloticus</scientific_name>
+                    <common_name>Nile tilapia</common_name>
+                  </taxonomy>
+                  <sequence>
+                    <accession source="Ensembl">ENSONIP00000018413</accession>
+                    <location>LG3:25888432-25890318</location>
+                    <mol_seq is_aligned="1">------------------------------------------------------------------------------------------------------------------------------------------------------------------ATGATGTGGTTGTGTTGGATTCTA------------------GCTGCTGTGCTAACTATTGAACCCAGCTGGTCCAGT---TTTTTCATTGGAGAGTTTGTTACCTTCAAATGTGACATGAATGAAGGAGAAGACACTGACTGGGAATACCAAATCAACAAGGATGGTCGAGAATTTATTCCCTACGACACAAACAAAGACTACAGATTAACAATTATATCTACAGGTCACAGTGGTGAATATCAGTGCTCTGGTCGCAGGAAGAGCTCACGTGATACAAAGAACAGTAATACTGTCTCTATAACTGTGTTA---GATAAACCCAGG---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------GTGACTCTGACAGCAGGAACAACAATCATACCAGTAGGGGGCAGTGTGACACTGACCTGCTCTGTGCAG------AGCTCTGATGGATGGAAATATGAGTGGTTCAGAGGAACCCAAACAACCTTTATAGTTCAAATCAGAGAT---------CAACAAAACAGAGATATCAGAGTATCTCAAGGAGGAATCTACAGCTGTTTCGGAACAAGAGGAAACCCAGTTTACGCCACTGATATAAGT---------------GATGATCTACCCGTG---------------------------------------------------------------------TTTCATGGTGTGTGCATGTGGTGG---------------------GTT---TATGCACTTTCTCTACACCGATGGAAAGGGGCTGAG---CTA---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</mol_seq>
+                  </sequence>
+                  <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">oreochromis_niloticus</property>
+                </clade>
+                <clade branch_length="0.095273">
+                  <name>ENSONIG00000034021</name>
+                  <taxonomy>
+                    <id>8128</id>
+                    <scientific_name>Oreochromis niloticus</scientific_name>
+                    <common_name>Nile tilapia</common_name>
+                  </taxonomy>
+                  <sequence>
+                    <accession source="Ensembl">ENSONIP00000043145</accession>
+                    <location>LG3:29232978-29234246</location>
+                    <mol_seq is_aligned="1">------------------------------------------------------------------------------------------------------------------------------------------ATGTTTCAGTGTTTCATATTGTTAACTTTGTGGTTGTGTTGGATTCTA------------------GATGCTGTGCTAACTATTGAACCCAACTGGTCCATT---TTTTTCATTGGAGAGTTCATTGTCTTCAAATGTGACATGAATGAAGGAAAAGACACTGACTGGAAATATATAATCAAGAAGGATGGTCAAGACTTTATCAACTACAGTGATTCCAAAAACCGCAGATTAAAATGTACAATTACAGGTCACAGTGGTGAATATCAGTGCTCTGGTCACAGGATGAGCAACAGTTATACAAAGAACAGTAATACTGTCTTTATAACTGTATTA---GATAAACCCAGG---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------GCCACACTGACAGCAGGAACAACAATCATACCAGTAGGGGGCAGTGTGACACTGACCTGCTCTGTGCAG------AGCTCTGATGGATGGAAATATGAGTGGTTCAGACGAACCCAAACAACCTCTGAAGTTCAAATCAAAGAT---------CAAGAAAACAGAGATATCAGAGTATCTCAAGGAGGAATCTACAGCTGCAGAGGAACAAGAGGAAACCCAGTTTACTACACTGATATAAGT---------------GATGATGTCACCATTGAAATAACC------------------------------------------------TGTGAG------TTGAGGAATTTAGTG---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</mol_seq>
+                  </sequence>
+                  <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">oreochromis_niloticus</property>
+                </clade>
+              </clade>
+              <clade branch_length="0.012565">
+                <confidence type="bootstrap">22</confidence>
+                <taxonomy>
+                  <id>318546</id>
+                  <scientific_name>Pseudocrenilabrinae</scientific_name>
+                </taxonomy>
+                <clade branch_length="0.018338">
+                  <confidence type="bootstrap">41</confidence>
+                  <taxonomy>
+                    <id>319058</id>
+                    <scientific_name>Haplochromini</scientific_name>
+                  </taxonomy>
+                  <clade branch_length="0.079916">
+                    <confidence type="bootstrap">83</confidence>
+                    <confidence type="duplication_confidence_score">1</confidence>
+                    <taxonomy>
+                      <id>8154</id>
+                      <scientific_name>Astatotilapia calliptera</scientific_name>
+                      <common_name>Eastern happy</common_name>
+                    </taxonomy>
+                    <events>
+                      <type>speciation_or_duplication</type>
+                      <duplications>1</duplications>
+                    </events>
+                    <clade branch_length="0.051225">
+                      <confidence type="bootstrap">99</confidence>
+                      <confidence type="duplication_confidence_score">1</confidence>
+                      <taxonomy>
+                        <id>8154</id>
+                        <scientific_name>Astatotilapia calliptera</scientific_name>
+                        <common_name>Eastern happy</common_name>
+                      </taxonomy>
+                      <events>
+                        <type>speciation_or_duplication</type>
+                        <duplications>1</duplications>
+                      </events>
+                      <clade branch_length="0.010227">
+                        <name>ENSACLG00000003209</name>
+                        <taxonomy>
+                          <id>8154</id>
+                          <scientific_name>Astatotilapia calliptera</scientific_name>
+                          <common_name>Eastern happy</common_name>
+                        </taxonomy>
+                        <sequence>
+                          <accession source="Ensembl">ENSACLP00000004824</accession>
+                          <location>3:30162542-30171367</location>
+                          <mol_seq is_aligned="1">---------------------------------------------------------------------------------------------ATATTTAAATCCCCGCTAAGATGGATCAATTACAAAAAACCTATAGATACAAGAATTGTCTGTTGTCTGATTGTCTGTTTGTGTTTGATTCTA------------------GCTGCTGTGCTAACTATTGAACCCAAATCATCCAGT---TATTTCATTGGAGAGTTTGTTACCTTCAAGTGTGACATGAATGATGGAAGAGACACTGACTGGTATTATGCAATCAACAAGGATGGTCGAGACTATGTCCGCTACAGTGAATACAAAGTCTACACATTAGAAATGAGATCCACAGATTGCAGTGGTAAATACCAGTGCTATGGCAGCTCAAAGTGGTCAGATTATACAAAGAACAGTAATACTGTCTCTGTAACTGTATTA---GGTAAGTCCTCAGTGATTAATAATGTGATGACTCCACATATTTTAAAATGTTGTTCAATGGCTTTGTGTTTTCTTTTTGTCTTTTTGATAACAGCATATATACCC---------------------------------------------------------------------------------------------------------------------------------------------------------------------------AGGGCCACACTGACAGCAGGAACAACAATCATACCAGTAGGGGGCAGTGTGACTCTGACCTGCTCTCTGCAG------AGCTCTGATGGATGGAAATATGAGTGGTTCAGACGAACCCAAACAACCTATGAAGGTAAAATCAGAGAT---------CAACAAAACAGAGATATCAGAGTATCTCAAGGAGGAATCTACAGCTGCATAGGAACAAGAGGAAACCCAGTTTACTACACTTATGAAAGTGAT---------------GATGTCACCATTGAGAAAACC------------------------------------------------AGTTGG------TTCAAATCTCCCCTCTCCTGTACT------AGAACTACATCCTGTGTT---TCTTATTATATCTACAGGTTTACTACTTTTTTTTTT---TTTTTTTTTTGTTCCACCAGGACTCGGAGCACAAATCAGAGCTCTGCAATGAACCACATGATCAAGGATGAA------------------------------------------------------GCTCAACACAGTCAAGATAACTCTACTGTCCAAGGTCAGCCTGATCCA------------------------------------------------------------------------------------------------------------------------------</mol_seq>
+                        </sequence>
+                        <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">astatotilapia_calliptera</property>
+                      </clade>
+                      <clade branch_length="0.025669">
+                        <name>ENSACLG00000002902</name>
+                        <taxonomy>
+                          <id>8154</id>
+                          <scientific_name>Astatotilapia calliptera</scientific_name>
+                          <common_name>Eastern happy</common_name>
+                        </taxonomy>
+                        <sequence>
+                          <accession source="Ensembl">ENSACLP00000004366</accession>
+                          <location>3:30099937-30108446</location>
+                          <mol_seq is_aligned="1">---------------------------------------------------------------------------------------------ATATTTAAATCCCCGCTAAGATGGATCAATTACAAAAAACCTATAGATACAAGAATTGTCTGTTGTCTGATTGTCTGTTTGTGTTTGATTCTA------------------GCTGCTGTGCTAACTATTGAACCCAAATCATCCAGT---TATTTCATTGGAGAGTTTGTTACCTTCAAGTGTGACATGAATGAAGGAAGAGACACTGACTGGTATTATGCAATCAACAAGGATGGTCGAGACTATGTCCGCTACAGTGAATACAAAGTCTACACATTAGAAATGAGATCCACAGATCGCAGTGGTAAATACCAGTGCTATGGCAGCTCAAAGTGGTCAGATTATACAAAGAACAGTAATACTGTCTCTGTAACTGTATTA---GGTAAGTCCTCAGTGATTAATAATGTGATGACTCCATGTGACTTCTTCAGGCCAAAGAATGGACAAACATTTGAAATCTCTCTTACTATGTCAGAAAAAATT------------------------------------------------------------------------------------------------------------------------------------------------------------------------------AAAATGATCTTAAACTCAGGAACAACAATCATACCAGTAGGGGGCAGTGTGACTCTGACCTGCTCTCTGCAG------AGCTCTGATGGATGGAAATATGAGTGGTTCAGACGAACCCAAACAACCTATGAAGGTAAAATCAGAGAT---------CAACAAAACAGAGATATCAGAGTATCTGAAGGAGGAATCTACAGCTGCATAGGAACAAGAGGAAACCCAGTTTACTACACTTATGAAAGTGAT---------------GATGTCACCATTGAGAAAACC------------------------------------------------AGTGAA---------------TGTATCCTGAACGCT---------------------CAA---TGTAAAATTTTGCACCACAACAGGTTACAA---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</mol_seq>
+                        </sequence>
+                        <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">astatotilapia_calliptera</property>
+                      </clade>
+                    </clade>
+                    <clade branch_length="0.015192">
+                      <name>ENSACLG00000015576</name>
+                      <taxonomy>
+                        <id>8154</id>
+                        <scientific_name>Astatotilapia calliptera</scientific_name>
+                        <common_name>Eastern happy</common_name>
+                      </taxonomy>
+                      <sequence>
+                        <accession source="Ensembl">ENSACLP00000022933</accession>
+                        <location>3:22853747-22864868</location>
+                        <mol_seq is_aligned="1">CAG---------------------------ACACTCAGACCACTGGTCTATTATGCTAATTCCGGCATACAGACCACTCATCAGACACTCCAAACTGGTTCTGAGACAGGTGGGAACTTGGCCTACTTGAGCTCTCTCTTGTTTCAGATTGTCTGTTGTCTGATTGTCTGTTTGTGTTGGATTCTA------------------GCTGCTGTGCTAACTATTGAACCCAAATCATCCAGT---TATTTCATTGGAGAGTTTGTTACCTTCAAGTGTGACATGAATGAAGGAAGAGACACTGACTGGTATTACGAAATCAAGAAGGATGGTCGAGACTATGTCCCCTACAGGGAGCACAAAGACTACACATTAGAAATGAGATCTACAGATCGCAGTGGTAAATACCAGTGCTATGGCAGCTCAAAGTGGTCAGATTATACAAAGAACAGTAATACTGTCTCTGTAACTGTATTA---GGTAAACCC---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------AGGGCCACACTGACAGCAGGAACAACAATCATACCAGCAGGGGGCAGTGTGACACTGACCTGCTCTGTGCAG------AGCTCTGATGGATGGAAATATGAGTGGTTCAGACGAACCCAAAAAACCTCTGAAGTTCCAATAAGAGGT---------CAACAAAACAGAGATATCAGAGTATCTGAAGGAGGAATCTACAGCTGCAGAGGAACAAGAGGAAACCCAGTTTACTACACTGATATAAGTGAT---------------GATGTCACCATTGAGAAAACC------------------------------------------------AGTGAG------TTCAGTAATTTACTCAGAGTCATT---------------------------------------AACAAGACAAGTGAGTGCACAAAA---TGTGAGATT---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</mol_seq>
+                      </sequence>
+                      <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">astatotilapia_calliptera</property>
+                    </clade>
+                  </clade>
+                  <clade branch_length="0.087685">
+                    <name>ENSPNYG00000015753</name>
+                    <taxonomy>
+                      <id>303518</id>
+                      <scientific_name>Pundamilia nyererei</scientific_name>
+                      <common_name>Makobe Island cichlid</common_name>
+                    </taxonomy>
+                    <sequence>
+                      <accession source="Ensembl">ENSPNYP00000020826</accession>
+                      <location>JH419658.1:138918-142688</location>
+                      <mol_seq is_aligned="1">GATGACATTTCACCTCTCATCCAAGAGGCTTCTTCAGTTCTAGAAACAAAAGATGGAGAATCCCAGGAATTTAAACCCCTGTGGTGGCGTCTCTTACTGTCTGCACCTTCAGTGCAATTTTGTGATCCCTTCCCAGGATACATAAATTGTTTCACATTGCTAATGCTGTGGTTGTGTTGGATTCTA------------------GATGCTGTGCTAACTATTGAACCCAAATTGTCCAGT---TATTTCATTGGAGAGTTTGTTACATTCAAATGTGACATGAATGAAGGAGAAGACACTGACTGGTATTACGCAATCAACAAGGATGGTCAAGAAGTTTCCTCCTACAGGACAAACAAAGACTCCAAATTAGAAATTACATCTACAAGTTACAGTGGTGAATATCAGTGCACTGGTCGCAGGAAGAGCTCACATGATAAAAAGAATAGTAATACTGTCTCTATAACTGTATTA---GGTAAGTCT---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------TCTGTGACCGACATAGGGGGCAGTGTGACACTGACCTGCTCTGTGCAG------AGCTCTGATGGATGGAAATATGAGTGGTTCAGACAAACCCAAAGAACCTCTATAGTTAAAATCAGAGAT---------CAACAAAACAGAGATATCAGAGTATCTGAAGGAGGAATCTACAGCTGCAGAGGAGCAAGAGGAAACCCAGTTTACTACACTGATATAAAT---------------GATGATGTCACCATTGAGATAACC------------------------------------------------TGTGAG------TTCAGTCATTTAATGATGAGCAGG---------------------TTT---ATTGTAACAATCCAAAGAGATGTAGTATGTTACACA---CATTTTATTAGCCATTATTTAGAGATAATAAGATTTGTA---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</mol_seq>
+                    </sequence>
+                    <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">pundamilia_nyererei</property>
+                  </clade>
+                </clade>
+                <clade branch_length="0.054168">
+                  <name>ENSONIG00000033657</name>
+                  <taxonomy>
+                    <id>8128</id>
+                    <scientific_name>Oreochromis niloticus</scientific_name>
+                    <common_name>Nile tilapia</common_name>
+                  </taxonomy>
+                  <sequence>
+                    <accession source="Ensembl">ENSONIP00000010257</accession>
+                    <location>LG3:26268136-26629852</location>
+                    <mol_seq is_aligned="1">------------------------------------------------------------------------------------------ATGAACAATATACGAACAGTGTATGAACATACTGTCAAAAACTATGTTGTGCATAGGTGTTTCAGATTGTTAACTTTGTGGTTGTGTTGGATTCTA------------------GATGCTGTACTAACTATTGAACCCAGCTGGTCCAGT---TTTTTCATTGGAGAGTTTGTTACCTTCAAATGTGACATGAATGAAGAAAAAGACACTGACTGGTATTACCAAATCAACAAGGATGGTCAAGAATTTGTGTCCTACGACACAAACAAAGACTACAAATTACAAATTATAGCTACAAGTGACAGTGGTGAATATCAGTGCTCTGGTAGCTGGTTGAGCTCACATCATATAAAGAACAGTAATACTGTCTCTATAACTGTGTTAGCAGATAAACCCAGG---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------GCCACACTGACAGCAGGAACAACAATCATACCAGTAGGGGGCAGTGTGACACTGACCTGCTCTGTGCAG------AGCTCTGATGGATGGAAATATGAGTGGTTCAGACGAACCCAAACAACCTCTGAAGGTAAAATCAGAGAT---------CAACAAAACAGAGATATCAGAGTATCTCAAGGAGGAATCTACAGCTGCAGAGGAACAAGAGGAAACCCAGTTTACTACACTGATATAAGT---------------GATGATGTCACCATTGAGATAACC------------------------------------------------TGTGAG------TTCAGTTTAGTAATATCTCTCTCT---------------------CTC---TCTCTCTCTCTAGATAGA---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</mol_seq>
+                  </sequence>
+                  <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">oreochromis_niloticus</property>
+                </clade>
+              </clade>
+            </clade>
+            <clade branch_length="0.115537">
+              <confidence type="bootstrap">57</confidence>
+              <confidence type="duplication_confidence_score">0.2</confidence>
+              <taxonomy>
+                <id>318546</id>
+                <scientific_name>Pseudocrenilabrinae</scientific_name>
+              </taxonomy>
+              <events>
+                <type>speciation_or_duplication</type>
+                <duplications>1</duplications>
+              </events>
+              <clade branch_length="0">
+                <confidence type="bootstrap">63</confidence>
+                <taxonomy>
+                  <id>318546</id>
+                  <scientific_name>Pseudocrenilabrinae</scientific_name>
+                </taxonomy>
+                <clade branch_length="0.160668">
+                  <name>ENSPNYG00000015771</name>
+                  <taxonomy>
+                    <id>303518</id>
+                    <scientific_name>Pundamilia nyererei</scientific_name>
+                    <common_name>Makobe Island cichlid</common_name>
+                  </taxonomy>
+                  <sequence>
+                    <accession source="Ensembl">ENSPNYP00000020842</accession>
+                    <location>JH419658.1:171741-174741</location>
+                    <mol_seq is_aligned="1">---------------------------------------------------------------------------------------------------------------------------GTTTCTCATTTTATGAAAACATCAACACAGATATTGCTTATATTGTTCTTGTGTTTGAATCTA------------------GATGCTGTGCTAACTATTCAACCCAGCTGGTCCAGT---TTTTTCACCGGGGAGTTTGTTACCTTCAAATGTAACATGAACAAAGGAAAAGACAGTAAATTGGAATACAAAATTAACAAGAATGGTCGAGAATTTATCCAGTACAACACACTGAAAAACTACAGATTAGAAATTAGATCTACTGGTGACAGTGGTGAATACCAGTGCTCAGGTCGTAAAAAGAGCTCACATAAACCAAAGCACAGTAATACTGTCTCTCTAACTGTATTA---GTAAAACCA------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------GAGTGGACA---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</mol_seq>
+                  </sequence>
+                  <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">pundamilia_nyererei</property>
+                </clade>
+                <clade branch_length="0.226598">
+                  <name>ENSONIG00000042577</name>
+                  <taxonomy>
+                    <id>8128</id>
+                    <scientific_name>Oreochromis niloticus</scientific_name>
+                    <common_name>Nile tilapia</common_name>
+                  </taxonomy>
+                  <sequence>
+                    <accession source="Ensembl">ENSONIP00000069602</accession>
+                    <location>LG3:25552497-25554011</location>
+                    <mol_seq is_aligned="1">---------------------------------------------------GCATTGACTATTGTAATACTCTCTTGCATGGTCTCCCCCCAAAATCCCTCCATAAGCTTCAACTGGTTCAAAACTCCACTGCCCGCATTATTACCAGAACCCCCTCCTACCATCACCCCTGTTCCCACACTGACA------------------GATGCTGTGCTAACTCTTGAACCCAACTGGTCCAGT---TTTGTTATTGAAGAGTTTGTTACCTTCAAATGTGACATGAATGAAGGTGAAGACACTGACTGGGAATACAAAATCAACAAGGATGGTCGAGAATTTAGCCCCTACAACACACACAAAGACTATACATTAGAAATTAGCTCTAAGGGTGACAGCGGTGAATATCAGTGCTCTGGTCGCAAAAAGAGCTCACATGACACAAGGAACAGTAATACTGTGTCTATAACTGTATTAGGTAAAGACCCT------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------GGGTTTCTGTTCCAG------------------------------------------------------------------------------------------------------------------------------------------------------------------------------AAAGAGAGT------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</mol_seq>
+                  </sequence>
+                  <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">oreochromis_niloticus</property>
+                </clade>
+              </clade>
+              <clade branch_length="0.132531">
+                <confidence type="bootstrap">87</confidence>
+                <taxonomy>
+                  <id>318546</id>
+                  <scientific_name>Pseudocrenilabrinae</scientific_name>
+                </taxonomy>
+                <clade branch_length="0">
+                  <confidence type="bootstrap">94</confidence>
+                  <taxonomy>
+                    <id>318546</id>
+                    <scientific_name>Pseudocrenilabrinae</scientific_name>
+                  </taxonomy>
+                  <clade branch_length="0.049454">
+                    <confidence type="bootstrap">58</confidence>
+                    <confidence type="duplication_confidence_score">0.5</confidence>
+                    <taxonomy>
+                      <id>319058</id>
+                      <scientific_name>Haplochromini</scientific_name>
+                    </taxonomy>
+                    <events>
+                      <type>speciation_or_duplication</type>
+                      <duplications>1</duplications>
+                    </events>
+                    <clade branch_length="0.04778">
+                      <confidence type="bootstrap">58</confidence>
+                      <taxonomy>
+                        <id>319058</id>
+                        <scientific_name>Haplochromini</scientific_name>
+                      </taxonomy>
+                      <clade branch_length="0.039831">
+                        <name>ENSHBUG00000015261</name>
+                        <taxonomy>
+                          <id>8153</id>
+                          <scientific_name>Haplochromis burtoni</scientific_name>
+                          <common_name>Burton's mouthbrooder</common_name>
+                        </taxonomy>
+                        <sequence>
+                          <accession source="Ensembl">ENSHBUP00000013472</accession>
+                          <location>JH426571.1:44247-52110</location>
+                          <mol_seq is_aligned="1">---------------------------------------------------------------------------------------------ATGCAGATCCTATTTGTGTTACTTTTTTTCTATTTATCACAGTATTTTCATTTTTGTTTCAGATTGCTAATTGTCTGTTTGTGTTGGATTCTA------------------GCTGCTGTGCTAACTATTGAACCCAGCTGGTCCAGT---TATTTCATTGGAGAGTTTGTTACCTTCAAGTGTGACATGAATGAAGGAAGAGACACTGACTGGTATTACACAATCAACAAGGATGGTCGAGACTTTGTCCGCTACAGTGAATACAAAGTCTACACATTAGAAATGAGATCTACAGATCACAGTGGTAAATACCAGTGCTATGGCAGCTCAAAGGGGTCACATTATACAAAGAACAGTAATACTGTCTCTGTAACTGTATTAGGTAAGTCCTCA------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------GCCCAAATAACTTCTGATATGAGAGACATTCCAGTAGGGGGCAGTGTGACCCTGACCTGCTCTGTGAACTCATCATCATCATCTGGATGGAAATACTACTGGTACAGAGATGAGAAATCCTCTGAAGCCCTGACCACACAAGATGCAGTTTTCCACTCAAATGGACAAATCAGTGTCTCACAGGAAGGACTCTACAAGTGCAGAGGAGGAAGAGGAAACCCAGTTTACTACACAGAGGACAGC---------------CAGTCAGTCAGGATTGATCGC------------------------------------------------AGGGTCAATGGT---GTCCTGGGGATCTCCTCCAAGATCTGGACCAGGGCATCTGAGCTCCTG---GAGAGTCTGAGCTGCAGCATGGCAGCTTCAGATGGA---GAGAAGCATAATGTCCCAGTTGGATTTTGGTCAGGCGACTGTGGGGACCAGTCAGTCGTATCAATTCCG---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</mol_seq>
+                        </sequence>
+                        <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">haplochromis_burtoni</property>
+                      </clade>
+                      <clade branch_length="0.098001">
+                        <name>ENSACLG00000003235</name>
+                        <taxonomy>
+                          <id>8154</id>
+                          <scientific_name>Astatotilapia calliptera</scientific_name>
+                          <common_name>Eastern happy</common_name>
+                        </taxonomy>
+                        <sequence>
+                          <accession source="Ensembl">ENSACLP00000004859</accession>
+                          <location>3:30279308-30288636</location>
+                          <mol_seq is_aligned="1">---------------------------------------------------------------------------------------------TATTTAAATCCCCCGCTAAGATGGATCAATTACAAAAAACCTATAGATACAAGAATTGTCTGTTGTCTGATTGTCTGTTTGTGTTGGATTCTA------------------GCTGCTGTGCTAACTATTGAACCCAAATCATCCAGT---TATTTCATTGGAGAGTTTGTTACCTTCAAGTGTGACATGAATGAAGGAAGAGACACTGACTGGTATTACGAAATCAAGAAGGGTGGTCGAGACTTTGTCCGCTACAGTGAATACAAAGACTACACATTAGAAATGAGATCTACAGATCGCAGTGGTAAATACCAGTGCTATGGCAGCTCAAAGTGGTCAGATTATACAAAGAACAGTAATACTGTCTCTGTAACTGTATTA---GGTAAGTCCTCAGTGATTAATAATGTGATGACTCCAGCACCCAAAGCGCTTTACAATACCACTATTCATTCACTCTCACATTCATACACTGGTGGAGGCAGCTACAGTTGTAGCCACAGCTTA---------------------------------------------------------------------------------------------------------------------------------------------------------CTCATACCATTTACATTTGGTTTGTCCTTCATT---TTAGCGGGCAGTGTGACCCTGACCTGCTCTGTGAACTCATCATCATCATCTGGATGGAAATACTACTGGTACAGAGATGAGAACTCCTCTGAACCTCTGACCACACAAGATGCAGTTTTCCACTCAAATGGACAAATCAGTGTCTCACAGGAAGGACTCTACAGGTGCAGAGGAGGAAGAGGAAACCCAGTTTACTACACAGAGGACATAACTGTGTTTAACATTAAA------------------------------------GTCAATCAGATTATTATTTCAGGTCCAGCA------GAAGGTGATTACACCAATGTCACATCTGTGATT------------------------CAGCTCAGAGTCATTAACAAGACAAGTGAGTGCACAAAA---TGTGAGATT---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</mol_seq>
+                        </sequence>
+                        <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">astatotilapia_calliptera</property>
+                      </clade>
+                    </clade>
+                    <clade branch_length="0.090438">
+                      <name>ENSHBUG00000015276</name>
+                      <taxonomy>
+                        <id>8153</id>
+                        <scientific_name>Haplochromis burtoni</scientific_name>
+                        <common_name>Burton's mouthbrooder</common_name>
+                      </taxonomy>
+                      <sequence>
+                        <accession source="Ensembl">ENSHBUP00000030321</accession>
+                        <location>JH426571.1:3705-8105</location>
+                        <mol_seq is_aligned="1">------------------------------------------------------------------TGTCCAAAGAGGATTGCCTGTACCATTTCAGGTCATGTGATCAGAGGACACTCATCTCTGTTATCACCATCATTAAATAAGTGTTTCAGATTGCTAATTGTCTGTTTGTGTTGGATTCTA------------------GATGCTGTGCTAACTATTGAACCCAGCTGGTCCAGT---TATTTCATTGGAGAGTTTGTTACCTTAAAGTGTAACATGAATGAAGGAAGAGACACTGACTGGTATTATGCAAGCAACAAGAATGGTAAAACGTATTTCATCTACTGGAAGAACGGAGACTACAGATTAAAACTTGGCTCGACATATGACAGTGGTGAATATCAGTGCTCTGGTACCTGGAAGGAGTCAAATTATACAAAGAACAGTAATACTGTCTCTTTAACTGTATTA---GATCAACCA---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------AAGGCCCAAATAACTTCTGATATGAGAGACATTCCAGTAGGGGGCAGTGTGACCCTGACCTGCTCTGTGAACCCATCATCATCATCTGGATGGAAATACTACTGGTACAGAGATGAGAACTCCTCTGAACCCCTGACCACACAAGATGCAGTTTTCCACTCAAATGAACAAATCAGTGTCTCACAGGAAGGACTCTACAAGTGCAGAGGAGGAAGAGGAAACCCAGTTTACTACACAGAGGACAGC---------------CAAGAAGTCAGCATTGATACA------------------------------------------------AAGGATGTC------CCGAGTCCTGAAATCTCTTCA---------------------TTTCCTATTCTGATAAGCATTGGAGCAATTTCTGGAATTACATTT---ATTTTCATCCTGCTCTTGTTGTATTGCTGTAAAAAGTTCAAAGGTGAGATTTTCATATTTTTCTTC------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</mol_seq>
+                      </sequence>
+                      <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">haplochromis_burtoni</property>
+                    </clade>
+                  </clade>
+                  <clade branch_length="0.104829">
+                    <name>ENSNBRG00000000967</name>
+                    <taxonomy>
+                      <id>32507</id>
+                      <scientific_name>Neolamprologus brichardi</scientific_name>
+                      <common_name>Lyretail cichlid</common_name>
+                    </taxonomy>
+                    <sequence>
+                      <accession source="Ensembl">ENSNBRP00000001141</accession>
+                      <location>JH422499.1:403524-413640</location>
+                      <mol_seq is_aligned="1">------------------------------------------------------------------------------------------------TGTCTTCTGGTTCATGTTGTCAAACTTGTGTTGTCATCCTCTTACATGAAGTGTTTCAGATTGTTAACTTTGTGGTTGTGTTGGATTCTA------------------GATGCTGTGCTAACTATTGAACCCAGCTGGTCCAGT---TTTTTCATCGGAGTGTTTGTTACATTCAAATGTGACATGAATGAAGGAGAAGACACTGACTGGTATTACCAAATCAACAAGGACGGTCGAGAATTTTTCTCCTACAGGCCATACAAGGACTCCAAATTAGAAATTATATCTACACGTGACAGTGGTGAATATCAGTGCATTGGTGACAGGGTGAGCTCACGTGATAAAAAGATCAGTAATACTGTCTCTATAACTGTATTA---GATCAACCA---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------AAGGCCCAAGTAACTTCTGGTATGAGAGACATACCAGTAGGGGGCAGTGTGCCACTGACCTGCTCTGTGAACTCATCATCATCATCTGGATGGAAATACTACTGGTACAGAGATGAGAACTCCTCTGAATCTCTGACCACACAAGATGCAGTTTTCCACTCAAATGGACAAATCAGTGTCTCACAGGAAGGACTCTACAGGTGCAGAGGAGGAAGAGGAAACCCAGTTTACTACACAGAGGACAGCCACTTGTGGAAGCTGGATGGTTATACAATAACTGTG------TTTAACATTAAAGTCAATCAGATTCTTATTTCAGGTCCAGCAGAAGGTGAT------TACACCAATGTCACATCTGTGATT------------------------CAGCTCGAAGTCATTAACAAGACAAGTGAGTGCACAAAA---TGTGAGATT---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</mol_seq>
+                    </sequence>
+                    <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">neolamprologus_brichardi</property>
+                  </clade>
+                </clade>
+                <clade branch_length="0.060168">
+                  <confidence type="bootstrap">88</confidence>
+                  <confidence type="duplication_confidence_score">1</confidence>
+                  <taxonomy>
+                    <id>8128</id>
+                    <scientific_name>Oreochromis niloticus</scientific_name>
+                    <common_name>Nile tilapia</common_name>
+                  </taxonomy>
+                  <events>
+                    <type>speciation_or_duplication</type>
+                    <duplications>1</duplications>
+                  </events>
+                  <clade branch_length="0.116619">
+                    <name>ENSONIG00000042114</name>
+                    <taxonomy>
+                      <id>8128</id>
+                      <scientific_name>Oreochromis niloticus</scientific_name>
+                      <common_name>Nile tilapia</common_name>
+                    </taxonomy>
+                    <sequence>
+                      <accession source="Ensembl">ENSONIP00000056194</accession>
+                      <location>MKQE02000641.1:14866-23905</location>
+                      <mol_seq is_aligned="1">------------------------------------------------------------------------------------------------------------------------------------ATGGGAGCCACTTTGCTCTGTGAGCTGGGCCTATTCTTGCTCTGTACGCTCCTCTGCACTGGACACGGCCAAGATGCTGTGCTAACTATTGAACCCAACTGGTCCAGT---TTTTTCATCGGAGAGTTTGTTACTTTTAAATGTGACATGAAAGAAGGAGAAGACACTGACTGGTATTACAAAATCACCAAGGACAGTCGAGAATTTCTCTCCTACAGGCTCAACAATGACCACACATTACAAATTACATCTACAGGTGACAATGATGAATATCAGTGCTTTGGACACATGAAGGGATCATATGATACAAAGATCAGTAATACTGTCTCTATAACTGTATCAGCAGAGAAACCCAGT---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------GCCACACTGACAGCAGTAACAACAATCATACCAGTAGAGGGCAATGTCACACTGACCTGCTCTGTGAACCCATCATCATCATCTGGATGGAAATACTACTGGTACAGAGATGAGAAATCCTCTGAAGCCCTGACCACACAAGATGCAGTTTTCCACTCAAATGGACAAATCAGTGTCTCACAGGAAGGACTCTACAGGTGCAGAGGAGGAAGAGGAAACCCAGTTTACTACACAGAGGACAGC---------------CAAGAAGTTCACATTAACACAACTGGAGCTGACAGCTCTTCATCTCCTGTGTGGTTG---------------------------ATGGTTGGACTGGTTTGTGGAGTCTCTCTCATTATTATTCTCCTG---CTCTTGTTGTATCGCTGCAGACAGTCCAAGTGTAAGAGC---CTCTTCTTTTCATGCTGTATTAGAGAGTTTATTTAC------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</mol_seq>
+                    </sequence>
+                    <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">oreochromis_niloticus</property>
+                  </clade>
+                  <clade branch_length="0.122761">
+                    <name>ENSONIG00000042457</name>
+                    <taxonomy>
+                      <id>8128</id>
+                      <scientific_name>Oreochromis niloticus</scientific_name>
+                      <common_name>Nile tilapia</common_name>
+                    </taxonomy>
+                    <sequence>
+                      <accession source="Ensembl">ENSONIP00000066660</accession>
+                      <location>LG3:25689380-25830878</location>
+                      <mol_seq is_aligned="1">------------------------------------------------------------------------------------------------------------------------------------ATGGGAGCCACTTTGCTCTGTGAGCTGGGCCTATTCTTGCTCTGTACGCTGCTCTCCACTGGACACACTGAAGATGCTGTGCTAACTATTGAACCCAACTCATTCAGT---TTTTTCATTGGAGAGTCCGTTACTTTCATATGTGACATGAATGAAGGAGAAGATACTGACTGGTATTACAAAATCACCAAGGATGGTCAAAAATTTACCCCCTACAGCACACACAAAGACTCCACATTACAAATGACATATACAGGTGACGGTGGTGAATATCAGTGCTCTGGCAGCTGGAAGCGCGCATATTATACAAAGAACAGTAATACTGTCTCTATAACTGTATTAGCAGATCAACCAAAG---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------GCTCAAATAACGTCTGATATGAGAGACATTCCAGTAGGGGGCAGTGTGACCCTGACCTGCTCTGTGAACCCATCATCATCATCTGGATGGAAATATTGCTGGTACAGAGATAATACCACAGTGGATGTTGTCTCC------------------CCGTCAAATGGCCGAATCAGTGTCTCACAGGAAGGACTCTACAGGTGCAGAGGAGGAAGAGGAAACCCAGGTTACTACACAGAGGACAGG---------------CAACAAGTTCACGTTAACACAACTGGTGAG---------------------------------------------------------------------------------------------------------TTTATTTTTTCTTCTAGAAATACAAAAAGTGATAGA---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</mol_seq>
+                    </sequence>
+                    <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">oreochromis_niloticus</property>
+                  </clade>
+                </clade>
+              </clade>
+            </clade>
+          </clade>
+        </clade>
+      </clade>
+      <clade branch_length="0.261323">
+        <confidence type="bootstrap">98</confidence>
+        <confidence type="duplication_confidence_score">1</confidence>
+        <taxonomy>
+          <id>64144</id>
+          <scientific_name>Anabas testudineus</scientific_name>
+          <common_name>Climbing perch</common_name>
+        </taxonomy>
+        <events>
+          <type>speciation_or_duplication</type>
+          <duplications>1</duplications>
+        </events>
+        <clade branch_length="0.043274">
+          <confidence type="bootstrap">5</confidence>
+          <confidence type="duplication_confidence_score">1</confidence>
+          <taxonomy>
+            <id>64144</id>
+            <scientific_name>Anabas testudineus</scientific_name>
+            <common_name>Climbing perch</common_name>
+          </taxonomy>
+          <events>
+            <type>speciation_or_duplication</type>
+            <duplications>1</duplications>
+          </events>
+          <clade branch_length="0.013566">
+            <confidence type="bootstrap">5</confidence>
+            <confidence type="duplication_confidence_score">1</confidence>
+            <taxonomy>
+              <id>64144</id>
+              <scientific_name>Anabas testudineus</scientific_name>
+              <common_name>Climbing perch</common_name>
+            </taxonomy>
+            <events>
+              <type>speciation_or_duplication</type>
+              <duplications>1</duplications>
+            </events>
+            <clade branch_length="0.03906">
+              <name>ENSATEG00000003922</name>
+              <taxonomy>
+                <id>64144</id>
+                <scientific_name>Anabas testudineus</scientific_name>
+                <common_name>Climbing perch</common_name>
+              </taxonomy>
+              <sequence>
+                <accession source="Ensembl">ENSATEP00000005546</accession>
+                <location>18:20787377-20789269</location>
+                <mol_seq is_aligned="1">------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ATGTTTCTATTA------------------GATGCTGTTTTGACCGTTGAGCCCAACTGGTCCAGT---TTATTTATTGGAGAGTCTGTGACATTAACATGTGACATAAAGGAAGGAAAAGACACTGACTGGGAATACAGATGGAAGAAGGAT---GAAGTGTTTGTTCAGTACATTTCAAATAAATACTACAATTTTAAACCTATATTAGTAAAAGACAGTGGTCGATACCAGTGCTCTGGTTTCCACAGGAGC---------TTAAAAAACAGTAACATCATCTCTTTAACTGTATCA------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------GCCAAACTGACAGCAGGTCCAACAATCATACCAGTAGGAGGCAGAGTGACACTGAGCTGCTCTGTGGAC------GACTCTGATGGTTGGAAATATGACTGGTTCAGACGAACCTCAAACTCTAATGAAGCTCAGGTTGATGGT---------GAAGAAAACAAAGATATCAGAGTCTCACAAGGAGGAATCTACAGGTGCAGAGGAAGAAGAGGAAAACCAGTTTACTACACTGATTACAGTGAT---------------GAGGTCACTGTTGAGATAACT------------------------------------------------GGTGAG------TTTAGTTCCTGTGTTTCTAATATT---------------------TCA---ACACATCTGTCAGGACATTTTACAACAATCAAGTTA---ATTGAGTTAATTCAATATTTCTATTTGTGTCTCTCATCTTGTTCTAACATTTCTATG------------------------------------------------------------------------------------------------------------------------------------TTTGTTTTTACATTGACC---------------------------------------------------------------------------------------------</mol_seq>
+              </sequence>
+              <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">anabas_testudineus</property>
+            </clade>
+            <clade branch_length="0.074883">
+              <name>ENSATEG00000003994</name>
+              <taxonomy>
+                <id>64144</id>
+                <scientific_name>Anabas testudineus</scientific_name>
+                <common_name>Climbing perch</common_name>
+              </taxonomy>
+              <sequence>
+                <accession source="Ensembl">ENSATEP00000005654</accession>
+                <location>18:21209264-21210321</location>
+                <mol_seq is_aligned="1">---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ATGAAGGAAGGAAAACACACTGATTGGGAATACAGATGGAGCAAAGATGAAAAGTCT---GATCAGATCATGTCACATAAACACTACAAATATCAAACTCTATTAACAGAAGACAGTGGTCGATACCAGTGCTCTGGTTTCCACAGGAGCTTAAATCGTATAAAAAACAGTAACATCATCTCTTTAACTGTATCA---GATAAACCC---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------AAAGTCAAACTGACAGCAGGTCCAACAATCATACCAGTTGGAGGCAGAGTGACACTGAGCTGCTCTGTGGAC------GACTCTGATGGTTGGAAATATGACTGGTTCAGACGAAGCTCAAACTCTAATCATGCTCAGGTTGTTGGT---------GAAGAAAACAGAGATATCACAGTCTCACAAGAAGGAGTCTACAGGTGCAGAGGAAGAAGAGGAGAACCAGTTTACTACACTGATAACAGTGAT---------------GAGGTCACCGTTGAGATAACT------------------------------------------------GGTGAG------TTTAGTTCCTGTGTTTCTAATATT---------------------TCA---ACACATCTGTCAGGACATTTTACACCAATCAAG------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</mol_seq>
+              </sequence>
+              <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">anabas_testudineus</property>
+            </clade>
+          </clade>
+          <clade branch_length="0.057268">
+            <name>ENSATEG00000028505</name>
+            <taxonomy>
+              <id>64144</id>
+              <scientific_name>Anabas testudineus</scientific_name>
+              <common_name>Climbing perch</common_name>
+            </taxonomy>
+            <sequence>
+              <accession source="Ensembl">ENSATEP00000062762</accession>
+              <location>18:20860847-20862178</location>
+              <mol_seq is_aligned="1">------------------------------------------------------------------------------------------------------------------------------------------------------------------------ATGATTTGTTTTTTTTTA------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ATTGAAACAGACGAACCC---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------AAAGTCAAAGTGACAGCAGGTCCAACAAACATACCAGTAGGAGGCGGAGTGACACTGAGCTGCTCTGTGGAC------GACTCTGATGGTTGGAAATATGACTGGTTCAGACGAACCTCAAACTCTAAAGAAGCTCATGTTGTTGGT---------GAAGAAAACAGAGATATCAGAGTCTCACAAGGAGGAATCTACAGGTGCAGAGGAAGAAGAGGAAAACCAGTTTACTACACTGATTACAGTGAT---------------GAGGTCACTGTTGAGATAACT------------------------------------------------GGTGAG------TTTAGTTCCTGTGTTTCTAATATT---------------------TCA---ACACATCTGTCAGGACATTTTACACCAATCAAGTTA---ATTCATGTGAGGTTGAACATCCATCTTCAGGATGGAGGTTCTACTGGTATAAGACTGTTCCCAAACTGTCAGACAGACTCTACAGATATGAGCTGCTACCTGGTAGTGACAGTGGCACTGAAGAGGATTCTTACATGGTTCATGGACAGACACACACAGCAGGATATGTGTGTAGAGCTGGAAGAGGAGAACCAGTGTTTTACACTGAACACAGCAAACCAACGTTTGTCTGGTCTGGAGGTCAGTTTGTTTTGGTTTATGGTTGCTGTCAAAAAGAAAATCTTAAGTCATTACCTACTG</mol_seq>
+            </sequence>
+            <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">anabas_testudineus</property>
+          </clade>
+        </clade>
+        <clade branch_length="0.048175">
+          <name>ENSATEG00000004163</name>
+          <taxonomy>
+            <id>64144</id>
+            <scientific_name>Anabas testudineus</scientific_name>
+            <common_name>Climbing perch</common_name>
+          </taxonomy>
+          <sequence>
+            <accession source="Ensembl">ENSATEP00000005928</accession>
+            <location>18:20751229-20846128</location>
+            <mol_seq is_aligned="1">------------------------------------------------------------------------------------------------------------------------------------ATGGGACACACTTTTCTCTGTGTGCTGCAGTTTTTCTTGCTGAACACAATCTTCTCCTCTGGATATGCTCAAGATGCTGTTTTGACTGTTGAGCCCAACTGGTCCAGT---TTTTTTGCTGGACAGTCTGTGACCTTAATATGTGACATGAAGGAAGGAAAAGACACTGACTGGAAATACAGATGGAATAAAGATGGTCGAGAGTTTGTTCAGTACAATTCACATAAACGCTTCACATTACAACCTCTATCTACAAGTTACAGTGGTCGATACCACTGTTTTGGTTTCCACAGCAGCTCAAATGGAATAAAAAAAAGTAATATTGTCTCTTTAACTGTATCA---GATAAACCCAAAGCCAAACTTACAACAACAATCATACCAGTAGGGGGAAGTGTGACTCTGAGCTGCTCTGTGAATCCATCATCTGGTTGGAAATATTACTGGTACAGAGGAGATCAATCCTCTGAACTCCTGATCCGACATAATGATGTTTTCAACTCCTCTGGACAAATCAGTGTCTCACAGGAAGGACAGTACTGGTGCAGAGGAGGAAGAGGAGAACCAGTTTACTACTCCCAGTACAGCCAGTCAGTTAGAATTAACACACTGGCTAAACCCAAAGCCAAAGTGACAGCAGGTCCAACAATCATACCAGTAGGAGGCAGAGTGACACTGAGCTGCTCTGTGGAC------GACTCTGATGGTTGGAAATATGACTGGTTCAGACGAACCTCAAACTCTAATAAAGCTCATGTTGTTGGT---------AAAGAAAACAGAGATATCAGAGTCTCACAAGGAGGAATCTACAGGTGCAGAGGAAGAAGAGGAAAACCAGTTTACTACACTGATTACAGTGAT---------------GAGGTCACTGTTGAGATAACT------------------------------------------------GGT---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</mol_seq>
+          </sequence>
+          <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">anabas_testudineus</property>
+        </clade>
+      </clade>
+    </clade>
+    <property datatype="xsd:string" ref="Compara:gene_tree_stable_id" applies_to="phylogeny">ENSGT00990000203863</property>
+  </phylogeny>
+</phyloxml>
