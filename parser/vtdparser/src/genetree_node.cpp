@@ -1,9 +1,10 @@
-#include "genetree.h"
+#include "indexed_genetree_node.h"
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
 #include <sstream>
 #include <iostream>
+#include <fstream>
 #include <clocale>
 #include "wchar.h"
 #include "sys/stat.h"
@@ -22,12 +23,15 @@ GeneTreeNode::GeneTreeNode(BookMark *bm) {
     this->bm = bm;
     this->load_children();
     this->load_node_type();
+    this->parent = NULL;
 }
 
 GeneTreeNode::~GeneTreeNode() {
     delete this->bm;
-    for (vector<GeneTreeNode*>::iterator it = this->children.begin(); it != this->children.end(); ++it) {
-        delete *it;
+    for (int i = 0; i < this->children.size(); i++) {
+        if (children[i] != NULL) {
+            delete children[i];
+        }
     }
 }
 
@@ -93,6 +97,11 @@ vector<GeneTreeNode*> GeneTreeNode:: get_children() {
     return this->children;
 }
 
+/**
+ * @brief Load the children of the subtree rooted at this node recursively.
+ * 'leaves_map' is also populated as we backtrace from the recursion.
+ * 
+ */
 void GeneTreeNode::load_children() {
     VTDNav *vn = this->bm->getNav();
     vector<GeneTreeNode*> children;
@@ -111,6 +120,9 @@ void GeneTreeNode::load_children() {
                 // TODO: use smart pointer
                 GeneTreeNode *child = new GeneTreeNode(new BookMark(vn_cpy));
                 children.push_back(child);
+                if (child->is_leaf()) {
+                    this->leaves_map.insert(pair<int, GeneTreeNode*>(child->bm->getNav()->hashCode(), child));
+                }
             }
             int jump_result = vn->toElement(NEXT_SIBLING);
             if (jump_result == 0) {
@@ -123,9 +135,9 @@ void GeneTreeNode::load_children() {
     this->children = children;
     for (int i = 0; i < this->children.size(); i++) {
         this->children[i]->parent = this;
-        // inherit the ancestors of the parent and add this node to the ancestors
-        this->children[i]->ancestors = this->ancestors;
-        this->children[i]->ancestors.push_back(this);
+        // this does not preserve entries in the source
+        // in the end, only the root will have a non-empty leaves_map
+        this->leaves_map.merge(this->children[i]->leaves_map);
     }
 }
 
@@ -145,9 +157,13 @@ void GeneTreeNode::load_node_type() {
             vn->toElement(PARENT);
         }
         vn->toElement(PARENT);
+    } else {
+        if (this->is_leaf())
+            this->node_type = LEAF;
+        else
+            this->node_type = OTHER;
     }
-    if (this->is_leaf())
-        this->node_type = LEAF;
+    
 }
 
 /**
@@ -187,13 +203,30 @@ vector<GeneTreeNode*> GeneTreeNode::get_descendants() {
     return descendants;
 }
 
+vector<GeneTreeNode*> GeneTreeNode::get_leaves() {
+    vector<GeneTreeNode*> leaves;
+    vector<GeneTreeNode*> descendants = this->get_descendants();
+    for (int i = 0; i < descendants.size(); i++) {
+        if (descendants[i]->is_leaf()) {
+            leaves.push_back(descendants[i]);
+        }
+    }
+    return leaves;
+}
+
 /**
  * @brief Get the ancestors of the current node.
  * 
  * @return vector<GeneTreeNode*> 
  */
 vector<GeneTreeNode*> GeneTreeNode::get_ancestors() {
-    return this->ancestors;
+    vector <GeneTreeNode*> ancestors;
+    GeneTreeNode *curr = this;
+    while (curr != NULL && curr->parent != NULL) {
+        ancestors.push_back(curr->parent);
+        curr = curr->parent;
+    }
+    return ancestors;
 }
 
 /**
@@ -219,4 +252,19 @@ void GeneTreeNode::print(int depth) {
         wcout << children[i]->get_name() << endl;
         children[i]->print(depth + 1);
     }
+}
+
+void GeneTreeNode::write_index(int label, ostream &out) {
+    VTDNav *vn = this->bm->getNav();
+    if (this->node_type == LEAF) {
+        wstring name = this->get_name();
+        string narrowed_name = string(name.begin(), name.end());
+        IndexedGeneTreeNode indexed_node = IndexedGeneTreeNode(this->bm->hashCode(), label, narrowed_name);
+        indexed_node.write_index(out);
+    }
+}
+
+void GeneTreeNode::write_index(tuple<int, int> label, ostream &out) {
+    IndexedGeneTreeNode indexed_node = IndexedGeneTreeNode(this->bm->hashCode(), label, this->node_type);
+    indexed_node.write_index(out);
 }
