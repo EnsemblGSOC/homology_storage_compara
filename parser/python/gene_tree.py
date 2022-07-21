@@ -142,6 +142,8 @@ class GeneTree:
                 for n in t.get_descendants():
                     if n.phyloxml_clade.events is None and not n.is_leaf():
                         n.phyloxml_clade.events = ete3.phyloxml.Events(speciations=1)
+                if t.phyloxml_clade.events is None and not t.is_leaf():
+                    t.phyloxml_clade.events = ete3.phyloxml.Events(speciations=1)
 
     def _get_lca_type_score(self, taxon_names: Tuple):
         if self.ref_table is not None:

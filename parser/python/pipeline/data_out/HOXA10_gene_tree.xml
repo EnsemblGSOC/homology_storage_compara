@@ -7,6 +7,9 @@
                 <phy:scientific_name>Sarcopterygii</phy:scientific_name>
                 <phy:common_name>Lobe-finned fish</phy:common_name>
             </phy:taxonomy>
+            <phy:events>
+                <phy:speciations>1</phy:speciations>
+            </phy:events>
             <phy:clade branch_length_attr="0">
                 <phy:branch_length>0.000000e+00</phy:branch_length>
                 <phy:confidence type="bootstrap">71</phy:confidence>

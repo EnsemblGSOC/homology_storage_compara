@@ -24,6 +24,7 @@ namespace compara {
             // Interval tree for duplication nodes
             IntervalTree<int, int> duplication_nodes;
             vector<IndexedGeneTreeNode> find_duplication_subtree_nodes(int node_hash);
+            vector<Interval<int, int>> find_duplication_subintervals(int start, int end);
         
         private:
             GeneTreeIndex();
@@ -31,6 +32,5 @@ namespace compara {
             void load_leaves(istream &in);
             void load_internal_nodes(istream &in);
             void load_duplication_nodes(istream &in);
-            vector<Interval<int, int>> find_duplication_subintervals(int start, int end);
     };
 }

@@ -93,9 +93,24 @@ int main (int argc, char *argv[]) {
         gt->load_index("temp.genetreeidx");
     }
     if (query_orthologs) {
-        vector<string> genes = gt->get_orthologs(ortholog_query);
+        vector<OrthologPair> genes = gt->get_orthologs(ortholog_query);
         for (auto gene : genes) {
-            cout << gene << endl;
+            cout << gene.ortholog_name << " ";
+            switch (gene.type) {
+                case OrthologType::ONE_TO_ONE:
+                    cout << "(1-to-1)";
+                    break;
+                case OrthologType::ONE_TO_MANY:
+                    cout << "(1-to-many)";
+                    break;
+                case OrthologType::MANY_TO_MANY:
+                    cout << "(many-to-many)";
+                    break;
+                default:
+                    cout << "(unknown)";
+                    break;
+            }
+            cout << endl;
         }
         cout << "Found " << genes.size() << " orthologs" << endl;
     }

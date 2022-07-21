@@ -40,6 +40,7 @@ namespace compara {
             vector<GeneTreeNode*> get_ancestors();
             vector<GeneTreeNode*> get_descendants();
             vector<GeneTreeNode*> get_leaves();
+            double get_confidence_score();
             bool is_leaf();
             bool is_root();
             vector<GeneTreeNode*> children;

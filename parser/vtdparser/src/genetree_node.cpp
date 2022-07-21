@@ -163,7 +163,28 @@ void GeneTreeNode::load_node_type() {
         else
             this->node_type = OTHER;
     }
-    
+    if (this->node_type == DUPLICATION) {
+        if (this->get_confidence_score() <= 0) {
+            this->node_type = DUBIOUS;
+        }
+    }
+}
+
+double GeneTreeNode::get_confidence_score() {
+    VTDNav *vn = this->bm->getNav();
+    if (vn->toElement(LAST_CHILD, const_cast<wchar_t*>(L"confidence"))) {
+        if (vn->hasAttr(L"type")) {
+            wstring type = vn->toString(vn->getAttrVal(L"type"));
+            if (type.compare(L"duplication_confidence_score") == 0) {
+                if (vn->getCurrentIndex() != -1) {
+                    wstring confidence_str = vn->toString(vn->getText());
+                    return stod(confidence_str);
+                }
+            }
+        }
+        vn->toElement(PARENT);
+    }
+    return 0.0;
 }
 
 /**
@@ -244,10 +265,10 @@ void GeneTreeNode::print(int depth) {
         wcout << children[i]->get_element_type();
         wcout << " ";
         if (children[i]->node_type == SPECIATION) {
-            wcout << "(specation) ";
+            wcout << "(speciation) ";
         }
         if (children[i]->node_type == DUPLICATION) {
-            wcout << "(duplication) ";
+            wcout << "(duplication" << " " << children[i]->get_confidence_score() << ") ";
         }
         wcout << children[i]->get_name() << endl;
         children[i]->print(depth + 1);

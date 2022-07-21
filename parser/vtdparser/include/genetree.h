@@ -12,7 +12,7 @@ namespace compara {
     /**
      * @brief Type of ortholog pair.
      */
-    enum {
+    typedef enum {
         ONE_TO_ONE,
         ONE_TO_MANY,
         MANY_TO_MANY
@@ -21,7 +21,7 @@ namespace compara {
     /**
      * @brief Type of paralog pair.
      */
-    enum {
+    typedef enum {
         WITHIN_SPECIES,
         BETWEEN_SPECIES
     } ParalogType;
@@ -34,6 +34,7 @@ namespace compara {
         string taxon;
         string ortholog_name;
         string ortholog_taxon;
+        OrthologType type;
     };
     
     /**
@@ -48,7 +49,7 @@ namespace compara {
             void print();
             void load_index(const char* filename);
             vector<wstring> get_genes();
-            vector<string> get_orthologs(string gene_name);
+            vector<OrthologPair> get_orthologs(string gene_name);
             vector<wstring> get_orthologs_naive(wstring gene_name);
             vector<wstring> get_paralogs(string gene_name);
             vector<wstring> get_paralogs_naive(wstring gene_name);
