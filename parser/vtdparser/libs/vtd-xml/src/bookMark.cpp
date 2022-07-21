@@ -78,9 +78,11 @@ void BookMark::bind(VTDNav *vn){
         ba[0]= -2 ; // this would never happen in a VTDNav obj's context
 
 }
+
 VTDNav* BookMark::getNav(){
 	return vn1;
 }
+
 bool BookMark::setCursorPosition( VTDNav *vn){
 	int i=0;
 	if (vn1 != vn || ba == NULL || ba[0] == -2)
@@ -127,9 +129,11 @@ bool BookMark::setCursorPosition( VTDNav *vn){
 	}
 	return true;
 }
+
 bool BookMark::setCursorPosition(){
 	return setCursorPosition(vn1);
 }
+
 /**
 * Record the cursor position
 * This method is implemented to be lenient on loading in
@@ -182,6 +186,7 @@ bool BookMark::recordCursorPosition( VTDNav *vn){
 	}
 	return true;
 }
+
 /**
 * Record cursor position of the VTDNav object as embedded in the
 * bookmark
@@ -189,6 +194,7 @@ bool BookMark::recordCursorPosition( VTDNav *vn){
 bool BookMark::recordCursorPosition(){
 	return recordCursorPosition(vn1);
 }
+
 /**
 * Compare the bookmarks to ensure they represent the same
 * node in the same VTDnav instance
@@ -198,6 +204,7 @@ bool BookMark::equal(BookMark *bm2){
 		return true;
 	return deepEqual(bm2);
 }
+
 /**
 * Returns the hash code which is a unique integer for every node
 */
@@ -210,6 +217,7 @@ int BookMark::hashCode(){
 		return vn1->rootIndex;
 	return ba[ba[0]];
 }
+
 /**
 * Compare the bookmarks to ensure they represent the same
 * node in the same VTDnav instance

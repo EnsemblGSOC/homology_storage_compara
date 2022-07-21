@@ -182,6 +182,7 @@ namespace vtdxml {
 		// useful for implementing dupliateNav() and cloneNav();
 		bool atTerminal; // Add this model to be compatible with XPath data model, 
 		// true if attribute axis or text()
+
 		// location cache part
 		helper *h1,*h2;
 		int l2upper;
@@ -692,6 +693,27 @@ namespace vtdxml {
 		void dumpFragment(char *fileName);
 
 		void dumpElementFragmentNs(char *fileName);
+
+		/**
+		 * @brief Serialize the instance of VTDNav into a byte array
+		 * 
+		 * @return unsigned char*
+		 */
+		unsigned char* serialize(unsigned long *bytes_written);
+
+		/**
+		 * @brief Read the serialized instance of VTDNav from a byte array
+		 * 
+		 * @param ba 
+		 * @return VTDNav* 
+		 */
+		static VTDNav *deserialize(unsigned char *ba);
+
+		unsigned char *serialize_position(unsigned long *bytes_written);
+
+		void deserialize_position(unsigned char *ba);
+
+		int hashCode();
 		
 	};
 

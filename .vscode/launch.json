@@ -8,9 +8,12 @@
             "type": "lldb",
             "request": "launch",
             "name": "Debug",
-            "program": "${workspaceFolder}/<your program>",
-            "args": [],
-            "cwd": "${workspaceFolder}"
+            "program": "${workspaceFolder}/parser/vtdparser/src/genetree",
+            "args": ["-O", "ENSG00000182463", "${workspaceFolder}/parser/python/pipeline/data_out/TSHZ2_gene_tree.xml"],
+            "cwd": "${workspaceFolder}",
+            "sourceMap": {
+                
+            }
         }
     ]
 }

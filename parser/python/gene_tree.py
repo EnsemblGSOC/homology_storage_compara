@@ -290,7 +290,7 @@ class IntervalIndex:
         self.internal_nodes = []
         self.leaf_nodes = []
         self.leaf_labels = {}
-        self.internal_labels = {} # node -> label
+        self.internal_labels = {}  # node -> label
         self._label_leaves()
         self._label_internal_nodes()
         self.internal_labels_rev = {v: k for k, v in self.internal_labels.items()} # label -> node

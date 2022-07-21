@@ -7595,65 +7595,230 @@ bool VTDNav::matchSubString2(int os, int index, UCSChar *s){
 	}
 
 int VTDNav::getNextChar(VTDNav *vn,helper *h){
-		Long l;
-		int result;		
-		if (h->type==0){// single token
-			if (h->offset == h->endOffset)
-				return -1;
-			if (h->tType == TOKEN_CHARACTER_DATA &&
-					h->tType !=TOKEN_ATTR_VAL){ 
-				l = vn->getCharResolved(h->offset);
+	Long l;
+	int result;		
+	if (h->type==0){// single token
+		if (h->offset == h->endOffset)
+			return -1;
+		if (h->tType == TOKEN_CHARACTER_DATA &&
+				h->tType !=TOKEN_ATTR_VAL){ 
+			l = vn->getCharResolved(h->offset);
+		}else {
+			l = vn->getChar(h->offset);
+		}
+		h->offset += (int)(l>>32);
+		result = (int)l;
+		return result;
+		
+	}else {// text value
+		if (h->offset < h->endOffset){
+			//return result;
+			if (h->tType != TOKEN_PI_VAL &&
+				h->tType !=TOKEN_CHARACTER_DATA){ 
+				l = vn->getChar(h->offset);
 			}else {
 				l = vn->getChar(h->offset);
 			}
 			h->offset += (int)(l>>32);
-			result = (int)l;
+			result = (int)l;	
 			return result;
-			
-		}else {// text value
-			if (h->offset < h->endOffset){
-				//return result;
-				if (h->tType != TOKEN_PI_VAL &&
-					h->tType !=TOKEN_CHARACTER_DATA){ 
-					l = vn->getChar(h->offset);
-				}else {
-					l = vn->getChar(h->offset);
+		}else{
+			h->index++;
+			while (h->index < vtdSize) {
+				tokenType tType = vn->getTokenType(h->index);
+				int depth = vn->getTokenDepth(h->index);
+				//t=t+getTokenLength2(index);
+				if (depth<h->depth || 
+						(depth==h->depth && tType==TOKEN_STARTING_TAG)){
+					break;
 				}
-				h->offset += (int)(l>>32);
-				result = (int)l;	
-				return result;
-			}else{
+				
+				if (tType==TOKEN_CHARACTER_DATA
+						|| tType==TOKEN_CDATA_VAL){
+					//length = getTokenLength2(index);
+					//t += length;
+					//fib.append(index);
+					h->offset = vn->getTokenOffset(h->index);
+					h->endOffset = vn->getTokenOffset(h->index)+vn->getTokenLength2(h->index);
+					h->tType = tType;
+					//h2.index++;
+					return getNextChar(vn,h);
+					//
+				} else if (tType==TOKEN_ATTR_NAME
+						|| tType == TOKEN_ATTR_NS
+						|| tType == TOKEN_PI_NAME){			  
+					h->index = h->index+2;
+					continue;
+				}			
 				h->index++;
-				while (h->index < vtdSize) {
-				    tokenType tType = vn->getTokenType(h->index);
-				    int depth = vn->getTokenDepth(h->index);
-				    //t=t+getTokenLength2(index);
-				    if (depth<h->depth || 
-				    		(depth==h->depth && tType==TOKEN_STARTING_TAG)){
-				    	break;
-				    }
-				    
-				    if (tType==TOKEN_CHARACTER_DATA
-				    		|| tType==TOKEN_CDATA_VAL){
-				    	//length = getTokenLength2(index);
-				    	//t += length;
-				    	//fib.append(index);
-				    	h->offset = vn->getTokenOffset(h->index);
-				    	h->endOffset = vn->getTokenOffset(h->index)+vn->getTokenLength2(h->index);
-				    	h->tType = tType;
-				    	//h2.index++;
-				    	return getNextChar(vn,h);
-				    	//
-				    } else if (tType==TOKEN_ATTR_NAME
-					        || tType == TOKEN_ATTR_NS
-					        || tType == TOKEN_PI_NAME){			  
-					    h->index = h->index+2;
-					    continue;
-					}			
-					h->index++;
-				}
-				return -1;
 			}
+			return -1;
 		}
-		//return -1;
 	}
+	//return -1;
+}
+
+unsigned char* VTDNav::serialize(unsigned long *bytes_written) {
+	unsigned long buffer_size = 33 + (this->vtdBuffer->size) * 8 +
+								(this->l1Buffer->size) * 8 + (this->l2Buffer->size) * 8 +
+								(this->l3Buffer->size) * 4 + 8;
+	unsigned char *serialized = new unsigned char[buffer_size];
+	if (this->XMLDoc == NULL || this->docLen <= 0 || this->vtdBuffer == NULL ||
+		this->l1Buffer == NULL || this->l2Buffer == NULL || this->l3Buffer == NULL) {
+		throw InvalidArgumentException("writeIndex's argument invalid");
+		return NULL;
+	}
+	if (this->vtdBuffer->size == 0){
+		throw IndexWriteException("vTDBuffer can't be zero in size");
+	}
+	// write fixed-length header
+	memcpy(serialized, &this->rootIndex, sizeof(int));
+	serialized += sizeof(int);
+	*bytes_written += sizeof(int);
+	memcpy(serialized, &this->encoding, sizeof(encoding_t));
+	serialized += sizeof(encoding_t);
+	*bytes_written += sizeof(int);
+	memcpy(serialized, &this->ns, sizeof(bool));
+	serialized += sizeof(bool);
+	*bytes_written += sizeof(bool);
+	memcpy(serialized, &this->nestingLevel, sizeof(int));
+	serialized += sizeof(int);
+	*bytes_written += sizeof(int);
+	memcpy(serialized, &this->docLen, sizeof(int));
+	serialized += sizeof(int);
+	*bytes_written += sizeof(int);
+	// write vtdBuffer
+	int vtdsize = this->vtdBuffer->size;
+	memcpy(serialized, &vtdsize, sizeof(int));
+	serialized += sizeof(int);
+	*bytes_written += sizeof(int);
+	for (int i = 0; i < this->vtdBuffer->size; i++) {
+		long long l = this->vtdBuffer->longAt(i);
+		memcpy(serialized, &l, sizeof(long long));
+		serialized += sizeof(long long);
+		*bytes_written += sizeof(long long);
+	}
+	// write l1Buffer
+	int l1size = this->l1Buffer->size;
+	memcpy(serialized, &l1size, sizeof(int));
+	serialized += sizeof(int);
+	*bytes_written += sizeof(int);
+	for (int i = 0; i < this->l1Buffer->size; i++) {
+		long long l = this->l1Buffer->longAt(i);
+		memcpy(serialized, &l, sizeof(long long));
+		serialized += sizeof(long long);
+		*bytes_written += sizeof(long long);
+	}
+	// write l2Buffer
+	int l2size = this->l2Buffer->size;
+	memcpy(serialized, &l2size, sizeof(int));
+	serialized += sizeof(int);
+	bytes_written += sizeof(int);
+	for (int i = 0; i < this->l2Buffer->size; i++) {
+		long long l = this->l2Buffer->longAt(i);
+		memcpy(serialized, &l, sizeof(long long));
+		serialized += sizeof(long long);
+		*bytes_written += sizeof(long long);
+	}
+	// write l3Buffer
+	int l3size = this->l3Buffer->size;
+	memcpy(serialized, &l3size, sizeof(int));
+	serialized += sizeof(int);
+	bytes_written += sizeof(int);
+	for (int i = 0; i < this->l3Buffer->size; i++) {
+		int s = this->l3Buffer->intAt(i);
+		memcpy(serialized, &s, sizeof(int));
+		serialized += sizeof(int);
+		*bytes_written += sizeof(int);
+	}
+	serialized -= *bytes_written;
+	FILE *f = fopen("test.bin", "wb");
+	fwrite(serialized, *bytes_written, 1, f);
+	return serialized;
+}
+
+unsigned char *VTDNav::serialize_position(unsigned long *bytes_written) {
+	*bytes_written = 0;
+	unsigned long buffer_size = (this->nestingLevel * 4) + 8;
+	unsigned char *serialized = new unsigned char[buffer_size];
+	
+	// // atTerminal (1 byte)
+	// memcpy(serialized, &this->atTerminal, sizeof(bool));
+	// serialized += sizeof(bool);
+	// *bytes_written += sizeof(bool);
+
+	// size of context (4 bytes)
+	memcpy(serialized, &this->nestingLevel, sizeof(int));
+	serialized += sizeof(int);
+	*bytes_written += sizeof(int);
+	// context (nestingLevel * 4 bytes)
+	for (int i = 0; i < this->nestingLevel; i++) {
+		memcpy(serialized, &this->context[i], sizeof(int));
+		serialized += sizeof(int);
+		*bytes_written += sizeof(int);
+	}
+
+	// // location cache data (28 bytes)
+	// memcpy(serialized, &this->l1index, sizeof(int));
+	// serialized += sizeof(int);
+	// *bytes_written += sizeof(int);
+	// memcpy(serialized, &this->l2lower, sizeof(int));
+	// serialized += sizeof(int);
+	// *bytes_written += sizeof(int);
+	// memcpy(serialized, &this->l2upper, sizeof(int));
+	// serialized += sizeof(int);
+	// *bytes_written += sizeof(int);
+	// memcpy(serialized, &this->l2index, sizeof(int));
+	// serialized += sizeof(int);
+	// *bytes_written += sizeof(int);
+	// memcpy(serialized, &this->l3lower, sizeof(int));
+	// serialized += sizeof(int);
+	// *bytes_written += sizeof(int);
+	// memcpy(serialized, &this->l3upper, sizeof(int));
+	// serialized += sizeof(int);
+	// *bytes_written += sizeof(int);
+	// memcpy(serialized, &this->l3index, sizeof(int));
+	// serialized += sizeof(int);
+	// *bytes_written += sizeof(int);
+
+	serialized -= *bytes_written;
+	return serialized;
+}
+
+void VTDNav::deserialize_position(unsigned char *ba) {
+	// unsigned char *src = ba;
+	// // atTerminal (1 byte)
+	// memcpy(&this->atTerminal, src, sizeof(bool));
+	// src += sizeof(bool);
+	// // size of context (4 bytes)
+	// memcpy(&this->nestingLevel, src, sizeof(int));
+	// src += sizeof(int);
+	// // context (nestingLevel * 4 bytes)
+	// for (int i = 0; i < this->nestingLevel; i++) {
+	// 	memcpy(&this->context[i], src, sizeof(int));
+	// 	src += sizeof(int);
+	// }
+	// // location cache data (28 bytes)
+	// memcpy(&this->l1index, src, sizeof(int));
+	// src += sizeof(int);
+	// memcpy(&this->l2lower, src, sizeof(int));
+	// src += sizeof(int);
+	// memcpy(&this->l2upper, src, sizeof(int));
+	// src += sizeof(int);
+	// memcpy(&this->l2index, src, sizeof(int));
+	// src += sizeof(int);
+	// memcpy(&this->l3lower, src, sizeof(int));
+	// src += sizeof(int);
+	// memcpy(&this->l3upper, src, sizeof(int));
+	// src += sizeof(int);
+	// memcpy(&this->l3index, src, sizeof(int));
+	// src += sizeof(int);
+}
+
+int VTDNav::hashCode() {
+	if (this->atTerminal)
+		return this->LN;
+	if (this->context[0]==1)
+		return this->rootIndex;
+	return this->context[this->context[0]];
+}

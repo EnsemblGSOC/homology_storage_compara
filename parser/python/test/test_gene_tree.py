@@ -112,28 +112,29 @@ def test_node_labeling():
 
 def test_get_all_orthologs_indexed():
     gt = GeneTree()
-    gt.load_phylo_xml("test/test_out/ENSACLG00000015576_with_events.xml")
+    gt.load_phylo_xml("pipeline/data_out/TSHZ2_gene_tree.xml")
     gt.create_interval_index()
-    orthologs = gt.get_all_orthologs_indexed("ENSACLG00000015576")
-    print("label of query gene: {}".format(gt.interval_index.leaf_labels[gt.trees[0].get_leaves_by_name("ENSACLG00000015576")[0]]))
+    orthologs = gt.get_all_orthologs_indexed("ENSG00000182463")
+    print("label of query gene: {}".format(gt.interval_index.leaf_labels[gt.trees[0].get_leaves_by_name("ENSG00000182463")[0]]))
     print(set(orthologs))
-    actual_orthologs = gt.get_all_orthologs("ENSACLG00000015576")
+    actual_orthologs = gt.get_all_orthologs("ENSG00000182463")
     actual_ortholog_labels = [gt.interval_index.leaf_labels[x] for x in actual_orthologs]
     print(actual_ortholog_labels)
-    assert len(set(orthologs)) == len(gt.get_all_orthologs("ENSACLG00000015576"))
+    assert len(set(orthologs)) == len(gt.get_all_orthologs("ENSG00000182463"))
 
 
 def test_get_all_paralogs_indexed():
     gt = GeneTree()
-    gt.load_phylo_xml("test/test_out/RNU6_92P_with_events.xml")
+    # gt.load_phylo_xml("test/test_out/RNU6_92P_with_events.xml")
+    gt.load_phylo_xml("pipeline/data_out/TSHZ2_gene_tree.xml")
     gt.create_interval_index()
-    paralogs = gt.get_all_paralogs_indexed("ENSG00000272393")
-    print("label of query gene: {}".format(gt.interval_index.leaf_labels[gt.trees[0].get_leaves_by_name("ENSG00000272393")[0]]))
+    paralogs = gt.get_all_paralogs_indexed("ENSG00000182463")
+    print("label of query gene: {}".format(gt.interval_index.leaf_labels[gt.trees[0].get_leaves_by_name("ENSG00000182463")[0]]))
     print(set(paralogs))
-    actual_paralogs = gt.get_all_paralogs("ENSG00000272393")
+    actual_paralogs = gt.get_all_paralogs("ENSG00000182463")
     actual_paralog_labels = [gt.interval_index.leaf_labels[x] for x in actual_paralogs]
     print(actual_paralog_labels)
-    assert len(set(paralogs)) == len(gt.get_all_paralogs("ENSG00000272393"))
+    assert len(set(paralogs)) == len(gt.get_all_paralogs("ENSG00000182463"))
 
 
 def _get_actual_homology_type(gene1, gene2):
