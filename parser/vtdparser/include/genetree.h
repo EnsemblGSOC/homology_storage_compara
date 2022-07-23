@@ -36,12 +36,21 @@ namespace compara {
         string ortholog_taxon;
         OrthologType type;
     };
+
+    struct ParalogPair {
+        string gene_name;
+        string taxon;
+        string paralog_name;
+        string paralog_taxon;
+        ParalogType type;
+    };
     
     /**
      * @brief A gene tree class.
      */
     class GeneTree {
         public:
+            compara::GeneTreeNode *root;
             GeneTree(const char* filename);
             ~GeneTree();
             void parse();
@@ -51,13 +60,12 @@ namespace compara {
             vector<wstring> get_genes();
             vector<OrthologPair> get_orthologs(string gene_name);
             vector<wstring> get_orthologs_naive(wstring gene_name);
-            vector<wstring> get_paralogs(string gene_name);
+            vector<ParalogPair> get_paralogs(string gene_name);
             vector<wstring> get_paralogs_naive(wstring gene_name);
             vtdxml::VTDNav *vn;
         
         private:
             const char* filename;
-            compara::GeneTreeNode *root;
             bool index_loaded;
             GeneTreeIndex *gti;
             void parse_genetree_node();

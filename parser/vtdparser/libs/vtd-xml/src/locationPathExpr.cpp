@@ -2348,6 +2348,7 @@ int LocationPathExpr::computeContextSize4Ancestor2(Predicate *p, VTDNav *vn){
 		currentStep->o = ap;
 		return i;
 }
+
 int LocationPathExpr::computeContextSize4AncestorOrSelf(Predicate *p, VTDNav *vn){
 		int i=0;
 		AutoPilot *ap = (AutoPilot *)currentStep->o;
@@ -2364,6 +2365,7 @@ int LocationPathExpr::computeContextSize4AncestorOrSelf(Predicate *p, VTDNav *vn
 		currentStep->o = ap;
 		return i;
 }
+
 int LocationPathExpr:: computeContextSize4AncestorOrSelf2(Predicate *p, VTDNav *vn){
 		int i=0;
 		AutoPilot *ap = (AutoPilot *)currentStep->o;
@@ -2396,6 +2398,7 @@ int LocationPathExpr:: computeContextSize4Child(Predicate *p, VTDNav *vn){
     	} else
     	    return 0;
 }
+
 int LocationPathExpr::computeContextSize4Child2(Predicate *p, VTDNav *vn){
 		int i=0;
     	bool b = vn->toElement(FIRST_CHILD);
@@ -2415,45 +2418,51 @@ int LocationPathExpr::computeContextSize4Child2(Predicate *p, VTDNav *vn){
 	
 int LocationPathExpr::computeContextSize4DDFP(Predicate *p, VTDNav *vn){
 		UCSChar *helper = NULL;
-	    int i=0;
+	    int i = 0;
 	    AutoPilot *ap = (AutoPilot *)currentStep->o;
-		if (currentStep->nt->testType == NT_NODE){
-		    helper = L"*";
-		}else if (currentStep->nt->testType == NT_NAMETEST){
+		if (currentStep->nt->testType == NT_NODE) {
+		    helper = (UCSChar*) L"*";
+		} else if (currentStep->nt->testType == NT_NAMETEST){
 			helper = currentStep->nt->nodeName;
-		}else
+		} else {
 			throw new XPathEvalException("can't run descendant "\
 					"following, or following-sibling axis over comment(), pi(), and text()");
+		}
 		if (ap==NULL)
 			ap = new AutoPilot(vn);
 		else
 			ap->bind(vn);
-		if (currentStep->axis_type == AXIS_DESCENDANT_OR_SELF0 )
+		if (currentStep->axis_type == AXIS_DESCENDANT_OR_SELF0 ) {
 			if (currentStep->nt->testType == NT_NODE)
 				ap->setSpecial(true);
 			else
 				ap->setSpecial(false);
+		}
 		//currentStep.o = ap = new AutoPilot(vn);
-	    if (currentStep->axis_type == AXIS_DESCENDANT_OR_SELF0)
+	    if (currentStep->axis_type == AXIS_DESCENDANT_OR_SELF0) {
 	        if (currentStep->nt->localName!=NULL)
 	            ap->selectElementNS(currentStep->nt->URL,currentStep->nt->localName);
 	        else 
 	            ap->selectElement(helper);
-		else if (currentStep->axis_type == AXIS_DESCENDANT0)
+		}
+		else if (currentStep->axis_type == AXIS_DESCENDANT0) {
 		    if (currentStep->nt->localName!=NULL)
 		        ap->selectElementNS_D(currentStep->nt->URL,currentStep->nt->localName);
 		    else 
 		        ap->selectElement_D(helper);
-		else if (currentStep->axis_type == AXIS_PRECEDING0)
+		}
+		else if (currentStep->axis_type == AXIS_PRECEDING0) {
 		    if (currentStep->nt->localName!=NULL)
 		        ap->selectElementNS_P(currentStep->nt->URL,currentStep->nt->localName);
 		    else 
 		        ap->selectElement_P(helper);
-		else 
+		}
+		else {
 		    if (currentStep->nt->localName!=NULL)
 		        ap->selectElementNS_F(currentStep->nt->URL,currentStep->nt->localName);
 		    else 
 		        ap->selectElement_F(helper);
+		}
 	    vn->push2();
 		while(ap->iterate()){
 			if (currentStep->evalPredicates2(vn,p)){
@@ -2466,6 +2475,7 @@ int LocationPathExpr::computeContextSize4DDFP(Predicate *p, VTDNav *vn){
 		currentStep->o = ap;
 		return i;
 }
+
 int LocationPathExpr::computeContextSize4DDFP2(Predicate *p, VTDNav *vn){
 		int i=0;
 	    AutoPilot *ap = (AutoPilot *)currentStep->o;
@@ -2641,7 +2651,7 @@ void LocationPathExpr::optimize(){
 							 ts->prevS->axis_type = AXIS_CHILD0;
 							 ts->prevS->nt->testType = NT_NAMETEST;
 							 ts->prevS->nt->type= 0;
-							 ts->prevS->nt->nodeName = L"*";
+							 ts->prevS->nt->nodeName = (UCSChar*)L"*";
 						 }
 						 break;
 					 case AXIS_DESCENDANT: 
@@ -2660,14 +2670,15 @@ void LocationPathExpr::optimize(){
 						 ts->prevS->axis_type = AXIS_FOLLOWING_SIBLING0;
 						 ts->prevS->nt->testType = NT_NAMETEST;
 						 ts->prevS->nt->type= 0;
-						 ts->prevS->nt->nodeName = L"*";
+						 ts->prevS->nt->nodeName = (UCSChar*)L"*";
 						 break;
 					 case AXIS_PRECEDING_SIBLING:
 					 	 ts->prevS->axis_type = AXIS_PRECEDING_SIBLING0;
 					 	 ts->prevS->nt->testType = NT_NAMETEST;
 						 ts->prevS->nt->type= 0;
-						 ts->prevS->nt->nodeName = L"*";
+						 ts->prevS->nt->nodeName = (UCSChar*)L"*";
 						 break;
+					default: break;
 					}
 				}
 				

@@ -145,6 +145,18 @@ class GeneTree:
                 if t.phyloxml_clade.events is None and not t.is_leaf():
                     t.phyloxml_clade.events = ete3.phyloxml.Events(speciations=1)
 
+    def remove_seq_data(self):
+        """
+        Remove sequence data from the gene tree.
+        """
+        for t in self.trees:
+            for n in t.get_descendants():
+                if n.phyloxml_clade.sequence is not None:
+                    seqs = n.phyloxml_clade.get_sequence()
+                    for s in seqs:
+                        s.mol_seq = None
+                    n.phyloxml_clade.set_sequence(seqs)
+
     def _get_lca_type_score(self, taxon_names: Tuple):
         if self.ref_table is not None:
             id1 = self.ref_table[self.ref_table['stable_id'] == taxon_names[0]]['node_id'].values[0]

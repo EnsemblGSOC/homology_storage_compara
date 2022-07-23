@@ -498,6 +498,11 @@ cython_debug/
 *.out
 *.app
 
+# Debug symbols
+*.dSYM
+*.dSYM.zip
+*.pdb
+
 ## OS generated files ##
 .DS_Store
 .DS_Store?
@@ -506,3 +511,6 @@ cython_debug/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Project specific files
+*.genetreeidx

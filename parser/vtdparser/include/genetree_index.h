@@ -7,6 +7,7 @@
 #include <sstream>
 #include <iostream>
 #include <map>
+#include <unordered_map>
 #include <tuple>
 #include "wchar.h"
 #include "interval_tree.h"
@@ -16,11 +17,11 @@ namespace compara {
         public:
             static GeneTreeIndex *read_genetree_index(istream &in);
             // Map from gene name to IndexedGeneTreeNode containing node label
-            map<string, IndexedGeneTreeNode> leaves;
+            unordered_map<string, IndexedGeneTreeNode> leaves;
             // Map from leaf label to IndexedGeneTreeNode with the label
-            map<int, IndexedGeneTreeNode> leaf_labels;
+            unordered_map<int, IndexedGeneTreeNode> leaf_labels;
             // Map from internal node hash to IndexedGeneTreeNode containing node label
-            map<int, IndexedGeneTreeNode> internal_nodes;
+            unordered_map<int, IndexedGeneTreeNode> internal_nodes;
             // Interval tree for duplication nodes
             IntervalTree<int, int> duplication_nodes;
             vector<IndexedGeneTreeNode> find_duplication_subtree_nodes(int node_hash);

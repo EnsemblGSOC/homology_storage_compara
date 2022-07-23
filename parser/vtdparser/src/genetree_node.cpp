@@ -27,7 +27,9 @@ GeneTreeNode::GeneTreeNode(BookMark *bm) {
 }
 
 GeneTreeNode::~GeneTreeNode() {
-    delete this->bm;
+    if (this->bm != NULL) {
+        delete this->bm;
+    }
     for (int i = 0; i < this->children.size(); i++) {
         if (children[i] != NULL) {
             delete children[i];
@@ -44,24 +46,31 @@ GeneTreeNode::~GeneTreeNode() {
 wstring GeneTreeNode::get_first_node(wstring node_name, wstring attrib_name) {
     VTDNav *vn = this->bm->getNav();
     // go to the next level
-    vn->toElement(FIRST_CHILD, const_cast<wchar_t *>(node_name.c_str()));
-    int name_index = vn->getCurrentIndex();
-    if (name_index != -1) {
-        wstring name_str = vn->toStringLowerCase(name_index);
+    if (vn->toElement(FIRST_CHILD, const_cast<wchar_t *>(node_name.c_str()))) {
+        int name_index = vn->getCurrentIndex();
         if (name_index != -1) {
-            if (vn->matchElement(node_name.c_str())) {
-                if (attrib_name.empty()) {
-                    if (vn->getText() != -1)
-                        return vn->toString(vn->getText());
-                } else {
-                    if (vn->getAttrVal(attrib_name.c_str()) != -1)
-                        return vn->toString(vn->getAttrVal(attrib_name.c_str()));
+            wstring name_str = vn->toStringLowerCase(name_index);
+            if (name_index != -1) {
+                if (vn->matchElement(node_name.c_str())) {
+                    if (attrib_name.empty()) {
+                        if (vn->getText() != -1) {
+                            wstring result = vn->toString(vn->getText());
+                            // return the cursor to the parent
+                            vn->toElement(PARENT);
+                            return result;
+                        }
+                    } else {
+                        if (vn->getAttrVal(attrib_name.c_str()) != -1) {
+                            wstring result = vn->toString(vn->getAttrVal(attrib_name.c_str()));
+                            // return the cursor to the parent
+                            vn->toElement(PARENT);
+                            return result;
+                        }
+                    }
                 }
             }
         }
     }
-    // return the cursor to the parent
-    vn->toElement(PARENT);
     return L"";
 }
 
@@ -71,7 +80,8 @@ wstring GeneTreeNode::get_first_node(wstring node_name, wstring attrib_name) {
  * @return wstring - gene name, empty string if the node is not a gene
  */
 wstring GeneTreeNode::get_name() {
-    return this->get_first_node(L"name");
+    wstring result = this->get_first_node(L"name");
+    return result;
 }
 
 /**
@@ -106,38 +116,39 @@ void GeneTreeNode::load_children() {
     VTDNav *vn = this->bm->getNav();
     vector<GeneTreeNode*> children;
     // go to the next level
-    vn->toElement(FIRST_CHILD);
-    int child_index = vn->getCurrentIndex();
-    if (child_index != -1) {
-        wstring child_str = L"";
-        // go through the siblings until we are at a clade node
-        while (child_index != -1) {
-            child_index = vn->getCurrentIndex();
-            child_str = vn->toStringLowerCase(child_index);
-            // if we find a clade node, create a new GeneTreeNode and add it to the vector
-            if (child_str.find(L"clade") != wstring::npos) {
-                VTDNav *vn_cpy = vn->cloneNav();
-                // TODO: use smart pointer
-                GeneTreeNode *child = new GeneTreeNode(new BookMark(vn_cpy));
-                children.push_back(child);
-                if (child->is_leaf()) {
-                    this->leaves_map.insert(pair<int, GeneTreeNode*>(child->bm->getNav()->hashCode(), child));
+    if (vn->toElement(FIRST_CHILD)) {
+        int child_index = vn->getCurrentIndex();
+        if (child_index != -1) {
+            wstring child_str = L"";
+            // go through the siblings until we are at a clade node
+            while (child_index != -1) {
+                child_index = vn->getCurrentIndex();
+                child_str = vn->toStringLowerCase(child_index);
+                // if we find a clade node, create a new GeneTreeNode and add it to the vector
+                if (child_str.find(L"clade") != wstring::npos) {
+                    VTDNav *vn_cpy = vn->cloneNav();
+                    // TODO: use smart pointer
+                    GeneTreeNode *child = new GeneTreeNode(new BookMark(vn_cpy));
+                    children.push_back(child);
+                    if (child->is_leaf()) {
+                        this->leaves_map.insert(pair<int, GeneTreeNode*>(child->bm->getNav()->hashCode(), child));
+                    }
+                }
+                int jump_result = vn->toElement(NEXT_SIBLING);
+                if (jump_result == 0) {
+                    break;
                 }
             }
-            int jump_result = vn->toElement(NEXT_SIBLING);
-            if (jump_result == 0) {
-                break;
-            }
         }
-    }
-    // return the cursor to the parent
-    vn->toElement(PARENT);
-    this->children = children;
-    for (int i = 0; i < this->children.size(); i++) {
-        this->children[i]->parent = this;
-        // this does not preserve entries in the source
-        // in the end, only the root will have a non-empty leaves_map
-        this->leaves_map.merge(this->children[i]->leaves_map);
+        // return the cursor to the parent
+        vn->toElement(PARENT);
+        this->children = children;
+        for (int i = 0; i < this->children.size(); i++) {
+            this->children[i]->parent = this;
+            // this does not preserve entries in the source
+            // in the end, only the root will have a non-empty leaves_map
+            this->leaves_map.merge(this->children[i]->leaves_map);
+        }
     }
 }
 
@@ -167,6 +178,7 @@ void GeneTreeNode::load_node_type() {
         if (this->get_confidence_score() <= 0) {
             this->node_type = DUBIOUS;
         }
+        vn->toElement(PARENT);
     }
 }
 
@@ -178,13 +190,30 @@ double GeneTreeNode::get_confidence_score() {
             if (type.compare(L"duplication_confidence_score") == 0) {
                 if (vn->getCurrentIndex() != -1) {
                     wstring confidence_str = vn->toString(vn->getText());
+                    vn->toElement(PARENT);
                     return stod(confidence_str);
+                }
+            }
+        }
+    }
+    return 0.0;
+}
+
+wstring GeneTreeNode::get_taxonomy() {
+    VTDNav *vn = this->bm->getNav();
+    if (vn->toElement(FIRST_CHILD, const_cast<wchar_t*>(L"taxonomy"))) {
+        if (vn->getCurrentIndex() != -1) {
+            if (vn->toElement(FIRST_CHILD, const_cast<wchar_t*>(L"scientific_name"))) {
+                if (vn->getCurrentIndex() != -1) {
+                    wstring sci_name = vn->toString(vn->getText());
+                    vn->toElement(PARENT);
+                    return sci_name;
                 }
             }
         }
         vn->toElement(PARENT);
     }
-    return 0.0;
+    return L"";
 }
 
 /**
@@ -248,6 +277,18 @@ vector<GeneTreeNode*> GeneTreeNode::get_ancestors() {
         curr = curr->parent;
     }
     return ancestors;
+}
+
+int GeneTreeNode::get_height() {
+    // get max height of the tree
+    int max_height = 0;
+    for (int i = 0; i < this->children.size(); i++) {
+        int curr_height = this->children[i]->get_height() + 1;
+        if (curr_height > max_height) {
+            max_height = curr_height;
+        }
+    }
+    return max_height;
 }
 
 /**

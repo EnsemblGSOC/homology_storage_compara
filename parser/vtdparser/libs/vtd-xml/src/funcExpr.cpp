@@ -166,7 +166,6 @@ bool FuncExpr::evalBoolean(VTDNav *vn) {
 	case FN_NOT_MATCH_LOCAL_NAME: return !matchLocalName(vn);
 	case FN_ELEMENT_AVAILABLE: return isElementAvailable(vn);
 	case FN_FUNCTION_AVAILABLE: return isElementAvailable(vn);
-
 	default:
 		if (isNumerical()) {
 			double d = evalNumber(vn);
@@ -273,36 +272,35 @@ double FuncExpr::evalNumber(VTDNav *vn) {
 	case FN_ROUND_HALF_TO_ODD:
 		throw OtherException("functions not yet supported");
 
-	default: if (isBool) {
-		if (evalBoolean(vn))
-			return 1;
-		else
-			return 0;
-	}
-			 else {
-				 double d = 0, result;
-				 UCSChar *string = evalString(vn);
-				 UCSChar *temp;
-				 if (wcslen(string) == 0) {
-					 delete(string);
-					 return d / d;
-				 }
+	default: 
+		if (isBool) {
+			if (evalBoolean(vn))
+				return 1;
+			else
+				return 0;
+		} else {
+			double d = 0, result;
+			UCSChar *string = evalString(vn);
+			UCSChar *temp;
+			if (wcslen(string) == 0) {
+				delete(string);
+				return d / d;
+			}
 
-				 result = wcstod(string, &temp);
-				 while (*temp != 0) {
-					 if (*temp == L' '
-						 || *temp == L'\n'
-						 || *temp == L'\t'
-						 || *temp == L'\r') {
-						 temp++;
-					 }
-					 else
-						 return d / d; //NaN
-				 }
-				 delete(string);
-				 return result;
-
-			 }
+			result = wcstod(string, &temp);
+			while (*temp != 0) {
+				if (*temp == L' '
+					|| *temp == L'\n'
+					|| *temp == L'\t'
+					|| *temp == L'\r') {
+					temp++;
+				}
+				else
+					return d / d; //NaN
+			}
+			delete(string);
+			return result;
+		}
 
 	}
 }
@@ -395,11 +393,12 @@ int FuncExpr::evalNodeSet(VTDNav *vn) {
 				}
 			}
 		}
-
 		break;
 	case FN_KEY:
 		throw new XPathEvalException(" key() not yet implemented ");
 		// break;
+	default:
+		break;
 	}
 	throw new XPathEvalException(" Function Expr can't eval to node set ");
 	return -1;
@@ -442,50 +441,50 @@ UCSChar* FuncExpr::evalString(VTDNav *vn) {
 	case FN_GENERATE_ID: return generateID(vn);
 	case FN_FORMAT_NUMBER: return formatNumber(vn);
 	case FN_SYSTEM_PROPERTY: return getSystemProperty(vn);
-	default: if (isBoolean()) {
-		if (evalBoolean(vn) == true)
-			tmp = wcsdup(L"true");
-		else
-			tmp = wcsdup(L"false");
-		if (tmp == NULL) {
-			throw OutOfMemException(
-				"allocate string failed in funcExpr's evalString()");
+	default: 
+		if (isBoolean()) {
+			if (evalBoolean(vn) == true)
+				tmp = wcsdup(L"true");
+			else
+				tmp = wcsdup(L"false");
+			if (tmp == NULL) {
+				throw OutOfMemException(
+					"allocate string failed in funcExpr's evalString()");
+			}
+			return tmp;
+		} else {
+			double d1 = 0;
+			double d = evalNumber(vn);
+			bool b = false;
+			if (d != d) {
+				tmp = wcsdup(L"NaN");
+				b = true;
+			}
+			else if (d == 1 / d1) {
+				tmp = wcsdup(L"Infinity");
+				b = true;
+			}
+			else if (d == -1 / d1) {
+				tmp = wcsdup(L"-Infinity");
+				b = true;
+			}
+			else
+				tmp = new UCSChar[1 << 8];
+
+			if (tmp == NULL) {
+				throw OutOfMemException("allocate string failed in funcExpr's evalString()");
+			}
+			if (b)
+				return tmp;
+
+			if (d == (Long)d) {
+				swprintf(tmp, 64, L"%d", (Long)d);
+			}
+			else {
+				swprintf(tmp, 64, L"%f", d);
+			}
+			return tmp;
 		}
-		return tmp;
-	}
-			 else {
-				 double d1 = 0;
-				 double d = evalNumber(vn);
-				 bool b = false;
-				 if (d != d) {
-					 tmp = wcsdup(L"NaN");
-					 b = true;
-				 }
-				 else if (d == 1 / d1) {
-					 tmp = wcsdup(L"Infinity");
-					 b = true;
-				 }
-				 else if (d == -1 / d1) {
-					 tmp = wcsdup(L"-Infinity");
-					 b = true;
-				 }
-				 else
-					 tmp = new UCSChar[1 << 8];
-
-				 if (tmp == NULL) {
-					 throw OutOfMemException("allocate string failed in funcExpr's evalString()");
-				 }
-				 if (b)
-					 return tmp;
-
-				 if (d == (Long)d) {
-					 swprintf(tmp, 64, L"%d", (Long)d);
-				 }
-				 else {
-					 swprintf(tmp, 64, L"%f", d);
-				 }
-				 return tmp;
-			 }
 	}
 }
 
@@ -1587,6 +1586,7 @@ bool FuncExpr::checkArgumentCount() {
 	case FN_SYSTEM_PROPERTY: 	return argCount1 == 1 && al->e->isString();
 	case FN_ELEMENT_AVAILABLE: return argCount1 == 1 && al->e->isString();
 	case FN_FUNCTION_AVAILABLE: return argCount1 == 1 && al->e->isString();
+	default: break;
 	}
 	return false;
 }

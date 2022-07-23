@@ -36,6 +36,13 @@
         "tuple": "cpp",
         "typeinfo": "cpp",
         "fstream": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "bit": "cpp",
+        "cstring": "cpp",
+        "set": "cpp",
+        "memory": "cpp",
+        "filesystem": "cpp",
+        "chrono": "cpp",
+        "unordered_set": "cpp"
     }
 }

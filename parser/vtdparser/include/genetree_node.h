@@ -41,6 +41,7 @@ namespace compara {
             vector<GeneTreeNode*> get_descendants();
             vector<GeneTreeNode*> get_leaves();
             double get_confidence_score();
+            wstring get_taxonomy();
             bool is_leaf();
             bool is_root();
             vector<GeneTreeNode*> children;
@@ -52,6 +53,7 @@ namespace compara {
             void print(int depth = 0);
             void write_index(int label, ostream &out);
             void write_index(tuple<int, int>, ostream &out);
+            int get_height();
         
         private:
             void load_children();

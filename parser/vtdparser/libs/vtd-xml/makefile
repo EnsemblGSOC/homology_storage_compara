@@ -22,13 +22,15 @@ CFLAGS2 = -c -g
 LDFLAGS = -O3 -fomit-frame-pointer -fforce-addr -fexpensive-optimizations -lm 
 LDFLAGS2  = -ggdb
 
+SUPPRESS_WARNING = -Wno-unused-private-field
+
 all: $(DIR_OBJ)/$(VTD_PARSER_OBJ)
 
 $(DIR_OBJ)/%.o: $(DIR_SRC)/%.cpp
-	${CC} $(CFLAGS2) $(INC) -c $< -o $@
+	${CC} $(CFLAGS2) $(INC) $(SUPPRESS_WARNING) -c $< -o $@
 
 $(DIR_OBJ)/%.o: $(DIR_SRC)/%.cc
-	${CC} $(CFLAGS2) $(INC) -c $< -o $@
+	${CC} $(CFLAGS2) $(INC) $(SUPPRESS_WARNING) -c $< -o $@
 	
 #$(DIR_EXE)/$(EXE): $(DIR_OBJ)/$(VTD_PARSER_OBJ)
 #	$(CC) $(CFLAGS) $(DIR_OBJ)/$(VTD_PARSER_OBJ) -o $@

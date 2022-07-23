@@ -268,7 +268,7 @@ XMLModifier::~XMLModifier(){
 			if ((l & (~0x1fffffffffffffffLL)) == MASK_INSERT_BYTE
 				//|| (l & (~0x1fffffffffffffffLL)) == MASK_INSERT_SEGMENT_BYTE
 				)
-				delete((UByte *)fob->lower32At(i));
+				delete((UByte *)(intptr_t)fob->lower32At(i));
 			/*else if ((l & (~0x1fffffffffffffffLL)) == MASK_INSERT_FRAGMENT_NS){
 			//freeElementFragmentNs((ElementFragmentNs *)lower32At(xm->fob,i));
 			}*/
@@ -877,7 +877,7 @@ void XMLModifier::output(FILE *f){
 					if (k!=t-offset)
 						throw IOException("fwrite didn't complete");
 					t = fob->upper32At(i);/* the length */
-					k=fwrite((void *)fob->lower32At(i),sizeof(UByte),t,f);
+					k=fwrite((void *)(intptr_t)fob->lower32At(i),sizeof(UByte),t,f);
 					if (k!=t)
 						throw IOException("fwrite didn't complete");                      
 					offset= flb->lower32At(i);
@@ -886,7 +886,7 @@ void XMLModifier::output(FILE *f){
 					k=fwrite(md->XMLDoc+offset,sizeof(UByte),t-offset,f);
 					if (k!=t-offset)
 						throw IOException("fwrite didn't complete");
-					((ElementFragmentNs*)fob->lower32At(i))->writeFragmentToFile(f,encoding);
+					((ElementFragmentNs*)(intptr_t)fob->lower32At(i))->writeFragmentToFile(f,encoding);
 
 					//writeFragmentToFile((ElementFragmentNs*)lower32At(xm->fob,i),f);
 
@@ -900,7 +900,7 @@ void XMLModifier::output(FILE *f){
 						throw IOException("fwrite didn't complete");
 					fwrite(">",sizeof(UByte),1,f);
 					t = fob->upper32At(i);/* the length */
-					k=fwrite((void *)fob->lower32At(i),sizeof(UByte),t,f);
+					k=fwrite((void *)(intptr_t)fob->lower32At(i),sizeof(UByte),t,f);
 					if (k!=t)
 						throw IOException("fwrite didn't complete");   
 					fwrite("<",sizeof(UByte),1,f);
@@ -912,7 +912,7 @@ void XMLModifier::output(FILE *f){
 					if (k!=t-offset)
 						throw IOException("fwrite didn't complete");
 					fwrite(">",sizeof(UByte),1,f);
-					((ElementFragmentNs*)fob->lower32At(i))->writeFragmentToFile(f,encoding);
+					((ElementFragmentNs*)(intptr_t)fob->lower32At(i))->writeFragmentToFile(f,encoding);
 					fwrite("<",sizeof(UByte),1,f);
 					//writeFragmentToFile((ElementFragmentNs*)lower32At(xm->fob,i),f);
 					offset=flb->lower32At(i);
@@ -947,7 +947,7 @@ void XMLModifier::output(FILE *f){
 								throwException2(io_exception,"fwrite didn't complete");*/
 								/*os.write(ba,offset, flb.lower32At(i+1)-offset);*/
 								t = fob->upper32At(i2);   /* the length */
-								k=fwrite((void *)fob->lower32At(i2),sizeof(UByte),t,f);
+								k=fwrite((void *)(intptr_t)fob->lower32At(i2),sizeof(UByte),t,f);
 								if (k!=t)
 									throw IOException("fwrite didn't complete");  
 								offset = flb->lower32At(i1) + (flb->upper32At(i1) & 0x1fffffff);
@@ -956,21 +956,21 @@ void XMLModifier::output(FILE *f){
 							k=fwrite(xm->md->XMLDoc+offset,sizeof(UByte),t-offset,f);
 							if (k!=t-offset)
 							throwException2(io_exception,"fwrite didn't complete");*/
-							((ElementFragmentNs*)fob->lower32At(i2))->writeFragmentToFile(f,encoding);
+							((ElementFragmentNs*)(intptr_t)fob->lower32At(i2))->writeFragmentToFile(f,encoding);
 							offset = flb->lower32At(i1) + (flb->upper32At(i1) & 0x1fffffff);
 						}else if ((k & (~0x1fffffffffffffffLL)) == MASK_INSERT_BYTE_ENCLOSED
 							|| (l & (~0x1fffffffffffffffLL)) == MASK_INSERT_SEGMENT_BYTE_ENCLOSED){ 
 								/*os.write(ba,offset, flb.lower32At(i+1)-offset);*/
 								fwrite(">",sizeof(UByte),1,f);
 								t = fob->upper32At(i2);   /* the length */
-								k=fwrite((void *)fob->lower32At(i2),sizeof(UByte),t,f);
+								k=fwrite((void *)(intptr_t)fob->lower32At(i2),sizeof(UByte),t,f);
 								if (k!=t)
 									throw IOException("fwrite didn't complete");  
 								fwrite("<",sizeof(UByte),1,f);
 								offset = flb->lower32At(i1) + (flb->upper32At(i1) & 0x1fffffff);
 						}else if ((k & (~0x1fffffffffffffffL)) == MASK_INSERT_FRAGMENT_NS_ENCLOSED) {
 							fwrite(">",sizeof(UByte),1,f);
-							((ElementFragmentNs*)fob->lower32At(i2))->writeFragmentToFile(f,encoding);
+							((ElementFragmentNs*)(intptr_t)fob->lower32At(i2))->writeFragmentToFile(f,encoding);
 							fwrite("<",sizeof(UByte),1,f);
 							offset = flb->lower32At(i1) + (flb->upper32At(i1) & 0x1fffffff);
 						}
@@ -1017,7 +1017,7 @@ void XMLModifier::output(FILE *f){
 					if (k!=t-offset)
 						throw IOException("fwrite didn't complete");
 					t = fob->upper32At(i);/* the length */
-					k=fwrite((void *)(fob->lower32At(i)),sizeof(UByte),t,f);
+					k=fwrite((void *)(intptr_t)(fob->lower32At(i)),sizeof(UByte),t,f);
 					if (k!=t)
 						throw IOException("fwrite didn't complete");                      
 					offset= flb->lower32At(i)<<1;
@@ -1026,7 +1026,7 @@ void XMLModifier::output(FILE *f){
 					k=fwrite(md->XMLDoc+offset,sizeof(UByte),t-offset,f);
 					if (k!=t-offset)
 						throw IOException("fwrite didn't complete");
-					((ElementFragmentNs*)fob->lower32At(i))->writeFragmentToFile(f,encoding);
+					((ElementFragmentNs*)(intptr_t)fob->lower32At(i))->writeFragmentToFile(f,encoding);
 					//writeFragmentToFile((ElementFragmentNs*)lower32At(xm->fob,i),f);
 
 					offset= flb->lower32At(i);
@@ -1039,7 +1039,7 @@ void XMLModifier::output(FILE *f){
 						throw IOException("fwrite didn't complete");
 					t = fob->upper32At(i);/* the length */
 					fwrite(b1,sizeof(UByte),2,f);
-					k=fwrite((void *)fob->lower32At(i),sizeof(UByte),t,f);
+					k=fwrite((void *)(intptr_t)fob->lower32At(i),sizeof(UByte),t,f);
 					if (k!=t)
 						throw IOException("fwrite didn't complete"); 
 					fwrite(b2,sizeof(UByte),2,f);                     
@@ -1051,7 +1051,7 @@ void XMLModifier::output(FILE *f){
 					if (k!=t-offset)
 						throw IOException("fwrite didn't complete");
 					fwrite(b2,sizeof(UByte),2,f);
-					((ElementFragmentNs*)fob->lower32At(i))->writeFragmentToFile(f,encoding);
+					((ElementFragmentNs*)(intptr_t)fob->lower32At(i))->writeFragmentToFile(f,encoding);
 				}
 			} else {
 				    Long k = flb->longAt(i+1),temp;
@@ -1085,7 +1085,7 @@ void XMLModifier::output(FILE *f){
 							throwException2(io_exception,"fwrite didn't complete");*/
 							/*os.write(ba,offset, flb.lower32At(i+1)-offset);*/
 							t = fob->upper32At(i2);   /* the length */
-							k=fwrite((void *)fob->lower32At(i2),sizeof(UByte),t,f);
+							k=fwrite((void *)(intptr_t)fob->lower32At(i2),sizeof(UByte),t,f);
 							if (k!=t)
 								throw IOException("fwrite didn't complete");  
 							offset = (flb->lower32At(i1) + (flb->upper32At(i1) & 0x1fffffff));
@@ -1094,20 +1094,20 @@ void XMLModifier::output(FILE *f){
 						k=fwrite(xm->md->XMLDoc+offset,sizeof(UByte),t-offset,f);
 						if (k!=t-offset)
 						throwException2(io_exception,"fwrite didn't complete");*/
-						((ElementFragmentNs*)fob->lower32At(i2))->writeFragmentToFile(f,encoding);
+						((ElementFragmentNs*)(intptr_t)fob->lower32At(i2))->writeFragmentToFile(f,encoding);
 						offset = (flb->lower32At(i1) + (flb->upper32At(i1) & 0x1fffffff));
 					} else if ((k & (~0x1fffffffffffffffLL)) == MASK_INSERT_BYTE_ENCLOSED
 						|| (k & (~0x1fffffffffffffffLL)) == MASK_INSERT_SEGMENT_BYTE_ENCLOSED){
 							t = fob->upper32At(i2);   /* the length */
 							fwrite(b1,sizeof(UByte),2,f);
-							k=fwrite((void *)fob->lower32At(i2),sizeof(UByte),t,f);
+							k=fwrite((void *)(intptr_t)fob->lower32At(i2),sizeof(UByte),t,f);
 							fwrite(b2,sizeof(UByte),2,f);
 							if (k!=t)
 								throw IOException("fwrite didn't complete");  
 							offset = (flb->lower32At(i1) + (flb->upper32At(i1) & 0x1fffffff));
 					}else if ((k & (~0x1fffffffffffffffL)) == MASK_INSERT_FRAGMENT_NS_ENCLOSED) {
 						fwrite(b1,sizeof(UByte),2,f);
-						((ElementFragmentNs*)fob->lower32At(i2))->writeFragmentToFile(f,encoding);
+						((ElementFragmentNs*)(intptr_t)fob->lower32At(i2))->writeFragmentToFile(f,encoding);
 						fwrite(b2,sizeof(UByte),2,f);
 						offset = (flb->lower32At(i1) + (flb->upper32At(i1) & 0x1fffffff));
 					}
@@ -1202,7 +1202,7 @@ void XMLModifier::reset(){
 				if ( (l & (~0x1fffffffffffffffLL)) == MASK_INSERT_BYTE
 					//||(l & (~0x1fffffffffffffffLL)) == MASK_INSERT_SEGMENT_BYTE
 					)
-					free((void *)fob->lower32At(i));
+					free((void *)(intptr_t)fob->lower32At(i));
 				/*else if ( (l & (~0x1fffffffffffffffLL)) == MASK_INSERT_FRAGMENT_NS){
 					//freeElementFragmentNs((ElementFragmentNs *)lower32At(xm->fob,i));
 				}*/

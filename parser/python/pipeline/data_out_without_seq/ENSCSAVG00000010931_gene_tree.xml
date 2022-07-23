@@ -1,0 +1,264 @@
+<phy:Phyloxml xmlns:phy="http://www.phyloxml.org/1.10/phyloxml.xsd">
+    <phy:phylogeny type="gene tree" rooted="true">
+        <phy:clade branch_length_attr="0">
+            <phy:branch_length>0.000000e+00</phy:branch_length>
+            <phy:confidence type="duplication_confidence_score">1</phy:confidence>
+            <phy:taxonomy>
+                <phy:id>7718</phy:id>
+                <phy:scientific_name>Ciona</phy:scientific_name>
+                <phy:common_name>Ciona sea squirts</phy:common_name>
+            </phy:taxonomy>
+            <phy:events>
+                <phy:type>speciation_or_duplication</phy:type>
+                <phy:duplications>1</phy:duplications>
+            </phy:events>
+            <phy:clade branch_length_attr="0.0308425">
+                <phy:branch_length>0.000000e+00</phy:branch_length>
+                <phy:confidence type="bootstrap">42</phy:confidence>
+                <phy:confidence type="duplication_confidence_score">0.5</phy:confidence>
+                <phy:taxonomy>
+                    <phy:id>7718</phy:id>
+                    <phy:scientific_name>Ciona</phy:scientific_name>
+                    <phy:common_name>Ciona sea squirts</phy:common_name>
+                </phy:taxonomy>
+                <phy:events>
+                    <phy:type>speciation_or_duplication</phy:type>
+                    <phy:duplications>1</phy:duplications>
+                </phy:events>
+                <phy:clade branch_length_attr="0.137805">
+                    <phy:branch_length>0.000000e+00</phy:branch_length>
+                    <phy:confidence type="bootstrap">44</phy:confidence>
+                    <phy:confidence type="duplication_confidence_score">1</phy:confidence>
+                    <phy:taxonomy>
+                        <phy:id>7719</phy:id>
+                        <phy:scientific_name>Ciona intestinalis</phy:scientific_name>
+                        <phy:common_name>C.intestinalis</phy:common_name>
+                    </phy:taxonomy>
+                    <phy:events>
+                        <phy:type>speciation_or_duplication</phy:type>
+                        <phy:duplications>1</phy:duplications>
+                    </phy:events>
+                    <phy:clade branch_length_attr="0.624562">
+                        <phy:name>ENSCING00000002681</phy:name>
+                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                        <phy:taxonomy>
+                            <phy:id>7719</phy:id>
+                            <phy:scientific_name>Ciona intestinalis</phy:scientific_name>
+                            <phy:common_name>C.intestinalis</phy:common_name>
+                        </phy:taxonomy>
+                        <phy:sequence>
+                            <phy:accession source="Ensembl">ENSCINP00000005465</phy:accession>
+                            <phy:location>HT000096.1:48498-50149</phy:location>
+                        </phy:sequence>
+                        <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">ciona_intestinalis</phy:property>
+                    </phy:clade>
+                    <phy:clade branch_length_attr="1.38769">
+                        <phy:name>ENSCING00000016195</phy:name>
+                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                        <phy:taxonomy>
+                            <phy:id>7719</phy:id>
+                            <phy:scientific_name>Ciona intestinalis</phy:scientific_name>
+                            <phy:common_name>C.intestinalis</phy:common_name>
+                        </phy:taxonomy>
+                        <phy:sequence>
+                            <phy:accession source="Ensembl">ENSCINP00000020445</phy:accession>
+                            <phy:location>6:2268686-2272541</phy:location>
+                        </phy:sequence>
+                        <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">ciona_intestinalis</phy:property>
+                    </phy:clade>
+                </phy:clade>
+                <phy:clade branch_length_attr="0.710831">
+                    <phy:branch_length>0.000000e+00</phy:branch_length>
+                    <phy:confidence type="bootstrap">80</phy:confidence>
+                    <phy:taxonomy>
+                        <phy:id>7718</phy:id>
+                        <phy:scientific_name>Ciona</phy:scientific_name>
+                        <phy:common_name>Ciona sea squirts</phy:common_name>
+                    </phy:taxonomy>
+                    <phy:events>
+                        <phy:speciations>1</phy:speciations>
+                    </phy:events>
+                    <phy:clade branch_length_attr="0.364821">
+                        <phy:name>ENSCING00000010987</phy:name>
+                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                        <phy:taxonomy>
+                            <phy:id>7719</phy:id>
+                            <phy:scientific_name>Ciona intestinalis</phy:scientific_name>
+                            <phy:common_name>C.intestinalis</phy:common_name>
+                        </phy:taxonomy>
+                        <phy:sequence>
+                            <phy:accession source="Ensembl">ENSCINP00000021573</phy:accession>
+                            <phy:location>HT000224.1:4255-6599</phy:location>
+                        </phy:sequence>
+                        <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">ciona_intestinalis</phy:property>
+                    </phy:clade>
+                    <phy:clade branch_length_attr="0.439732">
+                        <phy:name>ENSCSAVG00000010931</phy:name>
+                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                        <phy:taxonomy>
+                            <phy:id>51511</phy:id>
+                            <phy:scientific_name>Ciona savignyi</phy:scientific_name>
+                            <phy:common_name>C.savignyi</phy:common_name>
+                        </phy:taxonomy>
+                        <phy:sequence>
+                            <phy:accession source="Ensembl">ENSCSAVP00000018601</phy:accession>
+                            <phy:location>reftig_48:2762976-2765420</phy:location>
+                        </phy:sequence>
+                        <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">ciona_savignyi</phy:property>
+                    </phy:clade>
+                </phy:clade>
+            </phy:clade>
+            <phy:clade branch_length_attr="0.399245">
+                <phy:branch_length>0.000000e+00</phy:branch_length>
+                <phy:confidence type="bootstrap">49</phy:confidence>
+                <phy:confidence type="duplication_confidence_score">1</phy:confidence>
+                <phy:taxonomy>
+                    <phy:id>7718</phy:id>
+                    <phy:scientific_name>Ciona</phy:scientific_name>
+                    <phy:common_name>Ciona sea squirts</phy:common_name>
+                </phy:taxonomy>
+                <phy:events>
+                    <phy:type>speciation_or_duplication</phy:type>
+                    <phy:duplications>1</phy:duplications>
+                </phy:events>
+                <phy:clade branch_length_attr="0.189257">
+                    <phy:branch_length>0.000000e+00</phy:branch_length>
+                    <phy:confidence type="bootstrap">20</phy:confidence>
+                    <phy:confidence type="duplication_confidence_score">0.5</phy:confidence>
+                    <phy:taxonomy>
+                        <phy:id>7718</phy:id>
+                        <phy:scientific_name>Ciona</phy:scientific_name>
+                        <phy:common_name>Ciona sea squirts</phy:common_name>
+                    </phy:taxonomy>
+                    <phy:events>
+                        <phy:type>speciation_or_duplication</phy:type>
+                        <phy:duplications>1</phy:duplications>
+                    </phy:events>
+                    <phy:clade branch_length_attr="0.161516">
+                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                        <phy:confidence type="bootstrap">29</phy:confidence>
+                        <phy:confidence type="duplication_confidence_score">0.5</phy:confidence>
+                        <phy:taxonomy>
+                            <phy:id>7718</phy:id>
+                            <phy:scientific_name>Ciona</phy:scientific_name>
+                            <phy:common_name>Ciona sea squirts</phy:common_name>
+                        </phy:taxonomy>
+                        <phy:events>
+                            <phy:type>speciation_or_duplication</phy:type>
+                            <phy:duplications>1</phy:duplications>
+                        </phy:events>
+                        <phy:clade branch_length_attr="0.317136">
+                            <phy:branch_length>0.000000e+00</phy:branch_length>
+                            <phy:confidence type="bootstrap">75</phy:confidence>
+                            <phy:taxonomy>
+                                <phy:id>7718</phy:id>
+                                <phy:scientific_name>Ciona</phy:scientific_name>
+                                <phy:common_name>Ciona sea squirts</phy:common_name>
+                            </phy:taxonomy>
+                            <phy:events>
+                                <phy:speciations>1</phy:speciations>
+                            </phy:events>
+                            <phy:clade branch_length_attr="0.13061">
+                                <phy:name>ENSCSAVG00000006167</phy:name>
+                                <phy:branch_length>0.000000e+00</phy:branch_length>
+                                <phy:taxonomy>
+                                    <phy:id>51511</phy:id>
+                                    <phy:scientific_name>Ciona savignyi</phy:scientific_name>
+                                    <phy:common_name>C.savignyi</phy:common_name>
+                                </phy:taxonomy>
+                                <phy:sequence>
+                                    <phy:accession source="Ensembl">ENSCSAVP00000010471</phy:accession>
+                                    <phy:location>reftig_60:430906-433079</phy:location>
+                                </phy:sequence>
+                                <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">ciona_savignyi</phy:property>
+                            </phy:clade>
+                            <phy:clade branch_length_attr="0.25117">
+                                <phy:name>ENSCING00000012110</phy:name>
+                                <phy:branch_length>0.000000e+00</phy:branch_length>
+                                <phy:taxonomy>
+                                    <phy:id>7719</phy:id>
+                                    <phy:scientific_name>Ciona intestinalis</phy:scientific_name>
+                                    <phy:common_name>C.intestinalis</phy:common_name>
+                                </phy:taxonomy>
+                                <phy:sequence>
+                                    <phy:accession source="Ensembl">ENSCINP00000022801</phy:accession>
+                                    <phy:location>HT001131.1:2256-3836</phy:location>
+                                </phy:sequence>
+                                <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">ciona_intestinalis</phy:property>
+                            </phy:clade>
+                        </phy:clade>
+                        <phy:clade branch_length_attr="0.806315">
+                            <phy:name>ENSCSAVG00000009942</phy:name>
+                            <phy:branch_length>0.000000e+00</phy:branch_length>
+                            <phy:taxonomy>
+                                <phy:id>51511</phy:id>
+                                <phy:scientific_name>Ciona savignyi</phy:scientific_name>
+                                <phy:common_name>C.savignyi</phy:common_name>
+                            </phy:taxonomy>
+                            <phy:sequence>
+                                <phy:accession source="Ensembl">ENSCSAVP00000016909</phy:accession>
+                                <phy:location>reftig_48:1268277-1271400</phy:location>
+                            </phy:sequence>
+                            <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">ciona_savignyi</phy:property>
+                        </phy:clade>
+                    </phy:clade>
+                    <phy:clade branch_length_attr="0.52657">
+                        <phy:name>ENSCSAVG00000001184</phy:name>
+                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                        <phy:taxonomy>
+                            <phy:id>51511</phy:id>
+                            <phy:scientific_name>Ciona savignyi</phy:scientific_name>
+                            <phy:common_name>C.savignyi</phy:common_name>
+                        </phy:taxonomy>
+                        <phy:sequence>
+                            <phy:accession source="Ensembl">ENSCSAVP00000002025</phy:accession>
+                            <phy:location>reftig_7:286425-288760</phy:location>
+                        </phy:sequence>
+                        <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">ciona_savignyi</phy:property>
+                    </phy:clade>
+                </phy:clade>
+                <phy:clade branch_length_attr="0.35594">
+                    <phy:branch_length>0.000000e+00</phy:branch_length>
+                    <phy:confidence type="bootstrap">77</phy:confidence>
+                    <phy:taxonomy>
+                        <phy:id>7718</phy:id>
+                        <phy:scientific_name>Ciona</phy:scientific_name>
+                        <phy:common_name>Ciona sea squirts</phy:common_name>
+                    </phy:taxonomy>
+                    <phy:events>
+                        <phy:speciations>1</phy:speciations>
+                    </phy:events>
+                    <phy:clade branch_length_attr="0.306497">
+                        <phy:name>ENSCSAVG00000010929</phy:name>
+                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                        <phy:taxonomy>
+                            <phy:id>51511</phy:id>
+                            <phy:scientific_name>Ciona savignyi</phy:scientific_name>
+                            <phy:common_name>C.savignyi</phy:common_name>
+                        </phy:taxonomy>
+                        <phy:sequence>
+                            <phy:accession source="Ensembl">ENSCSAVP00000018599</phy:accession>
+                            <phy:location>reftig_48:2750452-2751934</phy:location>
+                        </phy:sequence>
+                        <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">ciona_savignyi</phy:property>
+                    </phy:clade>
+                    <phy:clade branch_length_attr="0.455948">
+                        <phy:name>ENSCING00000017269</phy:name>
+                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                        <phy:taxonomy>
+                            <phy:id>7719</phy:id>
+                            <phy:scientific_name>Ciona intestinalis</phy:scientific_name>
+                            <phy:common_name>C.intestinalis</phy:common_name>
+                        </phy:taxonomy>
+                        <phy:sequence>
+                            <phy:accession source="Ensembl">ENSCINP00000029351</phy:accession>
+                            <phy:location>HT000224.1:166-1354</phy:location>
+                        </phy:sequence>
+                        <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">ciona_intestinalis</phy:property>
+                    </phy:clade>
+                </phy:clade>
+            </phy:clade>
+        </phy:clade>
+        <phy:property datatype="xsd:string" ref="Compara:gene_tree_stable_id" applies_to="phylogeny">ENSGT00730000111827</phy:property>
+    </phy:phylogeny>
+</phy:Phyloxml>

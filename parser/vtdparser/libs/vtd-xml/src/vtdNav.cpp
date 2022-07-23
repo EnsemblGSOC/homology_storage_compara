@@ -4374,13 +4374,20 @@ ElementFragmentNs* VTDNav::getElementFragmentNs() {
 }
 
 void VTDNav::dumpState() {
-	printf("l1 index ==>%d \n" + l1index);
-	printf("l2 index ==>%d \n", l2index);
-	printf("l2 lower ==>%d \n", l2lower);
-	printf("l2 upper ==>%d \n", l2upper);
-	printf("l3 index ==>%d \n", l3index);
-	printf("l3 lower ==>%d \n", l3lower);
-	printf("l3 upper ==>%d \n", l3upper);
+	std::cout << "l1 index ==>" << l1index << std::endl;
+	std::cout << "l2 index ==>" << l2index << std::endl;
+	std::cout << "l3 index ==>" << l2lower << std::endl;
+	std::cout << "l4 index ==>" << l2upper << std::endl;
+	std::cout << "l5 index ==>" << l3index << std::endl;
+	std::cout << "l6 index ==>" << l3lower << std::endl;
+	std::cout << "l7 index ==>" << l3upper << std::endl;
+	// printf("l1 index ==>%d \n" + l1index);
+	// printf("l2 index ==>%d \n", l2index);
+	// printf("l2 lower ==>%d \n", l2lower);
+	// printf("l2 upper ==>%d \n", l2upper);
+	// printf("l3 index ==>%d \n", l3index);
+	// printf("l3 lower ==>%d \n", l3lower);
+	// printf("l3 upper ==>%d \n", l3upper);
 }
 
 void VTDNav::fillXPathString(FastIntBuffer* indexBuffer,

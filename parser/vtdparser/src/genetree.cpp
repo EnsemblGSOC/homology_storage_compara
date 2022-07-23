@@ -1,5 +1,3 @@
-#pragma once
-
 #include "genetree.h"
 #include "stdio.h"
 #include "stdlib.h"
@@ -10,6 +8,8 @@
 #include "wchar.h"
 #include "sys/stat.h"
 #include <set>
+#include <unordered_set>
+#include <unordered_map>
 
 using namespace compara;
 using namespace vtdxml;
@@ -23,7 +23,12 @@ GeneTree::GeneTree(const char* filename) {
 GeneTree::~GeneTree() {
     // TODO: destructor is buggy
     //delete this->vn;
-    //delete this->root;
+    if (this->vn != NULL) {
+        delete this->vn;
+    }
+    if (this->root != NULL) {
+        delete this->root;
+    }
 }
 
 void GeneTree::parse() {
@@ -145,7 +150,7 @@ void GeneTree::write_index(const char *filename) {
     // Section 1: leaves and their labels
     // number of genes (leaves)
     fout.write((char*)&gene_num, sizeof(int));
-    map<int, int> leaf_labels;
+    unordered_map<int, int> leaf_labels;
     for (int i = 0; i < genes.size(); i++) {
         genes[i]->write_index(i, fout);
         leaf_labels.insert(pair<int, int>(genes[i]->bm->hashCode(), i));
@@ -161,17 +166,8 @@ void GeneTree::write_index(const char *filename) {
         GeneTreeNode *node = descendants[i];
         if (!node->is_leaf()) {
             if (node->node_type == GeneTreeNodeType::DUPLICATION) {
-                bool has_leaf = false;
-                for (int j = 0; j < node->children.size(); j++) {
-                    if (node->children[j]->is_leaf()) {
-                        has_leaf = true;
-                        break;
-                    }
-                }
-                if (true) {
-                    duplication_nodes.push_back(node);
-                    duplication_nodes_num++;
-                }
+                duplication_nodes.push_back(node);
+                duplication_nodes_num++;
             }
             vector<GeneTreeNode*> leaves = node->get_leaves();
             int min_label = MAXINT;
@@ -224,7 +220,6 @@ void GeneTree::load_index(const char *filename) {
 
 vector<OrthologPair> GeneTree::get_orthologs(string query_gene) {
     vector<OrthologPair> orthologs;
-    vector<string> one_to_many_genes;
     if (this->index_loaded) {
         IndexedGeneTreeNode idx_gene_node = this->gti->leaves.at(query_gene);
         int node_hash = idx_gene_node.node_hash;
@@ -239,11 +234,11 @@ vector<OrthologPair> GeneTree::get_orthologs(string query_gene) {
             IndexedGeneTreeNode ancestor_node = this->gti->internal_nodes.at(ancestor_hash);
             ancestors_idx.push_back(ancestor_node);
         }
-        vector<int> visited;
+        unordered_set<int> visited;
         vector<int> one_to_one_labels;
         vector<int> one_to_many_labels;
         vector<int> many_to_many_labels;
-        set<int> many_to_x_candidates;
+        unordered_set<int> many_to_x_candidates;
         int duplication_on_path = 0;
         for (int j = 0; j < ancestors_idx.size(); j++) {
             int min_label = get<0>(ancestors_idx[j].internal_label);
@@ -265,7 +260,7 @@ vector<OrthologPair> GeneTree::get_orthologs(string query_gene) {
                 for (int k = min_label; k <= max_label; k++) {
                     if (ancestors_idx[j].node_type == SPECIATION) {
                             // if the internal node is a speciation node, add all labels in the range that are not visited
-                        if (k != idx_gene_node.label && std::find(visited.begin(), visited.end(), k) == visited.end()) {
+                        if (k != idx_gene_node.label && visited.find(k) == visited.end()) {
                             if (many_to_x_candidates.find(k) != many_to_x_candidates.end()) {
                                 if (duplication_on_path > 0) {
                                     many_to_many_labels.push_back(k);
@@ -282,7 +277,7 @@ vector<OrthologPair> GeneTree::get_orthologs(string query_gene) {
                             }
                         }
                     }
-                    visited.push_back(k);
+                    visited.insert(k);
                 }
             }
         }
@@ -321,4 +316,58 @@ vector<OrthologPair> GeneTree::get_orthologs(string query_gene) {
         }
     }
     return orthologs;
+}
+
+vector<ParalogPair> GeneTree::get_paralogs(string query_gene) {
+    vector<ParalogPair> paralogs;
+    if (this->index_loaded) {
+        IndexedGeneTreeNode idx_gene_node = this->gti->leaves.at(query_gene);
+        int node_hash = idx_gene_node.node_hash;
+        GeneTreeNode *gene_node = this->root->leaves_map.at(node_hash);
+        // gene tree nodes store more information so we use pointers
+        // to prevent copying of the gene trees
+        vector<GeneTreeNode*> ancestors = gene_node->get_ancestors();
+        vector<IndexedGeneTreeNode> ancestors_idx;
+        for (int i = 0; i < ancestors.size(); i++) {
+            GeneTreeNode *ancestor = ancestors[i];
+            int ancestor_hash = ancestor->bm->hashCode();
+            IndexedGeneTreeNode ancestor_node = this->gti->internal_nodes.at(ancestor_hash);
+            ancestors_idx.push_back(ancestor_node);
+        }
+        vector<int> visited;
+        vector<int> paralog_labels;
+        for (int j = 0; j < ancestors_idx.size(); j++) {
+            int min_label = get<0>(ancestors_idx[j].internal_label);
+            int max_label = get<1>(ancestors_idx[j].internal_label);
+            if (idx_gene_node.label >= min_label && idx_gene_node.label <= max_label) {
+                // label is within the range
+                for (int k = min_label; k <= max_label; k++) {
+                    if (ancestors_idx[j].node_type == DUPLICATION) {
+                            // if the internal node is a speciation node, add all labels in the range that are not visited
+                        if (k != idx_gene_node.label && std::find(visited.begin(), visited.end(), k) == visited.end()) {
+                            paralog_labels.push_back(k);
+                        }
+                    }
+                    visited.push_back(k);
+                }
+            }
+        }
+        wstring tax1 = gene_node->get_taxonomy();
+        for (int i = 0; i < paralog_labels.size(); i++) {
+            int label = paralog_labels[i];
+            IndexedGeneTreeNode idx_node = this->gti->leaf_labels.at(label);
+            GeneTreeNode *node = this->root->leaves_map.at(idx_node.node_hash);
+            wstring tax2 = node->get_taxonomy();
+            if (tax1 == tax2) {
+                ParalogPair paralog_pair = {
+                    .gene_name = query_gene,
+                    .taxon = string(tax1.begin(), tax1.end()),
+                    .paralog_name = idx_node.gene_name,
+                    .type = WITHIN_SPECIES
+                };
+                paralogs.push_back(paralog_pair);
+            }
+        }
+    }
+    return paralogs;
 }

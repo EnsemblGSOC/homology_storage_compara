@@ -36,6 +36,7 @@ void GeneTreeIndex::load_leaves(istream &in) {
             IndexedGeneTreeNode node = IndexedGeneTreeNode(node_hash, label, gene_name_string);
             this->leaves.insert(pair<string, IndexedGeneTreeNode>(gene_name_string, node));
             this->leaf_labels.insert(pair<int, IndexedGeneTreeNode>(label, node));
+            delete[] gene_name;
         }
         gene_num--;
     }
