@@ -1,0 +1,255 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Welcome to Overleaf --- just edit your LaTeX on the left,
+% and we'll compile it for you on the right. If you open the
+% 'Share' menu, you can invite other users to edit at the same
+% time. See www.overleaf.com/learn for more info. Enjoy!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{beamer}
+
+\usetheme{Madrid}
+\usecolortheme{lily}
+\addtobeamertemplate{footnote}{}{\vspace{2ex}}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{clrscode3e}
+\usepackage{multicol}
+\usepackage{tikz}
+
+\definecolor{codegreen}{HTML}{237e02}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{HTML}{8F4673}
+\definecolor{codebrown}{HTML}{ce9178}
+\definecolor{codecyan}{HTML}{098658}
+\lstdefinestyle{pythonstyle}{
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{codepurple},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codebrown},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+\def\And{\text{ AND }}
+\def\Or{\text{ OR }}
+\def\Xor{\text{ XOR }}
+\def\Implies{\text{ IMPLIES }}
+\def\Iff{\text{ IFF }}
+\def\Not{\text{NOT}}
+\def\R{\mathbb{R}}
+\def\N{\mathbb{N}}
+\lstset{style=pythonstyle}
+
+\setlength{\parskip}{1em}
+
+%Information to be included in the title page:
+\title{Format for Efficient Storage of Homology Relations}
+\subtitle{Week 8 Report: Efficient Implementation in C++}
+\author{Kevin Gao}
+\institute{University of Toronto}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\AtBeginSection[]
+{
+    \begin{frame}
+    \frametitle{Outlines}
+    \tableofcontents[currentsection]
+    \end{frame}
+}
+
+\section{Querying the Index}
+
+\begin{frame}{How to Query the Interval Index}
+    Given two vertices and their corresponding labels, we can determine whether a vertex is an ancestor of another vertex via a range query of interval containment of their labels. A leaf label of value $x$ can be thought as the interval $[x,x]$.
+
+    Given two leaves labeled $x$ and $y$, we find the LCA by finding the shortest interval containing both $x$ and $y$. This gives us the \textit{lowest} common ancestor because the size of the interval is non-decreasing as we traverse from a leaf to root.
+
+    Given a gene represented as a leaf labeled $x$, in order to find all orthologs of the gene, we find all intervals containing $x$ that are labels to a speciation node. We also remove the intervals (internal nodes) that are visited. After this, suppose we have non-overlapping intervals $S = \{[a,b],\; [c,d],\ldots\}$. Then, clearly, all the leaves with integer labels from $a$ to $b$ and so on are orthologs of the leaf labeled $x$.
+\end{frame}
+
+\begin{frame}{Key Observations}
+    \textit{Observation 1}: Let $x$ be a leaf in a tree. There is a unique path of length $\id{depth}(x)$ from $x$ to the root.
+
+    \textit{Observation 2}: Let $x$ be a leaf in a tree and let $P = x \to \cdots \to r$ be the unique path from $x$ to the root $r$. Every internal node on this path $P$ including $r$ is labeled with an interval that contains $x$.
+
+    \textit{Observation 3}: There are exactly $\id{depth}(x)$ internal nodes labeled with an interval that contains $x$.
+
+    \textit{Observation 4}: Let $a$ be an internal node, and let $b$ be the immediate parent of $a$. Then, the interval represented by $a$ is contained in the interval represented by $b$.
+\end{frame}
+
+\begin{frame}{More on Query}
+    Consider the example tree. Speciation nodes are colored {\color{blue}blue}, and duplication nodes are colored {\color{red}red}.
+
+    \begin{tikzpicture}
+        [
+            level 1/.style = {sibling distance = 4cm},
+            level 2/.style = {sibling distance = 2.5cm}
+        ]
+         
+        \node {\textcolor{blue}{(0,4)}}
+            child {
+                node {\textcolor{red}{(0,1)}}
+                child {node {0}}
+                child {node {1}}
+            } 
+            child {
+                node {\textcolor{red}{(2,4)}}
+                child {
+                    node {\textcolor{blue}{(2,3)}}
+                    child {node {2}}
+                    child {node {3}}
+                }
+                child {node {4}}
+            };
+    \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{More on Query}
+    Suppose we want to find all orthologs of the gene labeled `2'. We consider all internal nodes on the unique leaf-to-root path originating from `2'. The intervals are: (2,3), (2,4), (0,4). We maintain two arrays: $\id{orthologs}$ and $\id{visited}$.
+
+    $\id{orthologs}$ stores the orthologs discovered. $\id{visited}$ stores the intervals that are already visited on the path.
+
+    \begin{itemize}
+        \item \textcolor{blue}{(2, 3)}: speciation node, $\id{visited} = []$, $\id{orthologs} = []$
+        \item \textcolor{red}{(2, 4)}: duplication node, \textbf{skip}, $\id{visited} = [(2,3)]$, $\id{orthologs} = [2,3]$
+        \item \textcolor{blue}{(0, 4)}: speciation node, $[(0,1)]$ after excluding the visited intervals, $\id{visited} = [(2,3),\, (2,4)]$, $\id{orthologs} = [2,3]$
+        \item Result: $\id{visited} = [(2,3),\,(2,4),\,(0,1)]$, $\id{orthologs} = [2,3,0,1]$
+    \end{itemize}
+\end{frame}
+
+\section{Index Format}
+
+\begin{frame}{Binary Index Format}
+    We store the index in a binary format. The whole index is divided into three blocks:
+    \begin{itemize}
+        \item Block 1: Leaf labels
+        \item Block 2: Internal labels
+        \item Block 3: Duplication nodes
+    \end{itemize}
+    Now, we discuss the content of each block in more details.
+\end{frame}
+
+\begin{frame}{Block 1: Leaf Labels}
+    Block 1 records the leaves and their labels. The first 4 bytes indicates the number $n$ of leaves stored in this block, followed by $n$ entries of variable length.
+
+    Each entry contains the following data:
+    \begin{itemize}
+        \item node type (4 bytes)
+        \item integer label (4 bytes)
+        \item gene name length (4 bytes)
+        \item gene name (variable length, as specified by the previous field)
+        \item hash (4 bytes): generated based on the absolute position of the node in the original XML document
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Block 2: Internal Node Labels}
+    Block 2 records the internal nodes and its labels. The first 4 bytes indicates the number $m$ of internal nodes stored in this block, followed by $m$ entries of 16 bytes.
+
+    Each entry contains the following data:
+    \begin{itemize}
+        \item node type (4 bytes): duplication/speciation/ambiguous
+        \item integer label, min (4 bytes)
+        \item integer label, max (4 bytes)
+        \item hash (4 bytes): generated based on the absolute position of the node in the original XML document
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Block 3: Duplication Nodes}
+    Block 3 records a subset of internal nodes that are duplication nodes. The first 4 bytes indicates the number $d$ of internal nodes stored in this block, followed by $d$ entries of 16 bytes.
+
+    Each entry contains the following data:
+    \begin{itemize}
+        \item node type (4 bytes): duplication/speciation/ambiguous
+        \item integer label, min (4 bytes)
+        \item integer label, max (4 bytes)
+        \item hash (4 bytes): generated based on the absolute position of the node in the original XML document
+    \end{itemize}
+\end{frame}
+
+\section{Key Data Structures Used}
+
+\begin{frame}{Three Classes}
+    There are three main classes:
+    \begin{itemize}
+        \item GeneTreeNode: Result of parsing the original XML file; stores structural information of a gene tree node; contains \texttt{children}, \texttt{parent}, and \texttt{get\_ancestors}.
+        \item IndexedGeneTreeNode: Result of parsing index file or manual creation when generating the index; no structural information; contains name of the node, type of the node, label, and the hash value of its original position in the XML file.
+        \item GeneTree: Handles the I/Os with the gene tree and all underlying data structures; contains methods and fields like \texttt{get\_all\_orthologs}, \texttt{root}, \texttt{write\_index}, etc.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Four Hashtables}
+    Three hash tables are constructed during parsing: \texttt{leaves\_map}, \texttt{leaves}, \text{leaf\_labels}, \text{internal\_nodes}.
+    \begin{itemize}
+        \item \texttt{leaves\_map}: hash (int) $\to$ GeneTreeNode object
+        \item \texttt{leaves}: gene name (string) $\to$ IndexedGeneTreeNode object
+        \item \texttt{leaf\_labels}: leaf label (int) $\to$ IndexedGeneTreeNode object
+        \item \texttt{internal\_nodes}: hash (int) $\to$ IndexedGeneTreeNode object
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Queries}
+    Given a string gene name, find the corresponding IndexedGeneTreeNode object using \texttt{leaves}. 
+    
+    Extract the leaf label (int) and hash value from the IndexedGeneTreeNode object. Use the hash value to find the corresponding GeneTreeNode object through \texttt{leaves\_map}. 
+    
+    Once we have the GeneTreeNode object, we can find all the ancestors (GeneTreeNode object). Hash the ancestors, and use \texttt{internal\_nodes} to find the corresponding IndexedGeneTreeNode object containing internal labels. The labels are already sorted in increasing order by the range (because they are converted from a leaf-to-root path, recall Observation 4).
+\end{frame}
+
+\begin{frame}{Queries cont'd}
+    Perform the algorithm described earlier. After this, we will have a list of integer leaf labels. Use either \texttt{leaves\_map} or \texttt{leaves} to convert the labels back to string gene names.
+\end{frame}
+
+% \begin{frame}{Interval Tree}
+%     \textbf{Interval tree} (centered interval tree) is a tree data structure for storing intervals and efficient interval queries. As we will discuss later, interval tree takes $O(n \log n)$ time to construct, and query (point query or interval query) takes $O(\log n)$ using an algorithm resembling binary search. $n$ is the number of intervals, which in the context of our problem is the number of internal nodes in the original tree.
+
+%     Given a set of intervals $S$, the interval tree for $S$ stores the median $x_{mid}$, along with the set of intervals overlapping with $x_{mid}$ at the root. The left subtree of the root is an interval tree for all intervals whose right endpoint is less than $x_{mid}$. The right subtree is an interval tree for all intervals whose left endpoint is larger than $x_{mid}$.
+% \end{frame}
+
+\begin{frame}{One Interval Tree}
+    An interval tree is constructed when parsing the index file. It stores the labels of all duplication nodes as intervals.
+    
+    \textbf{Interval tree} (centered interval tree) is a tree data structure for storing intervals and efficient interval queries. As we will discuss later, interval tree takes $O(n \log n)$ time to construct, and query (point query or interval query) takes $O(\log n)$ using an algorithm resembling binary search. $n$ is the number of intervals, which in the context of our problem is the number of internal nodes in the original tree.
+
+    We need this data structure to determine whether a pair of orthologs is one-to-one, one-to-many, or many-to-many.
+\end{frame}
+
+\begin{frame}{Interval Tree for Many-to-X Relationship}
+    Let $x$ be a leaf that we are querying for all the orthologs. Suppose we are currently considering an ancestor $y$ of $x$ which is a \textbf{speciation} node. Further, suppose that we have not encountered any duplication nodes on the path from $x$ to root. Then, all descendants of $y$ that are not visited are orthologs of $x$. 
+    
+    We can query the interval tree of duplication nodes and which descendants of $y$ are duplication nodes. Let $D$ be the set of labels of descendants of of $y$ that are duplication nodes. Then, for each $d = (d_1,d_2) \in D$, the unvisited leaves with label $d_1,\ldots,d_2$ are one-to-many orthologs of $x$.
+\end{frame}
+
+\begin{frame}{Next Week!}
+    \begin{itemize}
+        \item Benchmark!
+        \item Fix minor bugs and improve performance and stability
+        \item Derive a bound on time and space complexity of this implementation (might take longer)
+    \end{itemize}
+\end{frame}
+
+\section{References}
+
+\begin{frame}
+    \scriptsize
+
+    Zhang, J., Lovette, K.: XimpleWare W3C Position Paper. In: W3C Workshop on Binary Interchange of XML Information Item Sets (2003)
+
+    Haim Kaplan, Tova Milo, and Ronen Shabo. 2002. A comparison of labeling schemes for ancestor queries. In Proceedings of the thirteenth annual ACM-SIAM symposium on Discrete algorithms (SODA '02). Society for Industrial and Applied Mathematics, USA, 954–963.
+
+\end{frame}
+
+\end{document}

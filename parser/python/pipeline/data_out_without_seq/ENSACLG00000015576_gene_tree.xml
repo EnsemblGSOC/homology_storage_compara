@@ -1,0 +1,678 @@
+<phy:Phyloxml xmlns:phy="http://www.phyloxml.org/1.10/phyloxml.xsd">
+    <phy:phylogeny type="gene tree" rooted="true">
+        <phy:clade branch_length_attr="0">
+            <phy:branch_length>0.000000e+00</phy:branch_length>
+            <phy:taxonomy>
+                <phy:id>1489872</phy:id>
+                <phy:scientific_name>Percomorphaceae</phy:scientific_name>
+                <phy:common_name>Teleost fishes</phy:common_name>
+            </phy:taxonomy>
+            <phy:events>
+                <phy:speciations>1</phy:speciations>
+            </phy:events>
+            <phy:clade branch_length_attr="0">
+                <phy:branch_length>0.000000e+00</phy:branch_length>
+                <phy:confidence type="duplication_confidence_score">0.3333</phy:confidence>
+                <phy:taxonomy>
+                    <phy:id>318546</phy:id>
+                    <phy:scientific_name>Pseudocrenilabrinae</phy:scientific_name>
+                </phy:taxonomy>
+                <phy:events>
+                    <phy:type>speciation_or_duplication</phy:type>
+                    <phy:duplications>1</phy:duplications>
+                </phy:events>
+                <phy:clade branch_length_attr="0">
+                    <phy:branch_length>0.000000e+00</phy:branch_length>
+                    <phy:confidence type="bootstrap">1</phy:confidence>
+                    <phy:taxonomy>
+                        <phy:id>318546</phy:id>
+                        <phy:scientific_name>Pseudocrenilabrinae</phy:scientific_name>
+                    </phy:taxonomy>
+                    <phy:events>
+                        <phy:speciations>1</phy:speciations>
+                    </phy:events>
+                    <phy:clade branch_length_attr="0.066285">
+                        <phy:name>ENSONIG00000039241</phy:name>
+                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                        <phy:taxonomy>
+                            <phy:id>8128</phy:id>
+                            <phy:scientific_name>Oreochromis niloticus</phy:scientific_name>
+                            <phy:common_name>Nile tilapia</phy:common_name>
+                        </phy:taxonomy>
+                        <phy:sequence>
+                            <phy:accession source="Ensembl">ENSONIP00000009864</phy:accession>
+                            <phy:location>LG3:25600522-25805727</phy:location>
+                        </phy:sequence>
+                        <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">oreochromis_niloticus</phy:property>
+                    </phy:clade>
+                    <phy:clade branch_length_attr="0.247272">
+                        <phy:name>ENSNBRG00000003556</phy:name>
+                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                        <phy:taxonomy>
+                            <phy:id>32507</phy:id>
+                            <phy:scientific_name>Neolamprologus brichardi</phy:scientific_name>
+                            <phy:common_name>Lyretail cichlid</phy:common_name>
+                        </phy:taxonomy>
+                        <phy:sequence>
+                            <phy:accession source="Ensembl">ENSNBRP00000004485</phy:accession>
+                            <phy:location>JH422425.1:1282848-1288516</phy:location>
+                        </phy:sequence>
+                        <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">neolamprologus_brichardi</phy:property>
+                    </phy:clade>
+                </phy:clade>
+                <phy:clade branch_length_attr="0.015015">
+                    <phy:branch_length>0.000000e+00</phy:branch_length>
+                    <phy:confidence type="duplication_confidence_score">0.3333</phy:confidence>
+                    <phy:taxonomy>
+                        <phy:id>318546</phy:id>
+                        <phy:scientific_name>Pseudocrenilabrinae</phy:scientific_name>
+                    </phy:taxonomy>
+                    <phy:events>
+                        <phy:type>speciation_or_duplication</phy:type>
+                        <phy:duplications>1</phy:duplications>
+                    </phy:events>
+                    <phy:clade branch_length_attr="0">
+                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                        <phy:taxonomy>
+                            <phy:id>318546</phy:id>
+                            <phy:scientific_name>Pseudocrenilabrinae</phy:scientific_name>
+                        </phy:taxonomy>
+                        <phy:events>
+                            <phy:speciations>1</phy:speciations>
+                        </phy:events>
+                        <phy:clade branch_length_attr="0.002923">
+                            <phy:branch_length>0.000000e+00</phy:branch_length>
+                            <phy:confidence type="bootstrap">7</phy:confidence>
+                            <phy:confidence type="duplication_confidence_score">1</phy:confidence>
+                            <phy:taxonomy>
+                                <phy:id>8128</phy:id>
+                                <phy:scientific_name>Oreochromis niloticus</phy:scientific_name>
+                                <phy:common_name>Nile tilapia</phy:common_name>
+                            </phy:taxonomy>
+                            <phy:events>
+                                <phy:type>speciation_or_duplication</phy:type>
+                                <phy:duplications>1</phy:duplications>
+                            </phy:events>
+                            <phy:clade branch_length_attr="0.065927">
+                                <phy:branch_length>0.000000e+00</phy:branch_length>
+                                <phy:confidence type="bootstrap">97</phy:confidence>
+                                <phy:confidence type="duplication_confidence_score">1</phy:confidence>
+                                <phy:taxonomy>
+                                    <phy:id>8128</phy:id>
+                                    <phy:scientific_name>Oreochromis niloticus</phy:scientific_name>
+                                    <phy:common_name>Nile tilapia</phy:common_name>
+                                </phy:taxonomy>
+                                <phy:events>
+                                    <phy:type>speciation_or_duplication</phy:type>
+                                    <phy:duplications>1</phy:duplications>
+                                </phy:events>
+                                <phy:clade branch_length_attr="0.0077">
+                                    <phy:name>ENSONIG00000031181</phy:name>
+                                    <phy:branch_length>0.000000e+00</phy:branch_length>
+                                    <phy:taxonomy>
+                                        <phy:id>8128</phy:id>
+                                        <phy:scientific_name>Oreochromis niloticus</phy:scientific_name>
+                                        <phy:common_name>Nile tilapia</phy:common_name>
+                                    </phy:taxonomy>
+                                    <phy:sequence>
+                                        <phy:accession source="Ensembl">ENSONIP00000054044</phy:accession>
+                                        <phy:location>LG3:59149700-59151933</phy:location>
+                                    </phy:sequence>
+                                    <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">oreochromis_niloticus</phy:property>
+                                </phy:clade>
+                                <phy:clade branch_length_attr="0.013699">
+                                    <phy:name>ENSONIG00000029580</phy:name>
+                                    <phy:branch_length>0.000000e+00</phy:branch_length>
+                                    <phy:taxonomy>
+                                        <phy:id>8128</phy:id>
+                                        <phy:scientific_name>Oreochromis niloticus</phy:scientific_name>
+                                        <phy:common_name>Nile tilapia</phy:common_name>
+                                    </phy:taxonomy>
+                                    <phy:sequence>
+                                        <phy:accession source="Ensembl">ENSONIP00000081560</phy:accession>
+                                        <phy:location>LG3:59069041-59070380</phy:location>
+                                    </phy:sequence>
+                                    <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">oreochromis_niloticus</phy:property>
+                                </phy:clade>
+                            </phy:clade>
+                            <phy:clade branch_length_attr="0.041644">
+                                <phy:name>ENSONIG00000037472</phy:name>
+                                <phy:branch_length>0.000000e+00</phy:branch_length>
+                                <phy:taxonomy>
+                                    <phy:id>8128</phy:id>
+                                    <phy:scientific_name>Oreochromis niloticus</phy:scientific_name>
+                                    <phy:common_name>Nile tilapia</phy:common_name>
+                                </phy:taxonomy>
+                                <phy:sequence>
+                                    <phy:accession source="Ensembl">ENSONIP00000061891</phy:accession>
+                                    <phy:location>LG3:26268806-26393633</phy:location>
+                                </phy:sequence>
+                                <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">oreochromis_niloticus</phy:property>
+                            </phy:clade>
+                        </phy:clade>
+                        <phy:clade branch_length_attr="0.171877">
+                            <phy:branch_length>0.000000e+00</phy:branch_length>
+                            <phy:confidence type="bootstrap">100</phy:confidence>
+                            <phy:taxonomy>
+                                <phy:id>319058</phy:id>
+                                <phy:scientific_name>Haplochromini</phy:scientific_name>
+                            </phy:taxonomy>
+                            <phy:events>
+                                <phy:speciations>1</phy:speciations>
+                            </phy:events>
+                            <phy:clade branch_length_attr="0.099406">
+                                <phy:name>ENSMZEG00005028477</phy:name>
+                                <phy:branch_length>0.000000e+00</phy:branch_length>
+                                <phy:taxonomy>
+                                    <phy:id>106582</phy:id>
+                                    <phy:scientific_name>Maylandia zebra</phy:scientific_name>
+                                    <phy:common_name>Zebra mbuna</phy:common_name>
+                                </phy:taxonomy>
+                                <phy:sequence>
+                                    <phy:accession source="Ensembl">ENSMZEP00005038075</phy:accession>
+                                    <phy:location>AGTA05000444.1:15300-21715</phy:location>
+                                </phy:sequence>
+                                <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">maylandia_zebra</phy:property>
+                            </phy:clade>
+                            <phy:clade branch_length_attr="0.20856">
+                                <phy:name>ENSACLG00000011635</phy:name>
+                                <phy:branch_length>0.000000e+00</phy:branch_length>
+                                <phy:taxonomy>
+                                    <phy:id>8154</phy:id>
+                                    <phy:scientific_name>Astatotilapia calliptera</phy:scientific_name>
+                                    <phy:common_name>Eastern happy</phy:common_name>
+                                </phy:taxonomy>
+                                <phy:sequence>
+                                    <phy:accession source="Ensembl">ENSACLP00000017082</phy:accession>
+                                    <phy:location>LS419793.1:336845-342462</phy:location>
+                                </phy:sequence>
+                                <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">astatotilapia_calliptera</phy:property>
+                            </phy:clade>
+                        </phy:clade>
+                    </phy:clade>
+                    <phy:clade branch_length_attr="0.013832">
+                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                        <phy:confidence type="duplication_confidence_score">0.6</phy:confidence>
+                        <phy:taxonomy>
+                            <phy:id>318546</phy:id>
+                            <phy:scientific_name>Pseudocrenilabrinae</phy:scientific_name>
+                        </phy:taxonomy>
+                        <phy:events>
+                            <phy:type>speciation_or_duplication</phy:type>
+                            <phy:duplications>1</phy:duplications>
+                        </phy:events>
+                        <phy:clade branch_length_attr="0">
+                            <phy:branch_length>0.000000e+00</phy:branch_length>
+                            <phy:confidence type="duplication_confidence_score">0.3333</phy:confidence>
+                            <phy:taxonomy>
+                                <phy:id>318546</phy:id>
+                                <phy:scientific_name>Pseudocrenilabrinae</phy:scientific_name>
+                            </phy:taxonomy>
+                            <phy:events>
+                                <phy:type>speciation_or_duplication</phy:type>
+                                <phy:duplications>1</phy:duplications>
+                            </phy:events>
+                            <phy:clade branch_length_attr="0">
+                                <phy:branch_length>0.000000e+00</phy:branch_length>
+                                <phy:confidence type="bootstrap">3</phy:confidence>
+                                <phy:confidence type="duplication_confidence_score">1</phy:confidence>
+                                <phy:taxonomy>
+                                    <phy:id>8128</phy:id>
+                                    <phy:scientific_name>Oreochromis niloticus</phy:scientific_name>
+                                    <phy:common_name>Nile tilapia</phy:common_name>
+                                </phy:taxonomy>
+                                <phy:events>
+                                    <phy:type>speciation_or_duplication</phy:type>
+                                    <phy:duplications>1</phy:duplications>
+                                </phy:events>
+                                <phy:clade branch_length_attr="0.081949">
+                                    <phy:name>ENSONIG00000030937</phy:name>
+                                    <phy:branch_length>0.000000e+00</phy:branch_length>
+                                    <phy:taxonomy>
+                                        <phy:id>8128</phy:id>
+                                        <phy:scientific_name>Oreochromis niloticus</phy:scientific_name>
+                                        <phy:common_name>Nile tilapia</phy:common_name>
+                                    </phy:taxonomy>
+                                    <phy:sequence>
+                                        <phy:accession source="Ensembl">ENSONIP00000018413</phy:accession>
+                                        <phy:location>LG3:25888432-25890318</phy:location>
+                                    </phy:sequence>
+                                    <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">oreochromis_niloticus</phy:property>
+                                </phy:clade>
+                                <phy:clade branch_length_attr="0.095273">
+                                    <phy:name>ENSONIG00000034021</phy:name>
+                                    <phy:branch_length>0.000000e+00</phy:branch_length>
+                                    <phy:taxonomy>
+                                        <phy:id>8128</phy:id>
+                                        <phy:scientific_name>Oreochromis niloticus</phy:scientific_name>
+                                        <phy:common_name>Nile tilapia</phy:common_name>
+                                    </phy:taxonomy>
+                                    <phy:sequence>
+                                        <phy:accession source="Ensembl">ENSONIP00000043145</phy:accession>
+                                        <phy:location>LG3:29232978-29234246</phy:location>
+                                    </phy:sequence>
+                                    <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">oreochromis_niloticus</phy:property>
+                                </phy:clade>
+                            </phy:clade>
+                            <phy:clade branch_length_attr="0.012565">
+                                <phy:branch_length>0.000000e+00</phy:branch_length>
+                                <phy:confidence type="bootstrap">22</phy:confidence>
+                                <phy:taxonomy>
+                                    <phy:id>318546</phy:id>
+                                    <phy:scientific_name>Pseudocrenilabrinae</phy:scientific_name>
+                                </phy:taxonomy>
+                                <phy:events>
+                                    <phy:speciations>1</phy:speciations>
+                                </phy:events>
+                                <phy:clade branch_length_attr="0.018338">
+                                    <phy:branch_length>0.000000e+00</phy:branch_length>
+                                    <phy:confidence type="bootstrap">41</phy:confidence>
+                                    <phy:taxonomy>
+                                        <phy:id>319058</phy:id>
+                                        <phy:scientific_name>Haplochromini</phy:scientific_name>
+                                    </phy:taxonomy>
+                                    <phy:events>
+                                        <phy:speciations>1</phy:speciations>
+                                    </phy:events>
+                                    <phy:clade branch_length_attr="0.079916">
+                                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                                        <phy:confidence type="bootstrap">83</phy:confidence>
+                                        <phy:confidence type="duplication_confidence_score">1</phy:confidence>
+                                        <phy:taxonomy>
+                                            <phy:id>8154</phy:id>
+                                            <phy:scientific_name>Astatotilapia calliptera</phy:scientific_name>
+                                            <phy:common_name>Eastern happy</phy:common_name>
+                                        </phy:taxonomy>
+                                        <phy:events>
+                                            <phy:type>speciation_or_duplication</phy:type>
+                                            <phy:duplications>1</phy:duplications>
+                                        </phy:events>
+                                        <phy:clade branch_length_attr="0.051225">
+                                            <phy:branch_length>0.000000e+00</phy:branch_length>
+                                            <phy:confidence type="bootstrap">99</phy:confidence>
+                                            <phy:confidence type="duplication_confidence_score">1</phy:confidence>
+                                            <phy:taxonomy>
+                                                <phy:id>8154</phy:id>
+                                                <phy:scientific_name>Astatotilapia calliptera</phy:scientific_name>
+                                                <phy:common_name>Eastern happy</phy:common_name>
+                                            </phy:taxonomy>
+                                            <phy:events>
+                                                <phy:type>speciation_or_duplication</phy:type>
+                                                <phy:duplications>1</phy:duplications>
+                                            </phy:events>
+                                            <phy:clade branch_length_attr="0.010227">
+                                                <phy:name>ENSACLG00000003209</phy:name>
+                                                <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                <phy:taxonomy>
+                                                    <phy:id>8154</phy:id>
+                                                    <phy:scientific_name>Astatotilapia calliptera</phy:scientific_name>
+                                                    <phy:common_name>Eastern happy</phy:common_name>
+                                                </phy:taxonomy>
+                                                <phy:sequence>
+                                                    <phy:accession source="Ensembl">ENSACLP00000004824</phy:accession>
+                                                    <phy:location>3:30162542-30171367</phy:location>
+                                                </phy:sequence>
+                                                <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">astatotilapia_calliptera</phy:property>
+                                            </phy:clade>
+                                            <phy:clade branch_length_attr="0.025669">
+                                                <phy:name>ENSACLG00000002902</phy:name>
+                                                <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                <phy:taxonomy>
+                                                    <phy:id>8154</phy:id>
+                                                    <phy:scientific_name>Astatotilapia calliptera</phy:scientific_name>
+                                                    <phy:common_name>Eastern happy</phy:common_name>
+                                                </phy:taxonomy>
+                                                <phy:sequence>
+                                                    <phy:accession source="Ensembl">ENSACLP00000004366</phy:accession>
+                                                    <phy:location>3:30099937-30108446</phy:location>
+                                                </phy:sequence>
+                                                <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">astatotilapia_calliptera</phy:property>
+                                            </phy:clade>
+                                        </phy:clade>
+                                        <phy:clade branch_length_attr="0.015192">
+                                            <phy:name>ENSACLG00000015576</phy:name>
+                                            <phy:branch_length>0.000000e+00</phy:branch_length>
+                                            <phy:taxonomy>
+                                                <phy:id>8154</phy:id>
+                                                <phy:scientific_name>Astatotilapia calliptera</phy:scientific_name>
+                                                <phy:common_name>Eastern happy</phy:common_name>
+                                            </phy:taxonomy>
+                                            <phy:sequence>
+                                                <phy:accession source="Ensembl">ENSACLP00000022933</phy:accession>
+                                                <phy:location>3:22853747-22864868</phy:location>
+                                            </phy:sequence>
+                                            <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">astatotilapia_calliptera</phy:property>
+                                        </phy:clade>
+                                    </phy:clade>
+                                    <phy:clade branch_length_attr="0.087685">
+                                        <phy:name>ENSPNYG00000015753</phy:name>
+                                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                                        <phy:taxonomy>
+                                            <phy:id>303518</phy:id>
+                                            <phy:scientific_name>Pundamilia nyererei</phy:scientific_name>
+                                            <phy:common_name>Makobe Island cichlid</phy:common_name>
+                                        </phy:taxonomy>
+                                        <phy:sequence>
+                                            <phy:accession source="Ensembl">ENSPNYP00000020826</phy:accession>
+                                            <phy:location>JH419658.1:138918-142688</phy:location>
+                                        </phy:sequence>
+                                        <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">pundamilia_nyererei</phy:property>
+                                    </phy:clade>
+                                </phy:clade>
+                                <phy:clade branch_length_attr="0.054168">
+                                    <phy:name>ENSONIG00000033657</phy:name>
+                                    <phy:branch_length>0.000000e+00</phy:branch_length>
+                                    <phy:taxonomy>
+                                        <phy:id>8128</phy:id>
+                                        <phy:scientific_name>Oreochromis niloticus</phy:scientific_name>
+                                        <phy:common_name>Nile tilapia</phy:common_name>
+                                    </phy:taxonomy>
+                                    <phy:sequence>
+                                        <phy:accession source="Ensembl">ENSONIP00000010257</phy:accession>
+                                        <phy:location>LG3:26268136-26629852</phy:location>
+                                    </phy:sequence>
+                                    <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">oreochromis_niloticus</phy:property>
+                                </phy:clade>
+                            </phy:clade>
+                        </phy:clade>
+                        <phy:clade branch_length_attr="0.115537">
+                            <phy:branch_length>0.000000e+00</phy:branch_length>
+                            <phy:confidence type="bootstrap">57</phy:confidence>
+                            <phy:confidence type="duplication_confidence_score">0.2</phy:confidence>
+                            <phy:taxonomy>
+                                <phy:id>318546</phy:id>
+                                <phy:scientific_name>Pseudocrenilabrinae</phy:scientific_name>
+                            </phy:taxonomy>
+                            <phy:events>
+                                <phy:type>speciation_or_duplication</phy:type>
+                                <phy:duplications>1</phy:duplications>
+                            </phy:events>
+                            <phy:clade branch_length_attr="0">
+                                <phy:branch_length>0.000000e+00</phy:branch_length>
+                                <phy:confidence type="bootstrap">63</phy:confidence>
+                                <phy:taxonomy>
+                                    <phy:id>318546</phy:id>
+                                    <phy:scientific_name>Pseudocrenilabrinae</phy:scientific_name>
+                                </phy:taxonomy>
+                                <phy:events>
+                                    <phy:speciations>1</phy:speciations>
+                                </phy:events>
+                                <phy:clade branch_length_attr="0.160668">
+                                    <phy:name>ENSPNYG00000015771</phy:name>
+                                    <phy:branch_length>0.000000e+00</phy:branch_length>
+                                    <phy:taxonomy>
+                                        <phy:id>303518</phy:id>
+                                        <phy:scientific_name>Pundamilia nyererei</phy:scientific_name>
+                                        <phy:common_name>Makobe Island cichlid</phy:common_name>
+                                    </phy:taxonomy>
+                                    <phy:sequence>
+                                        <phy:accession source="Ensembl">ENSPNYP00000020842</phy:accession>
+                                        <phy:location>JH419658.1:171741-174741</phy:location>
+                                    </phy:sequence>
+                                    <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">pundamilia_nyererei</phy:property>
+                                </phy:clade>
+                                <phy:clade branch_length_attr="0.226598">
+                                    <phy:name>ENSONIG00000042577</phy:name>
+                                    <phy:branch_length>0.000000e+00</phy:branch_length>
+                                    <phy:taxonomy>
+                                        <phy:id>8128</phy:id>
+                                        <phy:scientific_name>Oreochromis niloticus</phy:scientific_name>
+                                        <phy:common_name>Nile tilapia</phy:common_name>
+                                    </phy:taxonomy>
+                                    <phy:sequence>
+                                        <phy:accession source="Ensembl">ENSONIP00000069602</phy:accession>
+                                        <phy:location>LG3:25552497-25554011</phy:location>
+                                    </phy:sequence>
+                                    <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">oreochromis_niloticus</phy:property>
+                                </phy:clade>
+                            </phy:clade>
+                            <phy:clade branch_length_attr="0.132531">
+                                <phy:branch_length>0.000000e+00</phy:branch_length>
+                                <phy:confidence type="bootstrap">87</phy:confidence>
+                                <phy:taxonomy>
+                                    <phy:id>318546</phy:id>
+                                    <phy:scientific_name>Pseudocrenilabrinae</phy:scientific_name>
+                                </phy:taxonomy>
+                                <phy:events>
+                                    <phy:speciations>1</phy:speciations>
+                                </phy:events>
+                                <phy:clade branch_length_attr="0">
+                                    <phy:branch_length>0.000000e+00</phy:branch_length>
+                                    <phy:confidence type="bootstrap">94</phy:confidence>
+                                    <phy:taxonomy>
+                                        <phy:id>318546</phy:id>
+                                        <phy:scientific_name>Pseudocrenilabrinae</phy:scientific_name>
+                                    </phy:taxonomy>
+                                    <phy:events>
+                                        <phy:speciations>1</phy:speciations>
+                                    </phy:events>
+                                    <phy:clade branch_length_attr="0.049454">
+                                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                                        <phy:confidence type="bootstrap">58</phy:confidence>
+                                        <phy:confidence type="duplication_confidence_score">0.5</phy:confidence>
+                                        <phy:taxonomy>
+                                            <phy:id>319058</phy:id>
+                                            <phy:scientific_name>Haplochromini</phy:scientific_name>
+                                        </phy:taxonomy>
+                                        <phy:events>
+                                            <phy:type>speciation_or_duplication</phy:type>
+                                            <phy:duplications>1</phy:duplications>
+                                        </phy:events>
+                                        <phy:clade branch_length_attr="0.04778">
+                                            <phy:branch_length>0.000000e+00</phy:branch_length>
+                                            <phy:confidence type="bootstrap">58</phy:confidence>
+                                            <phy:taxonomy>
+                                                <phy:id>319058</phy:id>
+                                                <phy:scientific_name>Haplochromini</phy:scientific_name>
+                                            </phy:taxonomy>
+                                            <phy:events>
+                                                <phy:speciations>1</phy:speciations>
+                                            </phy:events>
+                                            <phy:clade branch_length_attr="0.039831">
+                                                <phy:name>ENSHBUG00000015261</phy:name>
+                                                <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                <phy:taxonomy>
+                                                    <phy:id>8153</phy:id>
+                                                    <phy:scientific_name>Haplochromis burtoni</phy:scientific_name>
+                                                    <phy:common_name>Burton's mouthbrooder</phy:common_name>
+                                                </phy:taxonomy>
+                                                <phy:sequence>
+                                                    <phy:accession source="Ensembl">ENSHBUP00000013472</phy:accession>
+                                                    <phy:location>JH426571.1:44247-52110</phy:location>
+                                                </phy:sequence>
+                                                <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">haplochromis_burtoni</phy:property>
+                                            </phy:clade>
+                                            <phy:clade branch_length_attr="0.098001">
+                                                <phy:name>ENSACLG00000003235</phy:name>
+                                                <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                <phy:taxonomy>
+                                                    <phy:id>8154</phy:id>
+                                                    <phy:scientific_name>Astatotilapia calliptera</phy:scientific_name>
+                                                    <phy:common_name>Eastern happy</phy:common_name>
+                                                </phy:taxonomy>
+                                                <phy:sequence>
+                                                    <phy:accession source="Ensembl">ENSACLP00000004859</phy:accession>
+                                                    <phy:location>3:30279308-30288636</phy:location>
+                                                </phy:sequence>
+                                                <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">astatotilapia_calliptera</phy:property>
+                                            </phy:clade>
+                                        </phy:clade>
+                                        <phy:clade branch_length_attr="0.090438">
+                                            <phy:name>ENSHBUG00000015276</phy:name>
+                                            <phy:branch_length>0.000000e+00</phy:branch_length>
+                                            <phy:taxonomy>
+                                                <phy:id>8153</phy:id>
+                                                <phy:scientific_name>Haplochromis burtoni</phy:scientific_name>
+                                                <phy:common_name>Burton's mouthbrooder</phy:common_name>
+                                            </phy:taxonomy>
+                                            <phy:sequence>
+                                                <phy:accession source="Ensembl">ENSHBUP00000030321</phy:accession>
+                                                <phy:location>JH426571.1:3705-8105</phy:location>
+                                            </phy:sequence>
+                                            <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">haplochromis_burtoni</phy:property>
+                                        </phy:clade>
+                                    </phy:clade>
+                                    <phy:clade branch_length_attr="0.104829">
+                                        <phy:name>ENSNBRG00000000967</phy:name>
+                                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                                        <phy:taxonomy>
+                                            <phy:id>32507</phy:id>
+                                            <phy:scientific_name>Neolamprologus brichardi</phy:scientific_name>
+                                            <phy:common_name>Lyretail cichlid</phy:common_name>
+                                        </phy:taxonomy>
+                                        <phy:sequence>
+                                            <phy:accession source="Ensembl">ENSNBRP00000001141</phy:accession>
+                                            <phy:location>JH422499.1:403524-413640</phy:location>
+                                        </phy:sequence>
+                                        <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">neolamprologus_brichardi</phy:property>
+                                    </phy:clade>
+                                </phy:clade>
+                                <phy:clade branch_length_attr="0.060168">
+                                    <phy:branch_length>0.000000e+00</phy:branch_length>
+                                    <phy:confidence type="bootstrap">88</phy:confidence>
+                                    <phy:confidence type="duplication_confidence_score">1</phy:confidence>
+                                    <phy:taxonomy>
+                                        <phy:id>8128</phy:id>
+                                        <phy:scientific_name>Oreochromis niloticus</phy:scientific_name>
+                                        <phy:common_name>Nile tilapia</phy:common_name>
+                                    </phy:taxonomy>
+                                    <phy:events>
+                                        <phy:type>speciation_or_duplication</phy:type>
+                                        <phy:duplications>1</phy:duplications>
+                                    </phy:events>
+                                    <phy:clade branch_length_attr="0.116619">
+                                        <phy:name>ENSONIG00000042114</phy:name>
+                                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                                        <phy:taxonomy>
+                                            <phy:id>8128</phy:id>
+                                            <phy:scientific_name>Oreochromis niloticus</phy:scientific_name>
+                                            <phy:common_name>Nile tilapia</phy:common_name>
+                                        </phy:taxonomy>
+                                        <phy:sequence>
+                                            <phy:accession source="Ensembl">ENSONIP00000056194</phy:accession>
+                                            <phy:location>MKQE02000641.1:14866-23905</phy:location>
+                                        </phy:sequence>
+                                        <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">oreochromis_niloticus</phy:property>
+                                    </phy:clade>
+                                    <phy:clade branch_length_attr="0.122761">
+                                        <phy:name>ENSONIG00000042457</phy:name>
+                                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                                        <phy:taxonomy>
+                                            <phy:id>8128</phy:id>
+                                            <phy:scientific_name>Oreochromis niloticus</phy:scientific_name>
+                                            <phy:common_name>Nile tilapia</phy:common_name>
+                                        </phy:taxonomy>
+                                        <phy:sequence>
+                                            <phy:accession source="Ensembl">ENSONIP00000066660</phy:accession>
+                                            <phy:location>LG3:25689380-25830878</phy:location>
+                                        </phy:sequence>
+                                        <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">oreochromis_niloticus</phy:property>
+                                    </phy:clade>
+                                </phy:clade>
+                            </phy:clade>
+                        </phy:clade>
+                    </phy:clade>
+                </phy:clade>
+            </phy:clade>
+            <phy:clade branch_length_attr="0.261323">
+                <phy:branch_length>0.000000e+00</phy:branch_length>
+                <phy:confidence type="bootstrap">98</phy:confidence>
+                <phy:confidence type="duplication_confidence_score">1</phy:confidence>
+                <phy:taxonomy>
+                    <phy:id>64144</phy:id>
+                    <phy:scientific_name>Anabas testudineus</phy:scientific_name>
+                    <phy:common_name>Climbing perch</phy:common_name>
+                </phy:taxonomy>
+                <phy:events>
+                    <phy:type>speciation_or_duplication</phy:type>
+                    <phy:duplications>1</phy:duplications>
+                </phy:events>
+                <phy:clade branch_length_attr="0.043274">
+                    <phy:branch_length>0.000000e+00</phy:branch_length>
+                    <phy:confidence type="bootstrap">5</phy:confidence>
+                    <phy:confidence type="duplication_confidence_score">1</phy:confidence>
+                    <phy:taxonomy>
+                        <phy:id>64144</phy:id>
+                        <phy:scientific_name>Anabas testudineus</phy:scientific_name>
+                        <phy:common_name>Climbing perch</phy:common_name>
+                    </phy:taxonomy>
+                    <phy:events>
+                        <phy:type>speciation_or_duplication</phy:type>
+                        <phy:duplications>1</phy:duplications>
+                    </phy:events>
+                    <phy:clade branch_length_attr="0.013566">
+                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                        <phy:confidence type="bootstrap">5</phy:confidence>
+                        <phy:confidence type="duplication_confidence_score">1</phy:confidence>
+                        <phy:taxonomy>
+                            <phy:id>64144</phy:id>
+                            <phy:scientific_name>Anabas testudineus</phy:scientific_name>
+                            <phy:common_name>Climbing perch</phy:common_name>
+                        </phy:taxonomy>
+                        <phy:events>
+                            <phy:type>speciation_or_duplication</phy:type>
+                            <phy:duplications>1</phy:duplications>
+                        </phy:events>
+                        <phy:clade branch_length_attr="0.03906">
+                            <phy:name>ENSATEG00000003922</phy:name>
+                            <phy:branch_length>0.000000e+00</phy:branch_length>
+                            <phy:taxonomy>
+                                <phy:id>64144</phy:id>
+                                <phy:scientific_name>Anabas testudineus</phy:scientific_name>
+                                <phy:common_name>Climbing perch</phy:common_name>
+                            </phy:taxonomy>
+                            <phy:sequence>
+                                <phy:accession source="Ensembl">ENSATEP00000005546</phy:accession>
+                                <phy:location>18:20787377-20789269</phy:location>
+                            </phy:sequence>
+                            <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">anabas_testudineus</phy:property>
+                        </phy:clade>
+                        <phy:clade branch_length_attr="0.074883">
+                            <phy:name>ENSATEG00000003994</phy:name>
+                            <phy:branch_length>0.000000e+00</phy:branch_length>
+                            <phy:taxonomy>
+                                <phy:id>64144</phy:id>
+                                <phy:scientific_name>Anabas testudineus</phy:scientific_name>
+                                <phy:common_name>Climbing perch</phy:common_name>
+                            </phy:taxonomy>
+                            <phy:sequence>
+                                <phy:accession source="Ensembl">ENSATEP00000005654</phy:accession>
+                                <phy:location>18:21209264-21210321</phy:location>
+                            </phy:sequence>
+                            <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">anabas_testudineus</phy:property>
+                        </phy:clade>
+                    </phy:clade>
+                    <phy:clade branch_length_attr="0.057268">
+                        <phy:name>ENSATEG00000028505</phy:name>
+                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                        <phy:taxonomy>
+                            <phy:id>64144</phy:id>
+                            <phy:scientific_name>Anabas testudineus</phy:scientific_name>
+                            <phy:common_name>Climbing perch</phy:common_name>
+                        </phy:taxonomy>
+                        <phy:sequence>
+                            <phy:accession source="Ensembl">ENSATEP00000062762</phy:accession>
+                            <phy:location>18:20860847-20862178</phy:location>
+                        </phy:sequence>
+                        <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">anabas_testudineus</phy:property>
+                    </phy:clade>
+                </phy:clade>
+                <phy:clade branch_length_attr="0.048175">
+                    <phy:name>ENSATEG00000004163</phy:name>
+                    <phy:branch_length>0.000000e+00</phy:branch_length>
+                    <phy:taxonomy>
+                        <phy:id>64144</phy:id>
+                        <phy:scientific_name>Anabas testudineus</phy:scientific_name>
+                        <phy:common_name>Climbing perch</phy:common_name>
+                    </phy:taxonomy>
+                    <phy:sequence>
+                        <phy:accession source="Ensembl">ENSATEP00000005928</phy:accession>
+                        <phy:location>18:20751229-20846128</phy:location>
+                    </phy:sequence>
+                    <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">anabas_testudineus</phy:property>
+                </phy:clade>
+            </phy:clade>
+        </phy:clade>
+        <phy:property datatype="xsd:string" ref="Compara:gene_tree_stable_id" applies_to="phylogeny">ENSGT00990000203863</phy:property>
+    </phy:phylogeny>
+</phy:Phyloxml>

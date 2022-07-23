@@ -1,0 +1,151 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Welcome to Overleaf --- just edit your LaTeX on the left,
+% and we'll compile it for you on the right. If you open the
+% 'Share' menu, you can invite other users to edit at the same
+% time. See www.overleaf.com/learn for more info. Enjoy!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{beamer}
+
+\usetheme{Madrid}
+\usecolortheme{lily}
+\addtobeamertemplate{footnote}{}{\vspace{2ex}}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{clrscode3e}
+\usepackage{multicol}
+
+\definecolor{codegreen}{HTML}{237e02}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{HTML}{8F4673}
+\definecolor{codebrown}{HTML}{ce9178}
+\definecolor{codecyan}{HTML}{098658}
+\lstdefinestyle{pythonstyle}{
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{codepurple},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codebrown},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+\def\And{\text{ AND }}
+\def\Or{\text{ OR }}
+\def\Xor{\text{ XOR }}
+\def\Implies{\text{ IMPLIES }}
+\def\Iff{\text{ IFF }}
+\def\Not{\text{NOT}}
+\def\R{\mathbb{R}}
+\def\N{\mathbb{N}}
+\lstset{style=pythonstyle}
+
+\setlength{\parskip}{1em}
+
+%Information to be included in the title page:
+\title{Format for Efficient Storage of Homology Relations}
+\subtitle{Week 3 Report: Understanding Queries and Inference on Gene Trees}
+\author{Kevin Gao}
+\institute{University of Toronto}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\AtBeginSection[]
+{
+    \begin{frame}
+    \frametitle{Outlines}
+    \tableofcontents[currentsection]
+    \end{frame}
+}
+
+\section{Orthologs and Paralogs}
+
+\begin{frame}{Orthologs and Paralogs}
+    Orthologs: Homologs separated by \textbf{speciation} events
+
+    \begin{itemize}
+        \item 1-to-1 orthologs: one to one pair
+        \item 1-to-many orthologs: one gene is orthologous to many
+        \item many-to-many
+    \end{itemize}
+
+    Paralogs: Homologs separated by \textbf{duplication} events
+
+    \begin{itemize}
+        \item same-species paralog: paralogs within the same species
+        \item between-species paralog: paralogs in different species due to duplication in common ancestor
+        \item fragments of the same gene: stored with separate labels on leaves?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Naive Algorithm for Inference}
+    Boils down to ancestry query. Given two leaves, if they share a \textbf{common ancestor} in the gene tree, then they are homologous.
+
+    If the \textbf{lowest common ancestor} is a duplication node, then the two genes are paralogs of each other. If the lowest common ancestor is a speciation node, then the two genes are orthologs of each other.
+
+    Within/Between can be determined via a simple query of the species to which the genes belong. One-to-many/Many-to-many can be determined by counting the number of duplication nodes on the path from the LCA to the two leaves.
+\end{frame}
+
+\begin{frame}{A Speed-up}
+    The worst case for the naive algorithm occurs when two nodes do not have a common ancestor (are not homologous), in which case we won't find that out until we reach the root.
+
+    A string-based binary index like the one discussed last week can allow us to determine whether two nodes share a common ancestor without actually traversing the tree.
+\end{frame}
+
+\begin{frame}{Batch Queries}
+    We should also consider batch queries and queries asking for ``all orthologs/paralogs/etc.'' of a given gene.
+
+    For the ``list all'' type of queries, we look at event nodes instead of individual leaves. For a given gene represented as a leaf, to list all paralogs, we find all duplication events on the root-to-leaf paths. After we find the duplication event nodes, we list all leaves of the subtree rooted at these duplication nodes.
+\end{frame}
+
+\section{Impact on Choice for Formats}
+
+\begin{frame}{If we use Newick}
+    \begin{itemize}
+        \item We would need some special label to indicate speciation and duplication node
+        \item Convert an LCA query to an equivalent RMQ query
+        \item Compact but less information
+        \item Would still have to parse the text file into a tree in memory for more complex queries
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{If we use PhyloXML}
+    \begin{itemize}
+        \item VTD would be most ideal since it indexes parent-child-sibling relationship
+        \item Implement along with a string-based index for ancestry relationship
+        \item Streaming models can be used for extremely large data
+        \item Well-established specification for including speciation and duplication events (e.g. recPhyloXML)
+    \end{itemize}
+\end{frame}
+
+\section{References}
+
+\begin{frame}
+    \scriptsize
+
+    T. C. Lam, J. J. Ding and J. Liu, "XML Document Parsing: Operational and Performance Characteristics," in Computer, vol. 41, no. 9, pp. 30-37, Sept. 2008, doi: 10.1109/MC.2008.403.
+
+    Haim Kaplan, Tova Milo, and Ronen Shabo. 2002. A comparison of labeling schemes for ancestor queries. In Proceedings of the thirteenth annual ACM-SIAM symposium on Discrete algorithms (SODA '02). Society for Industrial and Applied Mathematics, USA, 954-963.
+
+    L. Nakhleh, D. Miranker and F. Barbancon, "Requirements of phylogenetic databases," Third IEEE Symposium on Bioinformatics and Bioengineering, 2003. Proceedings., 2003, pp. 141-148, doi: 10.1109/BIBE.2003.1188940.
+
+    Cardona, G., Rossello, F. and Valiente, G. Extended Newick: it is time for a standard representation of phylogenetic networks. BMC Bioinformatics 9, 532 (2008). https://doi.org/10.1186/1471-2105-9-532
+
+    Kmettlca, E.A. O(log n) persistent online lowest common ancestor search without preprocessing. https://github.com/ekmett/lca/
+    
+    Wansong Zhang, Daxin Liu and Jian Li, "An encoding scheme for indexing XML data," IEEE International Conference on e-Technology, e-Commerce and e-Service, 2004. EEE '04. 2004, 2004, pp. 525-528, doi: 10.1109/EEE.2004.1287357.
+\end{frame}
+
+\end{document}
