@@ -9,7 +9,7 @@
             "request": "launch",
             "name": "Debug - Ortholog Query",
             "program": "${workspaceFolder}/parser/vtdparser/bin/gtutils",
-            "args": ["-O", "ENSG00000182463", "${workspaceFolder}/parser/python/pipeline/data_out/TSHZ2_gene_tree.xml"],
+            "args": ["-O", "ENSG00000101400", "${workspaceFolder}/parser/python/pipeline/data_out/SNTA1_gene_tree.xml"],
             "cwd": "${workspaceFolder}"
         },
         {
@@ -33,7 +33,7 @@
             "request": "launch",
             "name": "Debug - Benchmark",
             "program": "${workspaceFolder}/parser/vtdparser/bin/benchmark",
-            "args": ["${workspaceFolder}/parser/python/pipeline/data_out/ENSCSAVG00000010931_gene_tree.xml"],
+            "args": ["${workspaceFolder}/parser/python/pipeline/data_out_without_seq"],
             "cwd": "${workspaceFolder}"
         },
     ]

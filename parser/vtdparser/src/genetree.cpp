@@ -15,6 +15,8 @@ using namespace compara;
 using namespace vtdxml;
 using namespace std;
 
+const tuple<int, int> DEFAULT_TUPLE = make_tuple(-1, -1);
+
 GeneTree::GeneTree(const char* filename) {
     this->filename = filename;
     this->parse();
@@ -218,6 +220,106 @@ void GeneTree::load_index(const char *filename) {
     fin.close();
 }
 
+// vector<OrthologPair> GeneTree::get_orthologs(string query_gene) {
+//     vector<OrthologPair> orthologs;
+//     if (this->index_loaded) {
+//         IndexedGeneTreeNode idx_gene_node = this->gti->leaves.at(query_gene);
+//         int node_hash = idx_gene_node.node_hash;
+//         GeneTreeNode *gene_node = this->root->leaves_map.at(node_hash);
+//         // gene tree nodes store more information so we use pointers
+//         // to prevent copying of the gene trees
+//         vector<GeneTreeNode*> ancestors = gene_node->get_ancestors();
+//         vector<IndexedGeneTreeNode> ancestors_idx;
+//         for (int i = 0; i < ancestors.size(); i++) {
+//             GeneTreeNode *ancestor = ancestors[i];
+//             int ancestor_hash = ancestor->bm->hashCode();
+//             IndexedGeneTreeNode ancestor_node = this->gti->internal_nodes.at(ancestor_hash);
+//             ancestors_idx.push_back(ancestor_node);
+//         }
+//         unordered_set<int> visited;
+//         vector<int> one_to_one_labels;
+//         vector<int> one_to_many_labels;
+//         vector<int> many_to_many_labels;
+//         unordered_set<int> many_to_x_candidates;
+//         int duplication_on_path = 0;
+//         for (int j = 0; j < ancestors_idx.size(); j++) {
+//             int min_label = get<0>(ancestors_idx[j].internal_label);
+//             int max_label = get<1>(ancestors_idx[j].internal_label);
+//             if (ancestors_idx[j].node_type == SPECIATION) {
+//                 vector<Interval<int,int>> subtree_dup_nodes = this->gti->find_duplication_subintervals(min_label, max_label);
+//                 for (int k = 0; k < subtree_dup_nodes.size(); k++) {
+//                     Interval<int,int> dup_node = subtree_dup_nodes[k];
+//                     for (int l = max(dup_node.start, min_label); l <= min(dup_node.stop, max_label); l++) {
+//                         many_to_x_candidates.insert(l);
+//                     }
+//                 }
+//             }
+//             if (ancestors_idx[j].node_type == DUPLICATION) {
+//                 duplication_on_path++;
+//             }
+//             if (idx_gene_node.label >= min_label && idx_gene_node.label <= max_label) {
+//                 // label is within the range
+//                 for (int k = min_label; k <= max_label; k++) {
+//                     if (ancestors_idx[j].node_type == SPECIATION) {
+//                             // if the internal node is a speciation node, add all labels in the range that are not visited
+//                         if (k != idx_gene_node.label && visited.find(k) == visited.end()) {
+//                             if (many_to_x_candidates.find(k) != many_to_x_candidates.end()) {
+//                                 if (duplication_on_path > 0) {
+//                                     many_to_many_labels.push_back(k);
+//                                 } else {
+//                                     one_to_many_labels.push_back(k);
+//                                 }
+//                             } else {
+//                                 if (duplication_on_path > 0) {
+//                                     one_to_many_labels.push_back(k);
+//                                 }
+//                                 else {
+//                                     one_to_one_labels.push_back(k);
+//                                 }
+//                             }
+//                         }
+//                     }
+//                     visited.insert(k);
+//                 }
+//             }
+//         }
+//         for (int i = 0; i < one_to_one_labels.size(); i++) {
+//             int label = one_to_one_labels[i];
+//             IndexedGeneTreeNode idx_node = this->gti->leaf_labels.at(label);
+//             OrthologPair ortho_pair = {
+//                 .gene_name = query_gene,
+//                 .taxon = "",
+//                 .ortholog_name = idx_node.gene_name,
+//                 .type = ONE_TO_ONE
+//             };
+//             orthologs.push_back(ortho_pair);
+//         }
+//         for (int i = 0; i < one_to_many_labels.size(); i++) {
+//             int label = one_to_many_labels[i];
+//             IndexedGeneTreeNode idx_node = this->gti->leaf_labels.at(label);
+//             OrthologPair ortho_pair = {
+//                 .gene_name = query_gene,
+//                 .taxon = "",
+//                 .ortholog_name = idx_node.gene_name,
+//                 .type = ONE_TO_MANY
+//             };
+//             orthologs.push_back(ortho_pair);
+//         }
+//         for (int i = 0; i < many_to_many_labels.size(); i++) {
+//             int label = many_to_many_labels[i];
+//             IndexedGeneTreeNode idx_node = this->gti->leaf_labels.at(label);
+//             OrthologPair ortho_pair = {
+//                 .gene_name = query_gene,
+//                 .taxon = "",
+//                 .ortholog_name = idx_node.gene_name,
+//                 .type = MANY_TO_MANY
+//             };
+//             orthologs.push_back(ortho_pair);
+//         }
+//     }
+//     return orthologs;
+// }
+
 vector<OrthologPair> GeneTree::get_orthologs(string query_gene) {
     vector<OrthologPair> orthologs;
     if (this->index_loaded) {
@@ -235,54 +337,183 @@ vector<OrthologPair> GeneTree::get_orthologs(string query_gene) {
             ancestors_idx.push_back(ancestor_node);
         }
         unordered_set<int> visited;
-        vector<int> one_to_one_labels;
-        vector<int> one_to_many_labels;
-        vector<int> many_to_many_labels;
-        unordered_set<int> many_to_x_candidates;
+        unordered_set<int> one_to_one_labels;
+        unordered_set<int> one_to_many_labels;
+        unordered_set<int> many_to_many_labels;
         int duplication_on_path = 0;
-        for (int j = 0; j < ancestors_idx.size(); j++) {
-            int min_label = get<0>(ancestors_idx[j].internal_label);
-            int max_label = get<1>(ancestors_idx[j].internal_label);
-            if (ancestors_idx[j].node_type == SPECIATION) {
-                vector<Interval<int,int>> subtree_dup_nodes = this->gti->find_duplication_subintervals(min_label, max_label);
-                for (int k = 0; k < subtree_dup_nodes.size(); k++) {
-                    Interval<int,int> dup_node = subtree_dup_nodes[k];
-                    for (int l = max(dup_node.start, min_label); l <= min(dup_node.stop, max_label); l++) {
-                        many_to_x_candidates.insert(l);
-                    }
+        
+        vector<tuple<tuple<int, int>, tuple<int, int>>> path_labels;
+        tuple<int, int> curr = ancestors_idx[0].internal_label;
+        tuple<int, int> prev = make_tuple(idx_gene_node.label, idx_gene_node.label);
+
+        for (int j = 0; j < ancestors_idx.size() - 1; j++) {
+            if (ancestors_idx[j].node_type == SPECIATION || ancestors_idx[j].node_type == DUBIOUS) {
+                if (curr != DEFAULT_TUPLE && prev != DEFAULT_TUPLE) {
+                    path_labels.push_back(make_tuple(curr, prev));
                 }
+            } else if (ancestors_idx[j].node_type == DUPLICATION) {
+                // include dummy duplication label for counting the number of duplications on the path
+                path_labels.push_back(make_tuple(DEFAULT_TUPLE, DEFAULT_TUPLE));
             }
-            if (ancestors_idx[j].node_type == DUPLICATION) {
-                duplication_on_path++;
+            prev = curr;
+            curr = ancestors_idx[j+1].internal_label;
+        }
+        if (curr != DEFAULT_TUPLE && prev != DEFAULT_TUPLE) {
+            if (ancestors_idx[ancestors_idx.size() - 1].node_type == SPECIATION || ancestors_idx[ancestors_idx.size() - 1].node_type == DUBIOUS) {
+                path_labels.push_back(make_tuple(curr, prev));
+            } else if (ancestors_idx[ancestors_idx.size() - 1].node_type == DUPLICATION) {
+                path_labels.push_back(make_tuple(DEFAULT_TUPLE, DEFAULT_TUPLE));
             }
-            if (idx_gene_node.label >= min_label && idx_gene_node.label <= max_label) {
-                // label is within the range
-                for (int k = min_label; k <= max_label; k++) {
-                    if (ancestors_idx[j].node_type == SPECIATION) {
-                            // if the internal node is a speciation node, add all labels in the range that are not visited
-                        if (k != idx_gene_node.label && visited.find(k) == visited.end()) {
-                            if (many_to_x_candidates.find(k) != many_to_x_candidates.end()) {
-                                if (duplication_on_path > 0) {
-                                    many_to_many_labels.push_back(k);
-                                } else {
-                                    one_to_many_labels.push_back(k);
-                                }
+        }
+
+        for (int k = 0; k < path_labels.size(); k++) {
+            tuple<int, int> exclude = get<1>(path_labels[k]);
+            tuple<int, int> include = get<0>(path_labels[k]);
+            if (exclude != DEFAULT_TUPLE && include != DEFAULT_TUPLE) {
+                // rightward path
+                if (get<0>(exclude) == get<0>(include)) {
+                    // get the set of duplication intervals in the right subtrees
+                    vector<Interval<int, int>> sub_dup_nodes = this->gti->duplication_nodes.findContained(get<1>(exclude) + 1, get<1>(include));
+                    for (int i = 0; i < sub_dup_nodes.size(); i++) {
+                        int start = sub_dup_nodes[i].start;
+                        int stop = sub_dup_nodes[i].stop;
+                        for (int j = start; j <= stop; j++) {
+                            if (duplication_on_path > 0) {
+                                many_to_many_labels.insert(j);
                             } else {
-                                if (duplication_on_path > 0) {
-                                    one_to_many_labels.push_back(k);
-                                }
-                                else {
-                                    one_to_one_labels.push_back(k);
-                                }
+                                one_to_many_labels.insert(j);
+                            }
+                            visited.insert(j);
+                        }
+                    }
+                    // int l = -1, r = -1;
+                    // vector<tuple<int, int>> non_overlapping_dup_nodes;
+                    // for (int i = 0; i < sub_dup_nodes.size(); i++) {
+                    //     if (l == -1 && r == -1) {
+                    //         l = sub_dup_nodes[i].start;
+                    //         r = sub_dup_nodes[i].stop;
+                    //     }
+                    //     else if (sub_dup_nodes[i].start < l && sub_dup_nodes[i].stop < l) {
+                    //         non_overlapping_dup_nodes.push_back(make_tuple(l, r));
+                    //         l = sub_dup_nodes[i].start;
+                    //         r = sub_dup_nodes[i].stop;
+                    //     }
+                    //     else if (sub_dup_nodes[i].start > r && sub_dup_nodes[i].stop > r) {
+                    //         non_overlapping_dup_nodes.push_back(make_tuple(l, r));
+                    //         l = sub_dup_nodes[i].start;
+                    //         r = sub_dup_nodes[i].stop;
+                    //     }
+                    //     else if (sub_dup_nodes[i].start < l) {
+                    //         l = sub_dup_nodes[i].start;
+                    //     }
+                    //     else if (sub_dup_nodes[i].stop > r) {
+                    //         r = sub_dup_nodes[i].stop;
+                    //     }
+                    // }
+                    // if (l != -1 && r != -1) {
+                    //     non_overlapping_dup_nodes.push_back(make_tuple(l, r));
+                    // }
+
+                    // for (int i = 0; i < non_overlapping_dup_nodes.size(); i++) {
+                    //     int start = get<0>(non_overlapping_dup_nodes[i]);
+                    //     int stop = get<1>(non_overlapping_dup_nodes[i]);
+                    //     for (int j = start; j <= stop; j++) {
+                    //         if (duplication_on_path > 0) {
+                    //             many_to_many_labels.insert(j);
+                    //         } else {
+                    //             one_to_many_labels.insert(j);
+                    //         }
+                    //         visited.insert(j);
+                    //     }
+                    // }
+
+                    for (int i = get<1>(exclude) + 1; i <= get<1>(include); i++) {
+                        if (visited.find(i) == visited.end()) {
+                            if (duplication_on_path > 0) {
+                                one_to_many_labels.insert(i);
+                            } else {
+                                one_to_one_labels.insert(i);
                             }
                         }
                     }
-                    visited.insert(k);
                 }
+                 // leftward path
+                else if (get<1>(exclude) == get<1>(include)) {
+                    // get the set of duplication intervals in the left subtrees
+                    vector<Interval<int, int>> sub_dup_nodes = this->gti->duplication_nodes.findContained(get<0>(include), get<0>(exclude) - 1);
+                    for (int i = 0; i < sub_dup_nodes.size(); i++) {
+                        int start = sub_dup_nodes[i].start;
+                        int stop = sub_dup_nodes[i].stop;
+                        
+                        for (int j = start; j <= stop; j++) {
+                            if (duplication_on_path > 0) {
+                                many_to_many_labels.insert(j);
+                            } else {
+                                one_to_many_labels.insert(j);
+                            }
+                            visited.insert(j);
+                        } 
+                    }
+
+                    // int l = -1, r = -1;
+                    // vector<tuple<int, int>> non_overlapping_dup_nodes;
+                    // for (int i = 0; i < sub_dup_nodes.size(); i++) {
+                    //     if (l == -1 && r == -1) {
+                    //         l = sub_dup_nodes[i].start;
+                    //         r = sub_dup_nodes[i].stop;
+                    //     }
+                    //     else if (sub_dup_nodes[i].start < l && sub_dup_nodes[i].stop < l) {
+                    //         non_overlapping_dup_nodes.push_back(make_tuple(l, r));
+                    //         l = sub_dup_nodes[i].start;
+                    //         r = sub_dup_nodes[i].stop;
+                    //     }
+                    //     else if (sub_dup_nodes[i].start > r && sub_dup_nodes[i].stop > r) {
+                    //         non_overlapping_dup_nodes.push_back(make_tuple(l, r));
+                    //         l = sub_dup_nodes[i].start;
+                    //         r = sub_dup_nodes[i].stop;
+                    //     }
+                    //     else if (sub_dup_nodes[i].start < l) {
+                    //         l = sub_dup_nodes[i].start;
+                    //     }
+                    //     else if (sub_dup_nodes[i].stop > r) {
+                    //         r = sub_dup_nodes[i].stop;
+                    //     }
+                    // }
+                    // if (l != -1 && r != -1) {
+                    //     non_overlapping_dup_nodes.push_back(make_tuple(l, r));
+                    // }
+
+                    // for (int i = 0; i < non_overlapping_dup_nodes.size(); i++) {
+                    //     int start = get<0>(non_overlapping_dup_nodes[i]);
+                    //     int stop = get<1>(non_overlapping_dup_nodes[i]);
+                    //     for (int j = start; j <= stop; j++) {
+                    //         if (duplication_on_path > 0) {
+                    //             many_to_many_labels.insert(j);
+                    //         } else {
+                    //             one_to_many_labels.insert(j);
+                    //         }
+                    //         visited.insert(j);
+                    //     }
+                    // }
+
+                    for (int i = get<0>(include); i <= get<0>(exclude) - 1; i++) {
+                        if (visited.find(i) == visited.end()) {
+                            if (duplication_on_path > 0) {
+                                one_to_many_labels.insert(i);
+                            } else {
+                                one_to_one_labels.insert(i);
+                            }
+                        }
+                    }
+                    
+                }
+            } else {
+                // if we encounter a dummy duplication label, increment the duplication_on_path counter
+                duplication_on_path++;
             }
         }
-        for (int i = 0; i < one_to_one_labels.size(); i++) {
-            int label = one_to_one_labels[i];
+
+        for (int label : one_to_one_labels) {
             IndexedGeneTreeNode idx_node = this->gti->leaf_labels.at(label);
             OrthologPair ortho_pair = {
                 .gene_name = query_gene,
@@ -292,8 +523,7 @@ vector<OrthologPair> GeneTree::get_orthologs(string query_gene) {
             };
             orthologs.push_back(ortho_pair);
         }
-        for (int i = 0; i < one_to_many_labels.size(); i++) {
-            int label = one_to_many_labels[i];
+        for (int label : one_to_many_labels) {
             IndexedGeneTreeNode idx_node = this->gti->leaf_labels.at(label);
             OrthologPair ortho_pair = {
                 .gene_name = query_gene,
@@ -303,8 +533,7 @@ vector<OrthologPair> GeneTree::get_orthologs(string query_gene) {
             };
             orthologs.push_back(ortho_pair);
         }
-        for (int i = 0; i < many_to_many_labels.size(); i++) {
-            int label = many_to_many_labels[i];
+        for (int label : many_to_many_labels) {
             IndexedGeneTreeNode idx_node = this->gti->leaf_labels.at(label);
             OrthologPair ortho_pair = {
                 .gene_name = query_gene,

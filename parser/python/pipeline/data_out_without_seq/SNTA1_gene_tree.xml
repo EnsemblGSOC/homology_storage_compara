@@ -14036,49 +14036,6 @@
                                                                     </phy:events>
                                                                     <phy:clade branch_length_attr="0">
                                                                         <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                        <phy:confidence type="duplication_confidence_score">1</phy:confidence>
-                                                                        <phy:taxonomy>
-                                                                            <phy:id>75366</phy:id>
-                                                                            <phy:scientific_name>Sinocyclocheilus grahami</phy:scientific_name>
-                                                                            <phy:common_name>Golden-line barbel</phy:common_name>
-                                                                        </phy:taxonomy>
-                                                                        <phy:events>
-                                                                            <phy:type>speciation_or_duplication</phy:type>
-                                                                            <phy:duplications>1</phy:duplications>
-                                                                        </phy:events>
-                                                                        <phy:clade branch_length_attr="0.028894">
-                                                                            <phy:name>ENSSGRG00000038696</phy:name>
-                                                                            <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                            <phy:taxonomy>
-                                                                                <phy:id>75366</phy:id>
-                                                                                <phy:scientific_name>Sinocyclocheilus grahami</phy:scientific_name>
-                                                                                <phy:common_name>Golden-line barbel</phy:common_name>
-                                                                            </phy:taxonomy>
-                                                                            <phy:sequence>
-                                                                                <phy:accession source="Ensembl">ENSSGRP00000076882</phy:accession>
-                                                                                <phy:name>sntb2-210</phy:name>
-                                                                                <phy:location>LCYQ01S000543.1:1657010-1679072</phy:location>
-                                                                            </phy:sequence>
-                                                                            <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">sinocyclocheilus_grahami</phy:property>
-                                                                        </phy:clade>
-                                                                        <phy:clade branch_length_attr="0.147223">
-                                                                            <phy:name>ENSSGRG00000046835</phy:name>
-                                                                            <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                            <phy:taxonomy>
-                                                                                <phy:id>75366</phy:id>
-                                                                                <phy:scientific_name>Sinocyclocheilus grahami</phy:scientific_name>
-                                                                                <phy:common_name>Golden-line barbel</phy:common_name>
-                                                                            </phy:taxonomy>
-                                                                            <phy:sequence>
-                                                                                <phy:accession source="Ensembl">ENSSGRP00000093547</phy:accession>
-                                                                                <phy:name>sntb2-201</phy:name>
-                                                                                <phy:location>LCYQ01S000709.1:359107-379993</phy:location>
-                                                                            </phy:sequence>
-                                                                            <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">sinocyclocheilus_grahami</phy:property>
-                                                                        </phy:clade>
-                                                                    </phy:clade>
-                                                                    <phy:clade branch_length_attr="0">
-                                                                        <phy:branch_length>0.000000e+00</phy:branch_length>
                                                                         <phy:taxonomy>
                                                                             <phy:id>2743694</phy:id>
                                                                             <phy:scientific_name>Cyprininae</phy:scientific_name>
@@ -14144,6 +14101,49 @@
                                                                                 <phy:location>CAJNDQ010000034.1:3611689-3624152</phy:location>
                                                                             </phy:sequence>
                                                                             <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">cyprinus_carpio_carpio</phy:property>
+                                                                        </phy:clade>
+                                                                    </phy:clade>
+                                                                    <phy:clade branch_length_attr="0">
+                                                                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                        <phy:confidence type="duplication_confidence_score">1</phy:confidence>
+                                                                        <phy:taxonomy>
+                                                                            <phy:id>75366</phy:id>
+                                                                            <phy:scientific_name>Sinocyclocheilus grahami</phy:scientific_name>
+                                                                            <phy:common_name>Golden-line barbel</phy:common_name>
+                                                                        </phy:taxonomy>
+                                                                        <phy:events>
+                                                                            <phy:type>speciation_or_duplication</phy:type>
+                                                                            <phy:duplications>1</phy:duplications>
+                                                                        </phy:events>
+                                                                        <phy:clade branch_length_attr="0.028894">
+                                                                            <phy:name>ENSSGRG00000038696</phy:name>
+                                                                            <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                            <phy:taxonomy>
+                                                                                <phy:id>75366</phy:id>
+                                                                                <phy:scientific_name>Sinocyclocheilus grahami</phy:scientific_name>
+                                                                                <phy:common_name>Golden-line barbel</phy:common_name>
+                                                                            </phy:taxonomy>
+                                                                            <phy:sequence>
+                                                                                <phy:accession source="Ensembl">ENSSGRP00000076882</phy:accession>
+                                                                                <phy:name>sntb2-210</phy:name>
+                                                                                <phy:location>LCYQ01S000543.1:1657010-1679072</phy:location>
+                                                                            </phy:sequence>
+                                                                            <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">sinocyclocheilus_grahami</phy:property>
+                                                                        </phy:clade>
+                                                                        <phy:clade branch_length_attr="0.147223">
+                                                                            <phy:name>ENSSGRG00000046835</phy:name>
+                                                                            <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                            <phy:taxonomy>
+                                                                                <phy:id>75366</phy:id>
+                                                                                <phy:scientific_name>Sinocyclocheilus grahami</phy:scientific_name>
+                                                                                <phy:common_name>Golden-line barbel</phy:common_name>
+                                                                            </phy:taxonomy>
+                                                                            <phy:sequence>
+                                                                                <phy:accession source="Ensembl">ENSSGRP00000093547</phy:accession>
+                                                                                <phy:name>sntb2-201</phy:name>
+                                                                                <phy:location>LCYQ01S000709.1:359107-379993</phy:location>
+                                                                            </phy:sequence>
+                                                                            <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">sinocyclocheilus_grahami</phy:property>
                                                                         </phy:clade>
                                                                     </phy:clade>
                                                                 </phy:clade>
@@ -18148,21 +18148,6 @@
                                                                                                                     <phy:speciations>1</phy:speciations>
                                                                                                                 </phy:events>
                                                                                                                 <phy:clade branch_length_attr="0">
-                                                                                                                    <phy:name>ENSBTAG00000000512</phy:name>
-                                                                                                                    <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                                                                    <phy:taxonomy>
-                                                                                                                        <phy:id>9913</phy:id>
-                                                                                                                        <phy:scientific_name>Bos taurus</phy:scientific_name>
-                                                                                                                        <phy:common_name>Cow</phy:common_name>
-                                                                                                                    </phy:taxonomy>
-                                                                                                                    <phy:sequence>
-                                                                                                                        <phy:accession source="Ensembl">ENSBTAP00000000662</phy:accession>
-                                                                                                                        <phy:name>SNTA1-201</phy:name>
-                                                                                                                        <phy:location>13:62888941-62915182</phy:location>
-                                                                                                                    </phy:sequence>
-                                                                                                                    <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">bos_taurus</phy:property>
-                                                                                                                </phy:clade>
-                                                                                                                <phy:clade branch_length_attr="0">
                                                                                                                     <phy:name>ENSBIXG00005028108</phy:name>
                                                                                                                     <phy:branch_length>0.000000e+00</phy:branch_length>
                                                                                                                     <phy:taxonomy>
@@ -18176,6 +18161,21 @@
                                                                                                                         <phy:location>13:20550918-20577242</phy:location>
                                                                                                                     </phy:sequence>
                                                                                                                     <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">bos_indicus_hybrid</phy:property>
+                                                                                                                </phy:clade>
+                                                                                                                <phy:clade branch_length_attr="0">
+                                                                                                                    <phy:name>ENSBTAG00000000512</phy:name>
+                                                                                                                    <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                                                                    <phy:taxonomy>
+                                                                                                                        <phy:id>9913</phy:id>
+                                                                                                                        <phy:scientific_name>Bos taurus</phy:scientific_name>
+                                                                                                                        <phy:common_name>Cow</phy:common_name>
+                                                                                                                    </phy:taxonomy>
+                                                                                                                    <phy:sequence>
+                                                                                                                        <phy:accession source="Ensembl">ENSBTAP00000000662</phy:accession>
+                                                                                                                        <phy:name>SNTA1-201</phy:name>
+                                                                                                                        <phy:location>13:62888941-62915182</phy:location>
+                                                                                                                    </phy:sequence>
+                                                                                                                    <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">bos_taurus</phy:property>
                                                                                                                 </phy:clade>
                                                                                                             </phy:clade>
                                                                                                         </phy:clade>
@@ -20506,21 +20506,6 @@
                                                                                                             <phy:speciations>1</phy:speciations>
                                                                                                         </phy:events>
                                                                                                         <phy:clade branch_length_attr="0">
-                                                                                                            <phy:name>ENSMZEG00005005431</phy:name>
-                                                                                                            <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                                                            <phy:taxonomy>
-                                                                                                                <phy:id>106582</phy:id>
-                                                                                                                <phy:scientific_name>Maylandia zebra</phy:scientific_name>
-                                                                                                                <phy:common_name>Zebra mbuna</phy:common_name>
-                                                                                                            </phy:taxonomy>
-                                                                                                            <phy:sequence>
-                                                                                                                <phy:accession source="Ensembl">ENSMZEP00005007068</phy:accession>
-                                                                                                                <phy:name>SNTA1-201</phy:name>
-                                                                                                                <phy:location>LG5:31085935-31117459</phy:location>
-                                                                                                            </phy:sequence>
-                                                                                                            <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">maylandia_zebra</phy:property>
-                                                                                                        </phy:clade>
-                                                                                                        <phy:clade branch_length_attr="0">
                                                                                                             <phy:name>ENSACLG00000020269</phy:name>
                                                                                                             <phy:branch_length>0.000000e+00</phy:branch_length>
                                                                                                             <phy:taxonomy>
@@ -20534,6 +20519,21 @@
                                                                                                                 <phy:location>5:5743825-5776967</phy:location>
                                                                                                             </phy:sequence>
                                                                                                             <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">astatotilapia_calliptera</phy:property>
+                                                                                                        </phy:clade>
+                                                                                                        <phy:clade branch_length_attr="0">
+                                                                                                            <phy:name>ENSMZEG00005005431</phy:name>
+                                                                                                            <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                                                            <phy:taxonomy>
+                                                                                                                <phy:id>106582</phy:id>
+                                                                                                                <phy:scientific_name>Maylandia zebra</phy:scientific_name>
+                                                                                                                <phy:common_name>Zebra mbuna</phy:common_name>
+                                                                                                            </phy:taxonomy>
+                                                                                                            <phy:sequence>
+                                                                                                                <phy:accession source="Ensembl">ENSMZEP00005007068</phy:accession>
+                                                                                                                <phy:name>SNTA1-201</phy:name>
+                                                                                                                <phy:location>LG5:31085935-31117459</phy:location>
+                                                                                                            </phy:sequence>
+                                                                                                            <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">maylandia_zebra</phy:property>
                                                                                                         </phy:clade>
                                                                                                     </phy:clade>
                                                                                                     <phy:clade branch_length_attr="0.00327">
@@ -21415,556 +21415,6 @@
                                                         <phy:duplications>1</phy:duplications>
                                                     </phy:events>
                                                     <phy:property datatype="xsd:int" ref="Compara:dubious_duplication" applies_to="clade">dubious_duplication</phy:property>
-                                                    <phy:clade branch_length_attr="0">
-                                                        <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                        <phy:taxonomy>
-                                                            <phy:id>9347</phy:id>
-                                                            <phy:scientific_name>Eutheria</phy:scientific_name>
-                                                            <phy:common_name>Placentals</phy:common_name>
-                                                        </phy:taxonomy>
-                                                        <phy:events>
-                                                            <phy:speciations>1</phy:speciations>
-                                                        </phy:events>
-                                                        <phy:clade branch_length_attr="0">
-                                                            <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                            <phy:taxonomy>
-                                                                <phy:id>1437010</phy:id>
-                                                                <phy:scientific_name>Boreoeutheria</phy:scientific_name>
-                                                                <phy:common_name>Placental mammals</phy:common_name>
-                                                            </phy:taxonomy>
-                                                            <phy:events>
-                                                                <phy:speciations>1</phy:speciations>
-                                                            </phy:events>
-                                                            <phy:clade branch_length_attr="0.011731">
-                                                                <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                <phy:confidence type="duplication_confidence_score">0</phy:confidence>
-                                                                <phy:taxonomy>
-                                                                    <phy:id>314145</phy:id>
-                                                                    <phy:scientific_name>Laurasiatheria</phy:scientific_name>
-                                                                    <phy:common_name>Laurasiatherian mammals</phy:common_name>
-                                                                </phy:taxonomy>
-                                                                <phy:events>
-                                                                    <phy:type>speciation_or_duplication</phy:type>
-                                                                    <phy:duplications>1</phy:duplications>
-                                                                </phy:events>
-                                                                <phy:property datatype="xsd:int" ref="Compara:dubious_duplication" applies_to="clade">dubious_duplication</phy:property>
-                                                                <phy:clade branch_length_attr="0.001769">
-                                                                    <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                    <phy:confidence type="bootstrap">2</phy:confidence>
-                                                                    <phy:taxonomy>
-                                                                        <phy:id>314145</phy:id>
-                                                                        <phy:scientific_name>Laurasiatheria</phy:scientific_name>
-                                                                        <phy:common_name>Laurasiatherian mammals</phy:common_name>
-                                                                    </phy:taxonomy>
-                                                                    <phy:events>
-                                                                        <phy:speciations>1</phy:speciations>
-                                                                    </phy:events>
-                                                                    <phy:clade branch_length_attr="0.004053">
-                                                                        <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                        <phy:confidence type="bootstrap">22</phy:confidence>
-                                                                        <phy:taxonomy>
-                                                                            <phy:id>314145</phy:id>
-                                                                            <phy:scientific_name>Laurasiatheria</phy:scientific_name>
-                                                                            <phy:common_name>Laurasiatherian mammals</phy:common_name>
-                                                                        </phy:taxonomy>
-                                                                        <phy:events>
-                                                                            <phy:speciations>1</phy:speciations>
-                                                                        </phy:events>
-                                                                        <phy:clade branch_length_attr="0.014955">
-                                                                            <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                            <phy:confidence type="bootstrap">76</phy:confidence>
-                                                                            <phy:taxonomy>
-                                                                                <phy:id>9397</phy:id>
-                                                                                <phy:scientific_name>Chiroptera</phy:scientific_name>
-                                                                                <phy:common_name>Bats</phy:common_name>
-                                                                            </phy:taxonomy>
-                                                                            <phy:events>
-                                                                                <phy:speciations>1</phy:speciations>
-                                                                            </phy:events>
-                                                                            <phy:clade branch_length_attr="0.034761">
-                                                                                <phy:name>ENSPVAG00000003721</phy:name>
-                                                                                <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                                <phy:taxonomy>
-                                                                                    <phy:id>132908</phy:id>
-                                                                                    <phy:scientific_name>Pteropus vampyrus</phy:scientific_name>
-                                                                                    <phy:common_name>Megabat</phy:common_name>
-                                                                                </phy:taxonomy>
-                                                                                <phy:sequence>
-                                                                                    <phy:accession source="Ensembl">ENSPVAP00000003520</phy:accession>
-                                                                                    <phy:name>SNTB1-201</phy:name>
-                                                                                    <phy:location>GeneScaffold_1690:758372-954469</phy:location>
-                                                                                </phy:sequence>
-                                                                                <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">pteropus_vampyrus</phy:property>
-                                                                            </phy:clade>
-                                                                            <phy:clade branch_length_attr="0.040799">
-                                                                                <phy:name>ENSRFEG00010012578</phy:name>
-                                                                                <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                                <phy:taxonomy>
-                                                                                    <phy:id>59479</phy:id>
-                                                                                    <phy:scientific_name>Rhinolophus ferrumequinum</phy:scientific_name>
-                                                                                    <phy:common_name>Greater horseshoe bat</phy:common_name>
-                                                                                </phy:taxonomy>
-                                                                                <phy:sequence>
-                                                                                    <phy:accession source="Ensembl">ENSRFEP00010018598</phy:accession>
-                                                                                    <phy:name>SNTB1-201</phy:name>
-                                                                                    <phy:location>14:58664687-58871151</phy:location>
-                                                                                </phy:sequence>
-                                                                                <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">rhinolophus_ferrumequinum</phy:property>
-                                                                            </phy:clade>
-                                                                        </phy:clade>
-                                                                        <phy:clade branch_length_attr="0.024377">
-                                                                            <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                            <phy:confidence type="bootstrap">58</phy:confidence>
-                                                                            <phy:taxonomy>
-                                                                                <phy:id>33554</phy:id>
-                                                                                <phy:scientific_name>Carnivora</phy:scientific_name>
-                                                                                <phy:common_name>Carnivores</phy:common_name>
-                                                                            </phy:taxonomy>
-                                                                            <phy:events>
-                                                                                <phy:speciations>1</phy:speciations>
-                                                                            </phy:events>
-                                                                            <phy:clade branch_length_attr="0.018291">
-                                                                                <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                                <phy:confidence type="bootstrap">62</phy:confidence>
-                                                                                <phy:taxonomy>
-                                                                                    <phy:id>379584</phy:id>
-                                                                                    <phy:scientific_name>Caniformia</phy:scientific_name>
-                                                                                    <phy:common_name>Caniforms</phy:common_name>
-                                                                                </phy:taxonomy>
-                                                                                <phy:events>
-                                                                                    <phy:speciations>1</phy:speciations>
-                                                                                </phy:events>
-                                                                                <phy:clade branch_length_attr="0.012435">
-                                                                                    <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                                    <phy:confidence type="bootstrap">76</phy:confidence>
-                                                                                    <phy:taxonomy>
-                                                                                        <phy:id>379584</phy:id>
-                                                                                        <phy:scientific_name>Caniformia</phy:scientific_name>
-                                                                                        <phy:common_name>Caniforms</phy:common_name>
-                                                                                    </phy:taxonomy>
-                                                                                    <phy:events>
-                                                                                        <phy:speciations>1</phy:speciations>
-                                                                                    </phy:events>
-                                                                                    <phy:clade branch_length_attr="0.017183">
-                                                                                        <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                                        <phy:confidence type="bootstrap">100</phy:confidence>
-                                                                                        <phy:taxonomy>
-                                                                                            <phy:id>9632</phy:id>
-                                                                                            <phy:scientific_name>Ursidae</phy:scientific_name>
-                                                                                            <phy:common_name>Bears</phy:common_name>
-                                                                                        </phy:taxonomy>
-                                                                                        <phy:events>
-                                                                                            <phy:speciations>1</phy:speciations>
-                                                                                        </phy:events>
-                                                                                        <phy:clade branch_length_attr="0.003645">
-                                                                                            <phy:name>ENSUMAG00000021946</phy:name>
-                                                                                            <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                                            <phy:taxonomy>
-                                                                                                <phy:id>29073</phy:id>
-                                                                                                <phy:scientific_name>Ursus maritimus</phy:scientific_name>
-                                                                                                <phy:common_name>Polar bear</phy:common_name>
-                                                                                            </phy:taxonomy>
-                                                                                            <phy:sequence>
-                                                                                                <phy:accession source="Ensembl">ENSUMAP00000030340</phy:accession>
-                                                                                                <phy:name>SNTB1-201</phy:name>
-                                                                                                <phy:location>KK498579.1:20461781-20582970</phy:location>
-                                                                                            </phy:sequence>
-                                                                                            <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">ursus_maritimus</phy:property>
-                                                                                        </phy:clade>
-                                                                                        <phy:clade branch_length_attr="0.017274">
-                                                                                            <phy:name>ENSAMEG00000027317</phy:name>
-                                                                                            <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                                            <phy:taxonomy>
-                                                                                                <phy:id>9646</phy:id>
-                                                                                                <phy:scientific_name>Ailuropoda melanoleuca reference isolate</phy:scientific_name>
-                                                                                                <phy:common_name>Giant panda</phy:common_name>
-                                                                                            </phy:taxonomy>
-                                                                                            <phy:sequence>
-                                                                                                <phy:accession source="Ensembl">ENSAMEP00000031431</phy:accession>
-                                                                                                <phy:name>SNTB1-201</phy:name>
-                                                                                                <phy:location>9:85164349-85408593</phy:location>
-                                                                                            </phy:sequence>
-                                                                                            <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">ailuropoda_melanoleuca</phy:property>
-                                                                                        </phy:clade>
-                                                                                    </phy:clade>
-                                                                                    <phy:clade branch_length_attr="0.029623">
-                                                                                        <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                                        <phy:confidence type="bootstrap">87</phy:confidence>
-                                                                                        <phy:taxonomy>
-                                                                                            <phy:id>169418</phy:id>
-                                                                                            <phy:scientific_name>Mustelinae</phy:scientific_name>
-                                                                                        </phy:taxonomy>
-                                                                                        <phy:events>
-                                                                                            <phy:speciations>1</phy:speciations>
-                                                                                        </phy:events>
-                                                                                        <phy:clade branch_length_attr="0.003931">
-                                                                                            <phy:name>ENSMPUG00000001118</phy:name>
-                                                                                            <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                                            <phy:taxonomy>
-                                                                                                <phy:id>9669</phy:id>
-                                                                                                <phy:scientific_name>Mustela putorius furo</phy:scientific_name>
-                                                                                                <phy:common_name>Ferret</phy:common_name>
-                                                                                            </phy:taxonomy>
-                                                                                            <phy:sequence>
-                                                                                                <phy:accession source="Ensembl">ENSMPUP00000001109</phy:accession>
-                                                                                                <phy:name>SNTB1-201</phy:name>
-                                                                                                <phy:location>GL896908.1:8771746-8938513</phy:location>
-                                                                                            </phy:sequence>
-                                                                                            <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">mustela_putorius_furo</phy:property>
-                                                                                        </phy:clade>
-                                                                                        <phy:clade branch_length_attr="0.008011">
-                                                                                            <phy:name>ENSNVIG00000005896</phy:name>
-                                                                                            <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                                            <phy:taxonomy>
-                                                                                                <phy:id>452646</phy:id>
-                                                                                                <phy:scientific_name>Neogale vison</phy:scientific_name>
-                                                                                                <phy:common_name>American mink</phy:common_name>
-                                                                                            </phy:taxonomy>
-                                                                                            <phy:sequence>
-                                                                                                <phy:accession source="Ensembl">ENSNVIP00000007401</phy:accession>
-                                                                                                <phy:name>SNTB1-201</phy:name>
-                                                                                                <phy:location>FNWR01000153.1:2252556-2480926</phy:location>
-                                                                                            </phy:sequence>
-                                                                                            <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">neovison_vison</phy:property>
-                                                                                        </phy:clade>
-                                                                                    </phy:clade>
-                                                                                </phy:clade>
-                                                                                <phy:clade branch_length_attr="0.039963">
-                                                                                    <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                                    <phy:confidence type="bootstrap">90</phy:confidence>
-                                                                                    <phy:taxonomy>
-                                                                                        <phy:id>9608</phy:id>
-                                                                                        <phy:scientific_name>Canidae</phy:scientific_name>
-                                                                                        <phy:common_name>Dog, coyote, wolf, fox</phy:common_name>
-                                                                                    </phy:taxonomy>
-                                                                                    <phy:events>
-                                                                                        <phy:speciations>1</phy:speciations>
-                                                                                    </phy:events>
-                                                                                    <phy:clade branch_length_attr="0.006673">
-                                                                                        <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                                        <phy:confidence type="bootstrap">100</phy:confidence>
-                                                                                        <phy:taxonomy>
-                                                                                            <phy:id>9612</phy:id>
-                                                                                            <phy:scientific_name>Canis lupus</phy:scientific_name>
-                                                                                            <phy:common_name>Gray wolf</phy:common_name>
-                                                                                        </phy:taxonomy>
-                                                                                        <phy:events>
-                                                                                            <phy:speciations>1</phy:speciations>
-                                                                                        </phy:events>
-                                                                                        <phy:clade branch_length_attr="0">
-                                                                                            <phy:name>ENSCAFG00845008497</phy:name>
-                                                                                            <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                                            <phy:taxonomy>
-                                                                                                <phy:id>9615</phy:id>
-                                                                                                <phy:scientific_name>Canis lupus familiaris breed Labrador retriever</phy:scientific_name>
-                                                                                                <phy:common_name>Dog</phy:common_name>
-                                                                                            </phy:taxonomy>
-                                                                                            <phy:sequence>
-                                                                                                <phy:accession source="Ensembl">ENSCAFP00845011570</phy:accession>
-                                                                                                <phy:name>SNTB1-201</phy:name>
-                                                                                                <phy:location>13:19720329-19953343</phy:location>
-                                                                                            </phy:sequence>
-                                                                                            <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">canis_lupus_familiaris</phy:property>
-                                                                                        </phy:clade>
-                                                                                        <phy:clade branch_length_attr="0.002172">
-                                                                                            <phy:name>ENSCAFG00020005904</phy:name>
-                                                                                            <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                                            <phy:taxonomy>
-                                                                                                <phy:id>286419</phy:id>
-                                                                                                <phy:scientific_name>Canis lupus dingo</phy:scientific_name>
-                                                                                                <phy:common_name>Dingo</phy:common_name>
-                                                                                            </phy:taxonomy>
-                                                                                            <phy:sequence>
-                                                                                                <phy:accession source="Ensembl">ENSCAFP00020007290</phy:accession>
-                                                                                                <phy:name>SNTB1-201</phy:name>
-                                                                                                <phy:location>QKWQ01000609.1:19631515-19860958</phy:location>
-                                                                                            </phy:sequence>
-                                                                                            <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">canis_lupus_dingo</phy:property>
-                                                                                        </phy:clade>
-                                                                                    </phy:clade>
-                                                                                    <phy:clade branch_length_attr="0.079039">
-                                                                                        <phy:name>ENSVVUG00000016109</phy:name>
-                                                                                        <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                                        <phy:taxonomy>
-                                                                                            <phy:id>9627</phy:id>
-                                                                                            <phy:scientific_name>Vulpes vulpes</phy:scientific_name>
-                                                                                            <phy:common_name>Red fox</phy:common_name>
-                                                                                        </phy:taxonomy>
-                                                                                        <phy:sequence>
-                                                                                            <phy:accession source="Ensembl">ENSVVUP00000021922</phy:accession>
-                                                                                            <phy:name>SNTB1-201</phy:name>
-                                                                                            <phy:location>NBDQ01000014.1:9883887-10144329</phy:location>
-                                                                                        </phy:sequence>
-                                                                                        <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">vulpes_vulpes</phy:property>
-                                                                                    </phy:clade>
-                                                                                </phy:clade>
-                                                                            </phy:clade>
-                                                                            <phy:clade branch_length_attr="0.029649">
-                                                                                <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                                <phy:confidence type="bootstrap">100</phy:confidence>
-                                                                                <phy:taxonomy>
-                                                                                    <phy:id>9681</phy:id>
-                                                                                    <phy:scientific_name>Felidae</phy:scientific_name>
-                                                                                    <phy:common_name>Cat family</phy:common_name>
-                                                                                </phy:taxonomy>
-                                                                                <phy:events>
-                                                                                    <phy:speciations>1</phy:speciations>
-                                                                                </phy:events>
-                                                                                <phy:clade branch_length_attr="0.002673">
-                                                                                    <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                                    <phy:confidence type="bootstrap">70</phy:confidence>
-                                                                                    <phy:taxonomy>
-                                                                                        <phy:id>9688</phy:id>
-                                                                                        <phy:scientific_name>Panthera</phy:scientific_name>
-                                                                                    </phy:taxonomy>
-                                                                                    <phy:events>
-                                                                                        <phy:speciations>1</phy:speciations>
-                                                                                    </phy:events>
-                                                                                    <phy:clade branch_length_attr="0">
-                                                                                        <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                                        <phy:confidence type="bootstrap">70</phy:confidence>
-                                                                                        <phy:taxonomy>
-                                                                                            <phy:id>9688</phy:id>
-                                                                                            <phy:scientific_name>Panthera</phy:scientific_name>
-                                                                                        </phy:taxonomy>
-                                                                                        <phy:events>
-                                                                                            <phy:speciations>1</phy:speciations>
-                                                                                        </phy:events>
-                                                                                        <phy:clade branch_length_attr="0">
-                                                                                            <phy:name>ENSPLOG00000005013</phy:name>
-                                                                                            <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                                            <phy:taxonomy>
-                                                                                                <phy:id>9689</phy:id>
-                                                                                                <phy:scientific_name>Panthera leo</phy:scientific_name>
-                                                                                                <phy:common_name>Lion</phy:common_name>
-                                                                                            </phy:taxonomy>
-                                                                                            <phy:sequence>
-                                                                                                <phy:accession source="Ensembl">ENSPLOP00000006840</phy:accession>
-                                                                                                <phy:name>SNTB1-201</phy:name>
-                                                                                                <phy:location>X:18054025-18286151</phy:location>
-                                                                                            </phy:sequence>
-                                                                                            <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">panthera_leo</phy:property>
-                                                                                        </phy:clade>
-                                                                                        <phy:clade branch_length_attr="0.002399">
-                                                                                            <phy:name>ENSPTIG00000000330</phy:name>
-                                                                                            <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                                            <phy:taxonomy>
-                                                                                                <phy:id>74533</phy:id>
-                                                                                                <phy:scientific_name>Panthera tigris altaica</phy:scientific_name>
-                                                                                                <phy:common_name>Tiger</phy:common_name>
-                                                                                            </phy:taxonomy>
-                                                                                            <phy:sequence>
-                                                                                                <phy:accession source="Ensembl">ENSPTIP00000000162</phy:accession>
-                                                                                                <phy:name>SNTB1-201</phy:name>
-                                                                                                <phy:location>KE721648.1:6499847-6732813</phy:location>
-                                                                                            </phy:sequence>
-                                                                                            <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">panthera_tigris_altaica</phy:property>
-                                                                                        </phy:clade>
-                                                                                    </phy:clade>
-                                                                                    <phy:clade branch_length_attr="0.002171">
-                                                                                        <phy:name>ENSPPRG00000024791</phy:name>
-                                                                                        <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                                        <phy:taxonomy>
-                                                                                            <phy:id>9691</phy:id>
-                                                                                            <phy:scientific_name>Panthera pardus</phy:scientific_name>
-                                                                                            <phy:common_name>Leopard</phy:common_name>
-                                                                                        </phy:taxonomy>
-                                                                                        <phy:sequence>
-                                                                                            <phy:accession source="Ensembl">ENSPPRP00000000488</phy:accession>
-                                                                                            <phy:name>SNTB1-201</phy:name>
-                                                                                            <phy:location>KV860306.1:18986961-19233954</phy:location>
-                                                                                        </phy:sequence>
-                                                                                        <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">panthera_pardus</phy:property>
-                                                                                    </phy:clade>
-                                                                                </phy:clade>
-                                                                                <phy:clade branch_length_attr="0.005037">
-                                                                                    <phy:name>ENSFCAG00000046126</phy:name>
-                                                                                    <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                                    <phy:taxonomy>
-                                                                                        <phy:id>9685</phy:id>
-                                                                                        <phy:scientific_name>Felis catus</phy:scientific_name>
-                                                                                        <phy:common_name>Cat</phy:common_name>
-                                                                                    </phy:taxonomy>
-                                                                                    <phy:sequence>
-                                                                                        <phy:accession source="Ensembl">ENSFCAP00000051092</phy:accession>
-                                                                                        <phy:name>SNTB1-201</phy:name>
-                                                                                        <phy:location>F2:66345339-66586021</phy:location>
-                                                                                    </phy:sequence>
-                                                                                    <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">felis_catus</phy:property>
-                                                                                </phy:clade>
-                                                                            </phy:clade>
-                                                                        </phy:clade>
-                                                                    </phy:clade>
-                                                                    <phy:clade branch_length_attr="0.096382">
-                                                                        <phy:name>ENSEEUG00000006842</phy:name>
-                                                                        <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                        <phy:taxonomy>
-                                                                            <phy:id>9365</phy:id>
-                                                                            <phy:scientific_name>Erinaceus europaeus</phy:scientific_name>
-                                                                            <phy:common_name>Hedgehog</phy:common_name>
-                                                                        </phy:taxonomy>
-                                                                        <phy:sequence>
-                                                                            <phy:accession source="Ensembl">ENSEEUP00000006243</phy:accession>
-                                                                            <phy:name>SNTB1-201</phy:name>
-                                                                            <phy:location>GeneScaffold_7058:271254-538507</phy:location>
-                                                                        </phy:sequence>
-                                                                        <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">erinaceus_europaeus</phy:property>
-                                                                    </phy:clade>
-                                                                </phy:clade>
-                                                                <phy:clade branch_length_attr="0.01679">
-                                                                    <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                    <phy:confidence type="bootstrap">20</phy:confidence>
-                                                                    <phy:taxonomy>
-                                                                        <phy:id>314145</phy:id>
-                                                                        <phy:scientific_name>Laurasiatheria</phy:scientific_name>
-                                                                        <phy:common_name>Laurasiatherian mammals</phy:common_name>
-                                                                    </phy:taxonomy>
-                                                                    <phy:events>
-                                                                        <phy:speciations>1</phy:speciations>
-                                                                    </phy:events>
-                                                                    <phy:clade branch_length_attr="0.093337">
-                                                                        <phy:name>ENSMLUG00000009812</phy:name>
-                                                                        <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                        <phy:taxonomy>
-                                                                            <phy:id>59463</phy:id>
-                                                                            <phy:scientific_name>Myotis lucifugus</phy:scientific_name>
-                                                                            <phy:common_name>Microbat</phy:common_name>
-                                                                        </phy:taxonomy>
-                                                                        <phy:sequence>
-                                                                            <phy:accession source="Ensembl">ENSMLUP00000008949</phy:accession>
-                                                                            <phy:name>SNTB1-201</phy:name>
-                                                                            <phy:location>GL429784:8142601-8235558</phy:location>
-                                                                        </phy:sequence>
-                                                                        <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">myotis_lucifugus</phy:property>
-                                                                    </phy:clade>
-                                                                    <phy:clade branch_length_attr="0.105528">
-                                                                        <phy:name>ENSSARG00000001271</phy:name>
-                                                                        <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                        <phy:taxonomy>
-                                                                            <phy:id>42254</phy:id>
-                                                                            <phy:scientific_name>Sorex araneus</phy:scientific_name>
-                                                                            <phy:common_name>Shrew</phy:common_name>
-                                                                        </phy:taxonomy>
-                                                                        <phy:sequence>
-                                                                            <phy:accession source="Ensembl">ENSSARP00000001156</phy:accession>
-                                                                            <phy:name>SNTB1-201</phy:name>
-                                                                            <phy:location>GeneScaffold_5721:6568-62070</phy:location>
-                                                                        </phy:sequence>
-                                                                        <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">sorex_araneus</phy:property>
-                                                                    </phy:clade>
-                                                                </phy:clade>
-                                                            </phy:clade>
-                                                            <phy:clade branch_length_attr="0.039778">
-                                                                <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                <phy:taxonomy>
-                                                                    <phy:id>9989</phy:id>
-                                                                    <phy:scientific_name>Rodentia</phy:scientific_name>
-                                                                    <phy:common_name>Rodents</phy:common_name>
-                                                                </phy:taxonomy>
-                                                                <phy:events>
-                                                                    <phy:speciations>1</phy:speciations>
-                                                                </phy:events>
-                                                                <phy:clade branch_length_attr="0.060526">
-                                                                    <phy:name>ENSMMMG00000001178</phy:name>
-                                                                    <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                    <phy:taxonomy>
-                                                                        <phy:id>9994</phy:id>
-                                                                        <phy:scientific_name>Marmota marmota marmota</phy:scientific_name>
-                                                                        <phy:common_name>Alpine marmot</phy:common_name>
-                                                                    </phy:taxonomy>
-                                                                    <phy:sequence>
-                                                                        <phy:accession source="Ensembl">ENSMMMP00000001267</phy:accession>
-                                                                        <phy:name>SNTB1-201</phy:name>
-                                                                        <phy:location>CZRN01000019.1:19265478-19397225</phy:location>
-                                                                    </phy:sequence>
-                                                                    <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">marmota_marmota_marmota</phy:property>
-                                                                </phy:clade>
-                                                                <phy:clade branch_length_attr="0.141049">
-                                                                    <phy:name>ENSDORG00000029258</phy:name>
-                                                                    <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                    <phy:taxonomy>
-                                                                        <phy:id>10020</phy:id>
-                                                                        <phy:scientific_name>Dipodomys ordii</phy:scientific_name>
-                                                                        <phy:common_name>Kangaroo rat</phy:common_name>
-                                                                    </phy:taxonomy>
-                                                                    <phy:sequence>
-                                                                        <phy:accession source="Ensembl">ENSDORP00000027164</phy:accession>
-                                                                        <phy:name>Sntb1-201</phy:name>
-                                                                        <phy:location>KN672497.1:2523000-2641949</phy:location>
-                                                                    </phy:sequence>
-                                                                    <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">dipodomys_ordii</phy:property>
-                                                                </phy:clade>
-                                                            </phy:clade>
-                                                        </phy:clade>
-                                                        <phy:clade branch_length_attr="0.012079">
-                                                            <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                            <phy:taxonomy>
-                                                                <phy:id>9347</phy:id>
-                                                                <phy:scientific_name>Eutheria</phy:scientific_name>
-                                                                <phy:common_name>Placentals</phy:common_name>
-                                                            </phy:taxonomy>
-                                                            <phy:events>
-                                                                <phy:speciations>1</phy:speciations>
-                                                            </phy:events>
-                                                            <phy:clade branch_length_attr="0.027552">
-                                                                <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                <phy:confidence type="bootstrap">82</phy:confidence>
-                                                                <phy:taxonomy>
-                                                                    <phy:id>9348</phy:id>
-                                                                    <phy:scientific_name>Xenarthra</phy:scientific_name>
-                                                                    <phy:common_name>Xenarthran mammals</phy:common_name>
-                                                                </phy:taxonomy>
-                                                                <phy:events>
-                                                                    <phy:speciations>1</phy:speciations>
-                                                                </phy:events>
-                                                                <phy:clade branch_length_attr="0.036672">
-                                                                    <phy:name>ENSDNOG00000010265</phy:name>
-                                                                    <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                    <phy:taxonomy>
-                                                                        <phy:id>9361</phy:id>
-                                                                        <phy:scientific_name>Dasypus novemcinctus</phy:scientific_name>
-                                                                        <phy:common_name>Armadillo</phy:common_name>
-                                                                    </phy:taxonomy>
-                                                                    <phy:sequence>
-                                                                        <phy:accession source="Ensembl">ENSDNOP00000007943</phy:accession>
-                                                                        <phy:name>SNTB1-201</phy:name>
-                                                                        <phy:location>JH579962.1:2234861-2510583</phy:location>
-                                                                    </phy:sequence>
-                                                                    <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">dasypus_novemcinctus</phy:property>
-                                                                </phy:clade>
-                                                                <phy:clade branch_length_attr="0.044069">
-                                                                    <phy:name>ENSCHOG00000007627</phy:name>
-                                                                    <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                    <phy:taxonomy>
-                                                                        <phy:id>9358</phy:id>
-                                                                        <phy:scientific_name>Choloepus hoffmanni</phy:scientific_name>
-                                                                        <phy:common_name>Sloth</phy:common_name>
-                                                                    </phy:taxonomy>
-                                                                    <phy:sequence>
-                                                                        <phy:accession source="Ensembl">ENSCHOP00000006752</phy:accession>
-                                                                        <phy:name>SNTB1-201</phy:name>
-                                                                        <phy:location>GeneScaffold_6392:675-82279</phy:location>
-                                                                    </phy:sequence>
-                                                                    <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">choloepus_hoffmanni</phy:property>
-                                                                </phy:clade>
-                                                            </phy:clade>
-                                                            <phy:clade branch_length_attr="0.081354">
-                                                                <phy:name>ENSETEG00000017692</phy:name>
-                                                                <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                <phy:taxonomy>
-                                                                    <phy:id>9371</phy:id>
-                                                                    <phy:scientific_name>Echinops telfairi</phy:scientific_name>
-                                                                    <phy:common_name>Lesser hedgehog tenrec</phy:common_name>
-                                                                </phy:taxonomy>
-                                                                <phy:sequence>
-                                                                    <phy:accession source="Ensembl">ENSETEP00000014370</phy:accession>
-                                                                    <phy:name>SNTB1-201</phy:name>
-                                                                    <phy:location>GeneScaffold_8043:379146-589295</phy:location>
-                                                                </phy:sequence>
-                                                                <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">echinops_telfairi</phy:property>
-                                                            </phy:clade>
-                                                        </phy:clade>
-                                                    </phy:clade>
                                                     <phy:clade branch_length_attr="0">
                                                         <phy:branch_length>0.000000e+00</phy:branch_length>
                                                         <phy:taxonomy>
@@ -23446,21 +22896,6 @@
                                                                                                         <phy:speciations>1</phy:speciations>
                                                                                                     </phy:events>
                                                                                                     <phy:clade branch_length_attr="0">
-                                                                                                        <phy:name>ENSBIXG00005004656</phy:name>
-                                                                                                        <phy:branch_length>0.000000e+00</phy:branch_length>
-                                                                                                        <phy:taxonomy>
-                                                                                                            <phy:id>30522</phy:id>
-                                                                                                            <phy:scientific_name>Bos indicus x Bos taurus</phy:scientific_name>
-                                                                                                            <phy:common_name>Hybrid - Bos Indicus</phy:common_name>
-                                                                                                        </phy:taxonomy>
-                                                                                                        <phy:sequence>
-                                                                                                            <phy:accession source="Ensembl">ENSBIXP00005043425</phy:accession>
-                                                                                                            <phy:name>SNTB1-201</phy:name>
-                                                                                                            <phy:location>14:82064012-82314846</phy:location>
-                                                                                                        </phy:sequence>
-                                                                                                        <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">bos_indicus_hybrid</phy:property>
-                                                                                                    </phy:clade>
-                                                                                                    <phy:clade branch_length_attr="0">
                                                                                                         <phy:name>ENSBTAG00000044126</phy:name>
                                                                                                         <phy:branch_length>0.000000e+00</phy:branch_length>
                                                                                                         <phy:taxonomy>
@@ -23474,6 +22909,21 @@
                                                                                                             <phy:location>14:81871605-82123649</phy:location>
                                                                                                         </phy:sequence>
                                                                                                         <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">bos_taurus</phy:property>
+                                                                                                    </phy:clade>
+                                                                                                    <phy:clade branch_length_attr="0">
+                                                                                                        <phy:name>ENSBIXG00005004656</phy:name>
+                                                                                                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                                                        <phy:taxonomy>
+                                                                                                            <phy:id>30522</phy:id>
+                                                                                                            <phy:scientific_name>Bos indicus x Bos taurus</phy:scientific_name>
+                                                                                                            <phy:common_name>Hybrid - Bos Indicus</phy:common_name>
+                                                                                                        </phy:taxonomy>
+                                                                                                        <phy:sequence>
+                                                                                                            <phy:accession source="Ensembl">ENSBIXP00005043425</phy:accession>
+                                                                                                            <phy:name>SNTB1-201</phy:name>
+                                                                                                            <phy:location>14:82064012-82314846</phy:location>
+                                                                                                        </phy:sequence>
+                                                                                                        <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">bos_indicus_hybrid</phy:property>
                                                                                                     </phy:clade>
                                                                                                 </phy:clade>
                                                                                                 <phy:clade branch_length_attr="0.003609">
@@ -23749,6 +23199,556 @@
                                                                     <phy:location>GeneScaffold_6932:300943-488885</phy:location>
                                                                 </phy:sequence>
                                                                 <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">procavia_capensis</phy:property>
+                                                            </phy:clade>
+                                                        </phy:clade>
+                                                    </phy:clade>
+                                                    <phy:clade branch_length_attr="0">
+                                                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                        <phy:taxonomy>
+                                                            <phy:id>9347</phy:id>
+                                                            <phy:scientific_name>Eutheria</phy:scientific_name>
+                                                            <phy:common_name>Placentals</phy:common_name>
+                                                        </phy:taxonomy>
+                                                        <phy:events>
+                                                            <phy:speciations>1</phy:speciations>
+                                                        </phy:events>
+                                                        <phy:clade branch_length_attr="0">
+                                                            <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                            <phy:taxonomy>
+                                                                <phy:id>1437010</phy:id>
+                                                                <phy:scientific_name>Boreoeutheria</phy:scientific_name>
+                                                                <phy:common_name>Placental mammals</phy:common_name>
+                                                            </phy:taxonomy>
+                                                            <phy:events>
+                                                                <phy:speciations>1</phy:speciations>
+                                                            </phy:events>
+                                                            <phy:clade branch_length_attr="0.011731">
+                                                                <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                <phy:confidence type="duplication_confidence_score">0</phy:confidence>
+                                                                <phy:taxonomy>
+                                                                    <phy:id>314145</phy:id>
+                                                                    <phy:scientific_name>Laurasiatheria</phy:scientific_name>
+                                                                    <phy:common_name>Laurasiatherian mammals</phy:common_name>
+                                                                </phy:taxonomy>
+                                                                <phy:events>
+                                                                    <phy:type>speciation_or_duplication</phy:type>
+                                                                    <phy:duplications>1</phy:duplications>
+                                                                </phy:events>
+                                                                <phy:property datatype="xsd:int" ref="Compara:dubious_duplication" applies_to="clade">dubious_duplication</phy:property>
+                                                                <phy:clade branch_length_attr="0.001769">
+                                                                    <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                    <phy:confidence type="bootstrap">2</phy:confidence>
+                                                                    <phy:taxonomy>
+                                                                        <phy:id>314145</phy:id>
+                                                                        <phy:scientific_name>Laurasiatheria</phy:scientific_name>
+                                                                        <phy:common_name>Laurasiatherian mammals</phy:common_name>
+                                                                    </phy:taxonomy>
+                                                                    <phy:events>
+                                                                        <phy:speciations>1</phy:speciations>
+                                                                    </phy:events>
+                                                                    <phy:clade branch_length_attr="0.004053">
+                                                                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                        <phy:confidence type="bootstrap">22</phy:confidence>
+                                                                        <phy:taxonomy>
+                                                                            <phy:id>314145</phy:id>
+                                                                            <phy:scientific_name>Laurasiatheria</phy:scientific_name>
+                                                                            <phy:common_name>Laurasiatherian mammals</phy:common_name>
+                                                                        </phy:taxonomy>
+                                                                        <phy:events>
+                                                                            <phy:speciations>1</phy:speciations>
+                                                                        </phy:events>
+                                                                        <phy:clade branch_length_attr="0.014955">
+                                                                            <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                            <phy:confidence type="bootstrap">76</phy:confidence>
+                                                                            <phy:taxonomy>
+                                                                                <phy:id>9397</phy:id>
+                                                                                <phy:scientific_name>Chiroptera</phy:scientific_name>
+                                                                                <phy:common_name>Bats</phy:common_name>
+                                                                            </phy:taxonomy>
+                                                                            <phy:events>
+                                                                                <phy:speciations>1</phy:speciations>
+                                                                            </phy:events>
+                                                                            <phy:clade branch_length_attr="0.034761">
+                                                                                <phy:name>ENSPVAG00000003721</phy:name>
+                                                                                <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                                <phy:taxonomy>
+                                                                                    <phy:id>132908</phy:id>
+                                                                                    <phy:scientific_name>Pteropus vampyrus</phy:scientific_name>
+                                                                                    <phy:common_name>Megabat</phy:common_name>
+                                                                                </phy:taxonomy>
+                                                                                <phy:sequence>
+                                                                                    <phy:accession source="Ensembl">ENSPVAP00000003520</phy:accession>
+                                                                                    <phy:name>SNTB1-201</phy:name>
+                                                                                    <phy:location>GeneScaffold_1690:758372-954469</phy:location>
+                                                                                </phy:sequence>
+                                                                                <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">pteropus_vampyrus</phy:property>
+                                                                            </phy:clade>
+                                                                            <phy:clade branch_length_attr="0.040799">
+                                                                                <phy:name>ENSRFEG00010012578</phy:name>
+                                                                                <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                                <phy:taxonomy>
+                                                                                    <phy:id>59479</phy:id>
+                                                                                    <phy:scientific_name>Rhinolophus ferrumequinum</phy:scientific_name>
+                                                                                    <phy:common_name>Greater horseshoe bat</phy:common_name>
+                                                                                </phy:taxonomy>
+                                                                                <phy:sequence>
+                                                                                    <phy:accession source="Ensembl">ENSRFEP00010018598</phy:accession>
+                                                                                    <phy:name>SNTB1-201</phy:name>
+                                                                                    <phy:location>14:58664687-58871151</phy:location>
+                                                                                </phy:sequence>
+                                                                                <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">rhinolophus_ferrumequinum</phy:property>
+                                                                            </phy:clade>
+                                                                        </phy:clade>
+                                                                        <phy:clade branch_length_attr="0.024377">
+                                                                            <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                            <phy:confidence type="bootstrap">58</phy:confidence>
+                                                                            <phy:taxonomy>
+                                                                                <phy:id>33554</phy:id>
+                                                                                <phy:scientific_name>Carnivora</phy:scientific_name>
+                                                                                <phy:common_name>Carnivores</phy:common_name>
+                                                                            </phy:taxonomy>
+                                                                            <phy:events>
+                                                                                <phy:speciations>1</phy:speciations>
+                                                                            </phy:events>
+                                                                            <phy:clade branch_length_attr="0.018291">
+                                                                                <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                                <phy:confidence type="bootstrap">62</phy:confidence>
+                                                                                <phy:taxonomy>
+                                                                                    <phy:id>379584</phy:id>
+                                                                                    <phy:scientific_name>Caniformia</phy:scientific_name>
+                                                                                    <phy:common_name>Caniforms</phy:common_name>
+                                                                                </phy:taxonomy>
+                                                                                <phy:events>
+                                                                                    <phy:speciations>1</phy:speciations>
+                                                                                </phy:events>
+                                                                                <phy:clade branch_length_attr="0.012435">
+                                                                                    <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                                    <phy:confidence type="bootstrap">76</phy:confidence>
+                                                                                    <phy:taxonomy>
+                                                                                        <phy:id>379584</phy:id>
+                                                                                        <phy:scientific_name>Caniformia</phy:scientific_name>
+                                                                                        <phy:common_name>Caniforms</phy:common_name>
+                                                                                    </phy:taxonomy>
+                                                                                    <phy:events>
+                                                                                        <phy:speciations>1</phy:speciations>
+                                                                                    </phy:events>
+                                                                                    <phy:clade branch_length_attr="0.017183">
+                                                                                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                                        <phy:confidence type="bootstrap">100</phy:confidence>
+                                                                                        <phy:taxonomy>
+                                                                                            <phy:id>9632</phy:id>
+                                                                                            <phy:scientific_name>Ursidae</phy:scientific_name>
+                                                                                            <phy:common_name>Bears</phy:common_name>
+                                                                                        </phy:taxonomy>
+                                                                                        <phy:events>
+                                                                                            <phy:speciations>1</phy:speciations>
+                                                                                        </phy:events>
+                                                                                        <phy:clade branch_length_attr="0.003645">
+                                                                                            <phy:name>ENSUMAG00000021946</phy:name>
+                                                                                            <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                                            <phy:taxonomy>
+                                                                                                <phy:id>29073</phy:id>
+                                                                                                <phy:scientific_name>Ursus maritimus</phy:scientific_name>
+                                                                                                <phy:common_name>Polar bear</phy:common_name>
+                                                                                            </phy:taxonomy>
+                                                                                            <phy:sequence>
+                                                                                                <phy:accession source="Ensembl">ENSUMAP00000030340</phy:accession>
+                                                                                                <phy:name>SNTB1-201</phy:name>
+                                                                                                <phy:location>KK498579.1:20461781-20582970</phy:location>
+                                                                                            </phy:sequence>
+                                                                                            <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">ursus_maritimus</phy:property>
+                                                                                        </phy:clade>
+                                                                                        <phy:clade branch_length_attr="0.017274">
+                                                                                            <phy:name>ENSAMEG00000027317</phy:name>
+                                                                                            <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                                            <phy:taxonomy>
+                                                                                                <phy:id>9646</phy:id>
+                                                                                                <phy:scientific_name>Ailuropoda melanoleuca reference isolate</phy:scientific_name>
+                                                                                                <phy:common_name>Giant panda</phy:common_name>
+                                                                                            </phy:taxonomy>
+                                                                                            <phy:sequence>
+                                                                                                <phy:accession source="Ensembl">ENSAMEP00000031431</phy:accession>
+                                                                                                <phy:name>SNTB1-201</phy:name>
+                                                                                                <phy:location>9:85164349-85408593</phy:location>
+                                                                                            </phy:sequence>
+                                                                                            <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">ailuropoda_melanoleuca</phy:property>
+                                                                                        </phy:clade>
+                                                                                    </phy:clade>
+                                                                                    <phy:clade branch_length_attr="0.029623">
+                                                                                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                                        <phy:confidence type="bootstrap">87</phy:confidence>
+                                                                                        <phy:taxonomy>
+                                                                                            <phy:id>169418</phy:id>
+                                                                                            <phy:scientific_name>Mustelinae</phy:scientific_name>
+                                                                                        </phy:taxonomy>
+                                                                                        <phy:events>
+                                                                                            <phy:speciations>1</phy:speciations>
+                                                                                        </phy:events>
+                                                                                        <phy:clade branch_length_attr="0.003931">
+                                                                                            <phy:name>ENSMPUG00000001118</phy:name>
+                                                                                            <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                                            <phy:taxonomy>
+                                                                                                <phy:id>9669</phy:id>
+                                                                                                <phy:scientific_name>Mustela putorius furo</phy:scientific_name>
+                                                                                                <phy:common_name>Ferret</phy:common_name>
+                                                                                            </phy:taxonomy>
+                                                                                            <phy:sequence>
+                                                                                                <phy:accession source="Ensembl">ENSMPUP00000001109</phy:accession>
+                                                                                                <phy:name>SNTB1-201</phy:name>
+                                                                                                <phy:location>GL896908.1:8771746-8938513</phy:location>
+                                                                                            </phy:sequence>
+                                                                                            <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">mustela_putorius_furo</phy:property>
+                                                                                        </phy:clade>
+                                                                                        <phy:clade branch_length_attr="0.008011">
+                                                                                            <phy:name>ENSNVIG00000005896</phy:name>
+                                                                                            <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                                            <phy:taxonomy>
+                                                                                                <phy:id>452646</phy:id>
+                                                                                                <phy:scientific_name>Neogale vison</phy:scientific_name>
+                                                                                                <phy:common_name>American mink</phy:common_name>
+                                                                                            </phy:taxonomy>
+                                                                                            <phy:sequence>
+                                                                                                <phy:accession source="Ensembl">ENSNVIP00000007401</phy:accession>
+                                                                                                <phy:name>SNTB1-201</phy:name>
+                                                                                                <phy:location>FNWR01000153.1:2252556-2480926</phy:location>
+                                                                                            </phy:sequence>
+                                                                                            <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">neovison_vison</phy:property>
+                                                                                        </phy:clade>
+                                                                                    </phy:clade>
+                                                                                </phy:clade>
+                                                                                <phy:clade branch_length_attr="0.039963">
+                                                                                    <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                                    <phy:confidence type="bootstrap">90</phy:confidence>
+                                                                                    <phy:taxonomy>
+                                                                                        <phy:id>9608</phy:id>
+                                                                                        <phy:scientific_name>Canidae</phy:scientific_name>
+                                                                                        <phy:common_name>Dog, coyote, wolf, fox</phy:common_name>
+                                                                                    </phy:taxonomy>
+                                                                                    <phy:events>
+                                                                                        <phy:speciations>1</phy:speciations>
+                                                                                    </phy:events>
+                                                                                    <phy:clade branch_length_attr="0.006673">
+                                                                                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                                        <phy:confidence type="bootstrap">100</phy:confidence>
+                                                                                        <phy:taxonomy>
+                                                                                            <phy:id>9612</phy:id>
+                                                                                            <phy:scientific_name>Canis lupus</phy:scientific_name>
+                                                                                            <phy:common_name>Gray wolf</phy:common_name>
+                                                                                        </phy:taxonomy>
+                                                                                        <phy:events>
+                                                                                            <phy:speciations>1</phy:speciations>
+                                                                                        </phy:events>
+                                                                                        <phy:clade branch_length_attr="0">
+                                                                                            <phy:name>ENSCAFG00845008497</phy:name>
+                                                                                            <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                                            <phy:taxonomy>
+                                                                                                <phy:id>9615</phy:id>
+                                                                                                <phy:scientific_name>Canis lupus familiaris breed Labrador retriever</phy:scientific_name>
+                                                                                                <phy:common_name>Dog</phy:common_name>
+                                                                                            </phy:taxonomy>
+                                                                                            <phy:sequence>
+                                                                                                <phy:accession source="Ensembl">ENSCAFP00845011570</phy:accession>
+                                                                                                <phy:name>SNTB1-201</phy:name>
+                                                                                                <phy:location>13:19720329-19953343</phy:location>
+                                                                                            </phy:sequence>
+                                                                                            <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">canis_lupus_familiaris</phy:property>
+                                                                                        </phy:clade>
+                                                                                        <phy:clade branch_length_attr="0.002172">
+                                                                                            <phy:name>ENSCAFG00020005904</phy:name>
+                                                                                            <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                                            <phy:taxonomy>
+                                                                                                <phy:id>286419</phy:id>
+                                                                                                <phy:scientific_name>Canis lupus dingo</phy:scientific_name>
+                                                                                                <phy:common_name>Dingo</phy:common_name>
+                                                                                            </phy:taxonomy>
+                                                                                            <phy:sequence>
+                                                                                                <phy:accession source="Ensembl">ENSCAFP00020007290</phy:accession>
+                                                                                                <phy:name>SNTB1-201</phy:name>
+                                                                                                <phy:location>QKWQ01000609.1:19631515-19860958</phy:location>
+                                                                                            </phy:sequence>
+                                                                                            <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">canis_lupus_dingo</phy:property>
+                                                                                        </phy:clade>
+                                                                                    </phy:clade>
+                                                                                    <phy:clade branch_length_attr="0.079039">
+                                                                                        <phy:name>ENSVVUG00000016109</phy:name>
+                                                                                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                                        <phy:taxonomy>
+                                                                                            <phy:id>9627</phy:id>
+                                                                                            <phy:scientific_name>Vulpes vulpes</phy:scientific_name>
+                                                                                            <phy:common_name>Red fox</phy:common_name>
+                                                                                        </phy:taxonomy>
+                                                                                        <phy:sequence>
+                                                                                            <phy:accession source="Ensembl">ENSVVUP00000021922</phy:accession>
+                                                                                            <phy:name>SNTB1-201</phy:name>
+                                                                                            <phy:location>NBDQ01000014.1:9883887-10144329</phy:location>
+                                                                                        </phy:sequence>
+                                                                                        <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">vulpes_vulpes</phy:property>
+                                                                                    </phy:clade>
+                                                                                </phy:clade>
+                                                                            </phy:clade>
+                                                                            <phy:clade branch_length_attr="0.029649">
+                                                                                <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                                <phy:confidence type="bootstrap">100</phy:confidence>
+                                                                                <phy:taxonomy>
+                                                                                    <phy:id>9681</phy:id>
+                                                                                    <phy:scientific_name>Felidae</phy:scientific_name>
+                                                                                    <phy:common_name>Cat family</phy:common_name>
+                                                                                </phy:taxonomy>
+                                                                                <phy:events>
+                                                                                    <phy:speciations>1</phy:speciations>
+                                                                                </phy:events>
+                                                                                <phy:clade branch_length_attr="0.002673">
+                                                                                    <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                                    <phy:confidence type="bootstrap">70</phy:confidence>
+                                                                                    <phy:taxonomy>
+                                                                                        <phy:id>9688</phy:id>
+                                                                                        <phy:scientific_name>Panthera</phy:scientific_name>
+                                                                                    </phy:taxonomy>
+                                                                                    <phy:events>
+                                                                                        <phy:speciations>1</phy:speciations>
+                                                                                    </phy:events>
+                                                                                    <phy:clade branch_length_attr="0">
+                                                                                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                                        <phy:confidence type="bootstrap">70</phy:confidence>
+                                                                                        <phy:taxonomy>
+                                                                                            <phy:id>9688</phy:id>
+                                                                                            <phy:scientific_name>Panthera</phy:scientific_name>
+                                                                                        </phy:taxonomy>
+                                                                                        <phy:events>
+                                                                                            <phy:speciations>1</phy:speciations>
+                                                                                        </phy:events>
+                                                                                        <phy:clade branch_length_attr="0">
+                                                                                            <phy:name>ENSPLOG00000005013</phy:name>
+                                                                                            <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                                            <phy:taxonomy>
+                                                                                                <phy:id>9689</phy:id>
+                                                                                                <phy:scientific_name>Panthera leo</phy:scientific_name>
+                                                                                                <phy:common_name>Lion</phy:common_name>
+                                                                                            </phy:taxonomy>
+                                                                                            <phy:sequence>
+                                                                                                <phy:accession source="Ensembl">ENSPLOP00000006840</phy:accession>
+                                                                                                <phy:name>SNTB1-201</phy:name>
+                                                                                                <phy:location>X:18054025-18286151</phy:location>
+                                                                                            </phy:sequence>
+                                                                                            <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">panthera_leo</phy:property>
+                                                                                        </phy:clade>
+                                                                                        <phy:clade branch_length_attr="0.002399">
+                                                                                            <phy:name>ENSPTIG00000000330</phy:name>
+                                                                                            <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                                            <phy:taxonomy>
+                                                                                                <phy:id>74533</phy:id>
+                                                                                                <phy:scientific_name>Panthera tigris altaica</phy:scientific_name>
+                                                                                                <phy:common_name>Tiger</phy:common_name>
+                                                                                            </phy:taxonomy>
+                                                                                            <phy:sequence>
+                                                                                                <phy:accession source="Ensembl">ENSPTIP00000000162</phy:accession>
+                                                                                                <phy:name>SNTB1-201</phy:name>
+                                                                                                <phy:location>KE721648.1:6499847-6732813</phy:location>
+                                                                                            </phy:sequence>
+                                                                                            <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">panthera_tigris_altaica</phy:property>
+                                                                                        </phy:clade>
+                                                                                    </phy:clade>
+                                                                                    <phy:clade branch_length_attr="0.002171">
+                                                                                        <phy:name>ENSPPRG00000024791</phy:name>
+                                                                                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                                        <phy:taxonomy>
+                                                                                            <phy:id>9691</phy:id>
+                                                                                            <phy:scientific_name>Panthera pardus</phy:scientific_name>
+                                                                                            <phy:common_name>Leopard</phy:common_name>
+                                                                                        </phy:taxonomy>
+                                                                                        <phy:sequence>
+                                                                                            <phy:accession source="Ensembl">ENSPPRP00000000488</phy:accession>
+                                                                                            <phy:name>SNTB1-201</phy:name>
+                                                                                            <phy:location>KV860306.1:18986961-19233954</phy:location>
+                                                                                        </phy:sequence>
+                                                                                        <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">panthera_pardus</phy:property>
+                                                                                    </phy:clade>
+                                                                                </phy:clade>
+                                                                                <phy:clade branch_length_attr="0.005037">
+                                                                                    <phy:name>ENSFCAG00000046126</phy:name>
+                                                                                    <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                                    <phy:taxonomy>
+                                                                                        <phy:id>9685</phy:id>
+                                                                                        <phy:scientific_name>Felis catus</phy:scientific_name>
+                                                                                        <phy:common_name>Cat</phy:common_name>
+                                                                                    </phy:taxonomy>
+                                                                                    <phy:sequence>
+                                                                                        <phy:accession source="Ensembl">ENSFCAP00000051092</phy:accession>
+                                                                                        <phy:name>SNTB1-201</phy:name>
+                                                                                        <phy:location>F2:66345339-66586021</phy:location>
+                                                                                    </phy:sequence>
+                                                                                    <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">felis_catus</phy:property>
+                                                                                </phy:clade>
+                                                                            </phy:clade>
+                                                                        </phy:clade>
+                                                                    </phy:clade>
+                                                                    <phy:clade branch_length_attr="0.096382">
+                                                                        <phy:name>ENSEEUG00000006842</phy:name>
+                                                                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                        <phy:taxonomy>
+                                                                            <phy:id>9365</phy:id>
+                                                                            <phy:scientific_name>Erinaceus europaeus</phy:scientific_name>
+                                                                            <phy:common_name>Hedgehog</phy:common_name>
+                                                                        </phy:taxonomy>
+                                                                        <phy:sequence>
+                                                                            <phy:accession source="Ensembl">ENSEEUP00000006243</phy:accession>
+                                                                            <phy:name>SNTB1-201</phy:name>
+                                                                            <phy:location>GeneScaffold_7058:271254-538507</phy:location>
+                                                                        </phy:sequence>
+                                                                        <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">erinaceus_europaeus</phy:property>
+                                                                    </phy:clade>
+                                                                </phy:clade>
+                                                                <phy:clade branch_length_attr="0.01679">
+                                                                    <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                    <phy:confidence type="bootstrap">20</phy:confidence>
+                                                                    <phy:taxonomy>
+                                                                        <phy:id>314145</phy:id>
+                                                                        <phy:scientific_name>Laurasiatheria</phy:scientific_name>
+                                                                        <phy:common_name>Laurasiatherian mammals</phy:common_name>
+                                                                    </phy:taxonomy>
+                                                                    <phy:events>
+                                                                        <phy:speciations>1</phy:speciations>
+                                                                    </phy:events>
+                                                                    <phy:clade branch_length_attr="0.093337">
+                                                                        <phy:name>ENSMLUG00000009812</phy:name>
+                                                                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                        <phy:taxonomy>
+                                                                            <phy:id>59463</phy:id>
+                                                                            <phy:scientific_name>Myotis lucifugus</phy:scientific_name>
+                                                                            <phy:common_name>Microbat</phy:common_name>
+                                                                        </phy:taxonomy>
+                                                                        <phy:sequence>
+                                                                            <phy:accession source="Ensembl">ENSMLUP00000008949</phy:accession>
+                                                                            <phy:name>SNTB1-201</phy:name>
+                                                                            <phy:location>GL429784:8142601-8235558</phy:location>
+                                                                        </phy:sequence>
+                                                                        <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">myotis_lucifugus</phy:property>
+                                                                    </phy:clade>
+                                                                    <phy:clade branch_length_attr="0.105528">
+                                                                        <phy:name>ENSSARG00000001271</phy:name>
+                                                                        <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                        <phy:taxonomy>
+                                                                            <phy:id>42254</phy:id>
+                                                                            <phy:scientific_name>Sorex araneus</phy:scientific_name>
+                                                                            <phy:common_name>Shrew</phy:common_name>
+                                                                        </phy:taxonomy>
+                                                                        <phy:sequence>
+                                                                            <phy:accession source="Ensembl">ENSSARP00000001156</phy:accession>
+                                                                            <phy:name>SNTB1-201</phy:name>
+                                                                            <phy:location>GeneScaffold_5721:6568-62070</phy:location>
+                                                                        </phy:sequence>
+                                                                        <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">sorex_araneus</phy:property>
+                                                                    </phy:clade>
+                                                                </phy:clade>
+                                                            </phy:clade>
+                                                            <phy:clade branch_length_attr="0.039778">
+                                                                <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                <phy:taxonomy>
+                                                                    <phy:id>9989</phy:id>
+                                                                    <phy:scientific_name>Rodentia</phy:scientific_name>
+                                                                    <phy:common_name>Rodents</phy:common_name>
+                                                                </phy:taxonomy>
+                                                                <phy:events>
+                                                                    <phy:speciations>1</phy:speciations>
+                                                                </phy:events>
+                                                                <phy:clade branch_length_attr="0.060526">
+                                                                    <phy:name>ENSMMMG00000001178</phy:name>
+                                                                    <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                    <phy:taxonomy>
+                                                                        <phy:id>9994</phy:id>
+                                                                        <phy:scientific_name>Marmota marmota marmota</phy:scientific_name>
+                                                                        <phy:common_name>Alpine marmot</phy:common_name>
+                                                                    </phy:taxonomy>
+                                                                    <phy:sequence>
+                                                                        <phy:accession source="Ensembl">ENSMMMP00000001267</phy:accession>
+                                                                        <phy:name>SNTB1-201</phy:name>
+                                                                        <phy:location>CZRN01000019.1:19265478-19397225</phy:location>
+                                                                    </phy:sequence>
+                                                                    <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">marmota_marmota_marmota</phy:property>
+                                                                </phy:clade>
+                                                                <phy:clade branch_length_attr="0.141049">
+                                                                    <phy:name>ENSDORG00000029258</phy:name>
+                                                                    <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                    <phy:taxonomy>
+                                                                        <phy:id>10020</phy:id>
+                                                                        <phy:scientific_name>Dipodomys ordii</phy:scientific_name>
+                                                                        <phy:common_name>Kangaroo rat</phy:common_name>
+                                                                    </phy:taxonomy>
+                                                                    <phy:sequence>
+                                                                        <phy:accession source="Ensembl">ENSDORP00000027164</phy:accession>
+                                                                        <phy:name>Sntb1-201</phy:name>
+                                                                        <phy:location>KN672497.1:2523000-2641949</phy:location>
+                                                                    </phy:sequence>
+                                                                    <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">dipodomys_ordii</phy:property>
+                                                                </phy:clade>
+                                                            </phy:clade>
+                                                        </phy:clade>
+                                                        <phy:clade branch_length_attr="0.012079">
+                                                            <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                            <phy:taxonomy>
+                                                                <phy:id>9347</phy:id>
+                                                                <phy:scientific_name>Eutheria</phy:scientific_name>
+                                                                <phy:common_name>Placentals</phy:common_name>
+                                                            </phy:taxonomy>
+                                                            <phy:events>
+                                                                <phy:speciations>1</phy:speciations>
+                                                            </phy:events>
+                                                            <phy:clade branch_length_attr="0.027552">
+                                                                <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                <phy:confidence type="bootstrap">82</phy:confidence>
+                                                                <phy:taxonomy>
+                                                                    <phy:id>9348</phy:id>
+                                                                    <phy:scientific_name>Xenarthra</phy:scientific_name>
+                                                                    <phy:common_name>Xenarthran mammals</phy:common_name>
+                                                                </phy:taxonomy>
+                                                                <phy:events>
+                                                                    <phy:speciations>1</phy:speciations>
+                                                                </phy:events>
+                                                                <phy:clade branch_length_attr="0.036672">
+                                                                    <phy:name>ENSDNOG00000010265</phy:name>
+                                                                    <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                    <phy:taxonomy>
+                                                                        <phy:id>9361</phy:id>
+                                                                        <phy:scientific_name>Dasypus novemcinctus</phy:scientific_name>
+                                                                        <phy:common_name>Armadillo</phy:common_name>
+                                                                    </phy:taxonomy>
+                                                                    <phy:sequence>
+                                                                        <phy:accession source="Ensembl">ENSDNOP00000007943</phy:accession>
+                                                                        <phy:name>SNTB1-201</phy:name>
+                                                                        <phy:location>JH579962.1:2234861-2510583</phy:location>
+                                                                    </phy:sequence>
+                                                                    <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">dasypus_novemcinctus</phy:property>
+                                                                </phy:clade>
+                                                                <phy:clade branch_length_attr="0.044069">
+                                                                    <phy:name>ENSCHOG00000007627</phy:name>
+                                                                    <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                    <phy:taxonomy>
+                                                                        <phy:id>9358</phy:id>
+                                                                        <phy:scientific_name>Choloepus hoffmanni</phy:scientific_name>
+                                                                        <phy:common_name>Sloth</phy:common_name>
+                                                                    </phy:taxonomy>
+                                                                    <phy:sequence>
+                                                                        <phy:accession source="Ensembl">ENSCHOP00000006752</phy:accession>
+                                                                        <phy:name>SNTB1-201</phy:name>
+                                                                        <phy:location>GeneScaffold_6392:675-82279</phy:location>
+                                                                    </phy:sequence>
+                                                                    <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">choloepus_hoffmanni</phy:property>
+                                                                </phy:clade>
+                                                            </phy:clade>
+                                                            <phy:clade branch_length_attr="0.081354">
+                                                                <phy:name>ENSETEG00000017692</phy:name>
+                                                                <phy:branch_length>0.000000e+00</phy:branch_length>
+                                                                <phy:taxonomy>
+                                                                    <phy:id>9371</phy:id>
+                                                                    <phy:scientific_name>Echinops telfairi</phy:scientific_name>
+                                                                    <phy:common_name>Lesser hedgehog tenrec</phy:common_name>
+                                                                </phy:taxonomy>
+                                                                <phy:sequence>
+                                                                    <phy:accession source="Ensembl">ENSETEP00000014370</phy:accession>
+                                                                    <phy:name>SNTB1-201</phy:name>
+                                                                    <phy:location>GeneScaffold_8043:379146-589295</phy:location>
+                                                                </phy:sequence>
+                                                                <phy:property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">echinops_telfairi</phy:property>
                                                             </phy:clade>
                                                         </phy:clade>
                                                     </phy:clade>

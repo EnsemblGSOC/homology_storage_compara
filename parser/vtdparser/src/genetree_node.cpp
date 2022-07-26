@@ -13,6 +13,8 @@ using namespace compara;
 using namespace vtdxml;
 using namespace std;
 
+const double CONFIDENCE_THRESHOLD = 0.02;
+
 static inline std::wstring string_lower(const std::wstring &str) {
     std::wstring strcopy(str.size(), 0);
     std::transform(str.begin(), str.end(), strcopy.begin(), towlower);
@@ -175,23 +177,24 @@ void GeneTreeNode::load_node_type() {
             this->node_type = OTHER;
     }
     if (this->node_type == DUPLICATION) {
-        if (this->get_confidence_score() <= 0) {
+        double confidence = this->get_confidence_score();
+        if (this->get_confidence_score() <= CONFIDENCE_THRESHOLD) {
             this->node_type = DUBIOUS;
         }
-        vn->toElement(PARENT);
     }
 }
 
 double GeneTreeNode::get_confidence_score() {
     VTDNav *vn = this->bm->getNav();
     if (vn->toElement(LAST_CHILD, const_cast<wchar_t*>(L"confidence"))) {
-        if (vn->hasAttr(L"type")) {
+        if (vn->getCurrentIndex() != -1 && vn->hasAttr(L"type")) {
             wstring type = vn->toString(vn->getAttrVal(L"type"));
             if (type.compare(L"duplication_confidence_score") == 0) {
                 if (vn->getCurrentIndex() != -1) {
                     wstring confidence_str = vn->toString(vn->getText());
+                    double confidence_score = stod(confidence_str);
                     vn->toElement(PARENT);
-                    return stod(confidence_str);
+                    return confidence_score;
                 }
             }
         }
@@ -310,6 +313,9 @@ void GeneTreeNode::print(int depth) {
         }
         if (children[i]->node_type == DUPLICATION) {
             wcout << "(duplication" << " " << children[i]->get_confidence_score() << ") ";
+        }
+        if (children[i]->node_type == DUBIOUS) {
+            wcout << "(dubious) ";
         }
         wcout << children[i]->get_name() << endl;
         children[i]->print(depth + 1);

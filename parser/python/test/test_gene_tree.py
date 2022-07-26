@@ -90,9 +90,9 @@ def test_complex_homology_inference():
 
 def test_get_all_orthologs():
     gt = GeneTree()
-    gt.load_phylo_xml("test/test_out/RNU6_92P_with_events.xml")
-    orthologs = gt.get_all_orthologs("ENSG00000272393")
-    assert len(orthologs) == 14
+    gt.load_phylo_xml("pipeline/data_out_without_seq/SNTA1_gene_tree.xml")
+    orthologs = gt.get_all_orthologs("MGP_SPRETEiJ_G0018509")
+    assert len(orthologs) == 141
 
 
 def test_get_all_paralogs():
@@ -112,15 +112,15 @@ def test_node_labeling():
 
 def test_get_all_orthologs_indexed():
     gt = GeneTree()
-    gt.load_phylo_xml("pipeline/data_out/TSHZ2_gene_tree.xml")
+    gt.load_phylo_xml("pipeline/data_out_without_seq/SNTA1_gene_tree.xml")
     gt.create_interval_index()
-    orthologs = gt.get_all_orthologs_indexed("ENSG00000182463")
-    print("label of query gene: {}".format(gt.interval_index.leaf_labels[gt.trees[0].get_leaves_by_name("ENSG00000182463")[0]]))
+    orthologs = gt.get_all_orthologs_indexed("MGP_SPRETEiJ_G0018509")
+    print("label of query gene: {}".format(gt.interval_index.leaf_labels[gt.trees[0].get_leaves_by_name("MGP_SPRETEiJ_G0018509")[0]]))
     print(set(orthologs))
-    actual_orthologs = gt.get_all_orthologs("ENSG00000182463")
+    actual_orthologs = gt.get_all_orthologs("MGP_SPRETEiJ_G0018509")
     actual_ortholog_labels = [gt.interval_index.leaf_labels[x] for x in actual_orthologs]
     print(actual_ortholog_labels)
-    assert len(set(orthologs)) == len(gt.get_all_orthologs("ENSG00000182463"))
+    assert len(set(orthologs)) == len(gt.get_all_orthologs("MGP_SPRETEiJ_G0018509"))
 
 
 def test_get_all_paralogs_indexed():
