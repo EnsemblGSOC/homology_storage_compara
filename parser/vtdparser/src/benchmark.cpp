@@ -6,6 +6,7 @@
 #include "time.h"
 #include "matplotlibcpp.h"
 #include <filesystem>
+#include <libgen.h>
 
 using namespace std;
 using namespace compara;
@@ -31,9 +32,8 @@ int randint (int n) {
     }
 }
 
-int main (int argc, char *argv[]) {
+void benchmark_query(char *dir) {
     clock_t c1, c2;
-    char *dir = argv[1];
 
     vector<int> sizes;
     vector<double> speeds;
@@ -96,6 +96,98 @@ int main (int argc, char *argv[]) {
     plt::plot(xs, times, "ob");
     plt::xlabel("h * log(d) + o");
     plt::ylabel("Time per ortholog query (s)");
-    plt::save("cpp_benchmark.pdf");
+    plt::save("cpp_benchmark_query.pdf");
     plt::show();
+}
+
+void benchmark_loading(char *dir, char *idx_dir) {
+    clock_t c1, c2;
+    vector<double> speeds;
+    vector<double> times;
+    vector<int> sizes;
+    vector<int> total_nodes;
+    vector<int> xs;
+    vector<double> file_sizes;
+
+    for (const auto & entry : filesystem::directory_iterator(dir)) {
+        string filename = entry.path().string();
+        string base_filename = filename.substr(filename.find_last_of("/\\") + 1);
+        const char *filename_c = filename.c_str();
+        // find corresponding index file
+        string idx_filename = string(idx_dir) + "/" + base_filename + ".gtidx";
+        const char *idx_filename_c = idx_filename.c_str();
+        c1 = clock();
+        for (int i = 0; i < 100; i++) {
+            GeneTree *gt = new GeneTree(filename_c);
+            gt->load_index(idx_filename_c);
+        }
+        c2 = clock();
+        double speed = 100 / ((double)(c2 - c1) / CLOCKS_PER_SEC);
+        double time = (c2 - c1) / (double)CLOCKS_PER_SEC;
+        speeds.push_back(speed);
+        times.push_back(time / 100);
+
+        GeneTree *gt = new GeneTree(filename_c);
+        gt->load_index(idx_filename_c);
+        gt = new GeneTree(filename_c);
+        gt->load_index(idx_filename_c);
+        int size = gt->get_genes().size();
+        sizes.push_back(size);
+
+        vector<GeneTreeNode*> nodes = gt->root->get_descendants();
+        int total = nodes.size();
+        int total_dup = 0;
+
+        for (int i = 0; i < total; i++) {
+            if (nodes[i]->node_type == DUPLICATION)
+                total_dup++;
+        }
+        int x = size + total + total_dup;
+        xs.push_back(x);
+
+        double filesize = filesystem::file_size(entry.path()) + filesystem::file_size(idx_filename);
+        // filesize in MB
+        filesize /= (1024 * 1024);
+        file_sizes.push_back(filesize);
+
+        cout << "File: " << filename << " with " << size << " genes" << endl;
+        cout << "Index file: " << idx_filename << endl;
+        cout << "Total size of tree and index: " << filesize << " MB" << endl;
+        cout << "Time for 100 loading: " << time << endl;
+        cout << "Speed: " << speed << " trees/sec" << endl;
+        cout << "Speed: " << speed * size << " genes/sec" << endl;
+        cout << "Speed: " << filesize / (time / 100) << " MB/s" << endl;
+        cout << "----------------------------------------------------" << endl;
+    }
+    plt::figure(1);
+    plt::plot(file_sizes, times, "ob");
+    plt::xlabel("file size (MB)");
+    plt::ylabel("Time for 100 loadings (s)");
+    plt::save("cpp_benchmark_loading.pdf");
+    plt::figure(2);
+    plt::plot(sizes, times, "ob");
+    plt::xlabel("number of genes");
+    plt::ylabel("Time for 100 loadings (s)");
+    plt::save("cpp_benchmark_loading2.pdf");
+}
+
+int main (int argc, char *argv[]) {
+    int option;
+    while ((option = getopt(argc, argv, "ql:o:")) != -1) {
+        switch (option) {
+            case 'q':
+                benchmark_query(argv[optind]);
+                break;
+            case 'l':
+                benchmark_loading(argv[optind], optarg);
+            case 'o':
+                break;
+            default:
+                cout << "Usage: " << argv[0] << " [-q] [-l <index dir>] [-o <index dir>]" << endl;
+                cout << " -q: benchmark query" << endl;
+                cout << " -l: benchmark loading" << endl;
+                cout << " -o: benchmark combined (loading + query)" << endl;
+                break;
+        }
+    }
 }

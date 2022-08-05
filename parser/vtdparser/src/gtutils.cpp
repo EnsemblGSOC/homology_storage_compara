@@ -28,7 +28,7 @@ int main (int argc, char *argv[]) {
                 cout << "  -h\t\t\tPrint this help message" << endl;
                 cout << "  -p\t\t\tPrint the gene tree" << endl;
                 cout << "  -l\t\t\tList all genes in the gene tree" << endl;
-                cout << "  -s\t\t\tConstruct an save index file" << endl;
+                cout << "  -s <save location>\t\tConstruct an save index file" << endl;
                 cout << "  -i <index_file>\t\tLoad the index file" << endl;
                 cout << "  -O <gene name>\t\tList all the orthologs of a gene" << endl;
                 cout << "  -P <gene name>\t\tList all the paralogs of a gene" << endl;

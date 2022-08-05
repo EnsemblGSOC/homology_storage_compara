@@ -11,7 +11,7 @@ OBJ := $(subst $(DIR_SRC), $(DIR_OBJ), $(patsubst %.cpp, %.o, $(SRC)))
 
 VTD_PARSER_OBJ = ./libs/vtd-xml/obj/vtdparser.o
 
-CFLAGS = -g -Wall -std=c++17 -Wno-unused-private-field
+CFLAGS = -O3 -Wall -std=c++17 -Wno-unused-private-field
 CFLAGS_DBG = -Wall -g -std=c++17 -Wno-unused-private-field
 
 PYTHON_PATH = $(shell which python | rev | cut -d'/' -f2- | rev)/..
