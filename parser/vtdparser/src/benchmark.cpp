@@ -4,13 +4,13 @@
 #include "genetree_index.h"
 #include "genetree.h"
 #include "time.h"
-#include "matplotlibcpp.h"
+// #include "matplotlibcpp.h"
 #include <filesystem>
 #include <libgen.h>
 
 using namespace std;
 using namespace compara;
-namespace plt = matplotlibcpp;
+//namespace plt = matplotlibcpp;
 
 int randint (int n) {
     if ((n - 1) == RAND_MAX) {
@@ -41,6 +41,7 @@ void benchmark_query(char *dir) {
     vector<int> ortho_counts;
     vector<int> heights;
     vector<int> total_nodes;
+    vector<int> dup_counts;
     vector<int> xs;
 
     for (const auto & entry : filesystem::directory_iterator(dir)) {
@@ -80,6 +81,7 @@ void benchmark_query(char *dir) {
         heights.push_back(height);
         ortho_counts.push_back(ortho_count / 100000);
         total_nodes.push_back(total);
+        dup_counts.push_back(total_dup);
 
         xs.push_back(height * log10(total_dup) + ortho_count / 100000);
         
@@ -93,11 +95,17 @@ void benchmark_query(char *dir) {
         cout << "Speed: " << 100000 / ((c2 - c1) / (double)CLOCKS_PER_SEC) << " queries/sec" << endl;
         cout << "----------------------------------------------------" << endl;
     }
-    plt::plot(xs, times, "ob");
-    plt::xlabel("h * log(d) + o");
-    plt::ylabel("Time per ortholog query (s)");
-    plt::save("cpp_benchmark_query.pdf");
-    plt::show();
+    // plt::plot(xs, times, "ob");
+    // plt::xlabel("h * log(d) + o");
+    // plt::ylabel("Time per ortholog query (s)");
+    // plt::save("cpp_benchmark_query.pdf");
+    // plt::show();
+    ofstream outfile("cpp_benchmark_query.csv");
+    outfile << "size,speed,time,ortholog_count,height,total_nodes,dup_nodes" << endl;
+    for (int i = 0; i < sizes.size(); i++) {
+        outfile << sizes[i] << "," << speeds[i] << "," << times[i] << "," << ortho_counts[i] << "," << heights[i] << "," << total_nodes[i] << "," << dup_counts[i] << endl;
+    }
+    outfile.close();
 }
 
 void benchmark_loading(char *dir, char *idx_dir) {
@@ -108,6 +116,7 @@ void benchmark_loading(char *dir, char *idx_dir) {
     vector<int> total_nodes;
     vector<int> xs;
     vector<double> file_sizes;
+    vector<int> dup_counts;
 
     for (const auto & entry : filesystem::directory_iterator(dir)) {
         string filename = entry.path().string();
@@ -145,6 +154,9 @@ void benchmark_loading(char *dir, char *idx_dir) {
         int x = size + total + total_dup;
         xs.push_back(x);
 
+        dup_counts.push_back(total_dup);
+        total_nodes.push_back(total);
+
         double filesize = filesystem::file_size(entry.path()) + filesystem::file_size(idx_filename);
         // filesize in MB
         filesize /= (1024 * 1024);
@@ -159,16 +171,23 @@ void benchmark_loading(char *dir, char *idx_dir) {
         cout << "Speed: " << filesize / (time / 100) << " MB/s" << endl;
         cout << "----------------------------------------------------" << endl;
     }
-    plt::figure(1);
-    plt::plot(file_sizes, times, "ob");
-    plt::xlabel("file size (MB)");
-    plt::ylabel("Time for 100 loadings (s)");
-    plt::save("cpp_benchmark_loading.pdf");
-    plt::figure(2);
-    plt::plot(sizes, times, "ob");
-    plt::xlabel("number of genes");
-    plt::ylabel("Time for 100 loadings (s)");
-    plt::save("cpp_benchmark_loading2.pdf");
+    // plt::figure(1);
+    // plt::plot(file_sizes, times, "ob");
+    // plt::xlabel("file size (MB)");
+    // plt::ylabel("Time for 100 loadings (s)");
+    // plt::save("cpp_benchmark_loading.pdf");
+    // plt::figure(2);
+    // plt::plot(sizes, times, "ob");
+    // plt::xlabel("number of genes");
+    // plt::ylabel("Time for 100 loadings (s)");
+    // plt::save("cpp_benchmark_loading2.pdf");
+    
+    ofstream outfile("cpp_benchmark_loading.csv");
+    outfile << "size,speed,time,file_size,total_nodes,dup_nodes" << endl;
+    for (int i = 0; i < sizes.size(); i++) {
+        outfile << sizes[i] << "," << speeds[i] << "," << times[i] << "," << file_sizes[i] << "," << total_nodes[i] << "," << dup_counts[i] << endl;
+    }
+    outfile.close();
 }
 
 int main (int argc, char *argv[]) {
