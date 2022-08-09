@@ -4,13 +4,13 @@
 #include "genetree_index.h"
 #include "genetree.h"
 #include "time.h"
-// #include "matplotlibcpp.h"
+#include "matplotlibcpp.h"
 #include <filesystem>
 #include <libgen.h>
 
 using namespace std;
 using namespace compara;
-//namespace plt = matplotlibcpp;
+namespace plt = matplotlibcpp;
 
 int randint (int n) {
     if ((n - 1) == RAND_MAX) {
@@ -95,11 +95,11 @@ void benchmark_query(char *dir) {
         cout << "Speed: " << 100000 / ((c2 - c1) / (double)CLOCKS_PER_SEC) << " queries/sec" << endl;
         cout << "----------------------------------------------------" << endl;
     }
-    // plt::plot(xs, times, "ob");
-    // plt::xlabel("h * log(d) + o");
-    // plt::ylabel("Time per ortholog query (s)");
-    // plt::save("cpp_benchmark_query.pdf");
-    // plt::show();
+    plt::plot(xs, times, "ob");
+    plt::xlabel("h * log(d) + o");
+    plt::ylabel("Time per ortholog query (s)");
+    plt::save("cpp_benchmark_query.pdf");
+    plt::show();
     ofstream outfile("cpp_benchmark_query.csv");
     outfile << "size,speed,time,ortholog_count,height,total_nodes,dup_nodes" << endl;
     for (int i = 0; i < sizes.size(); i++) {
@@ -171,16 +171,16 @@ void benchmark_loading(char *dir, char *idx_dir) {
         cout << "Speed: " << filesize / (time / 100) << " MB/s" << endl;
         cout << "----------------------------------------------------" << endl;
     }
-    // plt::figure(1);
-    // plt::plot(file_sizes, times, "ob");
-    // plt::xlabel("file size (MB)");
-    // plt::ylabel("Time for 100 loadings (s)");
-    // plt::save("cpp_benchmark_loading.pdf");
-    // plt::figure(2);
-    // plt::plot(sizes, times, "ob");
-    // plt::xlabel("number of genes");
-    // plt::ylabel("Time for 100 loadings (s)");
-    // plt::save("cpp_benchmark_loading2.pdf");
+    plt::figure(1);
+    plt::plot(file_sizes, times, "ob");
+    plt::xlabel("file size (MB)");
+    plt::ylabel("Time per loading (s)");
+    plt::save("cpp_benchmark_loading.pdf");
+    plt::figure(2);
+    plt::plot(sizes, times, "ob");
+    plt::xlabel("number of genes");
+    plt::ylabel("Time per loading (s)");
+    plt::save("cpp_benchmark_loading2.pdf");
     
     ofstream outfile("cpp_benchmark_loading.csv");
     outfile << "size,speed,time,file_size,total_nodes,dup_nodes" << endl;
@@ -190,19 +190,99 @@ void benchmark_loading(char *dir, char *idx_dir) {
     outfile.close();
 }
 
+void benchmark_combined(char *dir) {
+    clock_t c1, c2;
+
+    vector<int> sizes;
+    vector<double> speeds;
+    vector<double> times;
+    vector<int> ortho_counts;
+    vector<int> heights;
+    vector<int> total_nodes;
+    vector<int> dup_counts;
+    vector<int> xs;
+
+    for (const auto & entry : filesystem::directory_iterator(dir)) {
+        string filename_str = entry.path().string();
+        const char *filename = filename_str.c_str();
+
+        GeneTree *gt = new GeneTree(filename);
+        vector<wstring> leaves = gt->get_genes();
+        int size = leaves.size();
+
+        gt->write_index("temp.genetreeidx");
+
+        c1 = clock();
+        int ortho_count = 0;
+        for (int i = 0; i < 1000; i++) {
+            GeneTree *gt = new GeneTree(filename);
+            gt->load_index("temp.genetreeidx");
+            int rand_index = randint(size);
+            // int rand_index = size / 2;
+            wstring name = leaves[rand_index];
+            ortho_count += gt->get_orthologs(string(name.begin(), name.end())).size();
+        }
+        c2 = clock();
+
+        double speed = 1000 / ((double)(c2 - c1) / CLOCKS_PER_SEC);
+
+        int height = gt->root->get_height();
+        vector<GeneTreeNode*> nodes = gt->root->get_descendants();
+        int total = gt->root->get_descendants().size();
+        int total_dup = 0;
+
+        for (int i = 0; i < nodes.size(); i++) {
+            if (nodes[i]->node_type == DUPLICATION)
+                total_dup++;
+        }
+
+        sizes.push_back(size);
+        heights.push_back(height);
+        ortho_counts.push_back(ortho_count / 1000);
+        total_nodes.push_back(total);
+        dup_counts.push_back(total_dup);
+
+        xs.push_back(height * log10(total_dup) + ortho_count / 1000);
+        
+        speeds.push_back(1000 / ((c2 - c1) / (double)CLOCKS_PER_SEC));
+        times.push_back((c2 - c1) / (double)CLOCKS_PER_SEC / 1000);
+
+        cout << "Tree size: " << size << endl;
+        cout << "File: " << filename << endl;
+        cout << "Avg ortholog count: " << ortho_count / 1000 << endl;
+        cout << "Time for 1000 ortholog queries: " << (c2 - c1) / (double)CLOCKS_PER_SEC << endl;
+        cout << "Time per ortholog query: " << (c2 - c1) / (double)CLOCKS_PER_SEC / 1000 << endl;
+        cout << "Speed: " << 1000 / ((c2 - c1) / (double)CLOCKS_PER_SEC) << " queries/sec" << endl;
+        cout << "----------------------------------------------------" << endl;
+    }
+    plt::plot(sizes, times, "ob");
+    plt::xlabel("number of genes");
+    plt::ylabel("Time per ortholog query (s)");
+    plt::save("cpp_benchmark_combined.pdf");
+    plt::show();
+    ofstream outfile("cpp_benchmark_combined.csv");
+    outfile << "size,speed,time,ortholog_count,height,total_nodes,dup_nodes" << endl;
+    for (int i = 0; i < sizes.size(); i++) {
+        outfile << sizes[i] << "," << speeds[i] << "," << times[i] << "," << ortho_counts[i] << "," << heights[i] << "," << total_nodes[i] << "," << dup_counts[i] << endl;
+    }
+    outfile.close();
+}
+
 int main (int argc, char *argv[]) {
     int option;
-    while ((option = getopt(argc, argv, "ql:o:")) != -1) {
+    while ((option = getopt(argc, argv, "qol:")) != -1) {
         switch (option) {
             case 'q':
                 benchmark_query(argv[optind]);
                 break;
             case 'l':
                 benchmark_loading(argv[optind], optarg);
+                break;
             case 'o':
+                benchmark_combined(argv[optind]);
                 break;
             default:
-                cout << "Usage: " << argv[0] << " [-q] [-l <index dir>] [-o <index dir>]" << endl;
+                cout << "Usage: " << argv[0] << " [-q] [-l <index dir>] [-o]" << endl;
                 cout << " -q: benchmark query" << endl;
                 cout << " -l: benchmark loading" << endl;
                 cout << " -o: benchmark combined (loading + query)" << endl;

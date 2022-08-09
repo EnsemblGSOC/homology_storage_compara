@@ -15,7 +15,7 @@ OBJ := $(patsubst %.cc, %.o, $(OBJ))
 VTD_PARSER_OBJ = vtdparser.o
 
 EXE = benchmark_vtdxml
- 
+
 CFLAGS = -O3 -Wall -Winline -fomit-frame-pointer -fforce-addr -fexpensive-optimizations -fmerge-all-constants -fno-branch-count-reg -funroll-loops -falign-functions -falign-loops -falign-jumps -freorder-blocks -fprefetch-loop-arrays --param inline-unit-growth=250 --param max-inline-recursive-depth=2 --param large-function-growth=650 -fpermissive
 
 CFLAGS2 = -c -g
@@ -27,10 +27,10 @@ SUPPRESS_WARNING = -Wno-unused-private-field
 all: $(DIR_OBJ)/$(VTD_PARSER_OBJ)
 
 $(DIR_OBJ)/%.o: $(DIR_SRC)/%.cpp
-	${CC} $(CFLAGS2) $(INC) $(SUPPRESS_WARNING) -c $< -o $@
+	${CC} $(CFLAGS) $(INC) $(SUPPRESS_WARNING) -c $< -o $@
 
 $(DIR_OBJ)/%.o: $(DIR_SRC)/%.cc
-	${CC} $(CFLAGS2) $(INC) $(SUPPRESS_WARNING) -c $< -o $@
+	${CC} $(CFLAGS) $(INC) $(SUPPRESS_WARNING) -c $< -o $@
 	
 #$(DIR_EXE)/$(EXE): $(DIR_OBJ)/$(VTD_PARSER_OBJ)
 #	$(CC) $(CFLAGS) $(DIR_OBJ)/$(VTD_PARSER_OBJ) -o $@
