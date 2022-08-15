@@ -34,10 +34,12 @@ int randint (int n) {
 
 void benchmark_query(char *dir) {
     clock_t c1, c2;
+    clock_t c3, c4;
 
     vector<int> sizes;
     vector<double> speeds;
     vector<double> times;
+    vector<double> times_naive;
     vector<int> ortho_counts;
     vector<int> heights;
     vector<int> total_nodes;
@@ -57,7 +59,7 @@ void benchmark_query(char *dir) {
         gt->load_index("temp.genetreeidx");
         c1 = clock();
         int ortho_count = 0;
-        for (int i = 0; i < 100000; i++) {
+        for (int i = 0; i < 1000; i++) {
             int rand_index = randint(size);
             // int rand_index = size / 2;
             wstring name = leaves[rand_index];
@@ -65,7 +67,17 @@ void benchmark_query(char *dir) {
         }
         c2 = clock();
 
-        double speed = 100000 / ((double)(c2 - c1) / CLOCKS_PER_SEC);
+        c3 = clock();
+        int ortho_count_naive = 0;
+        for (int i = 0; i < 1000; i++) {
+            int rand_index = randint(size);
+            // int rand_index = size / 2;
+            wstring name = leaves[rand_index];
+            ortho_count += gt->get_orthologs_naive(string(name.begin(), name.end())).size();
+        }
+        c4 = clock();
+
+        double speed = 1000 / ((double)(c2 - c1) / CLOCKS_PER_SEC);
 
         int height = gt->root->get_height();
         vector<GeneTreeNode*> nodes = gt->root->get_descendants();
@@ -79,24 +91,28 @@ void benchmark_query(char *dir) {
 
         sizes.push_back(size);
         heights.push_back(height);
-        ortho_counts.push_back(ortho_count / 100000);
+        ortho_counts.push_back(ortho_count / 1000);
         total_nodes.push_back(total);
         dup_counts.push_back(total_dup);
 
-        xs.push_back(height * log10(total_dup) + ortho_count / 100000);
+        xs.push_back(height + ortho_count / 1000);
         
-        speeds.push_back(100000 / ((c2 - c1) / (double)CLOCKS_PER_SEC));
-        times.push_back((c2 - c1) / (double)CLOCKS_PER_SEC / 100000);
+        speeds.push_back(1000 / ((c2 - c1) / (double)CLOCKS_PER_SEC));
+        times.push_back((c2 - c1) / (double)CLOCKS_PER_SEC / 1000);
+
+        times_naive.push_back((c4 - c3) / (double)CLOCKS_PER_SEC / 1000);
 
         cout << "Tree size: " << size << endl;
         cout << "File: " << filename << endl;
-        cout << "Avg ortholog count: " << ortho_count / 100000 << endl;
-        cout << "Time for 100000 ortholog queries: " << (c2 - c1) / (double)CLOCKS_PER_SEC << endl;
-        cout << "Speed: " << 100000 / ((c2 - c1) / (double)CLOCKS_PER_SEC) << " queries/sec" << endl;
+        cout << "Avg ortholog count: " << ortho_count / 1000 << endl;
+        cout << "Total dup: " << total_dup << endl;
+        cout << "Time for 1000 ortholog queries: " << (c2 - c1) / (double)CLOCKS_PER_SEC << endl;
+        cout << "Speed: " << 1000 / ((c2 - c1) / (double)CLOCKS_PER_SEC) << " queries/sec" << endl;
         cout << "----------------------------------------------------" << endl;
     }
-    plt::plot(xs, times, "ob");
-    plt::xlabel("h * log(d) + o");
+    plt::plot(ortho_counts, times, "ob");
+    plt::plot(ortho_counts, times_naive, "or");
+    plt::xlabel("Number of orthologs");
     plt::ylabel("Time per ortholog query (s)");
     plt::save("cpp_benchmark_query.pdf");
     plt::show();
@@ -110,8 +126,13 @@ void benchmark_query(char *dir) {
 
 void benchmark_loading(char *dir, char *idx_dir) {
     clock_t c1, c2;
+    clock_t c3, c4;
+
     vector<double> speeds;
     vector<double> times;
+
+    vector<double> vtd_times;
+
     vector<int> sizes;
     vector<int> total_nodes;
     vector<int> xs;
@@ -124,17 +145,35 @@ void benchmark_loading(char *dir, char *idx_dir) {
         const char *filename_c = filename.c_str();
         // find corresponding index file
         string idx_filename = string(idx_dir) + "/" + base_filename + ".gtidx";
+        string vtd_filename = string(idx_dir) + "/" + base_filename + ".vtdxml";
+
         const char *idx_filename_c = idx_filename.c_str();
+        const char *vtd_filename_c = vtd_filename.c_str();
+
         c1 = clock();
         for (int i = 0; i < 100; i++) {
             GeneTree *gt = new GeneTree(filename_c);
             gt->load_index(idx_filename_c);
         }
         c2 = clock();
+
+        c3 = clock();
+        for (int i = 0; i < 100; i++) {
+            GeneTree *gt = new GeneTree(vtd_filename_c, true);
+            gt->load_index(idx_filename_c);
+        }
+        c4 = clock();
+
         double speed = 100 / ((double)(c2 - c1) / CLOCKS_PER_SEC);
         double time = (c2 - c1) / (double)CLOCKS_PER_SEC;
+
+        double vtd_speed = 100 / ((double)(c4 - c3) / CLOCKS_PER_SEC);
+        double vtd_time = (c4 - c3) / (double)CLOCKS_PER_SEC;
+
         speeds.push_back(speed);
         times.push_back(time / 100);
+
+        vtd_times.push_back(vtd_time / 100);
 
         GeneTree *gt = new GeneTree(filename_c);
         gt->load_index(idx_filename_c);
@@ -169,10 +208,15 @@ void benchmark_loading(char *dir, char *idx_dir) {
         cout << "Speed: " << speed << " trees/sec" << endl;
         cout << "Speed: " << speed * size << " genes/sec" << endl;
         cout << "Speed: " << filesize / (time / 100) << " MB/s" << endl;
+        cout << "Speed using VTD: " << vtd_speed << " trees/sec" << endl;
+        cout << "Speed using VTD: " << vtd_speed * size << " genes/sec" << endl;
+        cout << "Speed using VTD: " << filesize / (vtd_time / 100) << " MB/s" << endl;
         cout << "----------------------------------------------------" << endl;
     }
     plt::figure(1);
     plt::plot(file_sizes, times, "ob");
+    plt::plot(file_sizes, vtd_times, "or");
+
     plt::xlabel("file size (MB)");
     plt::ylabel("Time per loading (s)");
     plt::save("cpp_benchmark_loading.pdf");
@@ -192,10 +236,13 @@ void benchmark_loading(char *dir, char *idx_dir) {
 
 void benchmark_combined(char *dir) {
     clock_t c1, c2;
+    clock_t c3, c4;
 
     vector<int> sizes;
     vector<double> speeds;
+    vector<double> speeds_naive;
     vector<double> times;
+    vector<double> times_naive;
     vector<int> ortho_counts;
     vector<int> heights;
     vector<int> total_nodes;
@@ -211,20 +258,30 @@ void benchmark_combined(char *dir) {
         int size = leaves.size();
 
         gt->write_index("temp.genetreeidx");
+        gt->write_vtdxml("temp.vtdxml");
 
         c1 = clock();
         int ortho_count = 0;
         for (int i = 0; i < 1000; i++) {
-            GeneTree *gt = new GeneTree(filename);
+            // use vtdxml indexed file
+            GeneTree *gt = new GeneTree("temp.vtdxml", true);
+            // load interval index
             gt->load_index("temp.genetreeidx");
             int rand_index = randint(size);
-            // int rand_index = size / 2;
             wstring name = leaves[rand_index];
             ortho_count += gt->get_orthologs(string(name.begin(), name.end())).size();
         }
         c2 = clock();
 
-        double speed = 1000 / ((double)(c2 - c1) / CLOCKS_PER_SEC);
+        c3 = clock();
+        int ortho_count_naive = 0;
+        for (int i = 0; i < 1000; i++) {
+            GeneTree *gt = new GeneTree(filename);
+            int rand_index = randint(size);
+            wstring name = leaves[rand_index];
+            ortho_count_naive += gt->get_orthologs_naive(string(name.begin(), name.end())).size();
+        }
+        c4 = clock();
 
         int height = gt->root->get_height();
         vector<GeneTreeNode*> nodes = gt->root->get_descendants();
@@ -245,7 +302,10 @@ void benchmark_combined(char *dir) {
         xs.push_back(height * log10(total_dup) + ortho_count / 1000);
         
         speeds.push_back(1000 / ((c2 - c1) / (double)CLOCKS_PER_SEC));
+        speeds_naive.push_back(1000 / ((c4 - c3) / (double)CLOCKS_PER_SEC));
+
         times.push_back((c2 - c1) / (double)CLOCKS_PER_SEC / 1000);
+        times_naive.push_back((c4 - c3) / (double)CLOCKS_PER_SEC / 1000);
 
         cout << "Tree size: " << size << endl;
         cout << "File: " << filename << endl;
@@ -253,9 +313,11 @@ void benchmark_combined(char *dir) {
         cout << "Time for 1000 ortholog queries: " << (c2 - c1) / (double)CLOCKS_PER_SEC << endl;
         cout << "Time per ortholog query: " << (c2 - c1) / (double)CLOCKS_PER_SEC / 1000 << endl;
         cout << "Speed: " << 1000 / ((c2 - c1) / (double)CLOCKS_PER_SEC) << " queries/sec" << endl;
+        cout << "Speed with naive method: " << 1000 / ((c4 - c3) / (double)CLOCKS_PER_SEC) << " queries/sec" << endl;
         cout << "----------------------------------------------------" << endl;
     }
     plt::plot(sizes, times, "ob");
+    plt::plot(sizes, times_naive, "or");
     plt::xlabel("number of genes");
     plt::ylabel("Time per ortholog query (s)");
     plt::save("cpp_benchmark_combined.pdf");

@@ -17,9 +17,9 @@ using namespace std;
 
 const tuple<int, int> DEFAULT_TUPLE = make_tuple(-1, -1);
 
-GeneTree::GeneTree(const char* filename) {
+GeneTree::GeneTree(const char* filename, bool is_vtdxml) {
     this->filename = filename;
-    this->parse();
+    this->parse(is_vtdxml);
 }
 
 GeneTree::~GeneTree() {
@@ -33,29 +33,42 @@ GeneTree::~GeneTree() {
     }
 }
 
-void GeneTree::parse() {
-    FILE *f = NULL;
-    unsigned char *xml = NULL;
-    f = fopen(this->filename, "r");
-    struct stat s;
-    stat(this->filename, &s);
-    xml = (unsigned char*)malloc(sizeof(unsigned char) * (int)s.st_size);
-    fread(xml, sizeof(unsigned char), s.st_size, f);
+void GeneTree::parse(bool is_vtdxml) {
+    // FILE *f = NULL;
+    // unsigned char *xml = NULL;
+    // f = fopen(this->filename, "r");
+    // struct stat s;
+    // stat(this->filename, &s);
+    // xml = (unsigned char*)malloc(sizeof(unsigned char) * (int)s.st_size);
+    // fread(xml, sizeof(unsigned char), s.st_size, f);
 
     VTDGen *vg = NULL;
     VTDNav *vn = NULL;
     vg = new VTDGen();
-    vg->setDoc_BR(xml, s.st_size);
-
-    try {
-        vg->parse(true);
-        vn = vg->getNav();
-        this->vn = vn;
-        this->parse_genetree_node();
-    } catch (VTDException& e) {
-        printf("error message is %s \n", e.getMessage());
+    //vg->setDoc_BR(xml, s.st_size);
+    if (!is_vtdxml) {
+        try {
+            vg->parseFile(true, this->filename);
+            this->vn = vg->getNav();
+            this->parse_genetree_node();
+        } catch (...) {
+            printf("Error: %s\n", this->filename);
+            exit(1);
+        }
+    } else {
+        try {
+            this->vn = vg->loadIndex(this->filename);
+            this->parse_genetree_node();
+        } catch (...) {
+            printf("Error: %s\n", this->filename);
+            exit(1);
+        }
     }
     
+}
+
+void GeneTree::write_vtdxml(const char* filename) {
+    this->vn->writeIndex(const_cast<char*>(filename));
 }
 
 void GeneTree::parse_genetree_node() {
@@ -220,106 +233,6 @@ void GeneTree::load_index(const char *filename) {
     fin.close();
 }
 
-// vector<OrthologPair> GeneTree::get_orthologs(string query_gene) {
-//     vector<OrthologPair> orthologs;
-//     if (this->index_loaded) {
-//         IndexedGeneTreeNode idx_gene_node = this->gti->leaves.at(query_gene);
-//         int node_hash = idx_gene_node.node_hash;
-//         GeneTreeNode *gene_node = this->root->leaves_map.at(node_hash);
-//         // gene tree nodes store more information so we use pointers
-//         // to prevent copying of the gene trees
-//         vector<GeneTreeNode*> ancestors = gene_node->get_ancestors();
-//         vector<IndexedGeneTreeNode> ancestors_idx;
-//         for (int i = 0; i < ancestors.size(); i++) {
-//             GeneTreeNode *ancestor = ancestors[i];
-//             int ancestor_hash = ancestor->bm->hashCode();
-//             IndexedGeneTreeNode ancestor_node = this->gti->internal_nodes.at(ancestor_hash);
-//             ancestors_idx.push_back(ancestor_node);
-//         }
-//         unordered_set<int> visited;
-//         vector<int> one_to_one_labels;
-//         vector<int> one_to_many_labels;
-//         vector<int> many_to_many_labels;
-//         unordered_set<int> many_to_x_candidates;
-//         int duplication_on_path = 0;
-//         for (int j = 0; j < ancestors_idx.size(); j++) {
-//             int min_label = get<0>(ancestors_idx[j].internal_label);
-//             int max_label = get<1>(ancestors_idx[j].internal_label);
-//             if (ancestors_idx[j].node_type == SPECIATION) {
-//                 vector<Interval<int,int>> subtree_dup_nodes = this->gti->find_duplication_subintervals(min_label, max_label);
-//                 for (int k = 0; k < subtree_dup_nodes.size(); k++) {
-//                     Interval<int,int> dup_node = subtree_dup_nodes[k];
-//                     for (int l = max(dup_node.start, min_label); l <= min(dup_node.stop, max_label); l++) {
-//                         many_to_x_candidates.insert(l);
-//                     }
-//                 }
-//             }
-//             if (ancestors_idx[j].node_type == DUPLICATION) {
-//                 duplication_on_path++;
-//             }
-//             if (idx_gene_node.label >= min_label && idx_gene_node.label <= max_label) {
-//                 // label is within the range
-//                 for (int k = min_label; k <= max_label; k++) {
-//                     if (ancestors_idx[j].node_type == SPECIATION) {
-//                             // if the internal node is a speciation node, add all labels in the range that are not visited
-//                         if (k != idx_gene_node.label && visited.find(k) == visited.end()) {
-//                             if (many_to_x_candidates.find(k) != many_to_x_candidates.end()) {
-//                                 if (duplication_on_path > 0) {
-//                                     many_to_many_labels.push_back(k);
-//                                 } else {
-//                                     one_to_many_labels.push_back(k);
-//                                 }
-//                             } else {
-//                                 if (duplication_on_path > 0) {
-//                                     one_to_many_labels.push_back(k);
-//                                 }
-//                                 else {
-//                                     one_to_one_labels.push_back(k);
-//                                 }
-//                             }
-//                         }
-//                     }
-//                     visited.insert(k);
-//                 }
-//             }
-//         }
-//         for (int i = 0; i < one_to_one_labels.size(); i++) {
-//             int label = one_to_one_labels[i];
-//             IndexedGeneTreeNode idx_node = this->gti->leaf_labels.at(label);
-//             OrthologPair ortho_pair = {
-//                 .gene_name = query_gene,
-//                 .taxon = "",
-//                 .ortholog_name = idx_node.gene_name,
-//                 .type = ONE_TO_ONE
-//             };
-//             orthologs.push_back(ortho_pair);
-//         }
-//         for (int i = 0; i < one_to_many_labels.size(); i++) {
-//             int label = one_to_many_labels[i];
-//             IndexedGeneTreeNode idx_node = this->gti->leaf_labels.at(label);
-//             OrthologPair ortho_pair = {
-//                 .gene_name = query_gene,
-//                 .taxon = "",
-//                 .ortholog_name = idx_node.gene_name,
-//                 .type = ONE_TO_MANY
-//             };
-//             orthologs.push_back(ortho_pair);
-//         }
-//         for (int i = 0; i < many_to_many_labels.size(); i++) {
-//             int label = many_to_many_labels[i];
-//             IndexedGeneTreeNode idx_node = this->gti->leaf_labels.at(label);
-//             OrthologPair ortho_pair = {
-//                 .gene_name = query_gene,
-//                 .taxon = "",
-//                 .ortholog_name = idx_node.gene_name,
-//                 .type = MANY_TO_MANY
-//             };
-//             orthologs.push_back(ortho_pair);
-//         }
-//     }
-//     return orthologs;
-// }
-
 vector<OrthologPair> GeneTree::get_orthologs(string query_gene) {
     vector<OrthologPair> orthologs;
     if (this->index_loaded) {
@@ -374,9 +287,20 @@ vector<OrthologPair> GeneTree::get_orthologs(string query_gene) {
                 if (get<0>(exclude) == get<0>(include)) {
                     // get the set of duplication intervals in the right subtrees
                     vector<Interval<int, int>> sub_dup_nodes = this->gti->duplication_nodes.findContained(get<1>(exclude) + 1, get<1>(include));
+                    int prev_min = 0, prev_max = 0;
                     for (int i = 0; i < sub_dup_nodes.size(); i++) {
                         int start = sub_dup_nodes[i].start;
                         int stop = sub_dup_nodes[i].stop;
+                        // if the current interval is completely contained in a previous interval, skip it
+                        if (start > prev_min && stop < prev_max) {
+                            continue;
+                        }
+                        // trim the interval to remove the portion overlapping with a previous interval
+                        if (start < prev_min && stop < prev_max && stop >= prev_min) {
+                            stop = prev_min;
+                        } else if (start > prev_min && stop > prev_max && start <= prev_max) {
+                            start = prev_max;
+                        }
                         for (int j = start; j <= stop; j++) {
                             if (duplication_on_path > 0) {
                                 many_to_many_labels.insert(j);
@@ -385,47 +309,9 @@ vector<OrthologPair> GeneTree::get_orthologs(string query_gene) {
                             }
                             visited.insert(j);
                         }
+                        prev_min = start;
+                        prev_max = stop;
                     }
-                    // int l = -1, r = -1;
-                    // vector<tuple<int, int>> non_overlapping_dup_nodes;
-                    // for (int i = 0; i < sub_dup_nodes.size(); i++) {
-                    //     if (l == -1 && r == -1) {
-                    //         l = sub_dup_nodes[i].start;
-                    //         r = sub_dup_nodes[i].stop;
-                    //     }
-                    //     else if (sub_dup_nodes[i].start < l && sub_dup_nodes[i].stop < l) {
-                    //         non_overlapping_dup_nodes.push_back(make_tuple(l, r));
-                    //         l = sub_dup_nodes[i].start;
-                    //         r = sub_dup_nodes[i].stop;
-                    //     }
-                    //     else if (sub_dup_nodes[i].start > r && sub_dup_nodes[i].stop > r) {
-                    //         non_overlapping_dup_nodes.push_back(make_tuple(l, r));
-                    //         l = sub_dup_nodes[i].start;
-                    //         r = sub_dup_nodes[i].stop;
-                    //     }
-                    //     else if (sub_dup_nodes[i].start < l) {
-                    //         l = sub_dup_nodes[i].start;
-                    //     }
-                    //     else if (sub_dup_nodes[i].stop > r) {
-                    //         r = sub_dup_nodes[i].stop;
-                    //     }
-                    // }
-                    // if (l != -1 && r != -1) {
-                    //     non_overlapping_dup_nodes.push_back(make_tuple(l, r));
-                    // }
-
-                    // for (int i = 0; i < non_overlapping_dup_nodes.size(); i++) {
-                    //     int start = get<0>(non_overlapping_dup_nodes[i]);
-                    //     int stop = get<1>(non_overlapping_dup_nodes[i]);
-                    //     for (int j = start; j <= stop; j++) {
-                    //         if (duplication_on_path > 0) {
-                    //             many_to_many_labels.insert(j);
-                    //         } else {
-                    //             one_to_many_labels.insert(j);
-                    //         }
-                    //         visited.insert(j);
-                    //     }
-                    // }
 
                     for (int i = get<1>(exclude) + 1; i <= get<1>(include); i++) {
                         if (visited.find(i) == visited.end()) {
@@ -441,10 +327,18 @@ vector<OrthologPair> GeneTree::get_orthologs(string query_gene) {
                 else if (get<1>(exclude) == get<1>(include)) {
                     // get the set of duplication intervals in the left subtrees
                     vector<Interval<int, int>> sub_dup_nodes = this->gti->duplication_nodes.findContained(get<0>(include), get<0>(exclude) - 1);
+                    int prev_min = 0, prev_max = 0;
                     for (int i = 0; i < sub_dup_nodes.size(); i++) {
                         int start = sub_dup_nodes[i].start;
                         int stop = sub_dup_nodes[i].stop;
-                        
+                        if (start > prev_min && stop < prev_max) {
+                            continue;
+                        }
+                        if (start < prev_min && stop < prev_max && stop >= prev_min) {
+                            stop = prev_min;
+                        } else if (start > prev_min && stop > prev_max && start <= prev_max) {
+                            start = prev_max;
+                        }
                         for (int j = start; j <= stop; j++) {
                             if (duplication_on_path > 0) {
                                 many_to_many_labels.insert(j);
@@ -452,49 +346,10 @@ vector<OrthologPair> GeneTree::get_orthologs(string query_gene) {
                                 one_to_many_labels.insert(j);
                             }
                             visited.insert(j);
-                        } 
+                        }
+                        prev_min = start;
+                        prev_max = stop;
                     }
-
-                    // int l = -1, r = -1;
-                    // vector<tuple<int, int>> non_overlapping_dup_nodes;
-                    // for (int i = 0; i < sub_dup_nodes.size(); i++) {
-                    //     if (l == -1 && r == -1) {
-                    //         l = sub_dup_nodes[i].start;
-                    //         r = sub_dup_nodes[i].stop;
-                    //     }
-                    //     else if (sub_dup_nodes[i].start < l && sub_dup_nodes[i].stop < l) {
-                    //         non_overlapping_dup_nodes.push_back(make_tuple(l, r));
-                    //         l = sub_dup_nodes[i].start;
-                    //         r = sub_dup_nodes[i].stop;
-                    //     }
-                    //     else if (sub_dup_nodes[i].start > r && sub_dup_nodes[i].stop > r) {
-                    //         non_overlapping_dup_nodes.push_back(make_tuple(l, r));
-                    //         l = sub_dup_nodes[i].start;
-                    //         r = sub_dup_nodes[i].stop;
-                    //     }
-                    //     else if (sub_dup_nodes[i].start < l) {
-                    //         l = sub_dup_nodes[i].start;
-                    //     }
-                    //     else if (sub_dup_nodes[i].stop > r) {
-                    //         r = sub_dup_nodes[i].stop;
-                    //     }
-                    // }
-                    // if (l != -1 && r != -1) {
-                    //     non_overlapping_dup_nodes.push_back(make_tuple(l, r));
-                    // }
-
-                    // for (int i = 0; i < non_overlapping_dup_nodes.size(); i++) {
-                    //     int start = get<0>(non_overlapping_dup_nodes[i]);
-                    //     int stop = get<1>(non_overlapping_dup_nodes[i]);
-                    //     for (int j = start; j <= stop; j++) {
-                    //         if (duplication_on_path > 0) {
-                    //             many_to_many_labels.insert(j);
-                    //         } else {
-                    //             one_to_many_labels.insert(j);
-                    //         }
-                    //         visited.insert(j);
-                    //     }
-                    // }
 
                     for (int i = get<0>(include); i <= get<0>(exclude) - 1; i++) {
                         if (visited.find(i) == visited.end()) {
@@ -505,7 +360,6 @@ vector<OrthologPair> GeneTree::get_orthologs(string query_gene) {
                             }
                         }
                     }
-                    
                 }
             } else {
                 // if we encounter a dummy duplication label, increment the duplication_on_path counter
@@ -599,4 +453,30 @@ vector<ParalogPair> GeneTree::get_paralogs(string query_gene) {
         }
     }
     return paralogs;
+}
+
+vector<wstring> GeneTree::get_orthologs_naive(string gene_name) {
+    vector<wstring> orthologs;
+    vector<GeneTreeNode*> genes = this->root->get_leaves();
+    for (int i = 0; i < genes.size(); i++) {
+        if (genes[i]->get_name() == wstring(gene_name.begin(), gene_name.end())) {
+            // found the gene
+            GeneTreeNode *gene_node = genes[i];
+            vector<GeneTreeNode*> ancestors = gene_node->get_ancestors();
+            for (int j = 0; j < ancestors.size(); j++) {
+                GeneTreeNode *ancestor = ancestors[j];
+                if (ancestor->node_type == DUPLICATION) {
+                    // if the ancestor is a duplication node, add all its leaves to the orthologs
+                    vector<GeneTreeNode*> leaves = ancestor->get_leaves();
+                    for (int k = 0; k < leaves.size(); k++) {
+                        if (find(orthologs.begin(), orthologs.end(), leaves[k]->get_name()) == orthologs.end()) {
+                            wstring leaf_name = leaves[k]->get_name();
+                            orthologs.push_back(leaf_name);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return orthologs;
 }

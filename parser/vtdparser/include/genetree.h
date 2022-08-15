@@ -51,15 +51,16 @@ namespace compara {
     class GeneTree {
         public:
             compara::GeneTreeNode *root;
-            GeneTree(const char* filename);
+            GeneTree(const char* filename, bool is_vtdxml = false);
             ~GeneTree();
-            void parse();
+            void parse(bool is_vtdxml = false);
             void write_index(const char* filename);
+            void write_vtdxml(const char* filename);
             void print();
             void load_index(const char* filename);
             vector<wstring> get_genes();
             vector<OrthologPair> get_orthologs(string gene_name);
-            vector<wstring> get_orthologs_naive(wstring gene_name);
+            vector<wstring> get_orthologs_naive(string gene_name);
             vector<ParalogPair> get_paralogs(string gene_name);
             vector<wstring> get_paralogs_naive(wstring gene_name);
             vtdxml::VTDNav *vn;

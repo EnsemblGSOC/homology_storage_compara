@@ -81,7 +81,9 @@ int main (int argc, char *argv[]) {
             cerr << "No index file specified" << endl;
             return 1;
         }
-        gt->write_index(save_location);
+        string filename_str = string(save_location);
+        gt->write_index((filename_str + ".gtidx").c_str());
+        gt->write_vtdxml((filename_str + ".vtdxml").c_str());
     }
     if (load_index) {
         if (load_location == NULL) {
