@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phyloxml xsi:schemaLocation="http://www.phyloxml.org http://www.phyloxml.org/1.10/phyloxml.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phyloxml.org">
+  <phylogeny type="gene tree" rooted="true">
+    <clade branch_length="0">
+      <confidence type="duplication_confidence_score">1</confidence>
+      <taxonomy>
+        <id>7718</id>
+        <scientific_name>Ciona</scientific_name>
+        <common_name>Ciona sea squirts</common_name>
+      </taxonomy>
+      <events>
+        <type>speciation_or_duplication</type>
+        <duplications>1</duplications>
+      </events>
+      <clade branch_length="0.0308425">
+        <confidence type="bootstrap">42</confidence>
+        <confidence type="duplication_confidence_score">0.5</confidence>
+        <taxonomy>
+          <id>7718</id>
+          <scientific_name>Ciona</scientific_name>
+          <common_name>Ciona sea squirts</common_name>
+        </taxonomy>
+        <events>
+          <type>speciation_or_duplication</type>
+          <duplications>1</duplications>
+        </events>
+        <clade branch_length="0.137805">
+          <confidence type="bootstrap">44</confidence>
+          <confidence type="duplication_confidence_score">1</confidence>
+          <taxonomy>
+            <id>7719</id>
+            <scientific_name>Ciona intestinalis</scientific_name>
+            <common_name>C.intestinalis</common_name>
+          </taxonomy>
+          <events>
+            <type>speciation_or_duplication</type>
+            <duplications>1</duplications>
+          </events>
+          <clade branch_length="0.624562">
+            <name>ENSCING00000002681</name>
+            <taxonomy>
+              <id>7719</id>
+              <scientific_name>Ciona intestinalis</scientific_name>
+              <common_name>C.intestinalis</common_name>
+            </taxonomy>
+            <sequence>
+              <accession source="Ensembl">ENSCINP00000005465</accession>
+              <location>HT000096.1:48498-50149</location>
+              <mol_seq is_aligned="1">---------------------------------------------------------------------------------------------------------------------------------------------ATGTGCCGA---------TTGTTGAAAAATGAATTAAAAATTCGAAGATTTGGTTTCGAG---GGCTTCGAGGCAACGGATTTCCAAACTTCGAAGTTACCACCA------AAGTTGTTCATTGTTTATCGCGTCATCATCTTCGTGTATTGGACATCTATGTTG---------------GGGGAAAGATTCGCGGCGCACGACGATAAAATCCGATTCTTTTTTTATCTTTCTTATTGGAACCAAATAATGGTCGGGATCTATTTCGGCTTCGCGTGTTTCTCCGCTGTGCATGGGCGGATGAATATCAAACAACGA---TCAAGTTCAAGCCACGTCATGGATGCGTCATCGGAATCTAAAAACCTTAGCGATACGTCACCAGACAGACCTGACGTCACTGATACGTCTTCAGAGACGGACAAATGCAACCCCGGAAATGACGTCACAACGATCACTATTAGCGACGATGACGTCACAAGCAAGCATTGTTTGTCATCAACCGCTCCGCTCCGTTGGTTCCACGTGACCACCGCCATCTTCCAAGTCATGAGCTTCAGTGTTGCC---------ATATTTGTTTCCGTCATATACGCAACCACTGAGTGGAAATCGAAACGTGCA------------ACACTGGATTTCTCCTTCCAGAACCTCAACCTACATTTCGCGAACACATTGTTAATGTTCTGTGACGTCATAATCACCAATATCCCGACCCGACTTTTACATTTCATCTACGTTTGTTTATTTACACTAATATATGATCTTTATTTGATGACGTTGCACTTCACAGGTGCTGAGTCAGCACTTTACAAAATCGTGAATTGGAATAATGACGTCACATGGGTTGTTTGTTTTTACATTGTGATGATTTTCATTGTTTCTCCATTCACACACTCGATCATGTTTCTAGTGTTTACGATAAAACGCTCTGTGACGTCA---TACTGCCGACGATTG---------------------------------------------------------------------------------------------------------------------------------------------------------------</mol_seq>
+            </sequence>
+            <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">ciona_intestinalis</property>
+          </clade>
+          <clade branch_length="1.38769">
+            <name>ENSCING00000016195</name>
+            <taxonomy>
+              <id>7719</id>
+              <scientific_name>Ciona intestinalis</scientific_name>
+              <common_name>C.intestinalis</common_name>
+            </taxonomy>
+            <sequence>
+              <accession source="Ensembl">ENSCINP00000020445</accession>
+              <location>6:2268686-2272541</location>
+              <mol_seq is_aligned="1">ATGACGTCAGTGGCGCCGACAGCGAACGACAGCTTGGGCGGTCGAAGTGTTGGTTTAAGTGAAATCTTAAAAACAAAGAACGGAAATGACGTCACAGGTCGAAATGACGTCATCACACGAGATGACGTCACGAAGAAAGTTAAGATAAACTGGAACCGACGGTTCAGGAAAGAGCTTAGCTTCGGTATGATCGGTTTGGAC---GAAAAAATGCCTCGGAAATTTGCAACGTCTGCGTGGACGGAGTCACACACTCCCTACATCGTATACAGAACAATTTGTTTCATCCACGCGGTGGCGGTGTTGAGTTGGAAAGCTTCGATTGAAAGCATGAAGCCGGAAACTGAACAAATGCCGTGGATTCTGAGTTTCCCCGCATGGACGTTTATTCTCTACACAACCTACCACACGTTGGCGCTAGTACTCGCTACTTTTGAGTTTTTCCAC------------------------------------------------------------------GATTGT------------------------------------------------------CTTTGCAACGAC---------------------------------------------------------------GATCTAGATTGGTACCACAAGCTATGTTGGGTGTTACAAAACGTGAGCTTTAACGGTTCAGTCTCGTGTTTTATCGGGTCTGTTGTTTACTATTTATCCGTAGCGGCTTCTGATCTACAATTTATGAATTTGACAGAATTTTTCAAAAGCGATGACGTAAACCTCTACGTCATAAGCGGGACTGTGATGATAATAGACACCTTTATTACAAACACTTCAGTTCGTATCCTACACGTGATATACCCGGTCCTATATTACGTCATTTATTTTGTATTTCATATTTACCGCTGGGGGTCGGGCCTTACCCCTAAGCTC---AGGGTTCTCGACTATGGGACTTTCCCTGATTCGGCAGTGCCTTTCGCCATAATAACCGTTCTGGTCTACTGCCCATTCATACACGTCATCGCCTACGTCATCGACACGCTAAGATGGAAGTTACTGATCACGTGCGTACGACGTCACAGAAAACGTCTCCATGACGTCATGAGAGCGGCGGAAACAAGGGCGACATCTAACGACAGCAGATTCATGAGCGCTGGAGGTTATTCAAGAATGCAAACAACAAGAGAAACAGTAGAAGGGAAACAA---------------TGGGAAAGTGCA---AAC</mol_seq>
+            </sequence>
+            <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">ciona_intestinalis</property>
+          </clade>
+        </clade>
+        <clade branch_length="0.710831">
+          <confidence type="bootstrap">80</confidence>
+          <taxonomy>
+            <id>7718</id>
+            <scientific_name>Ciona</scientific_name>
+            <common_name>Ciona sea squirts</common_name>
+          </taxonomy>
+          <clade branch_length="0.364821">
+            <name>ENSCING00000010987</name>
+            <taxonomy>
+              <id>7719</id>
+              <scientific_name>Ciona intestinalis</scientific_name>
+              <common_name>C.intestinalis</common_name>
+            </taxonomy>
+            <sequence>
+              <accession source="Ensembl">ENSCINP00000021573</accession>
+              <location>HT000224.1:4255-6599</location>
+              <mol_seq is_aligned="1">------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ATGAAAATACGAGATTTTGTGTTGGACCCAAAATCTTCGGCGACGGATTTCTACCTTTCTAAGTGGTGTAAACCCGGGGCTCGTTACCTCGTCTACAGAAGTCTTGTGTTCTGCTACTGGTGTGTGGCATTC---------------ATCGTTGATCTTTGCAATAACTTAGACGGCGGTTGGTTCTTCATATATTTGTCACACTGGGGCGAAAGCCTTGTCCTGCTGTATTTCTTCACTGCTTTGTGCACGTCAATATGTGGTTATTTGCAAACCAGAAGAGAAAGGGAAAAAATTTCAAGTATTTTGAAAATTGCTCTTCATTCTAGAGAAGAGATTAAAGAG---------------------------------------------------AACGAAACAGAAAATGTGAAG---------------------------------------------AACCGTTCTTTGAAGTTAAAATGGTTTCATTATTTGACAACAATCCTTTTTATTGCGTCGTTCAACGTGTCT---------ATTACCGTCACAATACTCTATCCCATACTCGATGACGTCACATACCACAGT---------------------GCATCTTTTCTAAGCATCAATATTCACATACTTAACTTTATTTTAATGTTAATCGATTTATGTGTTAATGGAATTAATGTTAAATTTCAACAATTTTTTATTTCTGTTATAACTTCTGCAATGTACGCAGCTACGCTGGTAACTTTGCACCTTACGGGCGCCAACTCTGCGGTTTACCCTGCTATAGATTATAAACAAAACCCAATTCGTACGAGTTTAGTGACCGTTGCAATGATTTTAATTGCGCCAGTACTTTGCCACTCTGTTATGTATTGTATCTACCGTTTAAAACTATGCATAGGATAC---AGAATACGCCGAAGAACA------------------------AGAACATCAGTGCCTGTTATGGCTGGCAATAAA---------------------------------------------------------------------------------------------------</mol_seq>
+            </sequence>
+            <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">ciona_intestinalis</property>
+          </clade>
+          <clade branch_length="0.439732">
+            <name>ENSCSAVG00000010931</name>
+            <taxonomy>
+              <id>51511</id>
+              <scientific_name>Ciona savignyi</scientific_name>
+              <common_name>C.savignyi</common_name>
+            </taxonomy>
+            <sequence>
+              <accession source="Ensembl">ENSCSAVP00000018601</accession>
+              <location>reftig_48:2762976-2765420</location>
+              <mol_seq is_aligned="1">------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ATGAAGGCAAACGATTTTATTATATCTCCTGGGAGCAAGAGTGGTGCTTTTTATAAGTCACAGCTACCAATTCACCCGAAATACTACCTCGCTTACCGTGGTGTGGTTTTCAGCTATTGGTTCACTACTTAT---------------TTGCTTGACATGTACTCTAATATGGACAGTGGTTGGTTTTTCTCGTACCTTTCGCATTGGTGCGAAATGTCTATTCTCGTGTATTTCTTCGCCGCTTTTTGCACCGCTTGTCTCGGCTTCTCGGAGTTCAATAAAAGAAGGCGAAAGAATTTAGAAGATTTACCACATAACTTGCATTTAAAAAAGAATAGCGAAACA------------------------------------------------------GTGGAATTTGAAATGAAA---------------------------------------------GAATTCGACTCGCCCTTGAGATGGAATCATTACGTCACAACGATCTTCTTTGTTTCGTCATTTAATCTTGCT---------GTCATCGTAACATCAGTATTCCCAGTGATGGGAGATCCAACTTACCAGAAT---------------------GGCTCATTTCTAAGCGTCAACATCCACGTTCTTAACCTTGTCCTGATGATTATTGACTTATGCATTAACTCTTTGTCCGTCCATTATATGCAATCGTTTATTACTGTTGTCACCTCTGCTTGTTATGCTGTGATGTTAATTAGTCTCCATTTAACAGGTGCTCGGTCGGCAGTTTACCCGTTAGTTGATTATAAAAACAACCCAGTCGCAACAGCTTTATTAACAGTAGGTATGATATTGATTGCTCCATTTATATCTCACGCTGTTGTATATTTTTTGTACCGTATAAAAGTATTCATTTTGCAT---AAAATAAGACGTAATGAA------------------------TGTCCAAGTGAACCCGTAGTGTCCATGCAAATA---------------------------------------------------------------------------------------------------</mol_seq>
+            </sequence>
+            <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">ciona_savignyi</property>
+          </clade>
+        </clade>
+      </clade>
+      <clade branch_length="0.399245">
+        <confidence type="bootstrap">49</confidence>
+        <confidence type="duplication_confidence_score">1</confidence>
+        <taxonomy>
+          <id>7718</id>
+          <scientific_name>Ciona</scientific_name>
+          <common_name>Ciona sea squirts</common_name>
+        </taxonomy>
+        <events>
+          <type>speciation_or_duplication</type>
+          <duplications>1</duplications>
+        </events>
+        <clade branch_length="0.189257">
+          <confidence type="bootstrap">20</confidence>
+          <confidence type="duplication_confidence_score">0.5</confidence>
+          <taxonomy>
+            <id>7718</id>
+            <scientific_name>Ciona</scientific_name>
+            <common_name>Ciona sea squirts</common_name>
+          </taxonomy>
+          <events>
+            <type>speciation_or_duplication</type>
+            <duplications>1</duplications>
+          </events>
+          <clade branch_length="0.161516">
+            <confidence type="bootstrap">29</confidence>
+            <confidence type="duplication_confidence_score">0.5</confidence>
+            <taxonomy>
+              <id>7718</id>
+              <scientific_name>Ciona</scientific_name>
+              <common_name>Ciona sea squirts</common_name>
+            </taxonomy>
+            <events>
+              <type>speciation_or_duplication</type>
+              <duplications>1</duplications>
+            </events>
+            <clade branch_length="0.317136">
+              <confidence type="bootstrap">75</confidence>
+              <taxonomy>
+                <id>7718</id>
+                <scientific_name>Ciona</scientific_name>
+                <common_name>Ciona sea squirts</common_name>
+              </taxonomy>
+              <clade branch_length="0.13061">
+                <name>ENSCSAVG00000006167</name>
+                <taxonomy>
+                  <id>51511</id>
+                  <scientific_name>Ciona savignyi</scientific_name>
+                  <common_name>C.savignyi</common_name>
+                </taxonomy>
+                <sequence>
+                  <accession source="Ensembl">ENSCSAVP00000010471</accession>
+                  <location>reftig_60:430906-433079</location>
+                  <mol_seq is_aligned="1">---------------------------------------------------------------------------------------------------------------------------------------------ATGGCAACG---------TCGTGCAGATTTGAATTCCAATGCAAGCATTTTTGGTATAAC---GATTGTGAAGCTGAAAAGTTTCAACGTATTCAGTGGACGAAAAACAGATGGGTTCACCTGGCTTACCGTGGCTTTATGTTCGCCTTTACCTTAGGATGGCTA---------------ATTGGTGCTTACGTGGTGAACAAGGATCCA---ACGGTGTACCAATTCATTAGCAACTGGACTGAGGTTGTAATGAACTTGTATTTTCTCGTCGCATTTCTTGTCTCAATTTACGGG---GCGGTGAAAAGACAC---------------------------------------------------------GACGCC------------------------------------------------------CCATCCACTGAA---------------------------------------------------------------CAAATACGTTGGTTCCACATTGTGAACTGGTGGTTGTTTAACGTCGCCTGCACCGCTGCC---------TTCAACGTCACCATCTTTTACTGGGCTCTGATTGGTTCAAGAAGGACTCTA------------GAACGTAACCTCCAACCAGTCACCTTTCATCTTCACGTCACAAATTCAATTCTGTTTCTGATTGATATTTTCATGGTCGCCTTCCCAGTTCGTCTCTTGCACTTTTTCTACGCGCCGTTGTACGGAGTTGTGTATATTCTATTCATGTTGATTATACACTGGACGGGTGTCAATAGCGCCATATACGCGGCAGTAAACTGGGCAACGCAGCCTGCCATATCTTCAGGCTACAGCATCGCCGCGATCATCGTTTTGCCTATTGTGTTGCACTGTATGCTATTCGGACTGTACCACCTTCGAGCTCTAATCGCTCGAAGGACGGTTCTGAAAAACGAA------------------------AACACGTCGCGAGGTGGCGGACCAGAGCAGTTT------------------GGCGCTGTCGAACTGGGCAAGACAAATGAGGGATTTGTTGTAACAGAAGCGCCAAATCATGGAACCGATAGTACTGCAATG</mol_seq>
+                </sequence>
+                <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">ciona_savignyi</property>
+              </clade>
+              <clade branch_length="0.25117">
+                <name>ENSCING00000012110</name>
+                <taxonomy>
+                  <id>7719</id>
+                  <scientific_name>Ciona intestinalis</scientific_name>
+                  <common_name>C.intestinalis</common_name>
+                </taxonomy>
+                <sequence>
+                  <accession source="Ensembl">ENSCINP00000022801</accession>
+                  <location>HT001131.1:2256-3836</location>
+                  <mol_seq is_aligned="1">---------------------------------------------------------------------------------------------------------------------------------------------ATGGCTACA---------AGCTGCGGGTTCGAATTCAAAGCAAAACACTTCTGGTATACA---GACGTTGAAGCCGAAAAGTTTCAGAGAATTCAGTGGACACCAAACAGATGGATTCACCTTGCTTACCGCGGCTTTATGTTCGCTTACACAATAGGCTGGCTT---------------ATCGGTGCGTATGTAGTTAACACAACAAGC---ACTGTATACCAGTTCATAAGCAATTGGACGGAAGTGGTGATGAACCTTTATTTTCTGATCGCATTTCTAGTGTCAATATACGGT---GTTGCTACAAGAGGC---------------------------------------------------------AAAGCA------------------------------------------------------CCGTCTAAAGGC---------------------------------------------------------------CCGCTGCGATGGTTCCATATCATAAACTGGTGGATGTTTAATGTAGCAACCGTGGCTGCA---------TTTAATGTAACGATCTTCTATTGGGCTTTGATTGGACGAACACGGACAGCG------------GAACGAAATCTGCGACCTGTTACATTCCATTTACACGTCACTAACTCAATCCTCATGCTCATCGATATATTTATGGTTGCTTTCCCTGTCCGTCTCCTGCATTTCTTCTACGCCCCGTTATATGGAGTTGTGTATATTCTCTTCATGCTTATTCTACATTGGACCAACGTTAACTCAGCAATATATGCAGCCGTTAACTGGAGTACCAGCCCTGCTACCTCAGCTGGCTACAGCATTGCAGCGGTCATAGTT------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</mol_seq>
+                </sequence>
+                <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">ciona_intestinalis</property>
+              </clade>
+            </clade>
+            <clade branch_length="0.806315">
+              <name>ENSCSAVG00000009942</name>
+              <taxonomy>
+                <id>51511</id>
+                <scientific_name>Ciona savignyi</scientific_name>
+                <common_name>C.savignyi</common_name>
+              </taxonomy>
+              <sequence>
+                <accession source="Ensembl">ENSCSAVP00000016909</accession>
+                <location>reftig_48:1268277-1271400</location>
+                <mol_seq is_aligned="1">ATGAAA------------------------------------------------------------TTGACTGAAAACAGGATGTATGACGTAACTTCACGAAACAGCTTGCCCGAAAGCGAAGGTATACTTCGAATAAATCAATCAACGCATCATTTATCATTCAAGGAAGAATTCCAATTTTGCAACTTGACGTTTGGA---CTCTGCCCCAAAGAATGTTTTTACCTACTCCAGTGGTGCCAAAACAAGAAAATTGTCCTGTGCTACAAGTTCTTTATGTTCGTATACACATGGTGTTGGTTC---------------ATTTTTGACATTGCGGTCAACTCTGATGCG---CATTACATCGCGTATCTCACCCACTGGGCGCAAGGGGTAATGGTACTTTACTTTGCTTCTTCAGTTGTCTTGATGGTTCACTCG------GGGTTAAAGCGTGAA---CCTACGTCACAAACGCTATGTGACGTCATTGTTACAGAGACTCAGCCCAGTGACAGA------------------------------------------------------CCGGCCAATGAGATTTCG---------------------------------------------TCAAGTTCGAATCGTCTCCGCGTTTATCACATCATAGTATGGATTCTTTTGAACATCTACGTTACAAGTGCG---------TTTGGAGTAACTATCCTATACTGGCTCGGCACGTCGCAGGGAGAAGTTGAC---------CAATCGACGTCCATACTTAGTGTAAACATACATGTTCACGCCATCAACTCTGTTCTGGCAGTGGTTGAAATACTGGTGACAGATCTGCCTATTCGCTTAATGCATTTTTATCAACCAATACTCTTTGGCTCGCTGTATATGATATTTAATCTCTCGTTACATTGGTCGGACGTGATTTCG---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</mol_seq>
+              </sequence>
+              <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">ciona_savignyi</property>
+            </clade>
+          </clade>
+          <clade branch_length="0.52657">
+            <name>ENSCSAVG00000001184</name>
+            <taxonomy>
+              <id>51511</id>
+              <scientific_name>Ciona savignyi</scientific_name>
+              <common_name>C.savignyi</common_name>
+            </taxonomy>
+            <sequence>
+              <accession source="Ensembl">ENSCSAVP00000002025</accession>
+              <location>reftig_7:286425-288760</location>
+              <mol_seq is_aligned="1">---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ATGTTTCAC------CAATGGGGGAACAACAAGGTTATATTCCTGGTGTACCGGGCGATTGTTTTCCTTTACACCCTCGCTTGGATC---------------ATAGCGGACCTTACAGTATACTACCAGCCG---CGTTACTGGATATTTCTCACCAACTGGGTTGAAGTAATCGGGTGCTTGTATTTCTGCCTTGCATTTTTTCTCGCCCTCTATGGTTATTTCGCCAGTAAACAG---------------------------------------------------------GATATT------------------------------------------------------GATCGAGAAAAG---------------------------------------------------------------GGAACCAACTGGGGCTGTGGAGTAGTTTGGATTTTGTTCAACGTTTCCATCAACGCCGCT---------GTTATAACTGACATCCTTTTCTGGGCCCTGCTGTCGAATGGACTATCTCCT------------GCCCAGCTAGCTGACCCGTTTAATATTCACTCCCATGCGATTAATCTGGTCCTACTTCTGATTGATCTGTTCGTGTTCTCATACCCAATACGTATCCTGCACCTGATTTACCCGATGGGTCTTGGGTTGGTTTACACCGCATTTACTCTCATCCTGCATGGGGCGAGATATACCTCGGCTGTTTACGCCGTTATAAACTGGCAGACTTTTCCAGCACTTGCAGCCGGAGTCTGTTTCGGTGCTAGTTTAGTAGCAATGCCGATCAGTCACTTGCTGGTGTTCGGATTGTACAAGATCAGAGCACTTATAGCGCGC------------AAAAACGGA------------------------TGCATGAGTCAACAAGGCGGCGATCAGTCATTC---------------------------GAAATGGGCCAAACTAACATGGCGTAT------------------------------GACAAT---------</mol_seq>
+            </sequence>
+            <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">ciona_savignyi</property>
+          </clade>
+        </clade>
+        <clade branch_length="0.35594">
+          <confidence type="bootstrap">77</confidence>
+          <taxonomy>
+            <id>7718</id>
+            <scientific_name>Ciona</scientific_name>
+            <common_name>Ciona sea squirts</common_name>
+          </taxonomy>
+          <clade branch_length="0.306497">
+            <name>ENSCSAVG00000010929</name>
+            <taxonomy>
+              <id>51511</id>
+              <scientific_name>Ciona savignyi</scientific_name>
+              <common_name>C.savignyi</common_name>
+            </taxonomy>
+            <sequence>
+              <accession source="Ensembl">ENSCSAVP00000018599</accession>
+              <location>reftig_48:2750452-2751934</location>
+              <mol_seq is_aligned="1">------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------TGGTTTTTATGGGGATGGAAGTTGTTTGCTAGTTTGTATTGGTTTTCTATGTTC---------------GTTGCAAACTTGGCCACTTTGCAAGATATTCACCGATATTGGATCTTTCTTACCAATTGGGGC---GTAGGGGCTTGCGTTTTCTCCTATATAAAATACATAATTAACAATCAT------------------------------------------------------------------------------GACATA------------------------------------------------------------------ATATCT---------------------------------------------ATTTCAGACGTTCCACTTCAATGGTTCCACAAGTTTCTATGGATATTACAAATAGTTGCCACCGATGCCTCT---------TTAATCATTACGATATTGTATTGGGCTTTACTTACTCCTAATTTTTCG------------------------------GTTTTCAGCATCAACAACCATGCTATCAATTTCGTGATAATGTTCATTGATTTCTTTATAGTAGCGATTCCCACCCGCCTTTTGCACTTTATATATGTGTCTTTATTTGCATTGGTGTATATTGTATTCAGTTTGATCTTGCACGGGTCAGGATACGAGTCGGCTATCTACCCCGTACTGAATTGGTCAACTAATCCTGGAATCAGCGCCGGCATCAGCGTTGGGGCCGTAATCGTGGCCCCTCCTATCGTCCACGGACTTTACTGGTGCGTTTTCCAACTTAGGACATTTCTGGGAAAG------------AAAGCCAAT------------------------CCATCTCAGTCGAGAACAACAATGGCGTCACATCCGTTAGGTATTTCG------------------------------------------------------------------------------------</mol_seq>
+            </sequence>
+            <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">ciona_savignyi</property>
+          </clade>
+          <clade branch_length="0.455948">
+            <name>ENSCING00000017269</name>
+            <taxonomy>
+              <id>7719</id>
+              <scientific_name>Ciona intestinalis</scientific_name>
+              <common_name>C.intestinalis</common_name>
+            </taxonomy>
+            <sequence>
+              <accession source="Ensembl">ENSCINP00000029351</accession>
+              <location>HT000224.1:166-1354</location>
+              <mol_seq is_aligned="1">------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ATGTTGATATGGCAGCTACAACTCGTAGCAATGGGTTTATCG---------TTTATAGTCACAGTCCTGTACTGGACTCTATTCAATCCTAAATTCAGC------------------------------GTATATGATTACAACAGTCATGCCATTAATTTCGTCATAATGATGCTTGACTTCATCATAATAGCGATTCCTACACGGCTGTTACACTTTGTGTACATGGCGTTACTTTCTGCTATTTATTGTATCTTTACGGCGATTTTGCACGGCGCTGGCTACACATCTCATGTATATTCGTTCCTTAACTGGGCAACGAATCCTGGGTTATCCGCTGGTATCTGCATTGGAATAACATTCGTTGCTACTCCCCTTGTTCAGACATTGTTTTGGTGTGTCTACCTGTTAAGAAACTACCTCGGTGAT------------AAAGTAAAC------------------------CCAACTACGTCAAATATGACGTCACAACATGTTATTATGACGCCACAATACAGATCTGTTGAAGCTGGAAAAGTCAATCCATCATTTCAA------------------------------------------</mol_seq>
+            </sequence>
+            <property datatype="xsd:string" ref="Compara:genome_db_name" applies_to="clade">ciona_intestinalis</property>
+          </clade>
+        </clade>
+      </clade>
+    </clade>
+    <property datatype="xsd:string" ref="Compara:gene_tree_stable_id" applies_to="phylogeny">ENSGT00730000111827</property>
+  </phylogeny>
+</phyloxml>

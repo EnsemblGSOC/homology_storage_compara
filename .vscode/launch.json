@@ -1,0 +1,40 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug - Ortholog Query",
+            "program": "${workspaceFolder}/parser/vtdparser/bin/gtutils",
+            "args": ["-O", "ENSG00000101400", "${workspaceFolder}/parser/python/pipeline/data_out/SNTA1_gene_tree.xml"],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug - Paralog Query",
+            "program": "${workspaceFolder}/parser/vtdparser/bin/gtutils",
+            "args": ["-P", "ENSG00000182463", "${workspaceFolder}/parser/python/pipeline/data_out/TSHZ2_gene_tree.xml"],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug - Print Tree",
+            "program": "${workspaceFolder}/parser/vtdparser/bin/gtutils",
+            "args": ["-p", "${workspaceFolder}/parser/python/pipeline/data_out/TSHZ2_gene_tree.xml"],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug - Benchmark",
+            "program": "${workspaceFolder}/parser/vtdparser/bin/benchmark",
+            "args": ["${workspaceFolder}/parser/python/pipeline/data_out_without_seq"],
+            "cwd": "${workspaceFolder}"
+        },
+    ]
+}
